@@ -1076,7 +1076,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 														  [flightInfo objectForKey:@"takeoff_city"],
 														  [flightInfo objectForKey:@"arrival_city"], nil];
 			DisclosureButtonController *disclosureButtonController = 
-			[[DisclosureButtonController alloc] initWithStyle:UITableViewStylePlain];
+            //[[DisclosureButtonController alloc] init];
+            [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
+			//[[DisclosureButtonController alloc] initWithStyle:UITableViewStylePlain];
 			
 			NSLog(@"2...");
 			
@@ -1088,7 +1090,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 			titleText = [titleText stringByAppendingString:@" 飞往 "];
 			titleText = [titleText stringByAppendingString:[flightInfo objectForKey:@"arrival_city"]];
 			disclosureButtonController.title = titleText;			
-			disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
+			//disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
 			NSLog(@"3...");
 			
 			[controllerArray addObject:disclosureButtonController];

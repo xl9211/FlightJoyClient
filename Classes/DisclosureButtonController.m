@@ -17,7 +17,7 @@
 @synthesize cityList;
 @synthesize flightInfo;
 @synthesize updateProgressInd;
-
+@synthesize tableView;
 
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style

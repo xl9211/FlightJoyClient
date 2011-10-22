@@ -16,13 +16,14 @@
 
 @class DisclosureDetailController;
 
-@interface DisclosureButtonController : SecondLevelViewController 
+@interface DisclosureButtonController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate> {
 	NSMutableArray *list;
 	NSMutableArray *cityList;
 	sqlite3	*database;
 	NSDictionary *flightInfo;
 	DisclosureDetailController *childController;
+    UITableView *tableView;
 
 	UIActivityIndicatorView *updateProgressInd;
 }
@@ -30,5 +31,8 @@
 @property (nonatomic, retain) NSMutableArray *cityList;
 @property (nonatomic, retain) NSDictionary *flightInfo;
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
+@property (nonatomic,retain) UITableView *tableView;
+
+
 
 @end
