@@ -1,0 +1,7 @@
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:10: error: no declaration of property 'coordinate' found in the interface
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:10: error: no declaration of property 'title' found in the interface
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:10: error: no declaration of property 'subtitle' found in the interface
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m: In function '-[DisplayMap dealloc]':
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:12: error: 'title' undeclared (first use in this function)
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:12: error: (Each undeclared identifier is reported only once
+/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m:12: error: for each function it appears in.)

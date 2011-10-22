@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* MyNavAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyNavAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		3E361522143B420900D0063D /* china.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E361521143B420900D0063D /* china.jpg */; };
+		3E5FB5EA144AA64100A1AD06 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5FB5E9144AA64100A1AD06 /* MapKit.framework */; };
+		3E5FB613144AA8BA00A1AD06 /* FlightRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FB611144AA8BA00A1AD06 /* FlightRouteController.m */; };
+		3E5FB614144AA8BA00A1AD06 /* FlightRouteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5FB612144AA8BA00A1AD06 /* FlightRouteController.xib */; };
+		3E5FB633144AAACB00A1AD06 /* DisplayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FB632144AAACB00A1AD06 /* DisplayMap.m */; };
+		3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */; };
+		3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E7A02DF144F0CD3008503A5 /* icon.jpg */; };
+		3E8AA98C14070B3C003051DD /* plane.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8AA98B14070B3C003051DD /* plane.jpg */; };
+		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
+		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
+		3E8DDB1D141888EA00B57F5B /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DDB1C141888EA00B57F5B /* SearchResultController.m */; };
+		3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E73CE143B4940003FEC46 /* china2.jpg */; };
+		3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFE51403D428004E20F8 /* RootViewController.m */; };
+		3E91CFEB1403D856004E20F8 /* SecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */; };
+		3E925B18144E96E2008AB82E /* icon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E925B17144E96E2008AB82E /* icon1.jpg */; };
+		3E92DF8F14088A8B0094CFAA /* FlightDetailCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */; };
+		3E92DF9114088ACC0094CFAA /* FlightDetailCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */; };
+		3E92E0441408D1500094CFAA /* xiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E92E0421408D1500094CFAA /* xiangqing.png */; };
+		3E92E04C1408D2100094CFAA /* duigou.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E92E04B1408D2100094CFAA /* duigou.png */; };
+		3E92E0AD140900440094CFAA /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0A2140900440094CFAA /* NSObject+SBJSON.m */; };
+		3E92E0AE140900440094CFAA /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0A4140900440094CFAA /* NSString+SBJSON.m */; };
+		3E92E0AF140900440094CFAA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0A6140900440094CFAA /* SBJSON.m */; };
+		3E92E0B0140900440094CFAA /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0A8140900440094CFAA /* SBJsonBase.m */; };
+		3E92E0B1140900440094CFAA /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0AA140900440094CFAA /* SBJsonParser.m */; };
+		3E92E0B2140900440094CFAA /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92E0AC140900440094CFAA /* SBJsonWriter.m */; };
+		3E940A6A1405D8BE00B43D5E /* moveMeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E940A691405D8BE00B43D5E /* moveMeIcon.png */; };
+		3E95E2A114068E16004E250B /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E2A014068E16004E250B /* CustomCell.m */; };
+		3E95E2A314068F1E004E250B /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E2A214068F1E004E250B /* CustomCell.xib */; };
+		3E96B86514173D23000B2E96 /* TdCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96B86314173D23000B2E96 /* TdCalendarView.m */; };
+		3E96B86F14173E57000B2E96 /* SearchConditionDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96B86D14173E57000B2E96 /* SearchConditionDateController.m */; };
+		3E96B87014173E57000B2E96 /* SearchConditionDateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */; };
+		3E96D9211416EF2B007D29C0 /* SearchConditionCompanyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96D9201416EF2B007D29C0 /* SearchConditionCompanyController.m */; };
+		3E98030E1404678A00A3C5BE /* DisclosureDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E98030D1404678A00A3C5BE /* DisclosureDetailController.m */; };
+		3E9803121404697800A3C5BE /* DisclosureButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9803111404697800A3C5BE /* DisclosureButtonController.m */; };
+		3E98031414046A4200A3C5BE /* DisclosureDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E98031314046A4200A3C5BE /* DisclosureDetail.xib */; };
+		3E9CBE44141835BE00B21EBC /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CBE43141835BE00B21EBC /* Company.m */; };
+		3EA84FA2144C698800985145 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 3EA84F9A144C698800985145 /* CHANGELOG.md */; };
+		3EA84FA3144C698800985145 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA84F9C144C698800985145 /* JSONKit.m */; };
+		3EA84FA4144C698800985145 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3EA84F9D144C698800985145 /* README.md */; };
+		3EA84FA5144C698800985145 /* SVGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA84F9F144C698800985145 /* SVGeocoder.m */; };
+		3EA84FA6144C698800985145 /* SVPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA84FA1144C698800985145 /* SVPlacemark.m */; };
+		3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA84FCA144C69C300985145 /* AddressBook.framework */; };
+		3EC3AC08143BF5C0007F748B /* china3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3EC3AC07143BF5C0007F748B /* china3.jpg */; };
+		3EC3AD1B143C938A007F748B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3AD1A143C938A007F748B /* Reachability.m */; };
+		3EC3AD25143C9474007F748B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC3AD24143C9474007F748B /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* MyNavAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* MyNavAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* MyNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* MyNav_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNav_Prefix.pch; sourceTree = "<group>"; };
+		3E361521143B420900D0063D /* china.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china.jpg; sourceTree = "<group>"; };
+		3E5FB5E9144AA64100A1AD06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3E5FB610144AA8BA00A1AD06 /* FlightRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightRouteController.h; sourceTree = "<group>"; };
+		3E5FB611144AA8BA00A1AD06 /* FlightRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightRouteController.m; sourceTree = "<group>"; };
+		3E5FB612144AA8BA00A1AD06 /* FlightRouteController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlightRouteController.xib; path = Classes/FlightRouteController.xib; sourceTree = "<group>"; };
+		3E5FB631144AAACB00A1AD06 /* DisplayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayMap.h; sourceTree = "<group>"; };
+		3E5FB632144AAACB00A1AD06 /* DisplayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayMap.m; sourceTree = "<group>"; };
+		3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3E7A02DF144F0CD3008503A5 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
+		3E8AA98B14070B3C003051DD /* plane.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plane.jpg; sourceTree = "<group>"; };
+		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
+		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
+		3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3E8DDB1B141888EA00B57F5B /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
+		3E8DDB1C141888EA00B57F5B /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
+		3E8E73CE143B4940003FEC46 /* china2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china2.jpg; sourceTree = "<group>"; };
+		3E91CFE41403D428004E20F8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		3E91CFE51403D428004E20F8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		3E91CFE91403D856004E20F8 /* SecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondLevelViewController.h; sourceTree = "<group>"; };
+		3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondLevelViewController.m; sourceTree = "<group>"; };
+		3E925B17144E96E2008AB82E /* icon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon1.jpg; sourceTree = "<group>"; };
+		3E92DF8D14088A8B0094CFAA /* FlightDetailCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailCustomCell.h; sourceTree = "<group>"; };
+		3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailCustomCell.m; sourceTree = "<group>"; };
+		3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightDetailCustomCell.xib; sourceTree = "<group>"; };
+		3E92E0421408D1500094CFAA /* xiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangqing.png; sourceTree = "<group>"; };
+		3E92E04B1408D2100094CFAA /* duigou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duigou.png; sourceTree = "<group>"; };
+		3E92E0A0140900440094CFAA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		3E92E0A1140900440094CFAA /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		3E92E0A2140900440094CFAA /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		3E92E0A3140900440094CFAA /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		3E92E0A4140900440094CFAA /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		3E92E0A5140900440094CFAA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		3E92E0A6140900440094CFAA /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		3E92E0A7140900440094CFAA /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		3E92E0A8140900440094CFAA /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		3E92E0A9140900440094CFAA /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		3E92E0AA140900440094CFAA /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		3E92E0AB140900440094CFAA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		3E92E0AC140900440094CFAA /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		3E940A691405D8BE00B43D5E /* moveMeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveMeIcon.png; sourceTree = "<group>"; };
+		3E95E29F14068E16004E250B /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		3E95E2A014068E16004E250B /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		3E95E2A214068F1E004E250B /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		3E96B86314173D23000B2E96 /* TdCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TdCalendarView.m; sourceTree = "<group>"; };
+		3E96B86414173D23000B2E96 /* TdCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TdCalendarView.h; sourceTree = "<group>"; };
+		3E96B86C14173E57000B2E96 /* SearchConditionDateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionDateController.h; sourceTree = "<group>"; };
+		3E96B86D14173E57000B2E96 /* SearchConditionDateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionDateController.m; sourceTree = "<group>"; };
+		3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SearchConditionDateController.xib; path = Classes/SearchConditionDateController.xib; sourceTree = "<group>"; };
+		3E96D91F1416EF2B007D29C0 /* SearchConditionCompanyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionCompanyController.h; sourceTree = "<group>"; };
+		3E96D9201416EF2B007D29C0 /* SearchConditionCompanyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionCompanyController.m; sourceTree = "<group>"; };
+		3E98030C1404678A00A3C5BE /* DisclosureDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclosureDetailController.h; sourceTree = "<group>"; };
+		3E98030D1404678A00A3C5BE /* DisclosureDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclosureDetailController.m; sourceTree = "<group>"; };
+		3E9803101404697800A3C5BE /* DisclosureButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclosureButtonController.h; sourceTree = "<group>"; };
+		3E9803111404697800A3C5BE /* DisclosureButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclosureButtonController.m; sourceTree = "<group>"; };
+		3E98031314046A4200A3C5BE /* DisclosureDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisclosureDetail.xib; sourceTree = "<group>"; };
+		3E9CBE42141835BE00B21EBC /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		3E9CBE43141835BE00B21EBC /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		3EA84F9A144C698800985145 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		3EA84F9B144C698800985145 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		3EA84F9C144C698800985145 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		3EA84F9D144C698800985145 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		3EA84F9E144C698800985145 /* SVGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGeocoder.h; sourceTree = "<group>"; };
+		3EA84F9F144C698800985145 /* SVGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGeocoder.m; sourceTree = "<group>"; };
+		3EA84FA0144C698800985145 /* SVPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPlacemark.h; sourceTree = "<group>"; };
+		3EA84FA1144C698800985145 /* SVPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPlacemark.m; sourceTree = "<group>"; };
+		3EA84FCA144C69C300985145 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		3EB57F30142183B800DE88ED /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		3EC3AC07143BF5C0007F748B /* china3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china3.jpg; sourceTree = "<group>"; };
+		3EC3AD19143C938A007F748B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3EC3AD1A143C938A007F748B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		3EC3AD24143C9474007F748B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8D1107310486CEB800E47090 /* MyNav-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyNav-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */,
+				3EC3AD25143C9474007F748B /* SystemConfiguration.framework in Frameworks */,
+				3E5FB5EA144AA64100A1AD06 /* MapKit.framework in Frameworks */,
+				3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */,
+				3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3EA84F98144C698800985145 /* SVGeocoder */,
+				3E9CBE411418359900B21EBC /* model */,
+				3E96B86214173D0C000B2E96 /* component */,
+				3E92E09F140900440094CFAA /* JSON */,
+				3EC3AD19143C938A007F748B /* Reachability.h */,
+				3EC3AD1A143C938A007F748B /* Reachability.m */,
+				1D3623240D0F684500981E51 /* MyNavAppDelegate.h */,
+				1D3623250D0F684500981E51 /* MyNavAppDelegate.m */,
+				3E91CFE41403D428004E20F8 /* RootViewController.h */,
+				3E91CFE51403D428004E20F8 /* RootViewController.m */,
+				3E9803101404697800A3C5BE /* DisclosureButtonController.h */,
+				3E9803111404697800A3C5BE /* DisclosureButtonController.m */,
+				3E98030C1404678A00A3C5BE /* DisclosureDetailController.h */,
+				3E98030D1404678A00A3C5BE /* DisclosureDetailController.m */,
+				3E95E29F14068E16004E250B /* CustomCell.h */,
+				3E95E2A014068E16004E250B /* CustomCell.m */,
+				3E92DF8D14088A8B0094CFAA /* FlightDetailCustomCell.h */,
+				3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */,
+				3E91CFE91403D856004E20F8 /* SecondLevelViewController.h */,
+				3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */,
+				3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */,
+				3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */,
+				3E96D91F1416EF2B007D29C0 /* SearchConditionCompanyController.h */,
+				3E96D9201416EF2B007D29C0 /* SearchConditionCompanyController.m */,
+				3E96B86C14173E57000B2E96 /* SearchConditionDateController.h */,
+				3E96B86D14173E57000B2E96 /* SearchConditionDateController.m */,
+				3E8DDB1B141888EA00B57F5B /* SearchResultController.h */,
+				3E8DDB1C141888EA00B57F5B /* SearchResultController.m */,
+				3E5FB610144AA8BA00A1AD06 /* FlightRouteController.h */,
+				3E5FB611144AA8BA00A1AD06 /* FlightRouteController.m */,
+				3E5FB631144AAACB00A1AD06 /* DisplayMap.h */,
+				3E5FB632144AAACB00A1AD06 /* DisplayMap.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* MyNav.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				3EB57F30142183B800DE88ED /* Entitlements.plist */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* MyNav_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E940A681405D8A700B43D5E /* Images */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */,
+				8D1107310486CEB800E47090 /* MyNav-Info.plist */,
+				3E98031314046A4200A3C5BE /* DisclosureDetail.xib */,
+				3E95E2A214068F1E004E250B /* CustomCell.xib */,
+				3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */,
+				3E5FB612144AA8BA00A1AD06 /* FlightRouteController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */,
+				3EC3AD24143C9474007F748B /* SystemConfiguration.framework */,
+				3E5FB5E9144AA64100A1AD06 /* MapKit.framework */,
+				3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */,
+				3EA84FCA144C69C300985145 /* AddressBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E92E09F140900440094CFAA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				3E92E0A0140900440094CFAA /* JSON.h */,
+				3E92E0A1140900440094CFAA /* NSObject+SBJSON.h */,
+				3E92E0A2140900440094CFAA /* NSObject+SBJSON.m */,
+				3E92E0A3140900440094CFAA /* NSString+SBJSON.h */,
+				3E92E0A4140900440094CFAA /* NSString+SBJSON.m */,
+				3E92E0A5140900440094CFAA /* SBJSON.h */,
+				3E92E0A6140900440094CFAA /* SBJSON.m */,
+				3E92E0A7140900440094CFAA /* SBJsonBase.h */,
+				3E92E0A8140900440094CFAA /* SBJsonBase.m */,
+				3E92E0A9140900440094CFAA /* SBJsonParser.h */,
+				3E92E0AA140900440094CFAA /* SBJsonParser.m */,
+				3E92E0AB140900440094CFAA /* SBJsonWriter.h */,
+				3E92E0AC140900440094CFAA /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		3E940A681405D8A700B43D5E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3E7A02DF144F0CD3008503A5 /* icon.jpg */,
+				3E925B17144E96E2008AB82E /* icon1.jpg */,
+				3EC3AC07143BF5C0007F748B /* china3.jpg */,
+				3E8E73CE143B4940003FEC46 /* china2.jpg */,
+				3E361521143B420900D0063D /* china.jpg */,
+				3E92E04B1408D2100094CFAA /* duigou.png */,
+				3E92E0421408D1500094CFAA /* xiangqing.png */,
+				3E8AA98B14070B3C003051DD /* plane.jpg */,
+				3E940A691405D8BE00B43D5E /* moveMeIcon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		3E96B86214173D0C000B2E96 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				3E96B86414173D23000B2E96 /* TdCalendarView.h */,
+				3E96B86314173D23000B2E96 /* TdCalendarView.m */,
+			);
+			name = component;
+			sourceTree = "<group>";
+		};
+		3E9CBE411418359900B21EBC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3E9CBE42141835BE00B21EBC /* Company.h */,
+				3E9CBE43141835BE00B21EBC /* Company.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3EA84F98144C698800985145 /* SVGeocoder */ = {
+			isa = PBXGroup;
+			children = (
+				3EA84F99144C698800985145 /* JSONKit */,
+				3EA84F9E144C698800985145 /* SVGeocoder.h */,
+				3EA84F9F144C698800985145 /* SVGeocoder.m */,
+				3EA84FA0144C698800985145 /* SVPlacemark.h */,
+				3EA84FA1144C698800985145 /* SVPlacemark.m */,
+			);
+			path = SVGeocoder;
+			sourceTree = "<group>";
+		};
+		3EA84F99144C698800985145 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				3EA84F9A144C698800985145 /* CHANGELOG.md */,
+				3EA84F9B144C698800985145 /* JSONKit.h */,
+				3EA84F9C144C698800985145 /* JSONKit.m */,
+				3EA84F9D144C698800985145 /* README.md */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* MyNav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MyNav" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyNav;
+			productName = MyNav;
+			productReference = 1D6058910D05DD3D006BFB54 /* MyNav.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MyNav" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* MyNav */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				3E98031414046A4200A3C5BE /* DisclosureDetail.xib in Resources */,
+				3E940A6A1405D8BE00B43D5E /* moveMeIcon.png in Resources */,
+				3E95E2A314068F1E004E250B /* CustomCell.xib in Resources */,
+				3E8AA98C14070B3C003051DD /* plane.jpg in Resources */,
+				3E92DF9114088ACC0094CFAA /* FlightDetailCustomCell.xib in Resources */,
+				3E92E0441408D1500094CFAA /* xiangqing.png in Resources */,
+				3E92E04C1408D2100094CFAA /* duigou.png in Resources */,
+				3E96B87014173E57000B2E96 /* SearchConditionDateController.xib in Resources */,
+				3E361522143B420900D0063D /* china.jpg in Resources */,
+				3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */,
+				3EC3AC08143BF5C0007F748B /* china3.jpg in Resources */,
+				3E5FB614144AA8BA00A1AD06 /* FlightRouteController.xib in Resources */,
+				3EA84FA2144C698800985145 /* CHANGELOG.md in Resources */,
+				3EA84FA4144C698800985145 /* README.md in Resources */,
+				3E925B18144E96E2008AB82E /* icon1.jpg in Resources */,
+				3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* MyNavAppDelegate.m in Sources */,
+				3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */,
+				3E91CFEB1403D856004E20F8 /* SecondLevelViewController.m in Sources */,
+				3E98030E1404678A00A3C5BE /* DisclosureDetailController.m in Sources */,
+				3E9803121404697800A3C5BE /* DisclosureButtonController.m in Sources */,
+				3E95E2A114068E16004E250B /* CustomCell.m in Sources */,
+				3E92DF8F14088A8B0094CFAA /* FlightDetailCustomCell.m in Sources */,
+				3E92E0AD140900440094CFAA /* NSObject+SBJSON.m in Sources */,
+				3E92E0AE140900440094CFAA /* NSString+SBJSON.m in Sources */,
+				3E92E0AF140900440094CFAA /* SBJSON.m in Sources */,
+				3E92E0B0140900440094CFAA /* SBJsonBase.m in Sources */,
+				3E92E0B1140900440094CFAA /* SBJsonParser.m in Sources */,
+				3E92E0B2140900440094CFAA /* SBJsonWriter.m in Sources */,
+				3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */,
+				3E96D9211416EF2B007D29C0 /* SearchConditionCompanyController.m in Sources */,
+				3E96B86514173D23000B2E96 /* TdCalendarView.m in Sources */,
+				3E96B86F14173E57000B2E96 /* SearchConditionDateController.m in Sources */,
+				3E9CBE44141835BE00B21EBC /* Company.m in Sources */,
+				3E8DDB1D141888EA00B57F5B /* SearchResultController.m in Sources */,
+				3EC3AD1B143C938A007F748B /* Reachability.m in Sources */,
+				3E5FB613144AA8BA00A1AD06 /* FlightRouteController.m in Sources */,
+				3E5FB633144AAACB00A1AD06 /* DisplayMap.m in Sources */,
+				3EA84FA3144C698800985145 /* JSONKit.m in Sources */,
+				3EA84FA5144C698800985145 /* SVGeocoder.m in Sources */,
+				3EA84FA6144C698800985145 /* SVPlacemark.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/MyNav/Entitlements.plist";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
+				INFOPLIST_FILE = "MyNav-Info.plist";
+				PRODUCT_NAME = MyNav;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/MyNav/Entitlements.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
+				INFOPLIST_FILE = "MyNav-Info.plist";
+				PRODUCT_NAME = MyNav;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EB57F2B1421833900DE88ED /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
+		3EB57F2C1421833900DE88ED /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/MyNav/Entitlements.plist";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WEI HONG";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
+				INFOPLIST_FILE = "MyNav-Info.plist";
+				PRODUCT_NAME = MyNav;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3BA1F9C1-7931-451C-80F2-8B0F1AE4BBF6";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MyNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				3EB57F2C1421833900DE88ED /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MyNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				3EB57F2B1421833900DE88ED /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

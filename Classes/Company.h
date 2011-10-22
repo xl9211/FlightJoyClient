@@ -1,0 +1,19 @@
+//
+//  Company.h
+//  MyNav
+//
+//  Created by 王 攀 on 11-9-8.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface Company : NSObject {
+	NSString *chname;
+	NSString *abbrev;
+}
+@property (nonatomic, retain) NSString* chname;
+@property (nonatomic, retain) NSString* abbrev;
+
+@end

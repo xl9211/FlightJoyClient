@@ -1,0 +1,29 @@
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController dataFilePath]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:49: warning: format not a string literal and no format arguments
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController geocoder:didFindPlacemark:]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: 'DisclosureButtonController' may not respond to '-insertCityInfoIntoTable:withLat:withLng:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: (Messages without a matching method signature
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: will be assumed to return 'id' and accept
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: '...' as arguments.)
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController insertCityInfoIntoTable:withLat:withLng:]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:147: warning: format not a string literal and no format arguments
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewDidLoad]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:183: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:190: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewWillAppear:]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:216: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController startUpdateProcess]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:228: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController stopUpdateProcess]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:244: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshStatusLabelWithText:]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:251: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshAction]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:282: warning: 'RootViewController' may not respond to '-refreshAction'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController tableView:cellForRowAtIndexPath:]':
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:353: warning: incompatible Objective-C types initializing 'struct UITableViewCell *', expected 'struct FlightDetailCustomCell *'
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:369: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:372: warning: 'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:375: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:378: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:382: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)

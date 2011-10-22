@@ -1,0 +1,1764 @@
+TMyNav
+v7
+r0
+t340644430.786921
+cCheck dependencies
+cProcessInfoPlistFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist MyNav-Info.plist
+cCompileXIB /Users/specialbrian/Documents/MyNav/MainWindow.xib
+cCompileXIB /Users/specialbrian/Documents/MyNav/DisclosureDetail.xib
+cCpResource build/Debug-iphonesimulator/MyNav.app/moveMeIcon.png moveMeIcon.png
+cCompileXIB /Users/specialbrian/Documents/MyNav/CustomCell.xib
+cCpResource build/Debug-iphonesimulator/MyNav.app/plane.jpg plane.jpg
+cCompileXIB /Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib
+cCpResource build/Debug-iphonesimulator/MyNav.app/xiangqing.png xiangqing.png
+cCpResource build/Debug-iphonesimulator/MyNav.app/duigou.png duigou.png
+cCompileXIB /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib
+cCpResource build/Debug-iphonesimulator/MyNav.app/china.jpg china.jpg
+cCpResource build/Debug-iphonesimulator/MyNav.app/china2.jpg china2.jpg
+cCpResource build/Debug-iphonesimulator/MyNav.app/china3.jpg china3.jpg
+cCompileXIB /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib
+cCpResource build/Debug-iphonesimulator/MyNav.app/CHANGELOG.md Classes/SVGeocoder/JSONKit/CHANGELOG.md
+cCpResource build/Debug-iphonesimulator/MyNav.app/README.md Classes/SVGeocoder/JSONKit/README.md
+cProcessPCH /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch MyNav_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o /Users/specialbrian/Documents/MyNav/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureDetailController.o /Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureButtonController.o /Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/CustomCell.o /Users/specialbrian/Documents/MyNav/Classes/CustomCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightDetailCustomCell.o /Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSObject+SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSString+SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonBase.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonParser.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonWriter.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionCompanyController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/TdCalendarView.o /Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDateController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Company.o /Users/specialbrian/Documents/MyNav/Classes/Company.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchResultController.o /Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Reachability.o /Users/specialbrian/Documents/MyNav/Classes/Reachability.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightRouteController.o /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisplayMap.o /Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/JSONKit.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVGeocoder.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVPlacemark.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav normal i386
+cGenerateDSYMFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+cTouch /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004D3591480000000000000110
+t1295356232
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000004CC122E10000000000075FE0
+t1287725793
+s483296
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AddressBook.framework/Headers/AddressBook.h
+c000000004CC122DB0000000000000424
+t1287725787
+s1060
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFArray.h
+c000000004CC1219E0000000000007AC8
+t1287725470
+s31432
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFDictionary.h
+c000000004CC1219E00000000000080D0
+t1287725470
+s32976
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFNumber.h
+c000000004CC1219F0000000000000EDF
+t1287725471
+s3807
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFString.h
+c000000004CC1219F000000000000B765
+t1287725471
+s46949
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c000000004CC1219F0000000000000AB3
+t1287725471
+s2739
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004CC127E80000000000074190
+t1287727080
+s475536
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004CC127DD00000000000001D0
+t1287727069
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h
+c000000004CC1225F0000000000001B27
+t1287725663
+s6951
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAutoreleasePool.h
+c000000004CC1225F00000000000001CB
+t1287725663
+s459
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSData.h
+c000000004CC1225F0000000000001777
+t1287725663
+s6007
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSDictionary.h
+c000000004CC1225F0000000000000E3B
+t1287725663
+s3643
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSError.h
+c000000004CC1225F0000000000001DE5
+t1287725663
+s7653
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSException.h
+c000000004CC1225F0000000000002033
+t1287725663
+s8243
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSNull.h
+c000000004CC1225F00000000000000B8
+t1287725663
+s184
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h
+c000000004CC1225F0000000000002D96
+t1287725663
+s11670
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h
+c000000004CC1225F0000000000006506
+t1287725663
+s25862
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKAnnotation.h
+c000000004CC1294D000000000000027E
+t1287727437
+s638
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004CC1294D00000000000002FE
+t1287727437
+s766
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004CC12977000000000017E7F0
+t1287727479
+s1566704
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004CC1233C00000000000000C4
+t1287725884
+s196
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
+c000000004CC121E80000000000001A58
+t1287725544
+s6744
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c000000004CC121F60000000000068970
+t1287725558
+s428400
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/AvailabilityMacros.h
+c000000004CB3FA08000000000000673C
+t1286863368
+s26428
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/TargetConditionals.h
+c000000004CB3FA0800000000000031E9
+t1286863368
+s12777
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/arpa/inet.h
+c000000004CB3E46D0000000000001533
+t1286857837
+s5427
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/assert.h
+c000000004CB3E4860000000000000DCB
+t1286857862
+s3531
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/ifaddrs.h
+c000000004CB3E4770000000000000782
+t1286857847
+s1922
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/math.h
+c000000004A5C14A000000000000004F1
+t1247548576
+s1265
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netdb.h
+c000000004A4181220000000000003057
+t1245806882
+s12375
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netinet/in.h
+c000000004CBFACA90000000000005462
+t1287629993
+s21602
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netinet6/in6.h
+c000000004CBFACA80000000000004F61
+t1287629992
+s20321
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/objc/runtime.h
+c000000004CB9357000000000000053F9
+t1287206256
+s21497
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/stdio.h
+c000000004CB3E48600000000000040AC
+t1286857862
+s16556
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/stdlib.h
+c000000004CB3E4860000000000002DF5
+t1286857862
+s11765
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/string.h
+c000000004CB3E4860000000000001731
+t1286857862
+s5937
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/sys/errno.h
+c000000004CBFACAA0000000000002C30
+t1287629994
+s11312
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/sys/socket.h
+c000000004CBFACAC0000000000005A69
+t1287629996
+s23145
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004A1198340000000000000C7E
+t1242667060
+s3198
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004A1198340000000000003197
+t1242667060
+s12695
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
+c000000004A11A512000000000000190C
+t1242670354
+s6412
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/lib/libsqlite3.dylib
+c000000004CC109D90000000000092C20
+t1287719385
+s601120
+
+N/Users/specialbrian/Documents/MyNav/Classes/Company.h
+c000000004E6802120000000000000151
+t1315439122
+s337
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/Company.m
+c000000004E68022600000000000000DA
+t1315439142
+s218
+i"Company.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/CustomCell.h
+c000000004E56D86B000000000000028A
+t1314314347
+s650
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/CustomCell.m
+c000000004E56D8710000000000000318
+t1314314353
+s792
+i"CustomCell.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.h
+c000000004E9D98B100000000000003C9
+t1318951089
+s969
+i<UIKit/UIKit.h>
+i"SecondLevelViewController.h"
+i"FlightRouteController.h"
+i"/usr/include/sqlite3.h"
+i"SVGeocoder.h"
+i<MapKit/MapKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m
+c000000004E9D9A590000000000004A11
+t1318951513
+s18961
+i"DisclosureButtonController.h"
+i"MyNavAppDelegate.h"
+i"DisclosureDetailController.h"
+i"FlightDetailCustomCell.h"
+i"RootViewController.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.h
+c000000004E54315F000000000000017D
+t1314140511
+s381
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m
+c000000004E54323600000000000006E7
+t1314140726
+s1767
+i"DisclosureDetailController.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.h
+c000000004E9A736E00000000000001EA
+t1318744942
+s490
+i<Foundation/Foundation.h>
+i<MapKit/MKAnnotation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m
+c000000004E9A73600000000000000119
+t1318744928
+s281
+i"DisplayMap.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.h
+c000000004E58587C0000000000000261
+t1314412668
+s609
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m
+c000000004E5859E5000000000000032B
+t1314413029
+s811
+i"FlightDetailCustomCell.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.h
+c000000004E9D9A680000000000000240
+t1318951528
+s576
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m
+c000000004E9D9ACC0000000000001338
+t1318951628
+s4920
+i"FlightRouteController.h"
+i"DisplayMap.h"
+i<MapKit/MKAnnotation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib
+c000000004E9A77DB00000000000046A6
+t1318746075
+s18086
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/JSON.h
+c000000004E588AE700000000000008F9
+t1314425575
+s2297
+i"SBJSON.h"
+i"NSObject+SBJSON.h"
+i"NSString+SBJSON.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.h
+c000000004E588AE70000000000000A01
+t1314425575
+s2561
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m
+c000000004E588AE700000000000008B9
+t1314425575
+s2233
+i"NSObject+SBJSON.h"
+i"SBJsonWriter.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.h
+c000000004E588AE70000000000000916
+t1314425575
+s2326
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m
+c000000004E588AE7000000000000089F
+t1314425575
+s2207
+i"NSString+SBJSON.h"
+i"SBJsonParser.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.h
+c000000004E588AE70000000000000AED
+t1314425575
+s2797
+i<Foundation/Foundation.h>
+i"SBJsonParser.h"
+i"SBJsonWriter.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m
+c000000004E588AE70000000000001ABC
+t1314425575
+s6844
+i"SBJSON.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.h
+c000000004E588AE70000000000000B82
+t1314425575
+s2946
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m
+c000000004E588AE70000000000000AC1
+t1314425575
+s2753
+i"SBJsonBase.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.h
+c000000004E588AE70000000000000C0B
+t1314425575
+s3083
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m
+c000000004E588AE700000000000036CF
+t1314425575
+s14031
+i"SBJsonParser.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.h
+c000000004E588AE70000000000001140
+t1314425575
+s4416
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m
+c000000004E588AE70000000000001E83
+t1314425575
+s7811
+i"SBJsonWriter.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.h
+c000000004E8C60110000000000000241
+t1317822481
+s577
+i<UIKit/UIKit.h>
+i"Reachability.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m
+c000000004E8E6B3C0000000000000ECA
+t1317956412
+s3786
+i"MyNavAppDelegate.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/Reachability.h
+c000000004DECAC0F0000000000000F1B
+t1307356175
+s3867
+i<Foundation/Foundation.h>
+i<SystemConfiguration/SystemConfiguration.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/Reachability.m
+c000000004DECAC0F000000000000239B
+t1307356175
+s9115
+i<sys/socket.h>
+i<netinet/in.h>
+i<netinet6/in6.h>
+i<arpa/inet.h>
+i<ifaddrs.h>
+i<netdb.h>
+i<CoreFoundation/CoreFoundation.h>
+i"Reachability.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/Recipe.h
+c000000004C2511D90000000000000CA6
+t1277497817
+s3238
+
+N/Users/specialbrian/Documents/MyNav/Classes/Recipe.m
+c000000004C2511D90000000000000BE6
+t1277497817
+s3046
+i"Recipe.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/RootViewController.h
+c000000004E8EC96A0000000000000650
+t1317980522
+s1616
+i<UIKit/UIKit.h>
+i"SearchConditionController.h"
+i"MyNavAppDelegate.h"
+i"/usr/include/sqlite3.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m
+c000000004E9C3B43000000000000C213
+t1318861635
+s49683
+i"RootViewController.h"
+i"SecondLevelViewController.h"
+i"MyNavAppDelegate.h"
+i"DisclosureButtonController.h"
+i"CustomCell.h"
+i"JSON/JSON.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/CHANGELOG.md
+c000000004E9C2F720000000000007A30
+t1318858610
+s31280
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.h
+c000000004E9C2F7200000000000024D3
+t1318858610
+s9427
+i<stddef.h>
+i<stdint.h>
+i<limits.h>
+i<TargetConditionals.h>
+i<AvailabilityMacros.h>
+i<Foundation/NSArray.h>
+i<Foundation/NSData.h>
+i<Foundation/NSDictionary.h>
+i<Foundation/NSError.h>
+i<Foundation/NSObjCRuntime.h>
+i<Foundation/NSString.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m
+c000000004E9C2F720000000000029069
+t1318858610
+s168041
+i<stdio.h>
+i<stdlib.h>
+i<stdint.h>
+i<string.h>
+i<assert.h>
+i<sys/errno.h>
+i<math.h>
+i<limits.h>
+i<objc/runtime.h>
+i"JSONKit.h"
+i<CoreFoundation/CFString.h>
+i<CoreFoundation/CFArray.h>
+i<CoreFoundation/CFDictionary.h>
+i<CoreFoundation/CFNumber.h>
+i<Foundation/NSArray.h>
+i<Foundation/NSAutoreleasePool.h>
+i<Foundation/NSData.h>
+i<Foundation/NSDictionary.h>
+i<Foundation/NSException.h>
+i<Foundation/NSNull.h>
+i<Foundation/NSObjCRuntime.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/README.md
+c000000004E9C2F72000000000000A330
+t1318858610
+s41776
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.h
+c000000004E9C2F720000000000000510
+t1318858610
+s1296
+i<Foundation/Foundation.h>
+i<AddressBook/AddressBook.h>
+i<CoreLocation/CoreLocation.h>
+i<MapKit/MapKit.h>
+i"SVPlacemark.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m
+c000000004E9C2F7200000000000023A3
+t1318858610
+s9123
+i"SVGeocoder.h"
+i"JSONKit.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.h
+c000000004E9C2F7200000000000001A6
+t1318858610
+s422
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m
+c000000004E9C2F72000000000000043D
+t1318858610
+s1085
+i"SVPlacemark.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.h
+c000000004E7F34E500000000000001E5
+t1316959461
+s485
+i<UIKit/UIKit.h>
+i"Company.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m
+c000000004E94600E0000000000002C00
+t1318346766
+s11264
+i"SearchConditionCompanyController.h"
+i"RootViewController.h"
+i"MyNavAppDelegate.h"
+i"JSON/JSON.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.h
+c000000004E6AD6FE000000000000055C
+t1315624702
+s1372
+i<UIKit/UIKit.h>
+i"SecondLevelViewController.h"
+i"Company.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m
+c000000004E8C2CCB0000000000002A7C
+t1317809355
+s10876
+i"MyNavAppDelegate.h"
+i"SearchConditionController.h"
+i"SearchConditionCompanyController.h"
+i"SearchConditionDateController.h"
+i"SearchResultController.h"
+i"CustomCell.h"
+i"RootViewController.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDate.h
+c000000004E67061A00000000000000E2
+t1315374618
+s226
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDate.m
+c000000004E67061A00000000000005A7
+t1315374618
+s1447
+i"SearchConditionDate.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDate.xib
+c000000004E67061A0000000000001874
+t1315374618
+s6260
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.h
+c000000004E6811930000000000000189
+t1315443091
+s393
+i<UIKit/UIKit.h>
+i"TdCalendarView.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m
+c000000004E96374000000000000011A5
+t1318467392
+s4517
+i"SearchConditionDateController.h"
+i"RootViewController.h"
+i"MyNavAppDelegate.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib
+c000000004E6789640000000000005422
+t1315408228
+s21538
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.h
+c000000004E8C00B000000000000004A6
+t1317798064
+s1190
+i<UIKit/UIKit.h>
+i"SearchConditionController.h"
+i"/usr/include/sqlite3.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m
+c000000004E9CD1CD0000000000004CC9
+t1318900173
+s19657
+i"SearchConditionController.h"
+i"MyNavAppDelegate.h"
+i"RootViewController.h"
+i"SearchResultController.h"
+i"JSON/JSON.h"
+i"SecondLevelViewController.h"
+i"CustomCell.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.h
+c000000004E53A1110000000000000141
+t1314103569
+s321
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m
+c000000004E53A12300000000000000FF
+t1314103587
+s255
+i"SecondLevelViewController.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.h
+c000000004B912F6400000000000004BD
+t1267806052
+s1213
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m
+c000000004E675B640000000000003A15
+t1315396452
+s14869
+i"TdCalendarView.h"
+i<QuartzCore/QuartzCore.h>
+
+N/Users/specialbrian/Documents/MyNav/CustomCell.xib
+c000000004E5EDE76000000000000781D
+t1314840182
+s30749
+
+N/Users/specialbrian/Documents/MyNav/DisclosureDetail.xib
+c000000004E5503CD0000000000004646
+t1314194381
+s17990
+
+N/Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib
+c000000004E62419D0000000000006374
+t1315062173
+s25460
+
+N/Users/specialbrian/Documents/MyNav/MainWindow.xib
+c000000004E6DF12600000000000073E1
+t1315828006
+s29665
+
+N/Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch
+c000000004E539BEB00000000000000B3
+t1314102251
+s179
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/SearchConditionController.xib
+c000000004E6625370000000000005714
+t1315317047
+s22292
+
+N/Users/specialbrian/Documents/MyNav/SearchWindow.xib
+c000000004E662E03000000000000183A
+t1315319299
+s6202
+
+N/Users/specialbrian/Documents/MyNav/SearchWinow.xib
+c000000004E662DD2000000000000183A
+t1315319250
+s6202
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+t1318951630
+s680
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM
+t1318951630
+s102
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/CHANGELOG.md
+t1318899637
+s31280
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/CustomCell.nib
+t1316999082
+s2835
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/DisclosureDetail.nib
+t1316999081
+s1292
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/FlightDetailCustomCell.nib
+t1316999082
+s2454
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/FlightRouteController.nib
+t1318899637
+s1152
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist
+t1316999080
+s583
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MainWindow.nib
+t1316999081
+s1901
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+t1318951630
+s397836
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/PkgInfo
+t1316999080
+s8
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/README.md
+t1318899637
+s41776
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchConditionController.nib
+t1315317050
+s1880
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchConditionDate.nib
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchConditionDateController.nib
+t1316999082
+s1439
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchWindow.nib
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchWinow.nib
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/china.jpg
+t1318036379
+s32590
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/china2.jpg
+t1318036379
+s28347
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/china3.jpg
+t1318036379
+s29547
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/duigou.png
+t1316999082
+s3995
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/moveMeIcon.png
+t1316999081
+s3302
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/plane.jpg
+t1316999081
+s1449
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/xiangqing.png
+t1316999082
+s4595
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Company.o
+t1315439418
+s7952
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/CustomCell.o
+t1314314358
+s43688
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureButtonController.o
+t1318951589
+s112724
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureDetailController.o
+t1314193690
+s41372
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisplayMap.o
+t1318899638
+s12140
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightDetailCustomCell.o
+t1314414873
+s43332
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightRouteController.o
+t1318951630
+s54988
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/JSONKit.o
+t1318899639
+s243404
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNav.LinkFileList
+c000000004E9CCFB50000000000000CE7
+t1318899637
+s3303
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o
+t1318036380
+s59592
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSObject+SBJSON.o
+t1314441640
+s8520
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSString+SBJSON.o
+t1314441640
+s8440
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Reachability.o
+t1318036380
+s23036
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Recipe.o
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o
+t1318951590
+s169180
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJSON.o
+t1314441640
+s20080
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonBase.o
+t1314441640
+s13212
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonParser.o
+t1314441641
+s35884
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonWriter.o
+t1314441641
+s24860
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVGeocoder.o
+t1318899638
+s36220
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVPlacemark.o
+t1318899638
+s13172
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionCompanyController.o
+t1318346790
+s69156
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionController.o
+t1318036380
+s90504
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDate.o
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDateController.o
+t1318467395
+s63652
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchResultController.o
+t1318900191
+s94868
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o
+t1314109066
+s37612
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/TdCalendarView.o
+t1315396455
+s86976
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o
+t1314109066
+s6296
+
+N/Users/specialbrian/Documents/MyNav/china.jpg
+c000000004E8B0A7A0000000000007F4E
+t1317735034
+s32590
+
+N/Users/specialbrian/Documents/MyNav/china2.jpg
+c000000004E8B11B10000000000006EBB
+t1317736881
+s28347
+
+N/Users/specialbrian/Documents/MyNav/china3.jpg
+c000000004E8BBE28000000000000736B
+t1317781032
+s29547
+
+N/Users/specialbrian/Documents/MyNav/duigou.png
+c000000004E589A760000000000000F9B
+t1314429558
+s3995
+
+N/Users/specialbrian/Documents/MyNav/main.m
+c000000004E539BEB0000000000000162
+t1314102251
+s354
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/moveMeIcon.png
+c00000000487E2B800000000000000CE6
+t1216228224
+s3302
+
+N/Users/specialbrian/Documents/MyNav/plane.jpg
+c000000004E56D38200000000000005A9
+t1314313090
+s1449
+
+N/Users/specialbrian/Documents/MyNav/xiangqing.png
+c000000004E5899B600000000000011F3
+t1314429366
+s4595
+
+N/usr/include/sqlite3.h
+c000000004C239FC5000000000003D86F
+t1277403077
+s252015
+
+N/var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch
+t1314109065
+s15453392
+
+NMyNav-Info.plist
+c000000004E539BEB000000000000038D
+t1314102251
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies340644430#340644430#0(0"0(0#1#0"8625053952#0"0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Company.o /Users/specialbrian/Documents/MyNav/Classes/Company.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s337132218.627523
+e337132218.751280
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Company.o
+x/Users/specialbrian/Documents/MyNav/Classes/Company.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/specialbrian/Documents/MyNav/Classes/Company.m337132218#337132218#0(0"0(0#0#53"/Users/specialbrian/Documents/MyNav/Classes/Company.m8623988288#1855"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/Company.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Company.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/CustomCell.o /Users/specialbrian/Documents/MyNav/Classes/CustomCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336007158.046210
+e336007158.119733
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/CustomCell.o
+x/Users/specialbrian/Documents/MyNav/Classes/CustomCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@64"Compile /Users/specialbrian/Documents/MyNav/Classes/CustomCell.m336007158#336007158#0(0"0(0#0#56"/Users/specialbrian/Documents/MyNav/Classes/CustomCell.m8611345760#1861"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/CustomCell.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/CustomCell.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureButtonController.o /Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340644389.696258
+e340644389.977278
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureButtonController.o
+x/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController dataFilePath]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:49: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController geocoder:didFindPlacemark:]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: 'DisclosureButtonController' may not respond to '-insertCityInfoIntoTable:withLat:withLng:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: (Messages without a matching method signature
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: will be assumed to return 'id' and accept
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: '...' as arguments.)
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController insertCityInfoIntoTable:withLat:withLng:]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:147: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewDidLoad]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:183: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewWillAppear:]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:214: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController startUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:226: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController stopUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:242: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshStatusLabelWithText:]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:249: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshAction]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:280: warning: 'RootViewController' may not respond to '-refreshAction'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:351: warning: incompatible Objective-C types initializing 'struct UITableViewCell *', expected 'struct FlightDetailCustomCell *'
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:367: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:370: warning: 'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:373: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:376: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:380: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+lSLF07#2@80"Compile /Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644389#340644389#0(4807"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController dataFilePath]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:49: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController geocoder:didFindPlacemark:]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: 'DisclosureButtonController' may not respond to '-insertCityInfoIntoTable:withLat:withLng:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: (Messages without a matching method signature/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: will be assumed to return 'id' and accept/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:123: warning: '...' as arguments.)/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController insertCityInfoIntoTable:withLat:withLng:]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:147: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewDidLoad]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:183: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController viewWillAppear:]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:214: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController startUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:226: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController stopUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:242: warning: 'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshStatusLabelWithText:]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:249: warning: 'DisclosureButtonController' may not respond to '-getStatusLabel:'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController refreshAction]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:280: warning: 'RootViewController' may not respond to '-refreshAction'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m: In function '-[DisclosureButtonController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:351: warning: incompatible Objective-C types initializing 'struct UITableViewCell *', expected 'struct FlightDetailCustomCell *'/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:367: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:370: warning: 'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:373: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:376: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m:380: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)16(22@51"Format not a string literal and no format arguments340644389#132#138#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#49#0#49#0#51"format not a string literal and no format arguments0(22@91"'DisclosureButtonController' may not respond to '-insertCityInfoIntoTable:withLat:withLng:'340644389#416#179#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#123#0#123#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)340644389#595#133#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#123#0#123#0#0"0(22@51"Format not a string literal and no format arguments340644389#1125#139#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#147#0#147#0#51"format not a string literal and no format arguments0(22@66"'DisclosureButtonController' may not respond to '-getStatusLabel:'340644389#1395#154#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#183#0#183#0#26"'*' may not respond to '*'0(22@78"'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'340644389#1684#166#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#214#0#214#0#26"'*' may not respond to '*'0(22@78"'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'340644389#1988#166#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#226#0#226#0#26"'*' may not respond to '*'0(22@78"'DisclosureButtonController' may not respond to '-refreshStatusLabelWithText:'340644389#2291#166#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#242#0#242#0#26"'*' may not respond to '*'0(22@66"'DisclosureButtonController' may not respond to '-getStatusLabel:'340644389#2604#154#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#249#0#249#0#26"'*' may not respond to '*'0(22@56"'RootViewController' may not respond to '-refreshAction'340644389#2891#144#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#280#0#280#0#26"'*' may not respond to '*'0(22@114"Incompatible Objective-C types initializing 'struct UITableViewCell *', expected 'struct FlightDetailCustomCell *'340644389#3187#202#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#351#0#351#0#61"incompatible Objective-C types initializing '*', expected '*'0(22@194"'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340644389#3389#282#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#367#0#367#0#33"'*' is deprecated (declared at *)0(22@199"'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340644389#3671#287#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#370#0#370#0#33"'*' is deprecated (declared at *)0(22@195"'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340644389#3958#283#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#373#0#373#0#33"'*' is deprecated (declared at *)0(22@195"'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340644389#4241#283#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#376#0#376#0#33"'*' is deprecated (declared at *)0(22@195"'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340644389#4524#283#0(6@72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m340644313#380#0#380#0#33"'*' is deprecated (declared at *)0(0#0#72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m8619796768#1893"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/DisclosureButtonController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureButtonController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureDetailController.o /Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335886489.421317
+e335886490.383082
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureDetailController.o
+x/Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@80"Compile /Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m335886489#335886490#0(0"0(0#0#72"/Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m8611416544#1893"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/DisclosureDetailController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisclosureDetailController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisplayMap.o /Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340592438.467666
+e340592438.537874
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisplayMap.o
+x/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@64"Compile /Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m340592438#340592438#0(0"0(0#0#56"/Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m8607106688#1861"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/DisplayMap.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/DisplayMap.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightDetailCustomCell.o /Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336107673.434804
+e336107673.507824
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightDetailCustomCell.o
+x/Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@76"Compile /Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m336107673#336107673#0(0"0(0#0#68"/Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m8615664704#1885"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/FlightDetailCustomCell.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightDetailCustomCell.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightRouteController.o /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340644430.479931
+e340644430.652156
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightRouteController.o
+x/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m: In function '-[FlightRouteController viewDidLoad]':
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:24: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: 'FlightRouteController' may not respond to '-zoomToFitMapAnnotations:'
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: (Messages without a matching method signature
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: will be assumed to return 'id' and accept
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: '...' as arguments.)
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m: In function '-[FlightRouteController zoomToFitMapAnnotations:]':
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:84: warning: local declaration of 'mapView' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:96: warning: local declaration of 'mapView' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:98: warning: local declaration of 'mapView' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:112: warning: local declaration of 'mapView' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:113: warning: local declaration of 'mapView' hides instance variable
+lSLF07#2@75"Compile /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644430#340644430#0(1574"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m: In function '-[FlightRouteController viewDidLoad]':/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:24: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: 'FlightRouteController' may not respond to '-zoomToFitMapAnnotations:'/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: (Messages without a matching method signature/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: will be assumed to return 'id' and accept/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:59: warning: '...' as arguments.)/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m: In function '-[FlightRouteController zoomToFitMapAnnotations:]':/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:84: warning: local declaration of 'mapView' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:96: warning: local declaration of 'mapView' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:98: warning: local declaration of 'mapView' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:112: warning: local declaration of 'mapView' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m:113: warning: local declaration of 'mapView' hides instance variable8(22@51"Format not a string literal and no format arguments340644430#121#133#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#24#0#24#0#51"format not a string literal and no format arguments0(22@70"'FlightRouteController' may not respond to '-zoomToFitMapAnnotations:'340644430#254#152#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#59#0#59#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)340644430#406#127#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#59#0#59#0#0"0(22@54"Local declaration of 'mapView' hides instance variable340644430#892#136#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#84#0#84#0#0"0(22@54"Local declaration of 'mapView' hides instance variable340644430#1028#136#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#96#0#96#0#0"0(22@54"Local declaration of 'mapView' hides instance variable340644430#1164#136#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#98#0#98#0#0"0(22@54"Local declaration of 'mapView' hides instance variable340644430#1300#137#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#112#0#112#0#0"0(22@54"Local declaration of 'mapView' hides instance variable340644430#1437#137#0(6@67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m340644428#113#0#113#0#0"0(0#0#67"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m8620512096#1883"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/FlightRouteController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/JSONKit.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340592438.470627
+e340592439.139407
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/JSONKit.o
+x/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@80"Compile /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m340592438#340592439#0(0"0(0#0#72"/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m8604010784#1874"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/JSONKit.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/JSONKit.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s339729179.059007
+e339729180.084151
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o
+x/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m: In function '-[MyNavAppDelegate application:didFinishLaunchingWithOptions:]':
+o/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: 'MyNavAppDelegate' may not respond to '-updateInterfaceWithReachability'
+o/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: (Messages without a matching method signature
+o/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: will be assumed to return 'id' and accept
+o/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: '...' as arguments.)
+lSLF07#2@70"Compile /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m339729179#339729180#0(628"/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m: In function '-[MyNavAppDelegate application:didFinishLaunchingWithOptions:]':/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: 'MyNavAppDelegate' may not respond to '-updateInterfaceWithReachability'/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: (Messages without a matching method signature/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: will be assumed to return 'id' and accept/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m:28: warning: '...' as arguments.)2(22@72"'MyNavAppDelegate' may not respond to '-updateInterfaceWithReachability'339729179#142#149#0(6@62"/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m339649212#28#0#28#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)339729179#291#122#0(6@62"/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m339649212#28#0#28#0#0"0(0#0#62"/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m8610367776#1873"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSObject+SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.681070
+e336134440.784063
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSObject+SBJSON.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m336134440#336134440#0(0"0(0#0#66"/Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m8598532512#1876"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/NSObject+SBJSON.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSObject+SBJSON.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSString+SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.784162
+e336134440.852496
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSString+SBJSON.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m336134440#336134440#0(0"0(0#0#66"/Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m8633559840#1876"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/NSString+SBJSON.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/NSString+SBJSON.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Reachability.o /Users/specialbrian/Documents/MyNav/Classes/Reachability.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s339729180.552946
+e339729180.657563
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Reachability.o
+x/Users/specialbrian/Documents/MyNav/Classes/Reachability.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@66"Compile /Users/specialbrian/Documents/MyNav/Classes/Reachability.m339729180#339729180#0(0"0(0#0#58"/Users/specialbrian/Documents/MyNav/Classes/Reachability.m8606038272#1865"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/Reachability.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Reachability.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Recipe.o /Users/specialbrian/Documents/MyNav/Classes/Recipe.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s337015225.507426
+e337015225.555197
+r0
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Recipe.o
+x/Users/specialbrian/Documents/MyNav/Classes/Recipe.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m:49:
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:54: error: cannot find interface declaration for 'NSManagedObject', superclass of 'Recipe'
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:64: error: expected specifier-qualifier-list before 'NSManagedObject'
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:65: error: expected specifier-qualifier-list before 'NSManagedObject'
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:71: error: expected ')' before 'NSManagedObject'
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:72: error: expected ')' before 'NSManagedObject'
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.m:53: error: no declaration of property 'image' found in the interface
+o/Users/specialbrian/Documents/MyNav/Classes/Recipe.m:53: error: no declaration of property 'type' found in the interface
+lSLF07#2@60"Compile /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#337015225#0(916"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m:49:/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:54: error: cannot find interface declaration for 'NSManagedObject', superclass of 'Recipe'/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:64: error: expected specifier-qualifier-list before 'NSManagedObject'/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:65: error: expected specifier-qualifier-list before 'NSManagedObject'/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:71: error: expected ')' before 'NSManagedObject'/Users/specialbrian/Documents/MyNav/Classes/Recipe.h:72: error: expected ')' before 'NSManagedObject'/Users/specialbrian/Documents/MyNav/Classes/Recipe.m:53: error: no declaration of property 'image' found in the interface/Users/specialbrian/Documents/MyNav/Classes/Recipe.m:53: error: no declaration of property 'type' found in the interface7(4@79"Cannot find interface declaration for 'NSManagedObject', superclass of 'Recipe'337015225#79#144#2(7@74"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#49#0#49#0#0"0(13@135"Cannot find interface declaration for 'NSManagedObject', superclass of 'Recipe' in /Users/specialbrian/Documents/MyNav/Classes/Recipe.h337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#54#0#54#0#0"0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#54#0#54#0#60"cannot find interface declaration for '*', superclass of '*'0(4@58"Expected specifier-qualifier-list before 'NSManagedObject'337015225#223#123#2(7@74"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#49#0#49#0#0"0(13@114"Expected specifier-qualifier-list before 'NSManagedObject' in /Users/specialbrian/Documents/MyNav/Classes/Recipe.h337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#64#0#64#0#0"0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#64#0#64#0#19"expected * before *0(4@58"Expected specifier-qualifier-list before 'NSManagedObject'337015225#346#123#2(7@74"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#49#0#49#0#0"0(13@114"Expected specifier-qualifier-list before 'NSManagedObject' in /Users/specialbrian/Documents/MyNav/Classes/Recipe.h337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#65#0#65#0#0"0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#65#0#65#0#19"expected * before *0(4@37"Expected ')' before 'NSManagedObject'337015225#469#102#2(7@74"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#49#0#49#0#0"0(13@93"Expected ')' before 'NSManagedObject' in /Users/specialbrian/Documents/MyNav/Classes/Recipe.h337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#71#0#71#0#0"0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#71#0#71#0#19"expected * before *0(4@37"Expected ')' before 'NSManagedObject'337015225#571#102#2(7@74"In file included from /Users/specialbrian/Documents/MyNav/Classes/Recipe.m337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#49#0#49#0#0"0(13@93"Expected ')' before 'NSManagedObject' in /Users/specialbrian/Documents/MyNav/Classes/Recipe.h337015225#18446744073709551615#0#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#72#0#72#0#0"0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.h299190617#72#0#72#0#19"expected * before *0(4@57"No declaration of property 'image' found in the interface337015225#673#122#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#53#0#53#0#0"0(4@56"No declaration of property 'type' found in the interface337015225#795#121#0(6@52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m299190617#53#0#53#0#0"0(0#0#52"/Users/specialbrian/Documents/MyNav/Classes/Recipe.m8604366304#1853"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/Recipe.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/Recipe.o1#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340644389.692026
+e340644390.104570
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o
+x/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController convertToDisplayFlightInfo:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:249: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:291: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: 'RootViewController' may not respond to '-getShortDateStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: (Messages without a matching method signature
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: will be assumed to return 'id' and accept
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: '...' as arguments.)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:316: warning: 'RootViewController' may not respond to '-getShortDateStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:319: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:322: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:325: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:329: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController connectionDidFinishLoading:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:348: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:357: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:398: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:400: warning: 'RootViewController' may not respond to '-stopUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:336: warning: unused variable 'array'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController dataFilePath]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:434: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController insertFollowedFlightIntoTable:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:535: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController loadFlightInfoFromServer]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:548: warning: 'RootViewController' may not respond to '-startUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:587: warning: 'RootViewController' may not respond to '-stopUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:600: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController loadToolbarItems]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:644: warning: 'RootViewController' may not respond to '-getStatusLabel:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:618: warning: unused variable 'deleteLandedButton'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController startUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:656: warning: 'DisclosureButtonController' may not respond to '-startUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:663: warning: 'RootViewController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController stopUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:672: warning: incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:679: warning: incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:690: warning: 'DisclosureButtonController' may not respond to '-stopUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:703: warning: 'RootViewController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController refreshStatusLabelWithText:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:709: warning: 'RootViewController' may not respond to '-getStatusLabel:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController viewDidLoad]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:773: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController handleTimer:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:796: warning: 'RootViewController' may not respond to '-updateDateTime'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController updateDateTime]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:811: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:839: warning: unused variable 'controller'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:commitEditingStyle:forRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:910: warning: 'NSArray' may not respond to '-removeObjectAtIndex:'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController searchConditionController:didAddRecipe:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:925: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController switchToSearchCondition:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1091: warning: local declaration of 'searchConditionController' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1095: warning: local declaration of 'searchConditionController' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1105: warning: local declaration of 'searchConditionController' hides instance variable
+lSLF07#2@72"Compile /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340644389#340644390#0(7522"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController convertToDisplayFlightInfo:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:249: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:291: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: 'RootViewController' may not respond to '-getShortDateStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: (Messages without a matching method signature/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: will be assumed to return 'id' and accept/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:314: warning: '...' as arguments.)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:316: warning: 'RootViewController' may not respond to '-getShortDateStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:319: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:322: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:325: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:329: warning: 'RootViewController' may not respond to '-getShortTimeStringFromStandard:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController connectionDidFinishLoading:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:348: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:357: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:398: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:400: warning: 'RootViewController' may not respond to '-stopUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:336: warning: unused variable 'array'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController dataFilePath]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:434: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController insertFollowedFlightIntoTable:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:535: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController loadFlightInfoFromServer]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:548: warning: 'RootViewController' may not respond to '-startUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:587: warning: 'RootViewController' may not respond to '-stopUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:600: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController loadToolbarItems]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:644: warning: 'RootViewController' may not respond to '-getStatusLabel:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:618: warning: unused variable 'deleteLandedButton'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController startUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:656: warning: 'DisclosureButtonController' may not respond to '-startUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:663: warning: 'RootViewController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController stopUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:672: warning: incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:679: warning: incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:690: warning: 'DisclosureButtonController' may not respond to '-stopUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:703: warning: 'RootViewController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController refreshStatusLabelWithText:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:709: warning: 'RootViewController' may not respond to '-getStatusLabel:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController viewDidLoad]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:773: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController handleTimer:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:796: warning: 'RootViewController' may not respond to '-updateDateTime'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController updateDateTime]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:811: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:839: warning: unused variable 'controller'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:commitEditingStyle:forRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:910: warning: 'NSArray' may not respond to '-removeObjectAtIndex:'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController searchConditionController:didAddRecipe:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:925: warning: 'RootViewController' may not respond to '-loadFlightInfoFromTable'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController switchToSearchCondition:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1091: warning: local declaration of 'searchConditionController' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1095: warning: local declaration of 'searchConditionController' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:1105: warning: local declaration of 'searchConditionController' hides instance variable37(22@51"Format not a string literal and no format arguments340644389#131#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#249#0#249#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments340644389#262#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#291#0#291#0#51"format not a string literal and no format arguments0(22@74"'RootViewController' may not respond to '-getShortDateStringFromStandard:'340644389#393#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#314#0#314#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)340644389#547#125#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#314#0#314#0#0"0(22@74"'RootViewController' may not respond to '-getShortDateStringFromStandard:'340644389#893#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#316#0#316#0#26"'*' may not respond to '*'0(22@74"'RootViewController' may not respond to '-getShortTimeStringFromStandard:'340644389#1047#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#319#0#319#0#26"'*' may not respond to '*'0(22@74"'RootViewController' may not respond to '-getShortTimeStringFromStandard:'340644389#1201#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#322#0#322#0#26"'*' may not respond to '*'0(22@74"'RootViewController' may not respond to '-getShortTimeStringFromStandard:'340644389#1355#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#325#0#325#0#26"'*' may not respond to '*'0(22@74"'RootViewController' may not respond to '-getShortTimeStringFromStandard:'340644389#1509#154#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#329#0#329#0#26"'*' may not respond to '*'0(22@51"Format not a string literal and no format arguments340644389#1794#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#348#0#348#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments340644389#1925#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#357#0#357#0#51"format not a string literal and no format arguments0(22@66"'RootViewController' may not respond to '-loadFlightInfoFromTable'340644389#2056#146#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#398#0#398#0#26"'*' may not respond to '*'0(22@60"'RootViewController' may not respond to '-stopUpdateProcess'340644389#2202#140#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#400#0#400#0#26"'*' may not respond to '*'0(22@23"Unused variable 'array'340644389#2342#103#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#336#0#336#0#19"unused variable '*'0(22@51"Format not a string literal and no format arguments340644389#2561#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#434#0#434#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments340644389#2826#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#535#0#535#0#51"format not a string literal and no format arguments0(22@61"'RootViewController' may not respond to '-startUpdateProcess'340644389#3085#141#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#548#0#548#0#26"'*' may not respond to '*'0(22@60"'RootViewController' may not respond to '-stopUpdateProcess'340644389#3226#140#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#587#0#587#0#26"'*' may not respond to '*'0(22@51"Format not a string literal and no format arguments340644389#3366#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#600#0#600#0#51"format not a string literal and no format arguments0(22@58"'RootViewController' may not respond to '-getStatusLabel:'340644389#3617#138#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#644#0#644#0#26"'*' may not respond to '*'0(22@36"Unused variable 'deleteLandedButton'340644389#3755#116#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#618#0#618#0#19"unused variable '*'0(22@69"'DisclosureButtonController' may not respond to '-startUpdateProcess'340644389#3993#149#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#656#0#656#0#26"'*' may not respond to '*'0(22@70"'RootViewController' may not respond to '-refreshStatusLabelWithText:'340644389#4142#150#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#663#0#663#0#26"'*' may not respond to '*'0(22@108"Incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'340644389#4413#188#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#672#0#672#0#61"incompatible Objective-C types initializing '*', expected '*'0(22@108"Incompatible Objective-C types initializing 'struct NSDictionary *', expected 'struct NSMutableDictionary *'340644389#4601#188#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#679#0#679#0#61"incompatible Objective-C types initializing '*', expected '*'0(22@68"'DisclosureButtonController' may not respond to '-stopUpdateProcess'340644389#4789#148#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#690#0#690#0#26"'*' may not respond to '*'0(22@70"'RootViewController' may not respond to '-refreshStatusLabelWithText:'340644389#4937#150#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#703#0#703#0#26"'*' may not respond to '*'0(22@58"'RootViewController' may not respond to '-getStatusLabel:'340644389#5218#138#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#709#0#709#0#26"'*' may not respond to '*'0(22@66"'RootViewController' may not respond to '-loadFlightInfoFromTable'340644389#5471#146#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#773#0#773#0#26"'*' may not respond to '*'0(22@57"'RootViewController' may not respond to '-updateDateTime'340644389#5733#137#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#796#0#796#0#26"'*' may not respond to '*'0(22@51"Format not a string literal and no format arguments340644389#5988#131#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#811#0#811#0#51"format not a string literal and no format arguments0(22@28"Unused variable 'controller'340644389#6255#108#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#839#0#839#0#19"unused variable '*'0(22@52"'NSArray' may not respond to '-removeObjectAtIndex:'340644390#6514#132#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#910#0#910#0#26"'*' may not respond to '*'0(22@66"'RootViewController' may not respond to '-loadFlightInfoFromTable'340644390#6789#146#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#925#0#925#0#26"'*' may not respond to '*'0(22@72"Local declaration of 'searchConditionController' hides instance variable340644390#7063#153#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#1091#0#1091#0#0"0(22@72"Local declaration of 'searchConditionController' hides instance variable340644390#7216#153#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#1095#0#1095#0#0"0(22@72"Local declaration of 'searchConditionController' hides instance variable340644390#7369#153#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m340554435#1105#0#1105#0#0"0(0#0#64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m8620908992#1877"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJSON.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.852597
+e336134440.993876
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJSON.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@65"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m336134440#336134441#0(0"0(0#0#57"/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m8631534784#1858"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJSON.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJSON.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonBase.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.880280
+e336134440.996307
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonBase.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m336134440#336134441#0(0"0(0#0#61"/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m8630898304#1866"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonBase.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonBase.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonParser.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.993968
+e336134441.115093
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonParser.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@71"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m336134440#336134441#0(0"0(0#0#63"/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m8631311264#1870"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonParser.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonParser.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonWriter.o /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s336134440.996578
+e336134441.099609
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonWriter.o
+x/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@71"Compile /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m336134440#336134441#0(0"0(0#0#63"/Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m8630562464#1870"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/JSON/SBJsonWriter.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SBJsonWriter.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVGeocoder.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340592438.537974
+e340592438.692704
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVGeocoder.o
+x/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@75"Compile /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m340592438#340592438#0(0"0(0#0#67"/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m8620689088#1872"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVGeocoder.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVGeocoder.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVPlacemark.o /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340592438.692835
+e340592438.767390
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVPlacemark.o
+x/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@76"Compile /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m340592438#340592438#0(0"0(0#0#68"/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m8620546048#1874"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/SVPlacemark.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SVPlacemark.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionCompanyController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340039589.985906
+e340039590.210379
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionCompanyController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m: In function '-[SearchConditionCompanyController connectionDidFinishLoading:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m:99: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m: In function '-[SearchConditionCompanyController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m:175: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+lSLF07#2@86"Compile /Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m340039589#340039590#0(755"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m: In function '-[SearchConditionCompanyController connectionDidFinishLoading:]':/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m:99: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m: In function '-[SearchConditionCompanyController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m:175: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)2(22@51"Format not a string literal and no format arguments340039590#159#144#0(6@78"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m340039566#99#0#99#0#51"format not a string literal and no format arguments0(22@194"'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)340039590#467#288#0(6@78"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m340039566#175#0#175#0#33"'*' is deprecated (declared at *)0(0#0#78"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m8621572992#1905"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SearchConditionCompanyController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionCompanyController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s339729180.236964
+e339729180.478262
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController cancel]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:74: warning: passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:175: warning: 'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:230: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController tableView:didSelectRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:264: warning: local declaration of 'delegate' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: At top level:
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:303: warning: incomplete implementation of class 'SearchConditionController'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:303: warning: method definition for '-save' not found
+lSLF07#2@79"Compile /Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339729180#339729180#0(1689"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController cancel]':/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:74: warning: passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:175: warning: 'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:230: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: In function '-[SearchConditionController tableView:didSelectRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:264: warning: local declaration of 'delegate' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m: At top level:/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:303: warning: incomplete implementation of class 'SearchConditionController'/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m:303: warning: method definition for '-save' not found7(22@105"Passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast339729180#124#191#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#74#0#74#0#67"passing argument * of '*' makes integer from pointer without a cast0(22@199"'setTextColor:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)339729180#465#286#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#175#0#175#0#33"'*' is deprecated (declared at *)0(22@195"'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)339729180#751#282#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#230#0#230#0#33"'*' is deprecated (declared at *)0(22@55"Local declaration of 'delegate' hides instance variable339729180#1185#142#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#264#0#264#0#0"0(23@13"At top level:339729180#1327#87#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#0#0#0#0#0"0(22@62"Incomplete implementation of class 'SearchConditionController'339729180#1414#149#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#303#0#303#0#38"incomplete implementation of class '*'0(22@39"Method definition for '-save' not found339729180#1563#126#0(6@71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m339502155#303#0#303#0#35"method definition for '*' not found0(0#0#71"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m8618600640#1891"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SearchConditionController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDate.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDateController.o /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340160194.851037
+e340160195.098427
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDateController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@83"Compile /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m340160194#340160195#0(0"0(0#0#75"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m8616878208#1899"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchConditionDateController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchResultController.o /Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s340592991.423286
+e340592991.646921
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchResultController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController save]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:111: warning: incompatible Objective-C types 'struct SearchResultController *', expected 'struct SearchConditionController *' when passing argument 1 of 'searchConditionController:didAddRecipe:' from distinct Objective-C type
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:111: warning: passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController dataFilePath]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:118: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController viewDidLoad]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: 'SearchResultController' may not respond to '-loadToolbarItems'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: (Messages without a matching method signature
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: will be assumed to return 'id' and accept
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: '...' as arguments.)
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:126: warning: 'SearchResultController' may not respond to '-startUpdateProcess'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:142: warning: local declaration of 'delegate' hides instance variable
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController stopUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:197: warning: 'SearchResultController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController startUpdateProcess]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:207: warning: 'SearchResultController' may not respond to '-refreshStatusLabelWithText:'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController refreshStatusLabelWithText:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:211: warning: 'SearchResultController' may not respond to '-getStatusLabel:'
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController connectionDidFinishLoading:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:300: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:309: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:313: warning: format not a string literal and no format arguments
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:364: warning: unused variable 'row'
+lSLF07#2@76"Compile /Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592991#340592991#0(3428"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController save]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:111: warning: incompatible Objective-C types 'struct SearchResultController *', expected 'struct SearchConditionController *' when passing argument 1 of 'searchConditionController:didAddRecipe:' from distinct Objective-C type/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:111: warning: passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController dataFilePath]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:118: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController viewDidLoad]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: 'SearchResultController' may not respond to '-loadToolbarItems'/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: (Messages without a matching method signature/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: will be assumed to return 'id' and accept/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:125: warning: '...' as arguments.)/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:126: warning: 'SearchResultController' may not respond to '-startUpdateProcess'/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:142: warning: local declaration of 'delegate' hides instance variable/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController stopUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:197: warning: 'SearchResultController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController startUpdateProcess]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:207: warning: 'SearchResultController' may not respond to '-refreshStatusLabelWithText:'/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController refreshStatusLabelWithText:]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:211: warning: 'SearchResultController' may not respond to '-getStatusLabel:'/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController connectionDidFinishLoading:]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:300: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:309: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:313: warning: format not a string literal and no format arguments/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m: In function '-[SearchResultController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m:364: warning: unused variable 'row'14(22@211"Incompatible Objective-C types 'struct SearchResultController *', expected 'struct SearchConditionController *' when passing argument 1 of 'searchConditionController:didAddRecipe:' from distinct Objective-C type340592991#116#295#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#111#0#111#0#0"0(22@105"Passing argument 2 of 'searchConditionController:didAddRecipe:' makes integer from pointer without a cast340592991#411#189#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#111#0#111#0#67"passing argument * of '*' makes integer from pointer without a cast0(22@51"Format not a string literal and no format arguments340592991#724#135#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#118#0#118#0#51"format not a string literal and no format arguments0(22@63"'SearchResultController' may not respond to '-loadToolbarItems'340592991#982#147#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#125#0#125#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)340592991#1129#129#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#125#0#125#0#0"0(22@65"'SearchResultController' may not respond to '-startUpdateProcess'340592991#1487#149#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#126#0#126#0#26"'*' may not respond to '*'0(22@55"Local declaration of 'delegate' hides instance variable340592991#1636#139#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#142#0#142#0#0"0(22@74"'SearchResultController' may not respond to '-refreshStatusLabelWithText:'340592991#1904#158#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#197#0#197#0#26"'*' may not respond to '*'0(22@74"'SearchResultController' may not respond to '-refreshStatusLabelWithText:'340592991#2192#158#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#207#0#207#0#26"'*' may not respond to '*'0(22@62"'SearchResultController' may not respond to '-getStatusLabel:'340592991#2489#146#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#211#0#211#0#26"'*' may not respond to '*'0(22@51"Format not a string literal and no format arguments340592991#2774#135#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#300#0#300#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments340592991#2909#135#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#309#0#309#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments340592991#3044#135#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#313#0#313#0#51"format not a string literal and no format arguments0(22@21"Unused variable 'row'340592991#3323#105#0(6@68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m340592973#364#0#364#0#19"unused variable '*'0(0#0#68"/Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m8608174336#1885"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SearchResultController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SearchResultController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801866.406097
+e335801866.468951
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@79"Compile /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m335801866#335801866#0(0"0(0#0#71"/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m8618803008#1891"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/TdCalendarView.o /Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s337089255.293252
+e337089255.520303
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/TdCalendarView.o
+x/Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m337089255#337089255#0(0"0(0#0#60"/Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m8604066048#1869"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/TdCalendarView.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/TdCalendarView.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o /Users/specialbrian/Documents/MyNav/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801865.820164
+e335801866.380451
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o
+x/Users/specialbrian/Documents/MyNav/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@50"Compile /Users/specialbrian/Documents/MyNav/main.m335801865#335801866#0(0"0(0#0#42"/Users/specialbrian/Documents/MyNav/main.m8613453664#1841"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/main.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib
+s340592437.291480
+e340592437.981718
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+lSLF07#2@44"CompileXIB Classes/FlightRouteController.xib340592437#340592438#0(504"Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)Couldn't open shared capabilities memory GSCapabilities (No such file or directory)0(0#0#69"/Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib8611264192#589"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/FlightRouteController.nib /Users/specialbrian/Documents/MyNav/Classes/FlightRouteController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDate.xib
+r0
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib
+s338691882.212042
+e338691882.617037
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib
+lSLF07#2@52"CompileXIB Classes/SearchConditionDateController.xib338691882#338691882#0(0"0(0#0#77"/Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib8605860352#605"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchConditionDateController.nib /Users/specialbrian/Documents/MyNav/Classes/SearchConditionDateController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/CustomCell.xib
+s338691881.607735
+e338691882.238886
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/CustomCell.xib
+lSLF07#2@25"CompileXIB CustomCell.xib338691881#338691882#0(0"0(0#0#50"/Users/specialbrian/Documents/MyNav/CustomCell.xib8603719456#559"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/CustomCell.nib /Users/specialbrian/Documents/MyNav/CustomCell.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/DisclosureDetail.xib
+s338691880.951729
+e338691881.605857
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/DisclosureDetail.xib
+lSLF07#2@31"CompileXIB DisclosureDetail.xib338691880#338691881#0(0"0(0#0#56"/Users/specialbrian/Documents/MyNav/DisclosureDetail.xib8602997280#571"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/DisclosureDetail.nib /Users/specialbrian/Documents/MyNav/DisclosureDetail.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib
+s338691881.640849
+e338691882.210339
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib
+lSLF07#2@37"CompileXIB FlightDetailCustomCell.xib338691881#338691882#0(0"0(0#0#62"/Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib8602888416#583"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/FlightDetailCustomCell.nib /Users/specialbrian/Documents/MyNav/FlightDetailCustomCell.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/MainWindow.xib
+s338691880.950907
+e338691881.634874
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib338691880#338691881#0(0"0(0#0#50"/Users/specialbrian/Documents/MyNav/MainWindow.xib8603246368#559"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MainWindow.nib /Users/specialbrian/Documents/MyNav/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/SearchConditionController.xib
+s337009849.940138
+e337009850.439350
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/SearchConditionController.xib
+lSLF07#2@40"CompileXIB SearchConditionController.xib337009849#337009850#0(0"0(0#0#65"/Users/specialbrian/Documents/MyNav/SearchConditionController.xib8603897344#589"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/SearchConditionController.nib /Users/specialbrian/Documents/MyNav/SearchConditionController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/SearchWindow.xib
+r0
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/SearchWinow.xib
+r0
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/CHANGELOG.md Classes/SVGeocoder/JSONKit/CHANGELOG.md
+s340592437.292318
+e340592437.347553
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/CHANGELOG.md
+xClasses/SVGeocoder/JSONKit/CHANGELOG.md
+lSLF07#2@44"Copy Classes/SVGeocoder/JSONKit/CHANGELOG.md340592437#340592437#0(0"0(0#0#75"/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/CHANGELOG.md8610827680#486"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/CHANGELOG.md /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/README.md Classes/SVGeocoder/JSONKit/README.md
+s340592437.292996
+e340592437.350994
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/README.md
+xClasses/SVGeocoder/JSONKit/README.md
+lSLF07#2@41"Copy Classes/SVGeocoder/JSONKit/README.md340592437#340592437#0(0"0(0#0#72"/Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/README.md8609904000#483"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/Classes/SVGeocoder/JSONKit/README.md /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/china.jpg china.jpg
+s339729178.963807
+e339729179.030191
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/china.jpg
+xchina.jpg
+lSLF07#2@14"Copy china.jpg339729178#339729179#0(0"0(0#0#45"/Users/specialbrian/Documents/MyNav/china.jpg8617682464#456"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/china.jpg /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/china2.jpg china2.jpg
+s339729178.964688
+e339729179.042983
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/china2.jpg
+xchina2.jpg
+lSLF07#2@15"Copy china2.jpg339729178#339729179#0(0"0(0#0#46"/Users/specialbrian/Documents/MyNav/china2.jpg8610551648#457"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/china2.jpg /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/china3.jpg china3.jpg
+s339729178.965451
+e339729179.058018
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/china3.jpg
+xchina3.jpg
+lSLF07#2@15"Copy china3.jpg339729178#339729179#0(0"0(0#0#46"/Users/specialbrian/Documents/MyNav/china3.jpg8607991424#457"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/china3.jpg /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/duigou.png duigou.png
+s338691882.211371
+e338691882.237276
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/duigou.png
+xduigou.png
+lSLF07#2@15"Copy duigou.png338691882#338691882#0(0"0(0#0#46"/Users/specialbrian/Documents/MyNav/duigou.png8603245792#457"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/duigou.png /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/moveMeIcon.png moveMeIcon.png
+s338691881.605943
+e338691881.639664
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/moveMeIcon.png
+xmoveMeIcon.png
+lSLF07#2@19"Copy moveMeIcon.png338691881#338691881#0(0"0(0#0#50"/Users/specialbrian/Documents/MyNav/moveMeIcon.png8604001120#461"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/moveMeIcon.png /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/plane.jpg plane.jpg
+s338691881.639748
+e338691881.645742
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/plane.jpg
+xplane.jpg
+lSLF07#2@14"Copy plane.jpg338691881#338691881#0(0"0(0#0#45"/Users/specialbrian/Documents/MyNav/plane.jpg8603208832#456"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/plane.jpg /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CCpResource build/Debug-iphonesimulator/MyNav.app/xiangqing.png xiangqing.png
+s338691882.210431
+e338691882.227515
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/MyNav.app/xiangqing.png
+xxiangqing.png
+lSLF07#2@18"Copy xiangqing.png338691882#338691882#0(0"0(0#0#49"/Users/specialbrian/Documents/MyNav/xiangqing.png8605777280#460"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/specialbrian/Documents/MyNav/xiangqing.png /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+
+CGenerateDSYMFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+s340644430.722811
+e340644430.783310
+r1
+xGenerateDSYMFile
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+lSLF07#2@103"GenerateDSYMFile build/Debug-iphonesimulator/MyNav.app.dSYM build/Debug-iphonesimulator/MyNav.app/MyNav340644430#340644430#0(0"0(0#0#79"/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav8630971456#368"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav -o /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM0#
+
+CLd /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav normal i386
+s340644430.652247
+e340644430.722719
+r1
+xLd
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+xnormal
+xi386
+lSLF07#2@84"Link /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav340644430#340644430#0(0"0(0#0#0"8632016608#981"    cd /Users/specialbrian/Documents/MyNav    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -filelist /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNav.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -lsqlite3 -framework SystemConfiguration -framework MapKit -framework CoreLocation -framework AddressBook -o /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav0#
+
+CProcessInfoPlistFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist MyNav-Info.plist
+s338691880.934760
+e338691880.950808
+r1
+xProcessInfoPlistFile
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist
+xMyNav-Info.plist
+lSLF07#2@24"Process MyNav-Info.plist338691880#338691880#0(0"0(0#0#52"/Users/specialbrian/Documents/MyNav/MyNav-Info.plist32370056120631408#464"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility MyNav-Info.plist -genpkginfo /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist0#
+
+CProcessPCH /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch MyNav_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801864.706364
+e335801865.820000
+r1
+xProcessPCH
+x/var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch
+xMyNav_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@27"Precompile MyNav_Prefix.pch335801864#335801865#0(0"0(0#0#52"/Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch8616334816#1738"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -c /Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch -o /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch0#
+
+CTouch /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+s340644430.783394
+e340644430.786874
+r1
+xTouch
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+lSLF07#2@79"Touch /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app340644430#340644430#0(0"0(0#0#0"8620540288#270"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app0#
+

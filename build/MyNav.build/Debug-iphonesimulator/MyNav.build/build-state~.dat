@@ -1,0 +1,311 @@
+TMyNav
+v7
+r0
+t335801866.469043
+cCheck dependencies
+cProcessInfoPlistFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist MyNav-Info.plist
+cCompileXIB /Users/specialbrian/Documents/MyNav/MainWindow.xib
+cProcessPCH /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch MyNav_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o /Users/specialbrian/Documents/MyNav/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004D3591480000000000000110
+t1295356232
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.h
+c000000004E539D8E00000000000001B1
+t1314102670
+s433
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m
+c000000004E539DF50000000000000A1D
+t1314102773
+s2589
+i"MyNavAppDelegate.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/RootViewController.h
+c000000004E53A282000000000000015B
+t1314103938
+s347
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m
+c000000004E53B6440000000000000C88
+t1314108996
+s3208
+i"RootViewController.h"
+i"SecondLevelViewController.h"
+i"MyNavAppDelegate.h"
+
+N/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.h
+c000000004E53A1110000000000000141
+t1314103569
+s321
+i<Foundation/Foundation.h>
+
+N/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m
+c000000004E53A12300000000000000FF
+t1314103587
+s255
+i"SecondLevelViewController.h"
+
+N/Users/specialbrian/Documents/MyNav/MainWindow.xib
+c000000004E539F0F0000000000005FE0
+t1314103055
+s24544
+
+N/Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch
+c000000004E539BEB00000000000000B3
+t1314102251
+s179
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist
+t1314109064
+s583
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MainWindow.nib
+t1314109064
+s1524
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/PkgInfo
+t1314109064
+s8
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNav.LinkFileList
+c000000004E53B68700000000000001FB
+t1314109063
+s507
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o
+t1314109066
+s52392
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o
+t2
+s0
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o
+t1314109066
+s37612
+
+N/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o
+t1314109066
+s6296
+
+N/Users/specialbrian/Documents/MyNav/main.m
+c000000004E539BEB0000000000000162
+t1314102251
+s354
+i<UIKit/UIKit.h>
+
+N/var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch
+t1314109065
+s15453392
+
+NMyNav-Info.plist
+c000000004E539BEB000000000000038D
+t1314102251
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies335801863#335801863#0(0"0(0#1#0"3343187568374212096#0"0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801865.821656
+e335801866.405996
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o
+x/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@70"Compile /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m335801865#335801866#0(0"0(0#0#62"/Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m8617752448#1873"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/MyNavAppDelegate.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/MyNavAppDelegate.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801866.380553
+e335801866.442330
+r0
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o
+x/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\357' in program
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\274' in program
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\210' in program
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: expected '{' before ')' token
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:cellForRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:84: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:85: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: At top level:
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:91: error: expected ')' before 'IndexPath'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:didSelectRowAtIndexPath:]':
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: 'NavAppDelegate' undeclared (first use in this function)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: (Each undeclared identifier is reported only once
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: for each function it appears in.)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: 'delegate' undeclared (first use in this function)
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: At top level:
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: incomplete implementation of class 'RootViewController'
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: method definition for '-tableView:numberOfRowsInSection:' not found
+o/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: class 'RootViewController' does not fully implement the 'UITableViewDataSource' protocol
+o{standard input}:220:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_8" minus "L00000000004$pb"
+o{standard input}:220:symbol: "L_OBJC_SELECTOR_REFERENCES_8" can't be undefined in a subtraction expression
+o{standard input}:216:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000004$pb"
+o{standard input}:216:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression
+o{standard input}:208:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000004$pb"
+o{standard input}:208:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+o{standard input}:202:non-relocatable subtraction expression, "L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr" minus "L00000000004$pb"
+o{standard input}:202:symbol: "L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr" can't be undefined in a subtraction expression
+o{standard input}:174:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_7" minus "L00000000003$pb"
+o{standard input}:174:symbol: "L_OBJC_SELECTOR_REFERENCES_7" can't be undefined in a subtraction expression
+o{standard input}:170:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000003$pb"
+o{standard input}:170:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression
+o{standard input}:141:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_6" minus "L00000000002$pb"
+o{standard input}:141:symbol: "L_OBJC_SELECTOR_REFERENCES_6" can't be undefined in a subtraction expression
+o{standard input}:137:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000002$pb"
+o{standard input}:137:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression
+o{standard input}:108:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_5" minus "L00000000001$pb"
+o{standard input}:108:symbol: "L_OBJC_SELECTOR_REFERENCES_5" can't be undefined in a subtraction expression
+o{standard input}:104:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000001$pb"
+o{standard input}:104:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression
+o{standard input}:96:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000001$pb"
+o{standard input}:96:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+o{standard input}:88:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_3" minus "L00000000001$pb"
+o{standard input}:88:symbol: "L_OBJC_SELECTOR_REFERENCES_3" can't be undefined in a subtraction expression
+o{standard input}:79:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_2" minus "L00000000001$pb"
+o{standard input}:79:symbol: "L_OBJC_SELECTOR_REFERENCES_2" can't be undefined in a subtraction expression
+o{standard input}:73:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000001$pb"
+o{standard input}:73:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression
+o{standard input}:70:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_REFERENCES_$_0" minus "L00000000001$pb"
+o{standard input}:70:symbol: "L_OBJC_CLASSLIST_REFERENCES_$_0" can't be undefined in a subtraction expression
+o{standard input}:63:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_0" minus "L00000000001$pb"
+o{standard input}:63:symbol: "L_OBJC_SELECTOR_REFERENCES_0" can't be undefined in a subtraction expression
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0
+o{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_REFERENCES_$_0
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_1
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_2
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_3
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_4
+o{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_1
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_5
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_6
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_7
+o{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_8
+lSLF07#2@72"Compile /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801866#335801866#0(7030"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\357' in program/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\274' in program/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: stray '\210' in program/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:71: error: expected '{' before ')' token/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:cellForRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:84: warning: 'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:85: warning: 'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: At top level:/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:91: error: expected ')' before 'IndexPath'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: In function '-[RootViewController tableView:didSelectRowAtIndexPath:]':/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: 'NavAppDelegate' undeclared (first use in this function)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: (Each undeclared identifier is reported only once/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: for each function it appears in.)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:100: error: 'delegate' undeclared (first use in this function)/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m: At top level:/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: incomplete implementation of class 'RootViewController'/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: method definition for '-tableView:numberOfRowsInSection:' not found/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m:103: warning: class 'RootViewController' does not fully implement the 'UITableViewDataSource' protocol{standard input}:220:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_8" minus "L00000000004$pb"{standard input}:220:symbol: "L_OBJC_SELECTOR_REFERENCES_8" can't be undefined in a subtraction expression{standard input}:216:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000004$pb"{standard input}:216:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression{standard input}:208:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000004$pb"{standard input}:208:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression{standard input}:202:non-relocatable subtraction expression, "L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr" minus "L00000000004$pb"{standard input}:202:symbol: "L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr" can't be undefined in a subtraction expression{standard input}:174:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_7" minus "L00000000003$pb"{standard input}:174:symbol: "L_OBJC_SELECTOR_REFERENCES_7" can't be undefined in a subtraction expression{standard input}:170:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000003$pb"{standard input}:170:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression{standard input}:141:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_6" minus "L00000000002$pb"{standard input}:141:symbol: "L_OBJC_SELECTOR_REFERENCES_6" can't be undefined in a subtraction expression{standard input}:137:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000002$pb"{standard input}:137:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression{standard input}:108:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_5" minus "L00000000001$pb"{standard input}:108:symbol: "L_OBJC_SELECTOR_REFERENCES_5" can't be undefined in a subtraction expression{standard input}:104:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000001$pb"{standard input}:104:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression{standard input}:96:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000001$pb"{standard input}:96:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression{standard input}:88:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_3" minus "L00000000001$pb"{standard input}:88:symbol: "L_OBJC_SELECTOR_REFERENCES_3" can't be undefined in a subtraction expression{standard input}:79:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_2" minus "L00000000001$pb"{standard input}:79:symbol: "L_OBJC_SELECTOR_REFERENCES_2" can't be undefined in a subtraction expression{standard input}:73:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000001$pb"{standard input}:73:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression{standard input}:70:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_REFERENCES_$_0" minus "L00000000001$pb"{standard input}:70:symbol: "L_OBJC_CLASSLIST_REFERENCES_$_0" can't be undefined in a subtraction expression{standard input}:63:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_0" minus "L00000000001$pb"{standard input}:63:symbol: "L_OBJC_SELECTOR_REFERENCES_0" can't be undefined in a subtraction expression{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_REFERENCES_$_0{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_1{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_2{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_3{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_4{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_1{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_5{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_6{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_7{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_RootViewController.controllers$non_lazy_ptr{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_814(4@23"Stray '\357' in program335801866#0#100#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#71#0#71#0#20"stray '*' in program0(4@23"Stray '\274' in program335801866#100#100#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#71#0#71#0#20"stray '*' in program0(4@23"Stray '\210' in program335801866#200#100#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#71#0#71#0#20"stray '*' in program0(4@29"Expected '{' before ')' token335801866#300#106#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#71#0#71#0#19"expected * before *0(22@194"'setText:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)335801866#542#273#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#84#0#84#0#33"'*' is deprecated (declared at *)0(22@195"'setImage:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:211)335801866#815#274#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#85#0#85#0#33"'*' is deprecated (declared at *)0(23@13"At top level:335801866#1089#80#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#0#0#0#0#0"0(4@31"Expected ')' before 'IndexPath'335801866#1169#108#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#91#0#91#0#19"expected * before *0(4@56"'NavAppDelegate' undeclared (first use in this function)335801866#1415#134#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#100#0#100#0#43"'*' undeclared (first use in this function)0(4@50"'delegate' undeclared (first use in this function)335801866#1787#128#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#100#0#100#0#43"'*' undeclared (first use in this function)0(23@13"At top level:335801866#1915#80#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#0#0#0#0#0"0(22@55"Incomplete implementation of class 'RootViewController'335801866#1995#135#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#103#0#103#0#38"incomplete implementation of class '*'0(22@67"Method definition for '-tableView:numberOfRowsInSection:' not found335801866#2130#147#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#103#0#103#0#35"method definition for '*' not found0(22@88"Class 'RootViewController' does not fully implement the 'UITableViewDataSource' protocol335801866#2277#168#0(6@64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m335801796#103#0#103#0#51"class '*' does not fully implement the '*' protocol0(0#0#64"/Users/specialbrian/Documents/MyNav/Classes/RootViewController.m8612982688#1877"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/RootViewController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/RootViewController.o1#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801866.406097
+e335801866.468951
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o
+x/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@79"Compile /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m335801866#335801866#0(0"0(0#0#71"/Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m8618803008#1891"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/Classes/SecondLevelViewController.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/SecondLevelViewController.o0#
+
+CCompileC build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o /Users/specialbrian/Documents/MyNav/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801865.820164
+e335801866.380451
+r1
+xCompileC
+xbuild/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o
+x/Users/specialbrian/Documents/MyNav/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@50"Compile /Users/specialbrian/Documents/MyNav/main.m335801865#335801866#0(0"0(0#0#42"/Users/specialbrian/Documents/MyNav/main.m8613453664#1841"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -include /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch -c /Users/specialbrian/Documents/MyNav/main.m -o /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/specialbrian/Documents/MyNav/MainWindow.xib
+s335801864.316943
+e335801864.706215
+r1
+xCompileXIB
+x/Users/specialbrian/Documents/MyNav/MainWindow.xib
+oCouldn't open shared capabilities memory GSCapabilities (No such file or directory)
+lSLF07#2@25"CompileXIB MainWindow.xib335801864#335801864#0(84"Couldn't open shared capabilities memory GSCapabilities (No such file or directory)0(0#0#50"/Users/specialbrian/Documents/MyNav/MainWindow.xib8617851648#559"    cd /Users/specialbrian/Documents/MyNav    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MainWindow.nib /Users/specialbrian/Documents/MyNav/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CGenerateDSYMFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app.dSYM /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav
+r0
+
+CLd /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/MyNav normal i386
+r0
+
+CProcessInfoPlistFile /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist MyNav-Info.plist
+s335801863.914461
+e335801864.316853
+r1
+xProcessInfoPlistFile
+x/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist
+xMyNav-Info.plist
+lSLF07#2@24"Process MyNav-Info.plist335801864#335801864#0(0"0(0#0#52"/Users/specialbrian/Documents/MyNav/MyNav-Info.plist32370056120631408#464"    cd /Users/specialbrian/Documents/MyNav    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility MyNav-Info.plist -genpkginfo /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app/Info.plist0#
+
+CProcessPCH /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch MyNav_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s335801864.706364
+e335801865.820000
+r1
+xProcessPCH
+x/var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch
+xMyNav_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@27"Precompile MyNav_Prefix.pch335801864#335801865#0(0"0(0#0#52"/Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch8616334816#1738"    cd /Users/specialbrian/Documents/MyNav    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-generated-files.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-own-target-headers.hmap -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-all-target-headers.hmap -iquote /Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/MyNav-project-headers.hmap -F/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator -I/Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/include -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources/i386 -I/Users/specialbrian/Documents/MyNav/build/MyNav.build/Debug-iphonesimulator/MyNav.build/DerivedSources -c /Users/specialbrian/Documents/MyNav/MyNav_Prefix.pch -o /var/folders/aD/aD6l7bpCHFCwOFlwg1mBnk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MyNav_Prefix-hldlnsujkimdwzejflcadkxmgyiv/MyNav_Prefix.pch.gch0#
+
+CTouch /Users/specialbrian/Documents/MyNav/build/Debug-iphonesimulator/MyNav.app
+r0
+
