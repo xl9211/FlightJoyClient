@@ -16,7 +16,7 @@
 
 @protocol FlightAddDelegate;
 
-@interface SearchConditionController : UITableViewController 
+@interface SearchConditionController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
 	id <FlightAddDelegate> delegate;
 	Company *searchConditionCompany;
@@ -25,6 +25,7 @@
 	
 	NSMutableDictionary *tempValues;
 	UITextField *textFieldBeingEdited;
+    UITableView *tableView;
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) Company *searchConditionCompany;
@@ -33,6 +34,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *tempValues;
 @property (nonatomic, retain) UITextField *textFieldBeingEdited;
+@property (nonatomic,retain) UITableView *tableView;
 
 - (void)save;
 - (void)cancel;

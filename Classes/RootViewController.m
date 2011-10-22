@@ -1076,9 +1076,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 														  [flightInfo objectForKey:@"takeoff_city"],
 														  [flightInfo objectForKey:@"arrival_city"], nil];
 			DisclosureButtonController *disclosureButtonController = 
-            //[[DisclosureButtonController alloc] init];
             [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
-			//[[DisclosureButtonController alloc] initWithStyle:UITableViewStylePlain];
 			
 			NSLog(@"2...");
 			
@@ -1131,8 +1129,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)switchToSearchCondition:(id)sender
 {   
-	SearchConditionController *searchConditionController = [[SearchConditionController alloc]initWithStyle:UITableViewStyleGrouped];
-	
+	SearchConditionController *searchConditionController = [[SearchConditionController alloc]initWithNibName:@"SearchConditionController" bundle:nil];
 	// Configure the RecipeAddViewController. In this case, it reports any
 	// changes to a custom delegate object.
 	searchConditionController.delegate = self;

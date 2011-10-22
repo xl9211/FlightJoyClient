@@ -59,6 +59,7 @@
 		3EC3AD1B143C938A007F748B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3AD1A143C938A007F748B /* Reachability.m */; };
 		3EC3AD25143C9474007F748B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC3AD24143C9474007F748B /* SystemConfiguration.framework */; };
 		3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */; };
+		3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5F42914530021003F2988 /* SearchConditionController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +144,7 @@
 		3EC3AD1A143C938A007F748B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3EC3AD24143C9474007F748B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureButtonController.xib; sourceTree = "<group>"; };
+		3ED5F42914530021003F2988 /* SearchConditionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MyNav-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyNav-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +248,7 @@
 				3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */,
 				3E5FB612144AA8BA00A1AD06 /* FlightRouteController.xib */,
 				3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */,
+				3ED5F42914530021003F2988 /* SearchConditionController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				3E925B18144E96E2008AB82E /* icon1.jpg in Resources */,
 				3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */,
 				3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */,
+				3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
