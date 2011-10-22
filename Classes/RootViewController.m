@@ -40,7 +40,7 @@
 - (void)loadView {
 }
 */
-- (void)changeListMode {
+- (void)changeListMode {//add comment
 	[self.navigationController setToolbarHidden:NO animated:NO];  
 	self.navigationController.toolbar.barStyle = UIBarStyleBlack;
 	
