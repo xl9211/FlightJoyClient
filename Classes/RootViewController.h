@@ -20,7 +20,7 @@
 	NSMutableData *responseData;
 	NSMutableArray  *flightArray;
 	SearchConditionController *searchConditionController; // the camera custom overlay view
-	UINavigationController *searchNavController;
+	UINavigationController *searchNavController; //test
 	sqlite3	*database;
 	NSArray *deleteToolbarItems;
 	NSArray *refreshToolbarItems;
