@@ -233,9 +233,8 @@
 	[root.searchNavController popViewControllerAnimated:YES];
 
 	NSArray *allControllers = root.searchNavController.viewControllers;
-	UITableViewController *parent = [allControllers lastObject];
+	SearchConditionController *parent = [allControllers lastObject];
 	[parent.tableView reloadData];
-
 }
 
 

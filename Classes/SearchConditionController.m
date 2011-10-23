@@ -41,6 +41,12 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"SearchCondition viewDidLoad!");
+    
+    NSDate *curDate = [NSDate date];//获取当前日期
+    NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
+    NSString *curDateString = [formater stringFromDate:curDate];
+    self.searchConditionDate = curDateString;                
 	
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	// Configure the navigation bar
@@ -173,6 +179,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"SearchConditionController.cellForRowAtIndexPath...");
+    
 	NSUInteger row = [indexPath row];
 	static NSString * SearchConditionFieldCellIdentifier = @"SearchConditionFieldCellIdentifier";
 
@@ -186,11 +193,7 @@
     label.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:label];
     
-	NSDate *curDate = [NSDate date];//获取当前日期
-    NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
-    [formater setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
-    NSString *curDateString = [formater stringFromDate:curDate];
-    
+	    
     cell.backgroundColor = [UIColor whiteColor]; 
     cell.textColor = [UIColor blackColor];
 
@@ -210,6 +213,7 @@
             textField.userInteractionEnabled = NO;
             
             textField.tag = kSearchConditionCompanyTag;
+            textField.text = self.searchConditionCompany.abbrev;
             [cell.contentView addSubview:textField];
             
             break;
@@ -224,11 +228,14 @@
                 
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
                 [textField setDelegate:self];
+
                 //textField.returnKeyType = UIReturnKeyDone;
                 [textField addTarget:self 
                               action:@selector(textFieldDone:) 
                     forControlEvents:UIControlEventEditingDidEndOnExit];
                 textField.tag = kSearchConditionFlightNoTag;
+                [textField setText:self.searchConditionFlightNo];
+
             } else { //按航段查询
                 label.text = @"出发";
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -249,9 +256,8 @@
             
             if (m_selectedSegmentIndex == 0) {//按航班号查询
                 label.text = @"出发日期";
-                textField.text = curDateString;
-                self.searchConditionDate = curDateString;                
                 textField.tag = kSearchConditionDateTag;
+                [textField setText:self.searchConditionDate];
             } else { //按航段查询
                 label.text = @"目的";
                 textField.tag = kSearchConditionToRouteTag;                
@@ -268,8 +274,7 @@
             textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
             textField.clearsOnBeginEditing = NO;
             textField.placeholder = @"必填";
-            textField.text = curDateString;
-            self.searchConditionDate = curDateString;
+            [textField setText:self.searchConditionDate];
             textField.userInteractionEnabled = NO;
             
             textField.tag = kSearchConditionDateRouteTag;
@@ -316,19 +321,26 @@
 
 	NSUInteger row = [indexPath row];
 	UILabel *label = [[cell.contentView subviews] objectAtIndex:0];
+    
 	if (row == 0) {
-		//[self.navigationController setToolbarHidden:YES animated:NO];
-
-		SearchConditionCompanyController *searchConditionCompanyController = [[SearchConditionCompanyController alloc]initWithStyle:UITableViewStyleGrouped];
-		searchConditionCompanyController.title = label.text;
-		searchConditionCompanyController.searchConditionCompany = self.searchConditionCompany;
-
-		[root.searchNavController pushViewController:searchConditionCompanyController animated:YES];
+		SearchConditionCompanyController *searchCCC = [[SearchConditionCompanyController alloc]initWithStyle:UITableViewStyleGrouped];
+		searchCCC.title = label.text;
+		searchCCC.searchConditionCompany = self.searchConditionCompany;
+		[root.searchNavController pushViewController:searchCCC animated:YES];
+	} else if (row == 1) {
+		/*SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
+		searchCDC.title = label.text;
+		[root.searchNavController pushViewController:searchCDC animated:YES];*/
 	} else if (row == 2) {
-		SearchConditionDateController *searchConditionDateController = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
-		searchConditionDateController.title = label.text;
-		
-		[root.searchNavController pushViewController:searchConditionDateController animated:YES];
+        if (m_selectedSegmentIndex == 0) {
+            SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
+            searchCDC.title = label.text;
+            [root.searchNavController pushViewController:searchCDC animated:YES];
+        }
+	} else if (row == 3) {
+		SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
+		searchCDC.title = label.text;
+		[root.searchNavController pushViewController:searchCDC animated:YES];
 	}
 	
 	NSLog(@"...didSelectRowAtIndexPath");
