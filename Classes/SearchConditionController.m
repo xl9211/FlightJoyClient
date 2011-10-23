@@ -153,103 +153,152 @@
 {
 
 }
+
+- (IBAction)segmentControlDidChanged:(id)sender
+{
+    NSLog(@"segmentControlDidChanged...");
+	UISegmentedControl *segmentControl = (UISegmentedControl *)sender;
+	switch (segmentControl.selectedSegmentIndex) {
+		case 0:
+            m_selectedSegmentIndex = 0;
+			break;
+		case 1:
+            m_selectedSegmentIndex = 1;
+			break;
+		default:
+			break;
+	}
+	[tableView reloadData];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"SearchConditionController.cellForRowAtIndexPath...");
-	//[self.navigationController setToolbarHidden:NO animated:NO];
-
 	NSUInteger row = [indexPath row];
-	
 	static NSString * SearchConditionFieldCellIdentifier = @"SearchConditionFieldCellIdentifier";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchConditionFieldCellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:SearchConditionFieldCellIdentifier] autorelease];
 
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
-		label.textAlignment = UITextAlignmentRight;
-		label.tag = kLabelTag;
-		label.font = [UIFont boldSystemFontOfSize:14];
-		label.textColor = [UIColor grayColor];
-		[cell.contentView addSubview:label];
-		//label = (UILabel *)[cell viewWithTag:kLabelTag];		
-		
-		//cell.backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.4f alpha:1]; 
-		cell.textColor = [UIColor blackColor];
-		switch (row) {
-			case 0:
-				label.text = @"航空公司";
-				cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-				
-				UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
-				textField.clearsOnBeginEditing = NO;
-				textField.placeholder = @"必填";
-				textField.userInteractionEnabled = NO;
-				
-				textField.tag = kSearchConditionCompanyTag;
-				[cell.contentView addSubview:textField];
-				
-				break;
-			case 1:
-				label.text = @"航班号";
-				cell.selectionStyle = UITableViewCellSelectionStyleNone;
-				
-				textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
-				textField.clearsOnBeginEditing = NO;
-				textField.placeholder = @"必填";
-				textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-				[textField setDelegate:self];
-				//textField.returnKeyType = UIReturnKeyDone;
-				[textField addTarget:self 
-							  action:@selector(textFieldDone:) 
-					forControlEvents:UIControlEventEditingDidEndOnExit];
-				textField.tag = kSearchConditionFlightNoTag;
-				[cell.contentView addSubview:textField];
-				break;
-			case 2:
-				label.text = @"出发日期";
-				NSDate *curDate = [NSDate date];//获取当前日期
-				NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
-				[formater setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
-				NSString *curDateString = [formater stringFromDate:curDate];
-				
-				cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-				
-				textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
-				textField.clearsOnBeginEditing = NO;
-				textField.placeholder = @"必填";
-				textField.text = curDateString;
-				self.searchConditionDate = curDateString;
-				textField.userInteractionEnabled = NO;
-				
-				textField.tag = kSearchConditionDateTag;
-				[cell.contentView addSubview:textField];				
-				break;
-			default:
-				break;
-		}//switch
-		cell.image = nil;
-		[label release];
-	}//if (cell == nil) {
-	else {
-		UITextField *tmpTextField = (UITextField *)[cell viewWithTag:kSearchConditionCompanyTag];
-		[tmpTextField setText:self.searchConditionCompany.abbrev];
-		
-		tmpTextField =  (UITextField *)[cell viewWithTag:kSearchConditionDateTag];
-		[tmpTextField setText:self.searchConditionDate];
-	}
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:SearchConditionFieldCellIdentifier] autorelease];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
+    label.textAlignment = UITextAlignmentRight;
+    label.tag = kLabelTag;
+    label.font = [UIFont boldSystemFontOfSize:14];
+    label.textColor = [UIColor grayColor];
+    label.backgroundColor = [UIColor whiteColor];
+    [cell.contentView addSubview:label];
+    
+	NSDate *curDate = [NSDate date];//获取当前日期
+    NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
+    NSString *curDateString = [formater stringFromDate:curDate];
+    
+    cell.backgroundColor = [UIColor whiteColor]; 
+    cell.textColor = [UIColor blackColor];
+
+    switch (row) {
+        case 0:
+            label.text = @"航空公司";
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.clearsOnBeginEditing = NO;
+            if (m_selectedSegmentIndex == 0) {//按航班号查询
+                textField.placeholder = @"必填";
+            } else { //按航段查询
+                textField.placeholder = @"选填";
+            }
+            textField.userInteractionEnabled = NO;
+            
+            textField.tag = kSearchConditionCompanyTag;
+            [cell.contentView addSubview:textField];
+            
+            break;
+        case 1:
+            textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.clearsOnBeginEditing = NO;
+            textField.placeholder = @"必填";
+            
+            if (m_selectedSegmentIndex == 0) {//按航班号查询
+                label.text = @"航班号";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                [textField setDelegate:self];
+                //textField.returnKeyType = UIReturnKeyDone;
+                [textField addTarget:self 
+                              action:@selector(textFieldDone:) 
+                    forControlEvents:UIControlEventEditingDidEndOnExit];
+                textField.tag = kSearchConditionFlightNoTag;
+            } else { //按航段查询
+                label.text = @"出发";
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                textField.userInteractionEnabled = NO;
+                textField.tag = kSearchConditionFromRouteTag;
+            }
+            [cell.contentView addSubview:textField];
+
+            break;
+        case 2:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.clearsOnBeginEditing = NO;
+            textField.placeholder = @"必填";
+            textField.userInteractionEnabled = NO;
+            
+            if (m_selectedSegmentIndex == 0) {//按航班号查询
+                label.text = @"出发日期";
+                textField.text = curDateString;
+                self.searchConditionDate = curDateString;                
+                textField.tag = kSearchConditionDateTag;
+            } else { //按航段查询
+                label.text = @"目的";
+                textField.tag = kSearchConditionToRouteTag;                
+            }
+            
+            [cell.contentView addSubview:textField];
+            break;
+        case 3:
+            label.text = @"出发日期";
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.clearsOnBeginEditing = NO;
+            textField.placeholder = @"必填";
+            textField.text = curDateString;
+            self.searchConditionDate = curDateString;
+            textField.userInteractionEnabled = NO;
+            
+            textField.tag = kSearchConditionDateRouteTag;
+            [cell.contentView addSubview:textField];				
+            break;
+        default:
+            break;
+    }//switch
+    
+    cell.image = nil;
+    [label release];
 	
 	return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
-	
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	return 3;
+    switch (m_selectedSegmentIndex) {
+        case 0:
+            return 3;
+        case 1:
+            return 4;
+        default:
+            return 3;
+    }
 }
 
 #pragma mark -

@@ -14,6 +14,13 @@
 #define kSearchConditionFlightNoTag	512
 #define kSearchConditionDateTag 2048
 
+#define kSearchConditionCompanyRouteTag	256
+#define kSearchConditionFromRouteTag	128
+#define kSearchConditionToRouteTag	64
+#define kSearchConditionDateRouteTag 32
+
+
+
 @protocol FlightAddDelegate;
 
 @interface SearchConditionController : UIViewController 
@@ -25,7 +32,8 @@
 	
 	NSMutableDictionary *tempValues;
 	UITextField *textFieldBeingEdited;
-    UITableView *tableView;
+    IBOutlet UITableView *tableView;
+    int m_selectedSegmentIndex;
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) Company *searchConditionCompany;
@@ -40,6 +48,7 @@
 - (void)cancel;
 
 - (void)didFinish:sender;
+- (IBAction)segmentControlDidChanged:(id)sender;
 @end
 
 @protocol FlightAddDelegate <NSObject>
