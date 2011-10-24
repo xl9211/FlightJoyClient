@@ -9,6 +9,7 @@
 #import "SearchConditionController.h"
 #import "SearchConditionCompanyController.h"
 #import "SearchConditionDateController.h"
+#import "SearchConditionAirportController.h"
 #import "SearchResultController.h"
 #import "CustomCell.h"
 #import "RootViewController.h"
@@ -327,16 +328,25 @@
 		searchCCC.title = label.text;
 		searchCCC.searchConditionCompany = self.searchConditionCompany;
 		[root.searchNavController pushViewController:searchCCC animated:YES];
+        
 	} else if (row == 1) {
-		/*SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
-		searchCDC.title = label.text;
-		[root.searchNavController pushViewController:searchCDC animated:YES];*/
+        if (m_selectedSegmentIndex == 1) {
+            SearchConditionAirportController *searchCAC = [[SearchConditionAirportController alloc] initWithNibName:@"SearchConditionAirportController" bundle:nil];
+            searchCAC.title = label.text;
+            [root.searchNavController pushViewController:searchCAC animated:YES];
+        }
+        
 	} else if (row == 2) {
         if (m_selectedSegmentIndex == 0) {
             SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
             searchCDC.title = label.text;
             [root.searchNavController pushViewController:searchCDC animated:YES];
+        } else  {
+            SearchConditionAirportController *searchCAC = [[SearchConditionAirportController alloc] initWithNibName:@"SearchConditionAirportController" bundle:nil];
+            searchCAC.title = label.text;
+            [root.searchNavController pushViewController:searchCAC animated:YES];
         }
+        
 	} else if (row == 3) {
 		SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
 		searchCDC.title = label.text;
