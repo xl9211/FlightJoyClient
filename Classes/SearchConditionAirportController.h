@@ -7,22 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSON/JSON.h"
+#import "Airport.h"
+#import "RootViewController.h"
+#import "/usr/include/sqlite3.h"
+#define kFilename		@"flights.sqlite3"
 
 @interface SearchConditionAirportController : UIViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 {
-	IBOutlet	UITableView *table;
+	IBOutlet	UITableView *tableView;
 	IBOutlet	UISearchBar *search;
-	NSDictionary *allNames;
-	NSMutableDictionary *names;
-	NSMutableArray		 *keys;
-    
+    sqlite3	*database;
+	NSMutableArray		 *airportArray;
+    NSMutableData *responseData;
+    Airport *searchConditionAirport;
 }
-@property (nonatomic, retain) UITableView *table;
+@property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) UISearchBar *search;
-@property (nonatomic, retain) NSDictionary *allNames;
-@property (nonatomic, retain) NSMutableDictionary *names;
-@property (nonatomic, retain) NSMutableArray *keys;
+@property (nonatomic, retain) NSMutableArray *airportArray;
+@property (nonatomic, retain) Airport *searchConditionAirport;
+
 - (void)resetSearch;
 - (void)handleSearchForTerm:(NSString *)searchTerm;
 

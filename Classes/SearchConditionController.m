@@ -18,6 +18,8 @@
 @synthesize delegate;
 @synthesize searchConditionCompany;
 @synthesize searchConditionDate;
+@synthesize searchConditionTakeoffAirport;
+@synthesize searchConditionArrivalAirport;
 
 @synthesize tempValues;
 @synthesize textFieldBeingEdited;
@@ -243,6 +245,7 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 textField.userInteractionEnabled = NO;
                 textField.tag = kSearchConditionFromRouteTag;
+                [textField setText:self.searchConditionTakeoffAirport.fullname];
             }
             [cell.contentView addSubview:textField];
 
@@ -261,7 +264,8 @@
                 [textField setText:self.searchConditionDate];
             } else { //按航段查询
                 label.text = @"目的";
-                textField.tag = kSearchConditionToRouteTag;                
+                textField.tag = kSearchConditionToRouteTag;   
+                [textField setText:self.searchConditionArrivalAirport.fullname];
             }
             
             [cell.contentView addSubview:textField];
@@ -333,6 +337,7 @@
         if (m_selectedSegmentIndex == 1) {
             SearchConditionAirportController *searchCAC = [[SearchConditionAirportController alloc] initWithNibName:@"SearchConditionAirportController" bundle:nil];
             searchCAC.title = label.text;
+            //searchCAC.searchConditionTakeoffAirport = self.searchConditionTakeoffAirport;
             [root.searchNavController pushViewController:searchCAC animated:YES];
         }
         
@@ -344,6 +349,7 @@
         } else  {
             SearchConditionAirportController *searchCAC = [[SearchConditionAirportController alloc] initWithNibName:@"SearchConditionAirportController" bundle:nil];
             searchCAC.title = label.text;
+            //searchCAC.searchConditionAirport = self.searchConditionAirport;
             [root.searchNavController pushViewController:searchCAC animated:YES];
         }
         

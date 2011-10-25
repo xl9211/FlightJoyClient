@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SecondLevelViewController.h"
 #import "Company.h"
+#import "Airport.h"
+
 #define kLabelTag			4096
 #define kSearchConditionCompanyTag	1024
 #define kSearchConditionFlightNoTag	512
@@ -19,14 +21,14 @@
 #define kSearchConditionToRouteTag	64
 #define kSearchConditionDateRouteTag 32
 
-
-
 @protocol FlightAddDelegate;
 
 @interface SearchConditionController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
 	id <FlightAddDelegate> delegate;
 	Company *searchConditionCompany;
+    Airport *searchConditionTakeoffAirport;
+    Airport *searchConditionArrivalAirport;
 	NSString *searchConditionFlightNo;
 	NSString *searchConditionDate;
 	
@@ -37,6 +39,8 @@
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) Company *searchConditionCompany;
+@property (nonatomic, retain) Airport *searchConditionTakeoffAirport;
+@property (nonatomic, retain) Airport *searchConditionArrivalAirport;
 @property (nonatomic, retain) NSString *searchConditionFlightNo;
 @property (nonatomic, retain) NSString *searchConditionDate;
 

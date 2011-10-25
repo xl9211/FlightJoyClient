@@ -470,7 +470,7 @@
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
 }
 
-//创建已死航班表
+//创建关注航班表
 - (void)createFollowedFlightTable {
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
@@ -817,12 +817,14 @@
 	[self loadToolbarItems];
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 	
+    /*
 	NSTimer *timer;
 	timer = [NSTimer scheduledTimerWithTimeInterval: 1
 											 target: self
 										   selector: @selector(handleTimer:)
 										   userInfo: nil
 											repeats: YES];
+     */
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
 	//[self.tableView setSeparatorColor:[UIColor clearColor]];
