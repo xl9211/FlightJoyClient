@@ -162,7 +162,7 @@
     //select count(*) from sqlite_master where type='table' and name = 'cityinfo';
     if ( ![self airportTableExists] ) {
         [self createAirportTable];
-        [self insertIntoTableFromServer];
+        [self loadAirportsFromServer];
     }
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
