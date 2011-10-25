@@ -92,19 +92,36 @@
 	
 	NSString *msg = nil;
 	BOOL valid = YES;
-	if (self.searchConditionCompany.abbrev == nil 
-		|| [self.searchConditionCompany.abbrev isEqualToString:@""] ) {
-		valid = NO;
-		msg = [[NSString alloc] initWithString:@"请选择航空公司。"];
-	} else if (self.searchConditionFlightNo == nil 
-			   || [self.searchConditionFlightNo isEqualToString:@""] ) {
-		valid = NO;
-		msg = [[NSString alloc] initWithString:@"请输入航班号。"];
-	} else if (self.searchConditionDate == nil 
-			   || [self.searchConditionDate isEqualToString:@""] ) {
-		valid = NO;
-		msg = [[NSString alloc] initWithString:@"请选择出发日期。"];
-	}
+    
+    if (m_selectedSegmentIndex == 0) {//按航班号查询
+        if (self.searchConditionCompany.abbrev == nil 
+            || [self.searchConditionCompany.abbrev isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请选择航空公司。"];
+        } else if (self.searchConditionFlightNo == nil 
+                   || [self.searchConditionFlightNo isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请输入航班号。"];
+        } else if (self.searchConditionDate == nil 
+                   || [self.searchConditionDate isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请选择出发日期。"];
+        }
+    } else {//按航段查询
+        if (self.searchConditionTakeoffAirport.shortname == nil 
+            || [self.searchConditionTakeoffAirport.shortname isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请选择出发机场。"];
+        } else if (self.searchConditionArrivalAirport.shortname == nil 
+                   || [self.searchConditionArrivalAirport.shortname isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请输入目的机场。"];
+        } else if (self.searchConditionDate == nil 
+                   || [self.searchConditionDate isEqualToString:@""] ) {
+            valid = NO;
+            msg = [[NSString alloc] initWithString:@"请选择出发日期。"];
+        }
+    }
 
 	if (!valid) {
 		UIAlertView *alert = [[UIAlertView alloc]
@@ -122,6 +139,11 @@
 	SearchResultController *searchResultController = 
 	[[SearchResultController alloc] initWithStyle:UITableViewStylePlain];
 	
+    if (m_selectedSegmentIndex == 0) {//按航班号查询
+        [searchResultController setQueryType:0];
+    } else if (m_selectedSegmentIndex == 1) {//按航线查询
+        [searchResultController setQueryType:1];
+    }
 	[searchResultController getSearchConditionController:self];
 	[self.navigationController pushViewController:searchResultController animated:YES];
 }

@@ -23,6 +23,7 @@
 	UIActivityIndicatorView *updateProgressInd;
 	UIBarButtonItem *saveButtonItem;
 	UIBarButtonItem *saveAllButtonItem;
+    int queryType; //0-航班号搜索 1-航段搜索 2－随机搜索
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic,retain) NSMutableArray  *flightArray;
@@ -30,6 +31,8 @@
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
 @property (nonatomic,retain) UIBarButtonItem *saveButtonItem;
 @property (nonatomic,retain) UIBarButtonItem *saveAllButtonItem;
+@property (nonatomic) int queryType;
+
 
 - (void)getSearchConditionController:(SearchConditionController *)lsearchConditionController;
 - (NSString *)dataFilePath;

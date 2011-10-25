@@ -21,6 +21,7 @@
 @synthesize updateProgressInd;
 @synthesize saveButtonItem;
 @synthesize saveAllButtonItem;
+@synthesize queryType;
 
 #pragma mark -
 #pragma mark Initialization
@@ -160,13 +161,28 @@
 	
     //get json
 	responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
-	
-	NSString *post = nil;  
-	post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
-			self.searchConditionController.searchConditionCompany.abbrev,
-			self.searchConditionController.searchConditionFlightNo,
-			self.searchConditionController.searchConditionDate];
+    NSString *url = nil;
+    NSString *post = nil;  
+    NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.abbrev;
+    
+    if (queryType == 0) {
+        url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
+        post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
+                comanyAbbrev,
+                self.searchConditionController.searchConditionFlightNo,
+                self.searchConditionController.searchConditionDate];
+    } else if (queryType == 1) {
+        url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRoute"];
+        if (comanyAbbrev == nil || [comanyAbbrev isEqualToString:@""]) {
+            comanyAbbrev = @"all";
+        }
+        post = [[NSString alloc] initWithFormat:@"takeoff_airport=%@&arrival_airport=%@&schedule_takeoff_date=%@&company=%@",
+                self.searchConditionController.searchConditionTakeoffAirport.shortname,
+                self.searchConditionController.searchConditionArrivalAirport.shortname,
+                self.searchConditionController.searchConditionDate,
+                comanyAbbrev];
+    }
+    
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
 	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  

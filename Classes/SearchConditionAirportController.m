@@ -60,6 +60,8 @@
 			[airportArray addObject:airport];
         }
     }
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
     NSLog(@"%d", [airportArray count]);
 	[tableView reloadData];
 }
@@ -149,10 +151,14 @@
 		while (sqlite3_step(statement) == SQLITE_ROW) {
 			int tableNum = sqlite3_column_int(statement, 0);
             if (tableNum == 1) {
+                sqlite3_finalize(statement);
+                sqlite3_close(database);	
                 return YES;
             }
 		}
 	}
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
     return NO;
 }
 - (void)viewDidLoad
@@ -224,6 +230,7 @@
 		sqlite3_close(database);
 		NSAssert1(0, @"Error creating table: %s", errorMsg);
 	}
+    sqlite3_close(database);	
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -266,7 +273,7 @@
                 NSAssert1(0, @"Error updating tables: %s", errorMsg);
                 sqlite3_close(database);
             }
-
+            sqlite3_close(database);	
 		}
 		//self.companyListData = airportArray;
 		[airportArray release];
