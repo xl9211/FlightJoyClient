@@ -12,20 +12,27 @@
 #import "/usr/include/sqlite3.h"
 #import "SVGeocoder.h"
 #import <MapKit/MapKit.h> 
+#import <MapKit/MKAnnotation.h>
 #define kFilename		@"flights.sqlite3"
 
 @class DisclosureDetailController;
 
 @interface DisclosureButtonController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate> {
+<UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
+CLLocationManagerDelegate, MKMapViewDelegate> {
 	NSMutableArray *list;
 	NSMutableArray *cityList;
 	sqlite3	*database;
 	NSDictionary *flightInfo;
 	DisclosureDetailController *childController;
-    UITableView *tableView;
+    IBOutlet UITableView *tableView;
 
 	UIActivityIndicatorView *updateProgressInd;
+    
+    //mapview
+    IBOutlet MKMapView *mapView; 
+	NSMutableArray *cityLocationList;
+    int m_selectedSegmentIndex;
 }
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *cityList;
@@ -33,6 +40,10 @@
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
 @property (nonatomic,retain) UITableView *tableView;
 
+//mapview
+@property(nonatomic, retain) IBOutlet MKMapView *mapView; 
+@property (nonatomic, retain) NSMutableArray *cityLocationList;
 
+- (IBAction)segmentControlDidChanged:(id)sender;
 
 @end
