@@ -128,30 +128,12 @@
     [super viewDidLoad];
 	
 	[self loadToolbarItems];
-	[self startUpdateProcess];
-	
-	/*if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	char *errorMsg;
-	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS FLIGHTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, FLIGHT_NO TEXT, FLIGHT_DATE TEXT);";
-	if (sqlite3_exec (database, [createSQL  UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert1(0, @"Error creating table: %s", errorMsg);
-	}*/
-	
+	[self startUpdateProcess];	
 	
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	self.delegate = root;
 
-	/*NSString *jsonStr = [[NSString alloc] initWithFormat:@"[{\"flight_no\":\"%@%@\",\"takeoff_date\":\"%@\"}]",
-						self.searchConditionController.searchConditionCompany.abbrev,
-						self.searchConditionController.searchConditionFlightNo,
-						  self.searchConditionController.searchConditionDate];	
-	*/
 	saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
 	saveAllButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注全部" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
 
@@ -165,13 +147,13 @@
     NSString *post = nil;  
     NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.abbrev;
     
-    if (queryType == 0) {
+    if (queryType == 0) {//航班号查询
         url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
         post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
                 comanyAbbrev,
                 self.searchConditionController.searchConditionFlightNo,
                 self.searchConditionController.searchConditionDate];
-    } else if (queryType == 1) {
+    } else if (queryType == 1) {//航段查询
         url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRoute"];
         if (comanyAbbrev == nil || [comanyAbbrev isEqualToString:@""]) {
             comanyAbbrev = @"all";
@@ -181,6 +163,9 @@
                 self.searchConditionController.searchConditionArrivalAirport.shortname,
                 self.searchConditionController.searchConditionDate,
                 comanyAbbrev];
+    } else if (queryType == 2) {//随机查询
+        url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRandom"];
+        post = [[NSString alloc] initWithString:@"lang=zh"];
     }
     
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  

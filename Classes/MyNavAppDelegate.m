@@ -26,6 +26,8 @@
     //Change the host name here to change the server your monitoring
 	hostReach = [[Reachability reachabilityWithHostName: @"specialbrian.gicp.net"] retain];
 	[self updateInterfaceWithReachability];
+    
+    application.applicationSupportsShakeToEdit = YES;
 	
     // Override point for customization after application launch.
 	//navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];

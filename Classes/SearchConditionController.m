@@ -69,7 +69,7 @@
 	[updateTimeLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
 	[updateTimeLabel setBackgroundColor:[UIColor clearColor]];
 	[updateTimeLabel setTextColor:[UIColor whiteColor]];
-	[updateTimeLabel setText:@"请按条件查询航班"];
+	[updateTimeLabel setText:@"轻摇手机随机搜索一架航班"];
 	[updateTimeLabel setTextAlignment:UITextAlignmentCenter];
 	
 	UIBarButtonItem *updateTimeLabelButton = [[UIBarButtonItem alloc] initWithCustomView:updateTimeLabel];
@@ -399,5 +399,33 @@
 	//NSNumber *tagAsNum = [[NSNumber alloc] initWithInt:textField.tag];
 	//[tempValues setObject:textField.text forKey:tagAsNum];
 	//[tagAsNum release];		
+}
+#pragma mark -
+#pragma mark shake Methods
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self resignFirstResponder];
+    [super viewWillDisappear:animated];
+}
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        // 随机查询
+        NSLog(@"shake!");
+        SearchResultController *searchResultController = 
+        [[SearchResultController alloc] initWithStyle:UITableViewStylePlain];
+        
+        [searchResultController setQueryType:2];
+        [searchResultController getSearchConditionController:self];
+        [self.navigationController pushViewController:searchResultController animated:YES];    }
 }
 @end
