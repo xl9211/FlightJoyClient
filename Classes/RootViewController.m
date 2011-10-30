@@ -592,6 +592,10 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+- (void)umengFeedback {
+    [MobClick showFeedback:self];
+}
+
 - (void)loadToolbarItems {
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	//1.edit mode toolbar items
@@ -612,9 +616,14 @@
 																 style:UIBarButtonItemStyleBordered
 																target:self
 																action:@selector(refreshAction)];
+    UIBarButtonItem *feedbackImageButton = 
+    [[UIBarButtonItem alloc] initWithTitle:@"反馈"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(umengFeedback)];
     
     UIBarButtonItem *settingImageButton = 
-    [[UIBarButtonItem alloc] initWithTitle:@"微博分享"
+    [[UIBarButtonItem alloc] initWithTitle:@"分享"
                                      style:UIBarButtonItemStyleBordered
                                     target:self
                                     action:@selector(StartSinaPhotoWeibo)];
@@ -628,7 +637,7 @@
 	
 	self.refreshToolbarItems = [[NSArray alloc] initWithObjects: refreshButton, 
 								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-								flexibleSpace, settingImageButton, nil]; 
+								flexibleSpace, feedbackImageButton, settingImageButton, nil]; 
 }
 /*
  * 开始更新航班信息的过程
