@@ -612,7 +612,7 @@
 																 style:UIBarButtonItemStyleBordered
 																target:self
 																action:@selector(refreshAction)];
-	
+    
     UIBarButtonItem *settingImageButton = 
     [[UIBarButtonItem alloc] initWithTitle:@"微博分享"
                                      style:UIBarButtonItemStyleBordered
@@ -1144,12 +1144,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)sendRecordTicket:(OAServiceTicket *)ticket finishedWithData:(NSMutableData *)data
 {
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"发送新浪微博成功" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [al show];
-    [al release];
-    
-    
+        
     NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
 	NSMutableDictionary *responseObject = [json objectWithString:string error:&error];
@@ -1157,15 +1152,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (responseObject != nil) {
 		NSString *errorCodeStr = [responseObject objectForKey:@"error_code"];
         NSString *errorStr = [responseObject objectForKey:@"error"];
-        if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"400"]) {
-            if (errorStr != nil && [errorStr rangeOfString:@"40072"].length > 0) {
-                [self StartSina];
-            }
+        if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"400"]
+            && errorStr != nil && [errorStr rangeOfString:@"40072"].length > 0) 
+            [self StartSina];
+        else if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"403"]
+            && errorStr != nil && [errorStr rangeOfString:@"40302"].length > 0) 
+            [self StartSina];
+        else {
+            UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"发送新浪微博成功" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [al show];
+            [al release];
         }
 	} else {	
         NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
     }
-    
 }
 - (void)sendRecordTicket:(OAServiceTicket *)ticket failedWithError:(NSError *)error
 {
