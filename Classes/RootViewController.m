@@ -827,8 +827,19 @@
 	nameLabelText = [nameLabelText stringByAppendingString:[one objectForKey:@"arrival_city"]];
 	//cell.nameLabel.text = controller.title;
 	cell.nameLabel.text = nameLabelText;
-	cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
-	cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
+    
+    //计划起飞日期是今天，则计划起飞日期字段显示航班状态
+    NSString *scheduleTakeoffDate = [one objectForKey:@"schedule_takeoff_date"];
+    NSDate *curDate = [NSDate date];//获取当前日期
+	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yy-MM-dd"];//这里去掉 具体时间 保留日期
+	NSString *curDateString = [dateFormatter stringFromDate:curDate];
+    if ([curDateString isEqualToString:scheduleTakeoffDate]) {
+        cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
+    } else {
+        cell.takeoffDateLabel.text = [[NSString alloc] initWithFormat:@"20%@", scheduleTakeoffDate];
+    }
+    cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
 	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
 	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
