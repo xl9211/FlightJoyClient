@@ -25,6 +25,11 @@
 		3E8DDB1D141888EA00B57F5B /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DDB1C141888EA00B57F5B /* SearchResultController.m */; };
 		3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E73CE143B4940003FEC46 /* china2.jpg */; };
 		3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */; };
+		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
+		3E900F38145DA96500710661 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F36145DA96500710661 /* libMobClickLibrary.a */; };
+		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; };
+		3E900F3C145DAA4000710661 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F3B145DAA4000710661 /* QuartzCore.framework */; };
+		3E900F3E145DAA5400710661 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F3D145DAA5400710661 /* libz.1.2.5.dylib */; };
 		3E90D385145C391F0054265F /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90D362145C391F0054265F /* NSMutableURLRequest+Parameters.m */; };
 		3E90D386145C391F0054265F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90D364145C391F0054265F /* NSString+URLEncoding.m */; };
 		3E90D387145C391F0054265F /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90D366145C391F0054265F /* NSURL+Base.m */; };
@@ -105,6 +110,12 @@
 		3E8E73CE143B4940003FEC46 /* china2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china2.jpg; sourceTree = "<group>"; };
 		3E8E78F014552C01003BAD50 /* SearchConditionAirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionAirportController.h; sourceTree = "<group>"; };
 		3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionAirportController.m; sourceTree = "<group>"; };
+		3E900F31145D897200710661 /* SearchConditionAirportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionAirportController.xib; sourceTree = "<group>"; };
+		3E900F36145DA96500710661 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		3E900F37145DA96500710661 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		3E900F39145DAA3100710661 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3E900F3B145DAA4000710661 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3E900F3D145DAA5400710661 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		3E90D361145C391F0054265F /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
 		3E90D362145C391F0054265F /* NSMutableURLRequest+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Parameters.m"; sourceTree = "<group>"; };
 		3E90D363145C391F0054265F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -204,6 +215,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E900F3E145DAA5400710661 /* libz.1.2.5.dylib in Frameworks */,
+				3E900F3C145DAA4000710661 /* QuartzCore.framework in Frameworks */,
+				3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -212,6 +226,7 @@
 				3E5FB5EA144AA64100A1AD06 /* MapKit.framework in Frameworks */,
 				3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */,
 				3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */,
+				3E900F38145DA96500710661 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +236,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E900F35145DA94A00710661 /* umeng */,
 				3E90D35F145C391F0054265F /* Oauth */,
 				3E90D37E145C391F0054265F /* WBShare */,
 				3EA84F98144C698800985145 /* SVGeocoder */,
@@ -296,6 +312,7 @@
 				3E940A681405D8A700B43D5E /* Images */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */,
+				3E900F31145D897200710661 /* SearchConditionAirportController.xib */,
 				8D1107310486CEB800E47090 /* MyNav-Info.plist */,
 				3E98031314046A4200A3C5BE /* DisclosureDetail.xib */,
 				3E95E2A214068F1E004E250B /* CustomCell.xib */,
@@ -309,6 +326,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E900F3D145DAA5400710661 /* libz.1.2.5.dylib */,
+				3E900F3B145DAA4000710661 /* QuartzCore.framework */,
+				3E900F39145DAA3100710661 /* CoreTelephony.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -319,6 +339,15 @@
 				3EA84FCA144C69C300985145 /* AddressBook.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E900F35145DA94A00710661 /* umeng */ = {
+			isa = PBXGroup;
+			children = (
+				3E900F36145DA96500710661 /* libMobClickLibrary.a */,
+				3E900F37145DA96500710661 /* MobClick.h */,
+			);
+			name = umeng;
 			sourceTree = "<group>";
 		};
 		3E90D35F145C391F0054265F /* Oauth */ = {
@@ -539,6 +568,7 @@
 				3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */,
 				3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */,
 				3ECEB646145B9CCC00F49697 /* Default.png in Resources */,
+				3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +638,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
 				INFOPLIST_FILE = "MyNav-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = MyNav;
 			};
 			name = Debug;
@@ -621,6 +659,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
 				INFOPLIST_FILE = "MyNav-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = MyNav;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -651,6 +697,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyNav_Prefix.pch;
 				INFOPLIST_FILE = "MyNav-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = MyNav;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3BA1F9C1-7931-451C-80F2-8B0F1AE4BBF6";
 				VALIDATE_PRODUCT = YES;

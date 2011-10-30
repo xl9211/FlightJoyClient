@@ -13,6 +13,10 @@
 @synthesize window;
 @synthesize navController;
 
+- (NSString *)appKey {
+    return @"4ead70725270150996000001";
+}
+
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -31,7 +35,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
+	[MobClick setDelegate:self];
+    [MobClick appLaunched];
+    
     //Change the host name here to change the server your monitoring
 	hostReach = [[Reachability reachabilityWithHostName: @"specialbrian.gicp.net"] retain];
 	[self updateInterfaceWithReachability];
@@ -82,6 +88,7 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+    [MobClick appTerminated];
 }
 
 
@@ -97,6 +104,7 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+    [MobClick appLaunched];
 }
 
 
@@ -112,6 +120,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+    [MobClick appTerminated];
 }
 
 

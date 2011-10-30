@@ -939,7 +939,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
 			int recordPointer = 0;
 			int recordId = sqlite3_column_int(statement, recordPointer++);
-			NSLog(@"id:%d",recordId);
+			NSLog(@"recordId:%d",recordId);
 
 			//读取char
 			char *companyChar = (char *)sqlite3_column_text(statement, recordPointer++);
@@ -1036,7 +1036,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 			DisclosureButtonController *disclosureButtonController = 
             [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
 			
-			NSLog(@"2...");
+			//NSLog(@"2...");
 			
 			disclosureButtonController.list = takeoffArrivalAirportArray;
 			disclosureButtonController.cityList = takeoffArrivalCityArray;
@@ -1047,7 +1047,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 			titleText = [titleText stringByAppendingString:[flightInfo objectForKey:@"arrival_city"]];
 			disclosureButtonController.title = titleText;			
 			//disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
-			NSLog(@"3...");
+			//NSLog(@"3...");
 			
 			[controllerArray addObject:disclosureButtonController];
 			[disclosureButtonController release];

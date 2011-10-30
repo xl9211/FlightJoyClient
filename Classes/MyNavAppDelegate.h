@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 #import "WBShareKit.h"
+#import "MobClick.h"
 
 @class Reachability;
 
-@interface MyNavAppDelegate : NSObject <UIApplicationDelegate> {
+@interface MyNavAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate> {
     UIWindow *window;
 	UINavigationController *navController;
 	Reachability  *hostReach;
