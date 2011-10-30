@@ -10,6 +10,7 @@
 #import "SearchConditionController.h"
 #import "MyNavAppDelegate.h"
 #import "/usr/include/sqlite3.h"
+#import "WBShareKit.h"
 
 #define kFilename		@"flights.sqlite3"
 #define kTableViewRowHeight 66;
@@ -19,6 +20,7 @@
 	NSArray *controllers;
 	NSMutableData *responseData;
 	NSMutableArray  *flightArray;
+    NSArray  *requestRecordIdArray;
 	SearchConditionController *searchConditionController; // the camera custom overlay view
 	UINavigationController *searchNavController; //test
 	sqlite3	*database;
@@ -31,6 +33,7 @@
 }
 @property (nonatomic, retain) NSArray *controllers;
 @property (nonatomic,retain) NSMutableArray  *flightArray;
+@property (nonatomic,retain) NSArray  *requestRecordIdArray;
 @property (nonatomic, retain) SearchConditionController *searchConditionController;
 @property (nonatomic, retain) UINavigationController *searchNavController;
 @property (nonatomic,retain) NSArray *deleteToolbarItems;

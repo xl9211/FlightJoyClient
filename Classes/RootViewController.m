@@ -15,6 +15,7 @@
 
 @implementation RootViewController
 @synthesize controllers;
+@synthesize requestRecordIdArray;
 @synthesize flightArray;
 @synthesize searchConditionController;
 @synthesize searchNavController;
@@ -360,10 +361,10 @@
 	//NSLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
 	NSLog(@"...printFlightInfo");
 }
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSLog(@"connectionDidFinishLoading...");
 	
-	NSMutableArray *array = [[NSMutableArray alloc] init];
 	//设置编辑模式
 	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
 								   initWithTitle:@"编辑" 
@@ -388,6 +389,9 @@
 	} else {	
 		//1.使用“服务器数据”更新“数据库数据”
 		for (int i = 0; i < [luckyNumbers count]; i++) {
+            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
+            NSLog(@"recordId: %@", recordId);
+            
 			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
 			[self printFlightInfo:flightInfo];
 			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
@@ -396,32 +400,29 @@
 			}
 			sqlite3_stmt *stmtUpdate= nil; 
 			
-			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE schedule_takeoff_date = ? AND flight_no = ? AND takeoff_city = ? AND arrival_city = ?;"; 
+			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?;"; 
 			
 			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
 				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
 			}
 			
-			int counter = 1;
+			int fieldcounter = 0;
 			//update fields:
 			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
 			//schedule_arrival_time estimate_arrival_time actual_arrival_time
 			
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
 			//query fields:
-			//schedule_takeoff_date flight_no 
-			//takeoff_city arrival_city
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"schedule_takeoff_date"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"flight_no"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"takeoff_city"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, counter++, [[flightInfo objectForKey:@"arrival_city"] UTF8String], -1, SQLITE_TRANSIENT); 
+			//id
+            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
+			//sqlite3_bind_text(stmtUpdate, fieldcounter++, [recordId UTF8String], -1, SQLITE_TRANSIENT);
 			
 			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
 				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
@@ -512,77 +513,11 @@
 		NSAssert1(0, @"Error creating table: %s", errorMsg);
 	}
 }
-//向已死航班表中添加数据
-/*
-- (void)insertFollowedFlightIntoTable:(NSMutableDictionary *)flightInfo {
-	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	NSString *insertSQL = @"INSERT OR REPLACE INTO followedflights (";
-	insertSQL = [insertSQL stringByAppendingString:@" takeoff_airport_entrance_exit,"];
-	insertSQL = [insertSQL stringByAppendingString:@" takeoff_city,"];
-	insertSQL = [insertSQL stringByAppendingString:@" actual_takeoff_time,"];
-	insertSQL = [insertSQL stringByAppendingString:@" arrival_airport_entrance_exit,"];
-	insertSQL = [insertSQL stringByAppendingString:@" takeoff_airport,"];
-	
-	insertSQL = [insertSQL stringByAppendingString:@" arrival_airport,"];
-	insertSQL = [insertSQL stringByAppendingString:@" flight_no,"];
-	insertSQL = [insertSQL stringByAppendingString:@" company,"];
-	insertSQL = [insertSQL stringByAppendingString:@" schedule_takeoff_time,"];
-	insertSQL = [insertSQL stringByAppendingString:@" arrival_airport_building,"];
-	
-	insertSQL = [insertSQL stringByAppendingString:@" estimate_takeoff_time,"];
-	insertSQL = [insertSQL stringByAppendingString:@" flight_state,"];
-	insertSQL = [insertSQL stringByAppendingString:@" actual_arrival_time,"];
-	insertSQL = [insertSQL stringByAppendingString:@" plane_model,"];
-	insertSQL = [insertSQL stringByAppendingString:@" estimate_arrival_time,"];
-	
-	insertSQL = [insertSQL stringByAppendingString:@" schedule_arrival_time,"];
-	insertSQL = [insertSQL stringByAppendingString:@" takeoff_airport_building,"];
-	insertSQL = [insertSQL stringByAppendingString:@" arrival_city,"];
-	insertSQL = [insertSQL stringByAppendingString:@" schedule_takeoff_date"];
-	insertSQL = [insertSQL stringByAppendingString:@") VALUES ('%@','%@','%@','%@','%@', '%@','%@','%@','%@','%@', '%@','%@','%@','%@','%@', '%@','%@','%@','%@');"];
 
-	NSString *update = [[NSString alloc] initWithFormat:
-						insertSQL,
-						[flightInfo objectForKey:@"takeoff_airport_entrance_exit"], 
-						[flightInfo objectForKey:@"takeoff_city"],
-						[flightInfo objectForKey:@"actual_takeoff_time"],
-						[flightInfo objectForKey:@"arrival_airport_entrance_exit"], 
-						[flightInfo objectForKey:@"takeoff_airport"],
-						
-						[flightInfo objectForKey:@"arrival_airport"], 
-						[flightInfo objectForKey:@"flight_no"],
-						[flightInfo objectForKey:@"company"],
-						[flightInfo objectForKey:@"schedule_takeoff_time"], 
-						[flightInfo objectForKey:@"arrival_airport_building"],
-						
-						[flightInfo objectForKey:@"estimate_takeoff_time"], 
-						[flightInfo objectForKey:@"flight_state"],
-						[flightInfo objectForKey:@"actual_arrival_time"],
-						[flightInfo objectForKey:@"plane_model"], 
-						[flightInfo objectForKey:@"estimate_arrival_time"],
-						
-						[flightInfo objectForKey:@"schedule_arrival_time"], 
-						[flightInfo objectForKey:@"takeoff_airport_building"],
-						[flightInfo objectForKey:@"arrival_city"],
-						[flightInfo objectForKey:@"schedule_takeoff_date"]
-						];
-	NSLog(update);
-	char * errorMsg;
-	
-	if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
-	{
-		NSAssert1(0, @"Error updating tables: %s", errorMsg);
-		sqlite3_close(database);
-	}
-}
-*/
 - (void)loadFlightInfoFromServer {
 	//先读取缓存数据库
 	//...
+    NSMutableArray *array = [[NSMutableArray alloc] init];
 	[self startUpdateProcess];
 	
 	NSString *query_string_value = [[NSString alloc] initWithString:@"["];
@@ -592,31 +527,38 @@
 		NSAssert(0, @"Failed to open database");
 	}
 		
-	NSString *query = @"SELECT flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights where (flight_state != '已经到达' and flight_state != '已经取消') ORDER BY ID";
+	NSString *query = @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights where (flight_state != '已经到达' and flight_state != '已经取消') ORDER BY ID";
 	int recordCount = 0;
 	sqlite3_stmt *statement;
+    
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
 			recordCount ++;
-			char *flightNoDataChar = (char *)sqlite3_column_text(statement, 0);
-			char *scheduleTakeoffDateDataChar = (char *)sqlite3_column_text(statement, 1);
-			char *takeoffCityDataChar = (char *)sqlite3_column_text(statement, 2);
-			char *arrivalCityDataChar = (char *)sqlite3_column_text(statement, 3);
+            int fieldCounter = 0;
+            int recordId = sqlite3_column_int(statement, fieldCounter++);
+			char *flightNoDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+			char *scheduleTakeoffDateDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+			char *takeoffCityDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+			char *arrivalCityDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
 			
-			NSString *flightNoStr = [[NSString alloc] initWithUTF8String:flightNoDataChar];
+            NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d",recordId];
+            NSString *flightNoStr = [[NSString alloc] initWithUTF8String:flightNoDataChar];
 			NSString *scheduleTakeoffDateStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffDateDataChar];
 			NSString *takeoffCityStr = [[NSString alloc] initWithUTF8String:takeoffCityDataChar];
 			NSString *arrivalCityStr = [[NSString alloc] initWithUTF8String:arrivalCityDataChar];
-			NSLog(@"(flightNoStr:%@,scheduleTakeoffDateStr:%@)",flightNoStr,scheduleTakeoffDateStr);
 			query_string_value = [query_string_value stringByAppendingFormat:
 								  @"{\"flight_no\":\"%@\",\"schedule_takeoff_date\":\"%@\", \"takeoff_city\":\"%@\",\"arrival_city\":\"%@\"},",
 								  flightNoStr, scheduleTakeoffDateStr, takeoffCityStr, arrivalCityStr];
+            [array addObject:recordIdStr];
+            [recordIdStr release];
 			[flightNoStr release];
 			[scheduleTakeoffDateStr release];
 			[takeoffCityStr release];
 			[arrivalCityStr release];
 		}
 	}
+    self.requestRecordIdArray = array;
+    
 	if (recordCount > 0) {
 		query_string_value = [query_string_value substringToIndex:[query_string_value length]-1];
 	} else {
@@ -671,8 +613,11 @@
 																target:self
 																action:@selector(refreshAction)];
 	
-	UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] 
-									  initWithCustomView:[UIButton buttonWithType:UIButtonTypeInfoLight]];
+    UIBarButtonItem *settingImageButton = 
+    [[UIBarButtonItem alloc] initWithTitle:@"微博分享"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(StartSinaPhotoWeibo)];
 
 	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	[updateProgressInd setHidesWhenStopped:YES];
@@ -683,7 +628,7 @@
 	
 	self.refreshToolbarItems = [[NSArray alloc] initWithObjects: refreshButton, 
 								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-								flexibleSpace, settingButton, nil]; 
+								flexibleSpace, settingImageButton, nil]; 
 }
 /*
  * 开始更新航班信息的过程
@@ -1149,5 +1094,70 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// so both objects should be released to prevent over-retention.
 	[navigationController release];
 	[searchConditionController release];
+}
+
+#pragma mark -
+#pragma mark Weibo share
+- (void)StartSina {
+    NSLog(@"StartSina");
+    [[WBShareKit mainShare] setDelegate:self];
+    [[WBShareKit mainShare] startSinaOauthWithSelector:@selector(sinaSuccess:) withFailedSelector:@selector(sinaError:)];
+}
+
+- (void)StartSendSinaWeibo {
+    NSDate *curDate = [NSDate date];
+    int timestamp = [curDate timeIntervalSince1970];
+    NSString *weiboText = [[NSString alloc]initWithFormat:@"WBShareKit test %d",timestamp];
+    [[WBShareKit mainShare] sendSinaRecordWithStatus:weiboText lat:0 lng:0 delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
+}
+
+- (void)StartSinaPhotoWeibo {
+    NSDate *curDate = [NSDate date];
+    int timestamp = [curDate timeIntervalSince1970];
+    NSString *weiboText = [[NSString alloc]initWithFormat:@"发送图文微博测试 %d",timestamp];
+    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"]);
+    [[WBShareKit mainShare] sendSinaPhotoWithStatus:weiboText lat:0 lng:0 path:[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"] delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
+}
+
+#pragma mark sina delegate
+- (void)sinaSuccess:(NSData *)_data
+{
+    NSLog(@"sina ok:%@",_data);
+}
+
+- (void)sinaError:(NSError *)_error
+{
+    NSLog(@"sina error:%@",_error);
+}
+
+- (void)sendRecordTicket:(OAServiceTicket *)ticket finishedWithData:(NSMutableData *)data
+{
+    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"发送新浪微博成功" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [al show];
+    [al release];
+    
+    
+    NSError *error;
+	SBJSON *json = [[SBJSON new] autorelease];
+	NSMutableDictionary *responseObject = [json objectWithString:string error:&error];
+ 
+	if (responseObject != nil) {
+		NSString *errorCodeStr = [responseObject objectForKey:@"error_code"];
+        NSString *errorStr = [responseObject objectForKey:@"error"];
+        if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"400"]) {
+            if (errorStr != nil && [errorStr rangeOfString:@"40072"].length > 0) {
+                [self StartSina];
+            }
+        }
+	} else {	
+        NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+    }
+    
+}
+- (void)sendRecordTicket:(OAServiceTicket *)ticket failedWithError:(NSError *)error
+{
+    
 }
 @end
