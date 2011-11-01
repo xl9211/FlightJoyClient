@@ -24,6 +24,11 @@
 @synthesize mapView;
 @synthesize cityLocationList;
 
+//detail statebar
+@synthesize stateLabelLeft;
+@synthesize stateLabelCenter;
+@synthesize stateLabelRight;
+
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -228,6 +233,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	NSLog(@"DisclosureButtonController.viewWillAppear...");
+    //更新航班实时状态信息
+    self.stateLabelLeft.text = [self.flightInfo objectForKey:@"flight_no"];
+    NSString *flightState = [self.flightInfo objectForKey:@"flight_state"];
+    self.stateLabelRight.text = flightState;
+    
+    if (flightState != nil && [flightState isEqualToString:@"已经起飞"]) {
+        NSString *currentLocation = [self.flightInfo objectForKey:@"flight_location"];
+        if (currentLocation != nil && ![currentLocation isEqualToString:@""]) 
+            self.stateLabelCenter.text = currentLocation;
+        else
+            self.stateLabelCenter.text = @"";
+        //字幕轮换
+    }
+    
 	//copy the root view status
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];

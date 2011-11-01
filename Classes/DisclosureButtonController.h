@@ -32,6 +32,11 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
     IBOutlet MKMapView *mapView; 
 	NSMutableArray *cityLocationList;
     int m_selectedSegmentIndex;
+    
+    //detail statebar
+    IBOutlet UILabel *stateLabelLeft;
+    IBOutlet UILabel *stateLabelCenter;
+    IBOutlet UILabel *stateLabelRight;
 }
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *cityList;
@@ -42,6 +47,11 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
 //mapview
 @property(nonatomic, retain) IBOutlet MKMapView *mapView; 
 @property (nonatomic, retain) NSMutableArray *cityLocationList;
+
+//detail statebar
+@property (nonatomic, retain) UILabel *stateLabelLeft;
+@property (nonatomic, retain) UILabel *stateLabelCenter;
+@property (nonatomic, retain) UILabel *stateLabelRight;
 
 - (IBAction)segmentControlDidChanged:(id)sender;
 
