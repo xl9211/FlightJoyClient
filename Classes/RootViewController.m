@@ -531,6 +531,12 @@
 	//...
     NSMutableArray *array = [[NSMutableArray alloc] init];
 	[self startUpdateProcess];
+    
+    NSDate *curDate = [NSDate date];//获取当前日期
+	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
+	NSString *curDateString = [dateFormatter stringFromDate:curDate];
+    [dateFormatter release];
 	
 	NSString *query_string_value = [[NSString alloc] initWithString:@"["];
 	
@@ -539,7 +545,9 @@
 		NSAssert(0, @"Failed to open database");
 	}
 		
-	NSString *query = @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights where (flight_state != '已经到达' and flight_state != '已经取消') ORDER BY ID";
+	NSString *query = [NSString stringWithFormat:
+                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date = '%@') ORDER BY ID",
+                       curDateString];
 	int recordCount = 0;
 	sqlite3_stmt *statement;
     
@@ -655,7 +663,6 @@
  * 开始更新航班信息的过程
  */
 - (void) startUpdateProcess {
-	NSLog(@"startUpdateProcess...");
 	DisclosureButtonController *controller = (DisclosureButtonController *)currentNextController;
 	[controller startUpdateProcess];
 	
