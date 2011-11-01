@@ -449,6 +449,18 @@
 	[dateFormatter release];
 	return shortDateString;
 }
+- (NSString *)getStandardDateStringFromShort:(NSString *)shortDateString {
+	if (shortDateString == nil || [shortDateString isEqual:@""]) {
+		return @"";
+	}
+	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yy-M-d"];
+	NSDate *date=[dateFormatter dateFromString:shortDateString];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+	NSString *standardDateString = [dateFormatter stringFromDate:date];
+	[dateFormatter release];
+	return standardDateString;
+}
 - (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
 	if (standardTimeString == nil || [standardTimeString isEqual:@""]) {
 		return @"";
@@ -841,18 +853,21 @@
     NSString *scheduleTakeoffDate = [one objectForKey:@"schedule_takeoff_date"];
     NSDate *curDate = [NSDate date];//获取当前日期
 	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"yy-MM-dd"];//这里去掉 具体时间 保留日期
-	NSString *curDateString = [dateFormatter stringFromDate:curDate];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
+	NSString *curDateString = [self getShortDateStringFromStandard:[dateFormatter stringFromDate:curDate]];
+    
+    NSLog(@"curDateString: %@, scheduleTakeoffDate: %@", curDateString, scheduleTakeoffDate);
     if ([curDateString isEqualToString:scheduleTakeoffDate]) {
         cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
     } else {
-        cell.takeoffDateLabel.text = [[NSString alloc] initWithFormat:@"20%@", scheduleTakeoffDate];
+        cell.takeoffDateLabel.text = [self getStandardDateStringFromShort:scheduleTakeoffDate];
     }
     cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
 	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
 	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
+    [dateFormatter release];
 	NSLog(@"...cellForRowAtIndexPath");
 	return cell;
 }
