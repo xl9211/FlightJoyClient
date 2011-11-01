@@ -391,24 +391,18 @@
 		for (int i = 0; i < [luckyNumbers count]; i++) {
             NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
             NSLog(@"recordId: %@", recordId);
-            NSLog(@"1...");
 			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
 			[self printFlightInfo:flightInfo];
 			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-                NSLog(@"sqlite3_open != SQLITE_OK");
-
 				sqlite3_close(database);
 				NSAssert(0, @"Failed to open database");
 			}
-            NSLog(@"2...");
 
 			sqlite3_stmt *stmtUpdate= nil; 
 			
 			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
 			
 			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
-                NSLog(@"sqlite3_prepare_v2");
-
 				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
 			}
 			
@@ -416,7 +410,6 @@
 			//update fields:
 			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
 			//schedule_arrival_time estimate_arrival_time actual_arrival_time
-            NSLog(@"3...");
 
 			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
 			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
@@ -429,24 +422,15 @@
 			//query fields:
 			//id
             sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
-			//sqlite3_bind_text(stmtUpdate, fieldcounter++, [recordId UTF8String], -1, SQLITE_TRANSIENT);
-            NSLog(@"4...");
 
 			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
 				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
-                NSLog(@"sqlite3_step(stmtUpdate) != SQLITE_DONE");
-            } else {
-                NSLog(@"sqlite3_step(stmtUpdate) == SQLITE_DONE");
             }
-            NSLog(@"5...");
 
 			sqlite3_reset(stmtUpdate); 
             sqlite3_close(database);
-            NSLog(@"6...");
-
 		}
-        NSLog(@"7...");
-
+        
 		//2.读取“数据库数据”，转化为“表格展示数据”并显示
 		[self loadFlightInfoFromTable];
 	}
