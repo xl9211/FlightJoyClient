@@ -252,8 +252,6 @@
  */
 - (IBAction)rotateStatebar
 {
-	NSLog(@"rotateStatebar");
-    NSLog(@"m_statebarIndex: %d", m_statebarIndex);
     NSString *flightState = [self.flightInfo objectForKey:@"flight_state"];
     NSString *flightNo = [self.flightInfo objectForKey:@"flight_no"];
     NSString *currentLocation = [self.flightInfo objectForKey:@"flight_location"];
@@ -294,7 +292,6 @@
                 NSString *doneStr = nil;
                 NSString *todoStr = nil;
                 if (todo >= 0) {
-                    NSLog(@"done minute: %d, todo minute: %d", done, todo);
                     //done
                     if (done % 60 == 0) {
                         doneStr = [[NSString alloc] initWithFormat:@"%d小时", done / 60];
