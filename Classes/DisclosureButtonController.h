@@ -37,6 +37,8 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
     IBOutlet UILabel *stateLabelLeft;
     IBOutlet UILabel *stateLabelCenter;
     IBOutlet UILabel *stateLabelRight;
+    IBOutlet UIProgressView *progressView;
+    int m_statebarIndex;
 }
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *cityList;
@@ -52,6 +54,7 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
 @property (nonatomic, retain) UILabel *stateLabelLeft;
 @property (nonatomic, retain) UILabel *stateLabelCenter;
 @property (nonatomic, retain) UILabel *stateLabelRight;
+@property (nonatomic, retain) UIProgressView *progressView;
 
 - (IBAction)segmentControlDidChanged:(id)sender;
 

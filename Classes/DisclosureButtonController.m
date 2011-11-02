@@ -28,6 +28,7 @@
 @synthesize stateLabelLeft;
 @synthesize stateLabelCenter;
 @synthesize stateLabelRight;
+@synthesize progressView;
 
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style
@@ -228,25 +229,131 @@
 	[mapView setScrollEnabled:YES];	
     [self switchToSegment:0];
     
+    m_statebarIndex = 0;
+    [self rotateStatebar];
+    NSTimer *timer;
+	timer = [NSTimer scheduledTimerWithTimeInterval: 3
+											 target: self
+										   selector: @selector(handleTimer:)
+										   userInfo: nil
+											repeats: YES];
+    
 	[super viewDidLoad];
+}
+- (void) handleTimer: (NSTimer *) timer
+{
+	[self rotateStatebar];
+}
+/*
+ 1。航班号、估算位置（已经起飞才显示）、飞行状态；
+ 2。已飞时间、剩余时间；（已经起飞才显示）
+ 3。已飞里程、剩余里程；（已经起飞才显示）
+ 4。飞行高度、飞行速度。（可选）
+ */
+- (IBAction)rotateStatebar
+{
+	NSLog(@"rotateStatebar");
+    NSLog(@"m_statebarIndex: %d", m_statebarIndex);
+    NSString *flightState = [self.flightInfo objectForKey:@"flight_state"];
+    NSString *flightNo = [self.flightInfo objectForKey:@"flight_no"];
+    NSString *currentLocation = [self.flightInfo objectForKey:@"flight_location"];
+    NSString *mileageStr = [flightInfo objectForKey:@"mileage"];
+    int mileage = [mileageStr intValue];
+    
+    NSString *scheduleTakeoffDateStandard = [self.flightInfo objectForKey:@"schedule_takeoff_date_standard"];
+    NSString *displayTakeoffTime = [self.flightInfo objectForKey:@"display_takeoff_time"];
+    NSString *displayArrivalTime = [self.flightInfo objectForKey:@"display_arrival_time"];
+    
+    //计算过程暂时忽略红眼航班
+    NSDate *curDate = [NSDate date];//获取当前日期
+    NSDateFormatter *dateTimeFormatter=[[NSDateFormatter alloc] init];
+    [dateTimeFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *displayTakeoffTimeD = [dateTimeFormatter dateFromString:
+                                   [scheduleTakeoffDateStandard stringByAppendingFormat:@" %@",displayTakeoffTime]];
+    NSDate *displayArrivalTimeD = [dateTimeFormatter dateFromString:
+                                   [scheduleTakeoffDateStandard stringByAppendingFormat:@" %@",displayArrivalTime]];
+    
+    int done = ([curDate timeIntervalSince1970]*1 - [displayTakeoffTimeD timeIntervalSince1970]*1)/60;
+    int todo = ([displayArrivalTimeD timeIntervalSince1970]*1 - [curDate timeIntervalSince1970]*1)/60;
+    
+    switch (m_statebarIndex) {
+        case 0:
+            self.stateLabelLeft.text = flightNo;
+            self.stateLabelRight.text = flightState;
+            self.progressView.hidden = YES;
+            
+            if (flightState != nil && [flightState isEqualToString:@"已经起飞"]) {
+                if (currentLocation != nil && ![currentLocation isEqualToString:@""]) 
+                    self.stateLabelCenter.text = currentLocation;
+                else
+                    self.stateLabelCenter.text = @"";
+            }
+            break;
+        case 1:
+            if (flightState != nil && [flightState isEqualToString:@"已经起飞"]) {
+                NSString *doneStr = nil;
+                NSString *todoStr = nil;
+                if (todo >= 0) {
+                    NSLog(@"done minute: %d, todo minute: %d", done, todo);
+                    //done
+                    if (done % 60 == 0) {
+                        doneStr = [[NSString alloc] initWithFormat:@"%d小时", done / 60];
+                    } else {
+                        if (done / 60 == 0) {
+                            doneStr = [[NSString alloc] initWithFormat:@"%d分", done % 60];
+                        } else {
+                            doneStr = [[NSString alloc] initWithFormat:@"%d小时%d分", done / 60, done % 60];
+                        }
+                    }
+                    //todo
+                    if (todo % 60 == 0) {
+                        todoStr = [[NSString alloc] initWithFormat:@"%d小时", todo / 60];
+                    } else {
+                        if (todo / 60 == 0) {
+                            todoStr = [[NSString alloc] initWithFormat:@"%d分", todo % 60];
+                        } else {
+                            todoStr = [[NSString alloc] initWithFormat:@"%d小时%d分", todo / 60, todo % 60];
+                        }
+                    }
+                    
+                    self.stateLabelLeft.text = doneStr;
+                    self.stateLabelRight.text = todoStr;
+                    self.progressView.hidden = NO;
+                    self.progressView.progress = (float)done / (done + todo);
+                    [doneStr release];
+                    [todoStr release];
+                }
+            }
+            break;
+        case 2:
+            if (flightState != nil && [flightState isEqualToString:@"已经起飞"]) {
+                NSString *doneMileageStr = nil;
+                NSString *todoMileageStr = nil;
+                if (todo >= 0) {
+                    //done
+                    doneMileageStr = [[NSString alloc] initWithFormat:@"%d公里", done * mileage / (done + todo)];
+                    //todo
+                    todoMileageStr = [[NSString alloc] initWithFormat:@"%d公里", todo * mileage / (done + todo)];
+
+                    self.stateLabelLeft.text = doneMileageStr;
+                    self.stateLabelRight.text = todoMileageStr;
+                    self.progressView.hidden = NO;
+                    self.progressView.progress = (float)done / (done + todo);
+                    [doneMileageStr release];
+                    [todoMileageStr release];
+                }
+                
+            }
+            break;
+        default:
+            break;
+    }
+    m_statebarIndex = (m_statebarIndex + 1) %3;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	NSLog(@"DisclosureButtonController.viewWillAppear...");
-    //更新航班实时状态信息
-    self.stateLabelLeft.text = [self.flightInfo objectForKey:@"flight_no"];
-    NSString *flightState = [self.flightInfo objectForKey:@"flight_state"];
-    self.stateLabelRight.text = flightState;
-    
-    if (flightState != nil && [flightState isEqualToString:@"已经起飞"]) {
-        NSString *currentLocation = [self.flightInfo objectForKey:@"flight_location"];
-        if (currentLocation != nil && ![currentLocation isEqualToString:@""]) 
-            self.stateLabelCenter.text = currentLocation;
-        else
-            self.stateLabelCenter.text = @"";
-        //字幕轮换
-    }
-    
+        
 	//copy the root view status
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];

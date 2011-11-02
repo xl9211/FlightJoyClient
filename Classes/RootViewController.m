@@ -165,7 +165,7 @@
 	
 	NSString *scheduleArrivalTime = [flightInfo objectForKey:@"schedule_arrival_time"];
 	NSString *actualArrivalTime = [flightInfo objectForKey:@"actual_arrival_time"];
-	NSString *estimateArrivalTime = [flightInfo objectForKey:@"estimate_arrival_time"];			
+	NSString *estimateArrivalTime = [flightInfo objectForKey:@"estimate_arrival_time"];	
 	
 	NSDateFormatter *timeFormatter=[[NSDateFormatter alloc] init];
 	[timeFormatter setDateFormat:@"HH:mm"];
@@ -1052,7 +1052,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 			[flightInfo setObject:estimateArrivalTimeStr forKey:@"estimate_arrival_time"];
 			[flightInfo setObject:actualArrivalTimeStr forKey:@"actual_arrival_time"];
 			
-			//转化为表格显示数据
+			//转化为表格显示数据，其实就是计算如下信息:
+            /*
+             takeoff_delay_advance_time
+             arrival_delay_advance_time
+             schedule_takeoff_date_standard
+             schedule_takeoff_date
+             schedule_arrival_date
+             schedule_takeoff_time
+             display_takeoff_time
+             schedule_arrival_time
+             display_arrival_time
+             */
 			[self convertToDisplayFlightInfo:flightInfo];
 			
 			[self.flightArray addObject:flightInfo];
