@@ -450,6 +450,7 @@
 	[dateFormatter release];
 	return shortDateString;
 }
+/*
 - (NSString *)getStandardDateStringFromShort:(NSString *)shortDateString {
 	if (shortDateString == nil || [shortDateString isEqual:@""]) {
 		return @"";
@@ -461,7 +462,7 @@
 	NSString *standardDateString = [dateFormatter stringFromDate:date];
 	[dateFormatter release];
 	return standardDateString;
-}
+}*/
 - (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
 	if (standardTimeString == nil || [standardTimeString isEqual:@""]) {
 		return @"";
@@ -828,6 +829,24 @@
 	[dateFormatter release];
 }
 
+//得到周几信息
+- (int) getWeekday:(NSString *)scheduleTakeoffDateStr {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yy-M-d"];
+    NSDate *scheduleTakeoffDate = [dateFormatter dateFromString:scheduleTakeoffDateStr];
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    comps = [calendar components:unitFlags fromDate:scheduleTakeoffDate];
+    int retval = [comps weekday];
+    
+    [calendar release];
+    [dateFormatter release];    
+    return retval;
+}
+
 #pragma mark -
 #pragma mark Table Data Source Methods
 
@@ -868,7 +887,35 @@
     if ([curDateString isEqualToString:scheduleTakeoffDate]) {
         cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
     } else {
-        cell.takeoffDateLabel.text = [self getStandardDateStringFromShort:scheduleTakeoffDate];
+        int weekday = [self getWeekday:scheduleTakeoffDate];
+        NSString *weekdayStr = nil;
+        switch (weekday) {
+            case 1:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周日 %@",scheduleTakeoffDate];
+                break;
+            case 2:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周一 %@",scheduleTakeoffDate];
+                break;
+            case 3:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周二 %@",scheduleTakeoffDate];
+                break;
+            case 4:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周三 %@",scheduleTakeoffDate];
+                break;
+            case 5:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周四 %@",scheduleTakeoffDate];
+                break;
+            case 6:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周五 %@",scheduleTakeoffDate];
+                break;
+            case 7:
+                weekdayStr = [[NSString alloc] initWithFormat:@"周六 %@",scheduleTakeoffDate];
+                break;
+            default:
+                break;
+        }
+        cell.takeoffDateLabel.text = weekdayStr;
+        [weekdayStr release];
     }
     cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
 	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
