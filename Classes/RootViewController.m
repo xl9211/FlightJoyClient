@@ -547,7 +547,7 @@
 	}
 		
 	NSString *query = [NSString stringWithFormat:
-                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date = '%@') ORDER BY ID",
+                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
                        curDateString];
 	int recordCount = 0;
 	sqlite3_stmt *statement;
