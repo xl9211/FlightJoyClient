@@ -1012,7 +1012,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 		NSAssert(0, @"Failed to open database");
 	}
 	
-	NSString *query = @"SELECT * FROM followedflights ORDER BY ID";
+	NSString *query = @"SELECT * FROM followedflights ORDER BY schedule_takeoff_date DESC, schedule_takeoff_time DESC";
 	sqlite3_stmt *statement;
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
