@@ -11,7 +11,6 @@
 #import "RootViewController.h"
 #import "SearchResultController.h"
 #import "JSON/JSON.h"
-#import "SecondLevelViewController.h"
 #import "CustomCell.h"
 
 @implementation SearchResultController
@@ -367,7 +366,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary* one = [flightArray objectAtIndex:indexPath.row];
 	
 	NSUInteger row = [indexPath row];
-	//SecondLevelViewController *controller = [controllers objectAtIndex:row];
 	NSString *nameLabelText = [NSString stringWithFormat:@"%@",[one objectForKey:@"takeoff_city"]];
 	nameLabelText = [nameLabelText stringByAppendingString:@" 飞往 "];
 	nameLabelText = [nameLabelText stringByAppendingString:[one objectForKey:@"arrival_city"]];

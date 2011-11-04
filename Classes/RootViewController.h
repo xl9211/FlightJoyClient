@@ -29,7 +29,7 @@
 	NSArray *refreshToolbarItems;
 	
 	UIActivityIndicatorView *updateProgressInd;
-	SecondLevelViewController *currentNextController;
+	UITableViewController *currentNextController;
 	NSString *statusLabelText;
 }
 @property (nonatomic, retain) NSArray *controllers;
@@ -41,7 +41,7 @@
 @property (nonatomic,retain) NSArray *refreshToolbarItems;
 
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
-@property (nonatomic,retain) SecondLevelViewController *currentNextController;
+@property (nonatomic,retain) UITableViewController *currentNextController;
 @property (nonatomic,retain) NSString *statusLabelText;
 
 -(IBAction)toggleEdit:(id)sender;

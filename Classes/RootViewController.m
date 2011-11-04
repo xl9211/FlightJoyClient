@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "SecondLevelViewController.h"
 #import "MyNavAppDelegate.h"
 #import "DisclosureButtonController.h"
 #import "CustomCell.h"
@@ -620,13 +619,7 @@
     
 	if (recordCount > 0) {
 		query_string_value = [query_string_value substringToIndex:[query_string_value length]-1];
-	} else {
-		//没有未死航班，则无需请求服务器了
-		NSLog(@"均为已死航班，无需更新数据");
-		[self stopUpdateProcess];
-		return;
-	}
-    
+	}    
 	query_string_value = [query_string_value stringByAppendingString:@"]"];
     return query_string_value;
 }
@@ -679,10 +672,7 @@
 				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
 			}
 			
-			int fieldcounter = 1;//weird counter start
-			//update fields:
-			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
-			//schedule_arrival_time estimate_arrival_time actual_arrival_time
+			int fieldcounter = 1;
             
 			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
 			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
@@ -830,9 +820,7 @@
                                                        [flightInfo objectForKey:@"arrival_city"], nil];
 			DisclosureButtonController *disclosureButtonController = 
             [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
-			
-			//NSLog(@"2...");
-			
+						
 			disclosureButtonController.list = takeoffArrivalAirportArray;
 			disclosureButtonController.cityList = takeoffArrivalCityArray;
             
@@ -841,8 +829,6 @@
 			titleText = [titleText stringByAppendingString:@" 飞往 "];
 			titleText = [titleText stringByAppendingString:[flightInfo objectForKey:@"arrival_city"]];
 			disclosureButtonController.title = titleText;			
-			//disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
-			//NSLog(@"3...");
 			
 			[controllerArray addObject:disclosureButtonController];
 			[disclosureButtonController release];
@@ -946,9 +932,6 @@
 	[dateFormatter release];
 }
 
-
-
-
 - (IBAction)updateDateTime
 {
 	/*
@@ -983,7 +966,6 @@
 	static NSString *CustomCellIdentifier = @"CustomCellIdentifier";
 	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
 	if (cell == nil) {
-		//cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:RootViewControllerCell] autorelease];
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
 		cell = [nib objectAtIndex:0];
 	}
@@ -996,7 +978,7 @@
 	NSDictionary* one = [flightArray objectAtIndex:indexPath.row];
 	
 	NSUInteger row = [indexPath row];
-	SecondLevelViewController *controller = [controllers objectAtIndex:row];
+	UITableViewController *controller = [controllers objectAtIndex:row];
 	NSString *nameLabelText = [NSString stringWithFormat:@"%@",[one objectForKey:@"takeoff_city"]];
 	nameLabelText = [nameLabelText stringByAppendingString:@" 飞往 "];
 	nameLabelText = [nameLabelText stringByAppendingString:[one objectForKey:@"arrival_city"]];
@@ -1076,9 +1058,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *flightInfo = [self.flightArray objectAtIndex:row];
 	NSString *recordId = [flightInfo objectForKey:@"recordId"];
 	NSLog(@"recordId:%@", recordId);
-	
-	//flight_no, schedule_takeoff_date, takeoff_city, arrival_city
-	NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
+    NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
 	char * errorMsg;
 	
 	if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
@@ -1091,7 +1071,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
 
 	sqlite3_close(database);	
-	
 }
 
 
