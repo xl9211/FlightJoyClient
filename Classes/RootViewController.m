@@ -119,7 +119,7 @@
 - (void)viewDidLoad {
 	[self createFollowedFlightTable];
 	[self loadFlightInfoFromTable];
-	[self loadFlightInfoFromServer];
+	[self requestFlightInfoFromServer];
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
@@ -141,12 +141,6 @@
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
 
 - (void)viewDidUnload {
 	self.flightArray = nil;
@@ -155,6 +149,12 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
 
 - (void)dealloc {
 	[controllers release];
@@ -225,76 +225,14 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSLog(@"connectionDidFinishLoading...");
-	
-	//设置编辑模式
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
-								   initWithTitle:@"编辑" 
-								   style:UIBarButtonItemStyleBordered 
-								   target:self 
-								   action:@selector(toggleEdit:)];
-	self.navigationItem.leftBarButtonItem = editButton;
-	[editButton release];
 	[connection release];
     
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(responseString);
-	//[responseData release];
-	
-	NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
-	//[responseString release];	
-	
-	if (luckyNumbers == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
-	} else {	
-		//1.使用“服务器数据”更新“数据库数据”
-		for (int i = 0; i < [luckyNumbers count]; i++) {
-            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
-            NSLog(@"recordId: %@", recordId);
-			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
-			[self printFlightInfo:flightInfo];
-			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-				sqlite3_close(database);
-				NSAssert(0, @"Failed to open database");
-			}
-            
-			sqlite3_stmt *stmtUpdate= nil; 
-			
-			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
-			
-			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
-				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
-			}
-			
-			int fieldcounter = 1;//weird counter start
-			//update fields:
-			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
-			//schedule_arrival_time estimate_arrival_time actual_arrival_time
-            
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			//query fields:
-			//id
-            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
-            
-			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
-				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
-            }
-            
-			sqlite3_reset(stmtUpdate); 
-            sqlite3_close(database);
-		}
-        
-		//2.读取“数据库数据”，转化为“表格展示数据”并显示
-		[self loadFlightInfoFromTable];
-	}
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];    
+    //1.使用“服务器数据”更新“数据库数据”
+    [self updateTableWithServerResponse:responseString];
+    //2.读取“数据库数据”，转化为“表格展示数据”并显示
+    [self loadFlightInfoFromTable];
+    
 	[self stopUpdateProcess];
 }
 //HTTP Response - end
@@ -514,7 +452,7 @@
 }
 
 //得到周几信息
-- (int) getWeekday:(NSString *)scheduleTakeoffDateStr {
+- (NSString *) getWeekday:(NSString *)scheduleTakeoffDateStr {
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yy-M-d"];
@@ -524,11 +462,38 @@
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     comps = [calendar components:unitFlags fromDate:scheduleTakeoffDate];
-    int retval = [comps weekday];
+    int weekday = [comps weekday];
     
     [calendar release];
     [dateFormatter release];    
-    return retval;
+    
+    NSString *weekdayStr = nil;
+    switch (weekday) {
+        case 1:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周日 %@",scheduleTakeoffDateStr];
+            break;
+        case 2:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周一 %@",scheduleTakeoffDateStr];
+            break;
+        case 3:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周二 %@",scheduleTakeoffDateStr];
+            break;
+        case 4:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周三 %@",scheduleTakeoffDateStr];
+            break;
+        case 5:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周四 %@",scheduleTakeoffDateStr];
+            break;
+        case 6:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周五 %@",scheduleTakeoffDateStr];
+            break;
+        case 7:
+            weekdayStr = [[NSString alloc] initWithFormat:@"周六 %@",scheduleTakeoffDateStr];
+            break;
+        default:
+            break;
+    }
+    return weekdayStr;
 }
 
 -(void) refreshStatusLabelWithText : (NSString *)textParam{
@@ -603,12 +568,9 @@
 	}
 }
 
-- (void)loadFlightInfoFromServer {
-	//先读取缓存数据库
-	//...
+- (NSString *) generateQueryStringValue {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-	[self startUpdateProcess];
-    
+
     NSDate *curDate = [NSDate date];//获取当前日期
 	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
@@ -621,7 +583,7 @@
 		sqlite3_close(database);
 		NSAssert(0, @"Failed to open database");
 	}
-		
+    
 	NSString *query = [NSString stringWithFormat:
                        @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
                        curDateString];
@@ -664,19 +626,20 @@
 		[self stopUpdateProcess];
 		return;
 	}
-
+    
 	query_string_value = [query_string_value stringByAppendingString:@"]"];
-	
-	
-	//get json
+    return query_string_value;
+}
+
+- (void)requestFlightInfoFromServer {
+	[self startUpdateProcess];
+
+	//抽取方法
 	responseData = [[NSMutableData data] retain];
 	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
-	
-	NSString *post = nil;  
-	post = [[NSString alloc] initWithFormat:@"query_string=%@", query_string_value];
+    NSString *post = [[NSString alloc] initWithFormat:@"query_string=%@", [self generateQueryStringValue] ];
 	NSLog(post);
 
-	//NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];  
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
 	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
@@ -687,6 +650,60 @@
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
 	[request setHTTPBody:postData];  
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)updateTableWithServerResponse:(NSString *)responseString {
+    NSError *error;
+	SBJSON *json = [[SBJSON new] autorelease];
+	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
+	//[responseString release];	
+	
+	if (luckyNumbers == nil) {
+		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+	} else {	
+		for (int i = 0; i < [luckyNumbers count]; i++) {
+            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
+            NSLog(@"recordId: %@", recordId);
+			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
+			[self printFlightInfo:flightInfo];
+			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+				sqlite3_close(database);
+				NSAssert(0, @"Failed to open database");
+			}
+            
+			sqlite3_stmt *stmtUpdate= nil; 
+			
+			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
+			
+			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
+				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
+			}
+			
+			int fieldcounter = 1;//weird counter start
+			//update fields:
+			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
+			//schedule_arrival_time estimate_arrival_time actual_arrival_time
+            
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			//query fields:
+			//id
+            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
+            
+			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
+				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
+            }
+            
+			sqlite3_reset(stmtUpdate); 
+            sqlite3_close(database);
+		}
+	}
 }
 
 
@@ -881,6 +898,16 @@
  */
 - (void) stopUpdateProcess {
 	NSLog(@"stopUpdateProcess...");
+    
+    //设置编辑模式
+	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+								   initWithTitle:@"编辑" 
+								   style:UIBarButtonItemStyleBordered 
+								   target:self 
+								   action:@selector(toggleEdit:)];
+	self.navigationItem.leftBarButtonItem = editButton;
+	[editButton release];
+    
 	
 	DisclosureButtonController *currentController = (DisclosureButtonController *)currentNextController;
 	NSMutableDictionary *flightInfo = currentController.flightInfo;
@@ -973,7 +1000,6 @@
 	NSString *nameLabelText = [NSString stringWithFormat:@"%@",[one objectForKey:@"takeoff_city"]];
 	nameLabelText = [nameLabelText stringByAppendingString:@" 飞往 "];
 	nameLabelText = [nameLabelText stringByAppendingString:[one objectForKey:@"arrival_city"]];
-	//cell.nameLabel.text = controller.title;
 	cell.nameLabel.text = nameLabelText;
     
     //计划起飞日期是今天，则计划起飞日期字段显示航班状态
@@ -987,33 +1013,7 @@
     if ([curDateString isEqualToString:scheduleTakeoffDate]) {
         cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
     } else {
-        int weekday = [self getWeekday:scheduleTakeoffDate];
-        NSString *weekdayStr = nil;
-        switch (weekday) {
-            case 1:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周日 %@",scheduleTakeoffDate];
-                break;
-            case 2:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周一 %@",scheduleTakeoffDate];
-                break;
-            case 3:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周二 %@",scheduleTakeoffDate];
-                break;
-            case 4:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周三 %@",scheduleTakeoffDate];
-                break;
-            case 5:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周四 %@",scheduleTakeoffDate];
-                break;
-            case 6:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周五 %@",scheduleTakeoffDate];
-                break;
-            case 7:
-                weekdayStr = [[NSString alloc] initWithFormat:@"周六 %@",scheduleTakeoffDate];
-                break;
-            default:
-                break;
-        }
+        NSString *weekdayStr = [self getWeekday:scheduleTakeoffDate];
         cell.takeoffDateLabel.text = weekdayStr;
         [weekdayStr release];
     }
@@ -1167,7 +1167,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"refreshAction"); 
 	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
 	if (serverReachable) {
-		[self loadFlightInfoFromServer];	
+		[self requestFlightInfoFromServer];	
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"离线"
 														message:@"更新航班时出错，\n请检查您的网络连接"
@@ -1187,7 +1187,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"selfRefreshAction"); 
 	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
 	if (serverReachable) {
-		[self loadFlightInfoFromServer];	
+		[self requestFlightInfoFromServer];	
 	} else {
 		//更新工具栏状态
 		[updateProgressInd stopAnimating];
