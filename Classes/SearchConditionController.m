@@ -10,7 +10,8 @@
 #import "SearchConditionCompanyController.h"
 #import "SearchConditionDateController.h"
 #import "SearchConditionAirportController.h"
-#import "SearchResultController.h"
+//#import "SearchResultController.h"
+#import "QueryResultController.h"
 #import "CustomCell.h"
 #import "RootViewController.h"
 
@@ -136,15 +137,18 @@
 		return;
 	}
 	
+    /*
 	SearchResultController *searchResultController = 
-	[[SearchResultController alloc] initWithStyle:UITableViewStylePlain];
+	[[SearchResultController alloc] initWithStyle:UITableViewStylePlain];*/
+    QueryResultController *searchResultController = 
+	[[QueryResultController alloc] initWithStyle:UITableViewStylePlain];
 	
     if (m_selectedSegmentIndex == 0) {//按航班号查询
-        [searchResultController setQueryType:0];
+        //[searchResultController setQueryType:0];
     } else if (m_selectedSegmentIndex == 1) {//按航线查询
-        [searchResultController setQueryType:1];
+        //[searchResultController setQueryType:1];
     }
-	[searchResultController getSearchConditionController:self];
+	//[searchResultController getSearchConditionController:self];
 	[self.navigationController pushViewController:searchResultController animated:YES];
 }
 
@@ -421,11 +425,15 @@
     {
         // 随机查询
         NSLog(@"shake!");
+        /*
         SearchResultController *searchResultController = 
         [[SearchResultController alloc] initWithStyle:UITableViewStylePlain];
+        */
+        QueryResultController *searchResultController = 
+        [[QueryResultController alloc] initWithStyle:UITableViewStylePlain];
         
-        [searchResultController setQueryType:2];
-        [searchResultController getSearchConditionController:self];
+        //[searchResultController setQueryType:2];
+        //[searchResultController getSearchConditionController:self];
         [self.navigationController pushViewController:searchResultController animated:YES];    }
 }
 @end
