@@ -41,6 +41,13 @@
 - (void)loadView {
 }
 */
+#pragma mark -
+#pragma mark 模式切换相关方法
+-(IBAction)toggleEdit:(id)sender
+{
+	[self changeListMode];
+}
+
 - (void)changeListMode {
 	[self.navigationController setToolbarHidden:NO animated:NO];  
 	self.navigationController.toolbar.barStyle = UIBarStyleBlack;
@@ -57,10 +64,9 @@
 	
 	[self.tableView setEditing:!self.tableView.editing animated:YES];	
 }
--(IBAction)toggleEdit:(id)sender
-{
-	[self changeListMode];
-}
+
+#pragma mark -
+#pragma mark 删除相关方法
 - (void)deleteLandedFlights {
 	NSLog(@"deleteLandedFlights");
 }
@@ -99,6 +105,9 @@
 	//[self.controllers removeObjectAtIndex:row];
 	//[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
+
+#pragma mark -
+#pragma mark 生命周期相关方法
 /*
  // Override to allow orientations other than the default portrait orientation.
  - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -106,6 +115,31 @@
  return (interfaceOrientation == UIInterfaceOrientationPortrait);
  }
  */
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+	[self createFollowedFlightTable];
+	[self loadFlightInfoFromTable];
+	[self loadFlightInfoFromServer];
+	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+	[self.navigationController.navigationBar setTintColor:backgroundColor];
+	[self.navigationController.toolbar setTintColor:backgroundColor]; 
+    
+	[self loadToolbarItems];
+	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
+	
+    /*
+     NSTimer *timer;
+     timer = [NSTimer scheduledTimerWithTimeInterval: 1
+     target: self
+     selector: @selector(handleTimer:)
+     userInfo: nil
+     repeats: YES];
+     */
+	self.title = @"航班列表";
+	self.tableView.backgroundColor = [UIColor clearColor];
+	//[self.tableView setSeparatorColor:[UIColor clearColor]];
+    [super viewDidLoad];
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -131,7 +165,53 @@
     [super dealloc];
 }
 
-//HTTP Response - begin
+#pragma mark -
+#pragma mark 工具类方法
+- (void)umengFeedback {
+    [MobClick showFeedback:self];
+}
+
+- (NSString *)dataFilePath
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSLog(documentsDirectory);
+	return [documentsDirectory stringByAppendingPathComponent:kFilename];
+}
+- (void)printFlightInfo:(NSMutableDictionary *)flightInfo {
+	//flightInfo set
+	NSLog(@"printFlightInfo...");
+	NSLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
+	NSLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
+	NSLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
+	NSLog(@"\"flight_location\" : \"%@\"", [flightInfo objectForKey:@"flight_location"]);
+	NSLog(@"\"mileage\" : \"%@\"", [flightInfo objectForKey:@"mileage"]);
+	NSLog(@"\"plane_model\" : \"%@\"", [flightInfo objectForKey:@"plane_model"]);
+	NSLog(@"\"schedule_takeoff_date\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_date"]);
+	
+	NSLog(@"\"takeoff_city\" : \"%@\"", [flightInfo objectForKey:@"takeoff_city"]);
+	NSLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
+	NSLog(@"\"takeoff_airport_building\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_building"]);
+	NSLog(@"\"takeoff_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_entrance_exit"]);
+	NSLog(@"\"schedule_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_time"]);
+	NSLog(@"\"estimate_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_takeoff_time"]);
+	NSLog(@"\"actual_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"actual_takeoff_time"]);
+	//NSLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
+	
+	NSLog(@"\"arrival_city\" : \"%@\"", [flightInfo objectForKey:@"arrival_city"]);
+	NSLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
+	NSLog(@"\"arrival_airport_building\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_building"]);
+	NSLog(@"\"arrival_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_entrance_exit"]);
+	NSLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
+	NSLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
+	NSLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
+	//NSLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
+	NSLog(@"...printFlightInfo");
+}
+
+
+#pragma mark -
+#pragma mark 网络请求响应相关方法
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	[responseData setLength:0];
 }
@@ -143,7 +223,84 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	//label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
 }
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSLog(@"connectionDidFinishLoading...");
+	
+	//设置编辑模式
+	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+								   initWithTitle:@"编辑" 
+								   style:UIBarButtonItemStyleBordered 
+								   target:self 
+								   action:@selector(toggleEdit:)];
+	self.navigationItem.leftBarButtonItem = editButton;
+	[editButton release];
+	[connection release];
+    
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	NSLog(responseString);
+	//[responseData release];
+	
+	NSError *error;
+	SBJSON *json = [[SBJSON new] autorelease];
+	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
+	//[responseString release];	
+	
+	if (luckyNumbers == nil) {
+		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+	} else {	
+		//1.使用“服务器数据”更新“数据库数据”
+		for (int i = 0; i < [luckyNumbers count]; i++) {
+            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
+            NSLog(@"recordId: %@", recordId);
+			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
+			[self printFlightInfo:flightInfo];
+			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+				sqlite3_close(database);
+				NSAssert(0, @"Failed to open database");
+			}
+            
+			sqlite3_stmt *stmtUpdate= nil; 
+			
+			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
+			
+			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
+				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
+			}
+			
+			int fieldcounter = 1;//weird counter start
+			//update fields:
+			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
+			//schedule_arrival_time estimate_arrival_time actual_arrival_time
+            
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
+			//query fields:
+			//id
+            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
+            
+			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
+				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
+            }
+            
+			sqlite3_reset(stmtUpdate); 
+            sqlite3_close(database);
+		}
+        
+		//2.读取“数据库数据”，转化为“表格展示数据”并显示
+		[self loadFlightInfoFromTable];
+	}
+	[self stopUpdateProcess];
+}
+//HTTP Response - end
 
+#pragma mark -
+#pragma mark 业务相关的工具方法
 - (void)convertToDisplayFlightInfo:(NSMutableDictionary *)flightInfo {
 	NSDateFormatter *dateTimeFormatter=[[NSDateFormatter alloc] init];
 	[dateTimeFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
@@ -331,113 +488,6 @@
 				   forKey:@"display_arrival_time"];//需要从“标准格式”转换为“短格式”
 }
 
-- (void)printFlightInfo:(NSMutableDictionary *)flightInfo {
-	//flightInfo set
-	NSLog(@"printFlightInfo...");
-	NSLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
-	NSLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
-	NSLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
-	NSLog(@"\"flight_location\" : \"%@\"", [flightInfo objectForKey:@"flight_location"]);
-	NSLog(@"\"mileage\" : \"%@\"", [flightInfo objectForKey:@"mileage"]);
-	NSLog(@"\"plane_model\" : \"%@\"", [flightInfo objectForKey:@"plane_model"]);
-	NSLog(@"\"schedule_takeoff_date\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_date"]);
-	
-	NSLog(@"\"takeoff_city\" : \"%@\"", [flightInfo objectForKey:@"takeoff_city"]);
-	NSLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
-	NSLog(@"\"takeoff_airport_building\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_building"]);
-	NSLog(@"\"takeoff_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_entrance_exit"]);
-	NSLog(@"\"schedule_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_time"]);
-	NSLog(@"\"estimate_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_takeoff_time"]);
-	NSLog(@"\"actual_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"actual_takeoff_time"]);
-	//NSLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
-	
-	NSLog(@"\"arrival_city\" : \"%@\"", [flightInfo objectForKey:@"arrival_city"]);
-	NSLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
-	NSLog(@"\"arrival_airport_building\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_building"]);
-	NSLog(@"\"arrival_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_entrance_exit"]);
-	NSLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
-	NSLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
-	NSLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
-	//NSLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
-	NSLog(@"...printFlightInfo");
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"connectionDidFinishLoading...");
-	
-	//设置编辑模式
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
-								   initWithTitle:@"编辑" 
-								   style:UIBarButtonItemStyleBordered 
-								   target:self 
-								   action:@selector(toggleEdit:)];
-	self.navigationItem.leftBarButtonItem = editButton;
-	[editButton release];
-	[connection release];
-		
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(responseString);
-	//[responseData release];
-	
-	NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
-	//[responseString release];	
-	
-	if (luckyNumbers == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
-	} else {	
-		//1.使用“服务器数据”更新“数据库数据”
-		for (int i = 0; i < [luckyNumbers count]; i++) {
-            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
-            NSLog(@"recordId: %@", recordId);
-			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
-			[self printFlightInfo:flightInfo];
-			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-				sqlite3_close(database);
-				NSAssert(0, @"Failed to open database");
-			}
-
-			sqlite3_stmt *stmtUpdate= nil; 
-			
-			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
-			
-			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
-				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
-			}
-			
-			int fieldcounter = 1;//weird counter start
-			//update fields:
-			//schedule_takeoff_time estimate_takeoff_time actual_takeoff_time
-			//schedule_arrival_time estimate_arrival_time actual_arrival_time
-
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			//query fields:
-			//id
-            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
-
-			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
-				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
-            }
-
-			sqlite3_reset(stmtUpdate); 
-            sqlite3_close(database);
-		}
-        
-		//2.读取“数据库数据”，转化为“表格展示数据”并显示
-		[self loadFlightInfoFromTable];
-	}
-	[self stopUpdateProcess];
-}
-//HTTP Response - end
-
 - (NSString *)getShortDateStringFromStandard:(NSString *)standardDateString {
 	if (standardDateString == nil || [standardDateString isEqual:@""]) {
 		return @"";
@@ -463,15 +513,53 @@
 	return shortDateString;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (NSString *)dataFilePath
-{
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSLog(documentsDirectory);
-	return [documentsDirectory stringByAppendingPathComponent:kFilename];
+//得到周几信息
+- (int) getWeekday:(NSString *)scheduleTakeoffDateStr {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yy-M-d"];
+    NSDate *scheduleTakeoffDate = [dateFormatter dateFromString:scheduleTakeoffDateStr];
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    comps = [calendar components:unitFlags fromDate:scheduleTakeoffDate];
+    int retval = [comps weekday];
+    
+    [calendar release];
+    [dateFormatter release];    
+    return retval;
 }
 
+-(void) refreshStatusLabelWithText : (NSString *)textParam{
+	UILabel *updateStatusLabel = [self getStatusLabel:textParam];
+	
+	UIBarButtonItem *updateStatusLabelItem = (UIBarButtonItem *)[self.toolbarItems objectAtIndex:3];
+	[updateStatusLabelItem initWithCustomView:updateStatusLabel];
+	
+	[updateStatusLabel release];
+}
+
+-(UILabel *) getStatusLabel :(NSString *)textParam{
+	UILabel *retval = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 120.0f, 21.0f)];
+	[retval setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
+	[retval setBackgroundColor:[UIColor clearColor]];
+	[retval setTextColor:[UIColor whiteColor]];
+	[retval setText:textParam];
+	[retval setTextAlignment:UITextAlignmentLeft];
+	retval.numberOfLines = 0;//这个一定要设成0
+	CGSize size = [textParam sizeWithFont:[UIFont systemFontOfSize:11] 
+                        constrainedToSize:CGSizeMake(200, 1000) 
+                            lineBreakMode:UILineBreakModeWordWrap];
+	CGRect rct = retval.frame;
+	rct.size = size;
+	retval.frame = rct;
+	retval.center = CGPointMake(160, 160);
+	return retval;
+}
+
+#pragma mark -
+#pragma mark 业务核心方法
 //创建关注航班表
 - (void)createFollowedFlightTable {
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
@@ -601,53 +689,179 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-- (void)umengFeedback {
-    [MobClick showFeedback:self];
-}
 
-- (void)loadToolbarItems {
-	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	//1.edit mode toolbar items
-	UIBarButtonItem *deleteLandedButton = [[UIBarButtonItem alloc] 
-										   initWithTitle:@"删除已到达航班" 
-										   style:UIBarButtonItemStyleBordered
-										   target:self 
-										   action:@selector(deleteLandedFlights)];
-	UIBarButtonItem *deleteAllButton = [[UIBarButtonItem alloc] 
-										initWithTitle:@"删除全部航班" 
-										style:UIBarButtonItemStyleBordered
-										target:self 
-										action:@selector(deleteAllFlights)];
-	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: flexibleSpace, deleteAllButton, nil]; 
-	//2.normal mode toolbar items
+//从关注航班表中读取数据，刷新表格
+- (void)loadFlightInfoFromTable{
+	self.flightArray = [[NSMutableArray alloc] init];
+	NSMutableArray *controllerArray = [[NSMutableArray alloc] init];
 	
-	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新"
-																 style:UIBarButtonItemStyleBordered
-																target:self
-																action:@selector(refreshAction)];
-    UIBarButtonItem *feedbackImageButton = 
-    [[UIBarButtonItem alloc] initWithTitle:@"反馈"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(umengFeedback)];
+	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+	NSString *query = @"SELECT * FROM followedflights ORDER BY schedule_takeoff_date DESC, schedule_takeoff_time DESC";
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int recordPointer = 0;
+			int recordId = sqlite3_column_int(statement, recordPointer++);
+			NSLog(@"recordId:%d",recordId);
+            
+			//读取char
+			char *companyChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *fligtNoChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *flightStateChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *flightLocationChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *mileageChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *planeModelChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *scheduleTakeoffDateChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			
+			char *takeoffCityChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *takeoffAirportChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *takeoffAirportBuildingChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *takeoffAirportEntranceExitChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *scheduleTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *estimateTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *actualTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			
+			char *arrivalCityChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *arrivalAirportChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *arrivalAirportBuildingChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *arrivalAirportEntranceExitChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *scheduleArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *estimateArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *actualArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			
+			//生成String
+			NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d", recordId];
+			NSString *companyStr = [[NSString alloc] initWithUTF8String:companyChar];
+			NSString *fligtNoStr = [[NSString alloc] initWithUTF8String:fligtNoChar];
+			NSString *flightStateStr = [[NSString alloc] initWithUTF8String:flightStateChar];
+			NSString *flightLocationStr = [[NSString alloc] initWithUTF8String:flightLocationChar];
+			NSString *mileageStr = [[NSString alloc] initWithUTF8String:mileageChar];
+            
+			NSString *planeModelStr = [[NSString alloc] initWithUTF8String:planeModelChar];
+			NSString *scheduleTakeoffDateStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffDateChar];
+			
+			NSString *takeoffCityStr = [[NSString alloc] initWithUTF8String:takeoffCityChar];
+			NSString *takeoffAirportStr = [[NSString alloc] initWithUTF8String:takeoffAirportChar];
+			NSString *takeoffAirportBuildingStr = [[NSString alloc] initWithUTF8String:takeoffAirportBuildingChar];
+			NSString *takeoffAirportEntranceExitStr = [[NSString alloc] initWithUTF8String:takeoffAirportEntranceExitChar];
+			NSString *scheduleTakeoffTimeStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffTimeChar];
+			NSString *estimateTakeoffTimeStr = [[NSString alloc] initWithUTF8String:estimateTakeoffTimeChar];
+			NSString *actualTakeoffTimeStr = [[NSString alloc] initWithUTF8String:actualTakeoffTimeChar];
+			
+			NSString *arrivalCityStr = [[NSString alloc] initWithUTF8String:arrivalCityChar];
+			NSString *arrivalAirportStr = [[NSString alloc] initWithUTF8String:arrivalAirportChar];
+			NSString *arrivalAirportBuildingStr = [[NSString alloc] initWithUTF8String:arrivalAirportBuildingChar];
+			NSString *arrivalAirportEntranceExitStr = [[NSString alloc] initWithUTF8String:arrivalAirportEntranceExitChar];
+			NSString *scheduleArrivalTimeStr = [[NSString alloc] initWithUTF8String:scheduleArrivalTimeChar];
+			NSString *estimateArrivalTimeStr = [[NSString alloc] initWithUTF8String:estimateArrivalTimeChar];
+			NSString *actualArrivalTimeStr = [[NSString alloc] initWithUTF8String:actualArrivalTimeChar];
+			
+			//生成原始数据
+			NSMutableDictionary *flightInfo = [[NSMutableDictionary alloc] init];
+			[flightInfo setObject:recordIdStr forKey:@"recordId"];
+			[flightInfo setObject:companyStr forKey:@"company"];
+			[flightInfo setObject:fligtNoStr forKey:@"flight_no"];
+			[flightInfo setObject:flightStateStr forKey:@"flight_state"];
+			[flightInfo setObject:flightLocationStr forKey:@"flight_location"];
+			[flightInfo setObject:mileageStr forKey:@"mileage"];
+			[flightInfo setObject:planeModelStr forKey:@"plane_model"];
+			[flightInfo setObject:scheduleTakeoffDateStr forKey:@"schedule_takeoff_date"];
+			
+			[flightInfo setObject:takeoffCityStr forKey:@"takeoff_city"];
+			[flightInfo setObject:takeoffAirportStr forKey:@"takeoff_airport"];
+			[flightInfo setObject:takeoffAirportBuildingStr forKey:@"takeoff_airport_building"];
+			[flightInfo setObject:takeoffAirportEntranceExitStr forKey:@"takeoff_airport_entrance_exit"];
+			[flightInfo setObject:scheduleTakeoffTimeStr forKey:@"schedule_takeoff_time"];
+			[flightInfo setObject:estimateTakeoffTimeStr forKey:@"estimate_takeoff_time"];
+			[flightInfo setObject:actualTakeoffTimeStr forKey:@"actual_takeoff_time"];
+			
+			[flightInfo setObject:arrivalCityStr forKey:@"arrival_city"];
+			[flightInfo setObject:arrivalAirportStr forKey:@"arrival_airport"];
+			[flightInfo setObject:arrivalAirportBuildingStr forKey:@"arrival_airport_building"];
+			[flightInfo setObject:arrivalAirportEntranceExitStr forKey:@"arrival_airport_entrance_exit"];
+			[flightInfo setObject:scheduleArrivalTimeStr forKey:@"schedule_arrival_time"];
+			[flightInfo setObject:estimateArrivalTimeStr forKey:@"estimate_arrival_time"];
+			[flightInfo setObject:actualArrivalTimeStr forKey:@"actual_arrival_time"];
+			
+			//转化为表格显示数据，其实就是计算如下信息:
+            /*
+             takeoff_delay_advance_time
+             arrival_delay_advance_time
+             schedule_takeoff_date_standard
+             schedule_takeoff_date
+             schedule_arrival_date
+             schedule_takeoff_time
+             display_takeoff_time
+             schedule_arrival_time
+             display_arrival_time
+             */
+			[self convertToDisplayFlightInfo:flightInfo];
+			
+			[self.flightArray addObject:flightInfo];
+			
+			//加入controller元素
+			NSMutableArray *takeoffArrivalAirportArray = [[NSMutableArray alloc] initWithObjects:
+                                                          [flightInfo objectForKey:@"takeoff_airport"],
+                                                          [flightInfo objectForKey:@"arrival_airport"], nil];
+			
+			NSMutableArray *takeoffArrivalCityArray = [[NSMutableArray alloc] initWithObjects:
+                                                       [flightInfo objectForKey:@"takeoff_city"],
+                                                       [flightInfo objectForKey:@"arrival_city"], nil];
+			DisclosureButtonController *disclosureButtonController = 
+            [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
+			
+			//NSLog(@"2...");
+			
+			disclosureButtonController.list = takeoffArrivalAirportArray;
+			disclosureButtonController.cityList = takeoffArrivalCityArray;
+            
+			disclosureButtonController.flightInfo = flightInfo;
+			NSString *titleText = [NSString stringWithFormat:@"%@",[flightInfo objectForKey:@"takeoff_city"]];
+			titleText = [titleText stringByAppendingString:@" 飞往 "];
+			titleText = [titleText stringByAppendingString:[flightInfo objectForKey:@"arrival_city"]];
+			disclosureButtonController.title = titleText;			
+			//disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
+			//NSLog(@"3...");
+			
+			[controllerArray addObject:disclosureButtonController];
+			[disclosureButtonController release];
+			[takeoffArrivalAirportArray release];
+			
+			//释放无用变量
+			[companyStr release];
+			[fligtNoStr release];
+			[flightStateStr release];
+			[planeModelStr release];
+			[scheduleTakeoffDateStr release];
+			
+			[takeoffCityStr release];
+			[takeoffAirportStr release];
+			[takeoffAirportBuildingStr release];
+			[takeoffAirportEntranceExitStr release];
+			[scheduleTakeoffTimeStr release];
+			[estimateTakeoffTimeStr release];
+			[actualTakeoffTimeStr release];
+			
+			[arrivalCityStr release];
+			[arrivalAirportStr release];
+			[arrivalAirportBuildingStr release];
+			[arrivalAirportEntranceExitStr release];
+			[scheduleArrivalTimeStr release];
+			[estimateArrivalTimeStr release];
+			[actualArrivalTimeStr release];
+		}
+	}
+	self.controllers = controllerArray;
     
-    UIBarButtonItem *settingImageButton = 
-    [[UIBarButtonItem alloc] initWithTitle:@"分享"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(StartSinaPhotoWeibo)];
-
-	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	[updateProgressInd setHidesWhenStopped:YES];
-	
-	UIBarButtonItem *updateProgressIndicatorButton = [[UIBarButtonItem alloc] initWithCustomView:updateProgressInd];
-	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
-												[self getStatusLabel:@""]];
-	
-	self.refreshToolbarItems = [[NSArray alloc] initWithObjects: refreshButton, 
-								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-								flexibleSpace, feedbackImageButton, settingImageButton, nil]; 
+	[self.tableView reloadData];
 }
+
+
+
 /*
  * 开始更新航班信息的过程
  */
@@ -705,98 +919,8 @@
 	[dateFormatter release];
 }
 
--(void) refreshStatusLabelWithText : (NSString *)textParam{
-	UILabel *updateStatusLabel = [self getStatusLabel:textParam];
-	
-	UIBarButtonItem *updateStatusLabelItem = (UIBarButtonItem *)[self.toolbarItems objectAtIndex:3];
-	[updateStatusLabelItem initWithCustomView:updateStatusLabel];
-	
-	[updateStatusLabel release];
-}
-
--(UILabel *) getStatusLabel :(NSString *)textParam{
-	UILabel *retval = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 120.0f, 21.0f)];
-	[retval setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
-	[retval setBackgroundColor:[UIColor clearColor]];
-	[retval setTextColor:[UIColor whiteColor]];
-	[retval setText:textParam];
-	[retval setTextAlignment:UITextAlignmentLeft];
-	retval.numberOfLines = 0;//这个一定要设成0
-	CGSize size = [textParam sizeWithFont:[UIFont systemFontOfSize:11] 
-					  constrainedToSize:CGSizeMake(200, 1000) 
-						  lineBreakMode:UILineBreakModeWordWrap];
-	CGRect rct = retval.frame;
-	rct.size = size;
-	retval.frame = rct;
-	retval.center = CGPointMake(160, 160);
-	return retval;
-}
-//用户点击更新按钮的被动更新过程
-- (void)refreshAction { 
-	NSLog(@"refreshAction"); 
-	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
-	if (serverReachable) {
-		[self loadFlightInfoFromServer];	
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"离线"
-														message:@"更新航班时出错，\n请检查您的网络连接"
-													   delegate:nil
-											  cancelButtonTitle:@"确定"
-											  otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		//更新工具栏状态
-		[updateProgressInd stopAnimating];
-		statusLabelText = [[NSString alloc]initWithString:@"离线"];
-		[self refreshStatusLabelWithText:statusLabelText];
-	}
-}
-//每分钟的主动更新过程
-- (void)selfRefreshAction { 
-	NSLog(@"selfRefreshAction"); 
-	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
-	if (serverReachable) {
-		[self loadFlightInfoFromServer];	
-	} else {
-		//更新工具栏状态
-		[updateProgressInd stopAnimating];
-		statusLabelText = [[NSString alloc]initWithString:@"离线"];
-		[self refreshStatusLabelWithText:statusLabelText];
-	}
-}
-//请求：[ {国航，数字航班号1,日期1},  {东航，数字航班号2,日期2},...,{南航,日期N}]  
-//响应：
 
 
-- (void)viewDidLoad {
-	[self createFollowedFlightTable];
-	[self loadFlightInfoFromTable];
-	[self loadFlightInfoFromServer];
-	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
-	[self.navigationController.navigationBar setTintColor:backgroundColor];
-	[self.navigationController.toolbar setTintColor:backgroundColor]; 
-
-	[self loadToolbarItems];
-	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
-	
-    /*
-	NSTimer *timer;
-	timer = [NSTimer scheduledTimerWithTimeInterval: 1
-											 target: self
-										   selector: @selector(handleTimer:)
-										   userInfo: nil
-											repeats: YES];
-     */
-	self.title = @"航班列表";
-	self.tableView.backgroundColor = [UIColor clearColor];
-	//[self.tableView setSeparatorColor:[UIColor clearColor]];
-    [super viewDidLoad];
-}
-
-- (void) handleTimer: (NSTimer *) timer
-{
-	[self updateDateTime];
-}
 
 - (IBAction)updateDateTime
 {
@@ -815,23 +939,12 @@
 	}
 	[dateFormatter release];
 }
-
-//得到周几信息
-- (int) getWeekday:(NSString *)scheduleTakeoffDateStr {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yy-M-d"];
-    NSDate *scheduleTakeoffDate = [dateFormatter dateFromString:scheduleTakeoffDateStr];
-    
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
-    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    comps = [calendar components:unitFlags fromDate:scheduleTakeoffDate];
-    int retval = [comps weekday];
-    
-    [calendar release];
-    [dateFormatter release];    
-    return retval;
+- (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
+    NSLog(@"searchConditionController didAddRecipe");
+	//此处不刷新，从关注航班表中读取
+	[self loadFlightInfoFromTable];
+    // Dismiss the modal add recipe view controller
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -935,6 +1048,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return kTableViewRowHeight;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{ 
+	return @"删除"; 
+} 
+
 #pragma mark -
 #pragma mark Table View Delegate Methods
 //- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -977,190 +1094,52 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{ 
-	return @"删除"; 
-} 
-
-- (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
-    NSLog(@"searchConditionController didAddRecipe");
-	//此处不刷新，从关注航班表中读取
-	[self loadFlightInfoFromTable];
-    // Dismiss the modal add recipe view controller
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-//从关注航班表中读取数据，刷新表格
-- (void)loadFlightInfoFromTable{
-	self.flightArray = [[NSMutableArray alloc] init];
-	NSMutableArray *controllerArray = [[NSMutableArray alloc] init];
-	
-	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	NSString *query = @"SELECT * FROM followedflights ORDER BY schedule_takeoff_date DESC, schedule_takeoff_time DESC";
-	sqlite3_stmt *statement;
-	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-		while (sqlite3_step(statement) == SQLITE_ROW) {
-			int recordPointer = 0;
-			int recordId = sqlite3_column_int(statement, recordPointer++);
-			NSLog(@"recordId:%d",recordId);
-
-			//读取char
-			char *companyChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *fligtNoChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *flightStateChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *flightLocationChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *mileageChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *planeModelChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *scheduleTakeoffDateChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			
-			char *takeoffCityChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *takeoffAirportChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *takeoffAirportBuildingChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *takeoffAirportEntranceExitChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *scheduleTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *estimateTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *actualTakeoffTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			
-			char *arrivalCityChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *arrivalAirportChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *arrivalAirportBuildingChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *arrivalAirportEntranceExitChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *scheduleArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *estimateArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			char *actualArrivalTimeChar = (char *)sqlite3_column_text(statement, recordPointer++);
-			
-			//生成String
-			NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d", recordId];
-			NSString *companyStr = [[NSString alloc] initWithUTF8String:companyChar];
-			NSString *fligtNoStr = [[NSString alloc] initWithUTF8String:fligtNoChar];
-			NSString *flightStateStr = [[NSString alloc] initWithUTF8String:flightStateChar];
-			NSString *flightLocationStr = [[NSString alloc] initWithUTF8String:flightLocationChar];
-			NSString *mileageStr = [[NSString alloc] initWithUTF8String:mileageChar];
-
-			NSString *planeModelStr = [[NSString alloc] initWithUTF8String:planeModelChar];
-			NSString *scheduleTakeoffDateStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffDateChar];
-			
-			NSString *takeoffCityStr = [[NSString alloc] initWithUTF8String:takeoffCityChar];
-			NSString *takeoffAirportStr = [[NSString alloc] initWithUTF8String:takeoffAirportChar];
-			NSString *takeoffAirportBuildingStr = [[NSString alloc] initWithUTF8String:takeoffAirportBuildingChar];
-			NSString *takeoffAirportEntranceExitStr = [[NSString alloc] initWithUTF8String:takeoffAirportEntranceExitChar];
-			NSString *scheduleTakeoffTimeStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffTimeChar];
-			NSString *estimateTakeoffTimeStr = [[NSString alloc] initWithUTF8String:estimateTakeoffTimeChar];
-			NSString *actualTakeoffTimeStr = [[NSString alloc] initWithUTF8String:actualTakeoffTimeChar];
-			
-			NSString *arrivalCityStr = [[NSString alloc] initWithUTF8String:arrivalCityChar];
-			NSString *arrivalAirportStr = [[NSString alloc] initWithUTF8String:arrivalAirportChar];
-			NSString *arrivalAirportBuildingStr = [[NSString alloc] initWithUTF8String:arrivalAirportBuildingChar];
-			NSString *arrivalAirportEntranceExitStr = [[NSString alloc] initWithUTF8String:arrivalAirportEntranceExitChar];
-			NSString *scheduleArrivalTimeStr = [[NSString alloc] initWithUTF8String:scheduleArrivalTimeChar];
-			NSString *estimateArrivalTimeStr = [[NSString alloc] initWithUTF8String:estimateArrivalTimeChar];
-			NSString *actualArrivalTimeStr = [[NSString alloc] initWithUTF8String:actualArrivalTimeChar];
-			
-			//生成原始数据
-			NSMutableDictionary *flightInfo = [[NSMutableDictionary alloc] init];
-			[flightInfo setObject:recordIdStr forKey:@"recordId"];
-			[flightInfo setObject:companyStr forKey:@"company"];
-			[flightInfo setObject:fligtNoStr forKey:@"flight_no"];
-			[flightInfo setObject:flightStateStr forKey:@"flight_state"];
-			[flightInfo setObject:flightLocationStr forKey:@"flight_location"];
-			[flightInfo setObject:mileageStr forKey:@"mileage"];
-			[flightInfo setObject:planeModelStr forKey:@"plane_model"];
-			[flightInfo setObject:scheduleTakeoffDateStr forKey:@"schedule_takeoff_date"];
-			
-			[flightInfo setObject:takeoffCityStr forKey:@"takeoff_city"];
-			[flightInfo setObject:takeoffAirportStr forKey:@"takeoff_airport"];
-			[flightInfo setObject:takeoffAirportBuildingStr forKey:@"takeoff_airport_building"];
-			[flightInfo setObject:takeoffAirportEntranceExitStr forKey:@"takeoff_airport_entrance_exit"];
-			[flightInfo setObject:scheduleTakeoffTimeStr forKey:@"schedule_takeoff_time"];
-			[flightInfo setObject:estimateTakeoffTimeStr forKey:@"estimate_takeoff_time"];
-			[flightInfo setObject:actualTakeoffTimeStr forKey:@"actual_takeoff_time"];
-			
-			[flightInfo setObject:arrivalCityStr forKey:@"arrival_city"];
-			[flightInfo setObject:arrivalAirportStr forKey:@"arrival_airport"];
-			[flightInfo setObject:arrivalAirportBuildingStr forKey:@"arrival_airport_building"];
-			[flightInfo setObject:arrivalAirportEntranceExitStr forKey:@"arrival_airport_entrance_exit"];
-			[flightInfo setObject:scheduleArrivalTimeStr forKey:@"schedule_arrival_time"];
-			[flightInfo setObject:estimateArrivalTimeStr forKey:@"estimate_arrival_time"];
-			[flightInfo setObject:actualArrivalTimeStr forKey:@"actual_arrival_time"];
-			
-			//转化为表格显示数据，其实就是计算如下信息:
-            /*
-             takeoff_delay_advance_time
-             arrival_delay_advance_time
-             schedule_takeoff_date_standard
-             schedule_takeoff_date
-             schedule_arrival_date
-             schedule_takeoff_time
-             display_takeoff_time
-             schedule_arrival_time
-             display_arrival_time
-             */
-			[self convertToDisplayFlightInfo:flightInfo];
-			
-			[self.flightArray addObject:flightInfo];
-			
-			//加入controller元素
-			NSMutableArray *takeoffArrivalAirportArray = [[NSMutableArray alloc] initWithObjects:
-										 [flightInfo objectForKey:@"takeoff_airport"],
-										 [flightInfo objectForKey:@"arrival_airport"], nil];
-			
-			NSMutableArray *takeoffArrivalCityArray = [[NSMutableArray alloc] initWithObjects:
-														  [flightInfo objectForKey:@"takeoff_city"],
-														  [flightInfo objectForKey:@"arrival_city"], nil];
-			DisclosureButtonController *disclosureButtonController = 
-            [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
-			
-			//NSLog(@"2...");
-			
-			disclosureButtonController.list = takeoffArrivalAirportArray;
-			disclosureButtonController.cityList = takeoffArrivalCityArray;
-
-			disclosureButtonController.flightInfo = flightInfo;
-			NSString *titleText = [NSString stringWithFormat:@"%@",[flightInfo objectForKey:@"takeoff_city"]];
-			titleText = [titleText stringByAppendingString:@" 飞往 "];
-			titleText = [titleText stringByAppendingString:[flightInfo objectForKey:@"arrival_city"]];
-			disclosureButtonController.title = titleText;			
-			//disclosureButtonController.rowImage = [UIImage imageNamed:@"moveMeIcon.png"];
-			//NSLog(@"3...");
-			
-			[controllerArray addObject:disclosureButtonController];
-			[disclosureButtonController release];
-			[takeoffArrivalAirportArray release];
-			
-			//释放无用变量
-			[companyStr release];
-			[fligtNoStr release];
-			[flightStateStr release];
-			[planeModelStr release];
-			[scheduleTakeoffDateStr release];
-			
-			[takeoffCityStr release];
-			[takeoffAirportStr release];
-			[takeoffAirportBuildingStr release];
-			[takeoffAirportEntranceExitStr release];
-			[scheduleTakeoffTimeStr release];
-			[estimateTakeoffTimeStr release];
-			[actualTakeoffTimeStr release];
-			
-			[arrivalCityStr release];
-			[arrivalAirportStr release];
-			[arrivalAirportBuildingStr release];
-			[arrivalAirportEntranceExitStr release];
-			[scheduleArrivalTimeStr release];
-			[estimateArrivalTimeStr release];
-			[actualArrivalTimeStr release];
-		}
-	}
-	self.controllers = controllerArray;
-
-	[self.tableView reloadData];
-}
 
 #pragma mark -
 #pragma mark Toolbar Actions
+- (void)loadToolbarItems {
+	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	//1.edit mode toolbar items
+	UIBarButtonItem *deleteLandedButton = [[UIBarButtonItem alloc] 
+										   initWithTitle:@"删除已到达航班" 
+										   style:UIBarButtonItemStyleBordered
+										   target:self 
+										   action:@selector(deleteLandedFlights)];
+	UIBarButtonItem *deleteAllButton = [[UIBarButtonItem alloc] 
+										initWithTitle:@"删除全部航班" 
+										style:UIBarButtonItemStyleBordered
+										target:self 
+										action:@selector(deleteAllFlights)];
+	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: flexibleSpace, deleteAllButton, nil]; 
+	//2.normal mode toolbar items
+	
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新"
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(refreshAction)];
+    UIBarButtonItem *feedbackImageButton = 
+    [[UIBarButtonItem alloc] initWithTitle:@"反馈"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(umengFeedback)];
+    
+    UIBarButtonItem *settingImageButton = 
+    [[UIBarButtonItem alloc] initWithTitle:@"分享"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(StartSinaPhotoWeibo)];
+    
+	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	[updateProgressInd setHidesWhenStopped:YES];
+	
+	UIBarButtonItem *updateProgressIndicatorButton = [[UIBarButtonItem alloc] initWithCustomView:updateProgressInd];
+	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
+												[self getStatusLabel:@""]];
+	
+	self.refreshToolbarItems = [[NSArray alloc] initWithObjects: refreshButton, 
+								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
+								flexibleSpace, feedbackImageButton, settingImageButton, nil]; 
+}
 
 - (IBAction)switchToSearchCondition:(id)sender
 {   
@@ -1182,6 +1161,46 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// so both objects should be released to prevent over-retention.
 	[navigationController release];
 	[searchConditionController release];
+}
+//用户点击更新按钮的被动更新过程
+- (void)refreshAction { 
+	NSLog(@"refreshAction"); 
+	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
+	if (serverReachable) {
+		[self loadFlightInfoFromServer];	
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"离线"
+														message:@"更新航班时出错，\n请检查您的网络连接"
+													   delegate:nil
+											  cancelButtonTitle:@"确定"
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		//更新工具栏状态
+		[updateProgressInd stopAnimating];
+		statusLabelText = [[NSString alloc]initWithString:@"离线"];
+		[self refreshStatusLabelWithText:statusLabelText];
+	}
+}
+//每分钟的主动更新过程
+- (void)selfRefreshAction { 
+	NSLog(@"selfRefreshAction"); 
+	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
+	if (serverReachable) {
+		[self loadFlightInfoFromServer];	
+	} else {
+		//更新工具栏状态
+		[updateProgressInd stopAnimating];
+		statusLabelText = [[NSString alloc]initWithString:@"离线"];
+		[self refreshStatusLabelWithText:statusLabelText];
+	}
+}
+//请求：[ {国航，数字航班号1,日期1},  {东航，数字航班号2,日期2},...,{南航,日期N}]  
+//响应：
+
+- (void) handleTimer: (NSTimer *) timer
+{
+	[self updateDateTime];
 }
 
 #pragma mark -
