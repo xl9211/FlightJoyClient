@@ -450,19 +450,6 @@
 	[dateFormatter release];
 	return shortDateString;
 }
-/*
-- (NSString *)getStandardDateStringFromShort:(NSString *)shortDateString {
-	if (shortDateString == nil || [shortDateString isEqual:@""]) {
-		return @"";
-	}
-	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yy-M-d"];
-	NSDate *date=[dateFormatter dateFromString:shortDateString];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-	NSString *standardDateString = [dateFormatter stringFromDate:date];
-	[dateFormatter release];
-	return standardDateString;
-}*/
 - (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
 	if (standardTimeString == nil || [standardTimeString isEqual:@""]) {
 		return @"";
