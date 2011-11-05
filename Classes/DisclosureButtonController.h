@@ -12,13 +12,15 @@
 #import "RootViewController.h"
 #import <MapKit/MapKit.h> 
 #import <MapKit/MKAnnotation.h>
+#import "WBShareKit.h"
+
 #define kFilename		@"flights.sqlite3"
 
 @class DisclosureDetailController;
 
 @interface DisclosureButtonController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
-CLLocationManagerDelegate, MKMapViewDelegate> {
+CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
     id <FlightAddDelegate> delegate;
 	NSMutableArray *list;
 	NSMutableArray *cityList;

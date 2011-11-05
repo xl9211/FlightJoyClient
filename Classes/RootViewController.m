@@ -31,22 +31,24 @@
 	[editButton release];
 }
 
+- (void)showInfo {
+    NSLog(@"showInfo...");
+}
 
 - (void)loadToolbarItems {
     [super loadToolbarItems];
-    UIBarButtonItem *feedbackImageButton = 
+    /*UIBarButtonItem *feedbackImageButton = 
     [[UIBarButtonItem alloc] initWithTitle:@"反馈"
                                      style:UIBarButtonItemStyleBordered
                                     target:self
                                     action:@selector(umengFeedback)];
+     */ 
+    UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
+    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
     
-    UIBarButtonItem *settingImageButton = 
-    [[UIBarButtonItem alloc] initWithTitle:@"分享"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(StartSinaPhotoWeibo)];
-    [self.refreshToolbarItems addObject:feedbackImageButton];
-    [self.refreshToolbarItems addObject:settingImageButton];
+    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
+									  initWithCustomView:infoButton];
+    [self.refreshToolbarItems addObject:infoBarButton];
 }
 
 - (void)addOrUpdateTableWithServerResponse:(NSString *)responseString {

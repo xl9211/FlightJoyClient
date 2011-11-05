@@ -76,7 +76,7 @@
 #pragma mark 删除相关方法
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 0) {
         //delete 1
         if ([[alertView title] isEqualToString:@"删除全部航班"]) {
             NSString *delete = [[NSString alloc] initWithString:@"DELETE FROM followedflights;"];
@@ -118,8 +118,8 @@
 	[alert initWithTitle:@"删除已到达航班"
 				 message:@"您确认要删除航班列表中的已到达航班吗?"
 				delegate:self
-	   cancelButtonTitle:@"取消"
-	   otherButtonTitles:@"删除", nil];
+	   cancelButtonTitle:@"删除"
+	   otherButtonTitles:@"取消", nil];
 	[alert show];
 	[alert release];
 }
@@ -131,8 +131,8 @@
 	[alert initWithTitle:@"删除全部航班"
 				 message:@"您确认要删除航班列表中的全部航班吗?"
 				delegate:self
-	   cancelButtonTitle:@"取消"
-	   otherButtonTitles:@"删除", nil];
+	   cancelButtonTitle:@"删除"
+	   otherButtonTitles:@"取消", nil];
 	[alert show];
 	[alert release];
     
@@ -1073,10 +1073,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: deleteLandedButton, flexibleSpace, deleteAllButton, nil]; 
 	//2.normal mode toolbar items
 	
-	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新"
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(refreshAction)];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                      target:self action:@selector(refreshAction)];
     
 	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	[updateProgressInd setHidesWhenStopped:YES];
@@ -1152,68 +1151,4 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self updateDateTime];
 }
 
-#pragma mark -
-#pragma mark Weibo share
-- (void)StartSina {
-    NSLog(@"StartSina");
-    [[WBShareKit mainShare] setDelegate:self];
-    [[WBShareKit mainShare] startSinaOauthWithSelector:@selector(sinaSuccess:) withFailedSelector:@selector(sinaError:)];
-}
-
-- (void)StartSendSinaWeibo {
-    NSDate *curDate = [NSDate date];
-    int timestamp = [curDate timeIntervalSince1970];
-    NSString *weiboText = [[NSString alloc]initWithFormat:@"WBShareKit test %d",timestamp];
-    [[WBShareKit mainShare] sendSinaRecordWithStatus:weiboText lat:0 lng:0 delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
-}
-
-- (void)StartSinaPhotoWeibo {
-    NSDate *curDate = [NSDate date];
-    int timestamp = [curDate timeIntervalSince1970];
-    NSString *weiboText = [[NSString alloc]initWithFormat:@"发送图文微博测试 %d",timestamp];
-    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"]);
-    [[WBShareKit mainShare] sendSinaPhotoWithStatus:weiboText lat:0 lng:0 path:[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"] delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
-}
-
-#pragma mark sina delegate
-- (void)sinaSuccess:(NSData *)_data
-{
-    NSLog(@"sina ok:%@",_data);
-}
-
-- (void)sinaError:(NSError *)_error
-{
-    NSLog(@"sina error:%@",_error);
-}
-
-- (void)sendRecordTicket:(OAServiceTicket *)ticket finishedWithData:(NSMutableData *)data
-{
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSMutableDictionary *responseObject = [json objectWithString:string error:&error];
-    
-	if (responseObject != nil) {
-		NSString *errorCodeStr = [responseObject objectForKey:@"error_code"];
-        NSString *errorStr = [responseObject objectForKey:@"error"];
-        if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"400"]
-            && errorStr != nil && [errorStr rangeOfString:@"40072"].length > 0) 
-            [self StartSina];
-        else if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"403"]
-                 && errorStr != nil && [errorStr rangeOfString:@"40302"].length > 0) 
-            [self StartSina];
-        else {
-            UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"发送新浪微博成功" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [al show];
-            [al release];
-        }
-	} else {	
-        NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
-    }
-}
-- (void)sendRecordTicket:(OAServiceTicket *)ticket failedWithError:(NSError *)error
-{
-    
-}
 @end
