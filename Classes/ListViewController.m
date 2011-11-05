@@ -74,29 +74,58 @@
 
 #pragma mark -
 #pragma mark 删除相关方法
-- (void)deleteLandedFlights {
-	NSLog(@"deleteLandedFlights");
-}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-		NSString *delete = [[NSString alloc] initWithString:@"DELETE FROM followedflights;"];
-		char * errorMsg;
-		
-		if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
-		{
-			NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
-		}
-		sqlite3_close(database);
-		[self changeListMode];
-		
-		self.controllers = [[NSMutableArray alloc] init];
-		self.flightArray = [[NSMutableArray alloc] init];
-		[self.tableView reloadData];
+        //delete 1
+        if ([[alertView title] isEqualToString:@"删除全部航班"]) {
+            NSString *delete = [[NSString alloc] initWithString:@"DELETE FROM followedflights;"];
+            char * errorMsg;
+            
+            if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+            {
+                NSAssert1(0, @"Error deleting tables: %s", errorMsg);
+                sqlite3_close(database);
+            }
+            sqlite3_close(database);
+            [self changeListMode];
+            
+            self.controllers = [[NSMutableArray alloc] init];
+            self.flightArray = [[NSMutableArray alloc] init];
+            [self.tableView reloadData];
+
+        } else {
+            NSString *delete = [[NSString alloc] 
+                                initWithString:@"DELETE FROM followedflights where flight_state = '已经到达' or flight_state = '已经取消';"];
+            char * errorMsg;
+            
+            if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+            {
+                NSAssert1(0, @"Error deleting tables: %s", errorMsg);
+                sqlite3_close(database);
+            }
+            sqlite3_close(database);
+            [self changeListMode];
+            
+            [self loadFlightInfoFromTable];
+        }
     }
+}
+- (void)deleteLandedFlights {
+	NSLog(@"deleteLandedFlights");
+    UIAlertView *alert = nil;
+	alert = [UIAlertView alloc];
+	[alert initWithTitle:@"删除已到达航班"
+				 message:@"您确认要删除航班列表中的已到达航班吗?"
+				delegate:self
+	   cancelButtonTitle:@"取消"
+	   otherButtonTitles:@"删除", nil];
+	[alert show];
+	[alert release];
 }
 
 - (void)deleteAllFlights {
+    NSLog(@"deleteAllFlights");	
 	UIAlertView *alert = nil;
 	alert = [UIAlertView alloc];
 	[alert initWithTitle:@"删除全部航班"
@@ -106,8 +135,6 @@
 	   otherButtonTitles:@"删除", nil];
 	[alert show];
 	[alert release];
-	
-	NSLog(@"deleteAllFlights");	
     
 	//[self.controllers removeObjectAtIndex:row];
 	//[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -1044,7 +1071,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 										style:UIBarButtonItemStyleBordered
 										target:self 
 										action:@selector(deleteAllFlights)];
-	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: flexibleSpace, deleteAllButton, nil]; 
+	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: deleteLandedButton, flexibleSpace, deleteAllButton, nil]; 
 	//2.normal mode toolbar items
 	
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新"
