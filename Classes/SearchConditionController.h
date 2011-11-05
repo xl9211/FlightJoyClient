@@ -10,6 +10,7 @@
 //#import "SecondLevelViewController.h"
 #import "Company.h"
 #import "Airport.h"
+#import "/usr/include/sqlite3.h"
 
 #define kLabelTag			4096
 #define kSearchConditionCompanyTag	1024
@@ -20,6 +21,7 @@
 #define kSearchConditionFromRouteTag	128
 #define kSearchConditionToRouteTag	64
 #define kSearchConditionDateRouteTag 32
+#define kFilename		@"flights.sqlite3"
 
 @protocol FlightAddDelegate;
 
@@ -36,6 +38,8 @@
 	UITextField *textFieldBeingEdited;
     IBOutlet UITableView *tableView;
     int m_selectedSegmentIndex;
+    
+    sqlite3	*database;
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) Company *searchConditionCompany;

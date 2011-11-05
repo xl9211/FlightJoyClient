@@ -144,11 +144,11 @@
 	[[QueryResultController alloc] initWithStyle:UITableViewStylePlain];
 	
     if (m_selectedSegmentIndex == 0) {//按航班号查询
-        //[searchResultController setQueryType:0];
+        [searchResultController setQueryType:0];
     } else if (m_selectedSegmentIndex == 1) {//按航线查询
-        //[searchResultController setQueryType:1];
+        [searchResultController setQueryType:1];
     }
-	//[searchResultController getSearchConditionController:self];
+	[searchResultController getSearchConditionController:self];
 	[self.navigationController pushViewController:searchResultController animated:YES];
 }
 
@@ -177,6 +177,56 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (BOOL)searchedFlightsTableExists {
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+    
+	NSString *query = @"select count(*) from sqlite_master where type='table' and name = 'searchedflights';";
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int tableNum = sqlite3_column_int(statement, 0);
+            if (tableNum == 1) {
+                sqlite3_finalize(statement);
+                sqlite3_close(database);	
+                return YES;
+            }
+		}
+	}
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
+    return NO;
+}
+
+- (NSString *)dataFilePath
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	return [documentsDirectory stringByAppendingPathComponent:kFilename];
+}
+
+/*在搜索结果页返回上一级查询条件页面*/
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"viewWillDisappear...");
+    
+    if ([self searchedFlightsTableExists]) {
+        char * errorMsg;
+        if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+            sqlite3_close(database);
+            NSAssert(0, @"Failed to open database");
+        }
+        //delete from searchedflights;
+        NSString *delete = [[NSString alloc] initWithString:@"delete from searchedflights;"];
+        if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+        {
+            NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
+        }
+        sqlite3_close(database);
+    }    
+    
+}
 
 - (void)dealloc {
     [super dealloc];
@@ -432,8 +482,8 @@
         QueryResultController *searchResultController = 
         [[QueryResultController alloc] initWithStyle:UITableViewStylePlain];
         
-        //[searchResultController setQueryType:2];
-        //[searchResultController getSearchConditionController:self];
+        [searchResultController setQueryType:2];
+        [searchResultController getSearchConditionController:self];
         [self.navigationController pushViewController:searchResultController animated:YES];    }
 }
 @end

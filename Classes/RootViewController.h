@@ -7,6 +7,7 @@
 //
 
 #import "ListViewController.h"
+#import "JSON/JSON.h"
 
 @interface RootViewController : ListViewController{
 	
@@ -14,5 +15,6 @@
 
 - (void) stopUpdateProcess;
 - (void)loadToolbarItems;
+- (void)addOrUpdateTableWithServerResponse:(NSString *)responseString;
 
 @end

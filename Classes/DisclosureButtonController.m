@@ -19,6 +19,7 @@
 @synthesize flightInfo;
 @synthesize updateProgressInd;
 @synthesize tableView;
+@synthesize delegate;
 
 //mapview
 @synthesize mapView;
@@ -29,6 +30,9 @@
 @synthesize stateLabelCenter;
 @synthesize stateLabelRight;
 @synthesize progressView;
+
+//
+@synthesize parentClassName;
 
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style
@@ -165,9 +169,42 @@
 	}
 }
 
+- (void)save {
+	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+    //insert into followedflights select * from searchedflights;
+    NSString *insertSelect = [[NSString alloc] initWithString:@"insert into followedflights select * from searchedflights;"];
+	char * errorMsg;
+	if (sqlite3_exec (database, [insertSelect UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+	{
+		NSAssert1(0, @"Error insertSelecting tables: %s", errorMsg);	
+	}
+    
+    //delete from searchedflights;
+    NSString *delete = [[NSString alloc] initWithString:@"delete from searchedflights;"];
+    if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+	{
+		NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
+	}
+    
+	sqlite3_close(database);	
+    [self.delegate searchConditionController:self didAddRecipe:nil];
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"DisclosureButtonController.viewDidLoad...");
+    MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
+	self.delegate = root;
+    
+    NSArray *allControllers = self.navigationController.viewControllers;
+	ListViewController *parent = [allControllers objectAtIndex:[allControllers count]-2];
+    self.parentClassName = [NSString stringWithUTF8String:object_getClassName(parent)];
+    
 	[self createCityInfoTable];
 	if (self.cityList != nil) {				
 		for (int i = 0; i < [self.cityList count]; i++) {
@@ -176,6 +213,7 @@
 		}
 	}
 	
+    //toolbar
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新"
 																	  style:UIBarButtonItemStyleBordered
@@ -184,6 +222,7 @@
 	
 	UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] 
 									  initWithCustomView:[UIButton buttonWithType:UIButtonTypeInfoLight]];
+    
 	
 	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	[updateProgressInd setHidesWhenStopped:YES];
@@ -193,10 +232,19 @@
 	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
 												[self getStatusLabel:@""]];
 	
-	NSArray *refreshToolbarItems = [[NSArray alloc] initWithObjects: refreshButton, 
-								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-								flexibleSpace, settingButton, nil]; 
-	[self setToolbarItems: refreshToolbarItems animated:YES];
+    NSMutableArray *refreshToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
+                                                                 flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
+                                                                 flexibleSpace, nil]; ;
+    [self setToolbarItems: refreshToolbarItems animated:YES];
+
+    if (self.parentClassName != nil 
+        && [self.parentClassName isEqualToString:@"RootViewController"]) {
+        [refreshToolbarItems addObject:settingButton];
+	} else {
+        //navigationbar
+        UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
+        self.navigationItem.rightBarButtonItem = saveButtonItem;
+    }    
 	
 	//release part
 	[refreshToolbarItems release];

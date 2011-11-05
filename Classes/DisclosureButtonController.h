@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "/usr/include/sqlite3.h"
 #import "SVGeocoder.h"
+#import "RootViewController.h"
 #import <MapKit/MapKit.h> 
 #import <MapKit/MKAnnotation.h>
 #define kFilename		@"flights.sqlite3"
@@ -18,6 +19,7 @@
 @interface DisclosureButtonController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
 CLLocationManagerDelegate, MKMapViewDelegate> {
+    id <FlightAddDelegate> delegate;
 	NSMutableArray *list;
 	NSMutableArray *cityList;
 	sqlite3	*database;
@@ -38,7 +40,11 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
     IBOutlet UILabel *stateLabelRight;
     IBOutlet UIProgressView *progressView;
     int m_statebarIndex;
+    
+    //
+    NSString *parentClassName;
 }
+@property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *cityList;
 @property (nonatomic, retain) NSDictionary *flightInfo;
@@ -54,6 +60,9 @@ CLLocationManagerDelegate, MKMapViewDelegate> {
 @property (nonatomic, retain) UILabel *stateLabelCenter;
 @property (nonatomic, retain) UILabel *stateLabelRight;
 @property (nonatomic, retain) UIProgressView *progressView;
+
+//
+@property (nonatomic,retain) NSString *parentClassName;
 
 - (IBAction)segmentControlDidChanged:(id)sender;
 

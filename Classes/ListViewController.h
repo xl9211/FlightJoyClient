@@ -33,6 +33,10 @@
 	UIActivityIndicatorView *updateProgressInd;
 	UITableViewController *currentNextController;
 	NSString *statusLabelText;
+    //variable properties
+    NSString *cacheTableName;
+    NSString *url;
+    NSString *post;
 }
 @property (nonatomic, retain) UIImage *rowImage;
 
@@ -48,10 +52,19 @@
 @property (nonatomic,retain) UITableViewController *currentNextController;
 @property (nonatomic,retain) NSString *statusLabelText;
 
+//variable properties
+@property (nonatomic,retain) NSString *cacheTableName;
+@property (nonatomic,retain) NSString *url;
+@property (nonatomic,retain) NSString *post;
+
 - (void)changeListMode;
 - (IBAction)toggleEdit:(id)sender;
 - (IBAction)switchToSearchCondition:(id)sender;
+- (void) startUpdateProcess;
 - (void) stopUpdateProcess;
 - (void)loadToolbarItems;
+- (void)requestFlightInfoFromServer;
+- (void)addOrUpdateTableWithServerResponse:(NSString*)responseString;
+
 - (NSString *)dataFilePath;
 @end

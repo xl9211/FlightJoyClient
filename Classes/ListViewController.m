@@ -27,6 +27,11 @@
 @synthesize currentNextController;
 @synthesize statusLabelText;
 
+//variable properties
+@synthesize cacheTableName;
+@synthesize url;
+@synthesize post;
+
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -119,7 +124,7 @@
  */
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[self createFollowedFlightTable];
+	[self createFlightTable];
 	[self loadFlightInfoFromTable];
 	[self requestFlightInfoFromServer];
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
@@ -229,9 +234,10 @@
 	NSLog(@"connectionDidFinishLoading...");
 	[connection release];
     
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];    
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];  
+    NSLog(responseString);
     //1.使用“服务器数据”更新“数据库数据”
-    [self updateTableWithServerResponse:responseString];
+    [self addOrUpdateTableWithServerResponse:responseString];
     //2.读取“数据库数据”，转化为“表格展示数据”并显示
     [self loadFlightInfoFromTable];
     //3.找到当前航班的详情页，并更新数据
@@ -530,15 +536,20 @@
 
 #pragma mark -
 #pragma mark 业务核心方法
+- (void)addOrUpdateTableWithServerResponse:(NSString*)responseString{
+    NSLog(responseString);
+}
+
 //创建关注航班表
-- (void)createFollowedFlightTable {
+- (void)createFlightTable {
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
 		NSAssert(0, @"Failed to open database");
 	}
 	
 	char *errorMsg;
-	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS followedflights (";
+	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS ";
+    createSQL = [createSQL stringByAppendingFormat:@"%@ (",cacheTableName];
 	createSQL = [createSQL stringByAppendingString:@" ID INTEGER PRIMARY KEY AUTOINCREMENT,"];
 	
 	createSQL = [createSQL stringByAppendingString:@" company TEXT,"];
@@ -590,8 +601,8 @@
 	}
     
 	NSString *query = [NSString stringWithFormat:
-                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM followedflights WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
-                       curDateString];
+                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
+                       cacheTableName, curDateString];
 	int recordCount = 0;
 	sqlite3_stmt *statement;
     
@@ -635,9 +646,8 @@
     
 	//抽取方法
 	responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
-    NSString *post = [[NSString alloc] initWithFormat:@"query_string=%@", [self generateQueryStringValue] ];
-	NSLog(post);
+    NSLog(@"url: %@", self.url);
+    NSLog(@"post: %@", self.post);
     
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
 	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
@@ -651,56 +661,7 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-- (void)updateTableWithServerResponse:(NSString *)responseString {
-    NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
-	//[responseString release];	
-	
-	if (luckyNumbers == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
-	} else {	
-		for (int i = 0; i < [luckyNumbers count]; i++) {
-            NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
-            NSLog(@"recordId: %@", recordId);
-			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
-			[self printFlightInfo:flightInfo];
-			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-				sqlite3_close(database);
-				NSAssert(0, @"Failed to open database");
-			}
-            
-			sqlite3_stmt *stmtUpdate= nil; 
-			
-			char *strUpdSQL = "UPDATE followedflights SET flight_state = ?, flight_location = ?, schedule_takeoff_time = ?, estimate_takeoff_time = ?, actual_takeoff_time = ?, schedule_arrival_time = ?, estimate_arrival_time = ?, actual_arrival_time = ? WHERE id = ?"; 
-			
-			if (sqlite3_prepare_v2(database, strUpdSQL, -1, &stmtUpdate, NULL) != SQLITE_OK) { 
-				NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
-			}
-			
-			int fieldcounter = 1;
-            
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_state"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"flight_location"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_takeoff_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"schedule_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"estimate_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			sqlite3_bind_text(stmtUpdate, fieldcounter++, [[flightInfo objectForKey:@"actual_arrival_time"] UTF8String], -1, SQLITE_TRANSIENT); 
-			//query fields:
-			//id
-            sqlite3_bind_int(stmtUpdate, fieldcounter++, [recordId intValue]);
-            
-			if (sqlite3_step(stmtUpdate) != SQLITE_DONE) { 
-				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database)); 
-            }
-            
-			sqlite3_reset(stmtUpdate); 
-            sqlite3_close(database);
-		}
-	}
-}
+
 
 -(void) refreshOpenedDetailInfo {
     DisclosureButtonController *currentController = (DisclosureButtonController *)currentNextController;
@@ -735,7 +696,7 @@
 		NSAssert(0, @"Failed to open database");
 	}
 	
-	NSString *query = @"SELECT * FROM followedflights ORDER BY schedule_takeoff_date DESC, schedule_takeoff_time DESC";
+	NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM %@ ORDER BY schedule_takeoff_date DESC, schedule_takeoff_time DESC", cacheTableName];
 	sqlite3_stmt *statement;
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
@@ -1041,11 +1002,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
 	NSLog(@"didSelectRowAtIndexPath...");
 	NSUInteger row = [indexPath row];
+    NSLog(@"row: %d", row);
 	currentNextController = [self.controllers objectAtIndex:row];
-	
-	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-	NSLog(@"...didSelectRowAtIndexPath");
-	[delegate.navController pushViewController:currentNextController animated:YES];
 }
 
 -(void)tableView:(UITableView *)tableView
@@ -1074,7 +1032,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark -
 #pragma mark Toolbar Actions
 - (void)loadToolbarItems {
-    NSLog(@"List loadToolbarItems...");
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	//1.edit mode toolbar items
 	UIBarButtonItem *deleteLandedButton = [[UIBarButtonItem alloc] 
