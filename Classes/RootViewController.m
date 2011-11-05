@@ -62,8 +62,9 @@
 		for (int i = 0; i < [luckyNumbers count]; i++) {
             NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
             NSLog(@"recordId: %@", recordId);
+
 			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
-			[self printFlightInfo:flightInfo];
+            [self printFlightInfo:flightInfo];
 			if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 				sqlite3_close(database);
 				NSAssert(0, @"Failed to open database");

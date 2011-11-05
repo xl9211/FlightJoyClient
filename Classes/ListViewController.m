@@ -262,7 +262,6 @@
 	[connection release];
     
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];  
-    NSLog(responseString);
     //1.使用“服务器数据”更新“数据库数据”
     [self addOrUpdateTableWithServerResponse:responseString];
     //2.读取“数据库数据”，转化为“表格展示数据”并显示

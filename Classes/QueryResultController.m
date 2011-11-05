@@ -113,6 +113,9 @@
     NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
 	NSArray *flightInfos = [json objectWithString:responseString error:&error];
+    
+    //需要增加如下准点率数据
+    //"on_time"、"half_hour_late" 、"one_hour_late"、"more_than_one_hour_late" 、"cancel"
 	
 	if (flightInfos == nil) {
 		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
