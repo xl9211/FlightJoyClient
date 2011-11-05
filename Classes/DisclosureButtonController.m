@@ -176,7 +176,9 @@
 	}
 	
     //insert into followedflights select * from searchedflights;
-    NSString *insertSelect = [[NSString alloc] initWithString:@"insert into followedflights select * from searchedflights;"];
+    NSString *recordIdStr = [flightInfo objectForKey:@"recordId"];
+    NSString *insertSelect = [[NSString alloc] 
+                              initWithFormat:@"insert into followedflights select * from searchedflights where id = %@;", recordIdStr];
 	char * errorMsg;
 	if (sqlite3_exec (database, [insertSelect UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
 	{

@@ -90,7 +90,6 @@
 		NSAssert(0, @"Failed to open database");
 	}
 	
-    //insert into followedflights select * from searchedflights;
     NSString *insertSelect = [[NSString alloc] initWithFormat:@"insert into followedflights select * from %@;", cacheTableName];
 	char * errorMsg;
 	if (sqlite3_exec (database, [insertSelect UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
@@ -98,7 +97,6 @@
 		NSAssert1(0, @"Error insertSelecting tables: %s", errorMsg);	
 	}
     
-    //delete from searchedflights;
     NSString *delete = [[NSString alloc] initWithFormat:@"delete from %@;", cacheTableName];
     if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
 	{
