@@ -234,6 +234,11 @@
 - (void)showInfo {
     NSLog(@"showInfo...");
 }
+#pragma mark -
+#pragma mark 工具类方法
+- (void)umengFeedback {
+    [MobClick showFeedback:self];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -261,7 +266,7 @@
                                        target:self action:@selector(refreshAction)];
     
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
+    [infoButton addTarget:self action:@selector(umengFeedback) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
 									  initWithCustomView:infoButton];    
 	

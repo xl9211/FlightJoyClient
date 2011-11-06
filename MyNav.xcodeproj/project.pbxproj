@@ -22,7 +22,7 @@
 		3E8AA98C14070B3C003051DD /* plane.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8AA98B14070B3C003051DD /* plane.jpg */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
-		3E8DDB1D141888EA00B57F5B /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DDB1C141888EA00B57F5B /* SearchResultController.m */; };
+		3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E4E671463D1C200CD4D4C /* QueryResultController.m */; };
 		3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E73CE143B4940003FEC46 /* china2.jpg */; };
 		3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */; };
 		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
@@ -46,7 +46,7 @@
 		3E90D392145C391F0054265F /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90D381145C391F0054265F /* WBRequest.m */; };
 		3E90D393145C391F0054265F /* WBShareKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90D384145C391F0054265F /* WBShareKit.m */; };
 		3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFE51403D428004E20F8 /* RootViewController.m */; };
-		3E91CFEB1403D856004E20F8 /* SecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */; };
+		3E91CFEB1403D856004E20F8 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFEA1403D856004E20F8 /* ListViewController.m */; };
 		3E925B18144E96E2008AB82E /* icon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E925B17144E96E2008AB82E /* icon1.jpg */; };
 		3E92DF8F14088A8B0094CFAA /* FlightDetailCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */; };
 		3E92DF9114088ACC0094CFAA /* FlightDetailCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */; };
@@ -105,8 +105,8 @@
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
 		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
 		3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		3E8DDB1B141888EA00B57F5B /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
-		3E8DDB1C141888EA00B57F5B /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
+		3E8E4E661463D1C100CD4D4C /* QueryResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryResultController.h; sourceTree = "<group>"; };
+		3E8E4E671463D1C200CD4D4C /* QueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryResultController.m; sourceTree = "<group>"; };
 		3E8E73CE143B4940003FEC46 /* china2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china2.jpg; sourceTree = "<group>"; };
 		3E8E78F014552C01003BAD50 /* SearchConditionAirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionAirportController.h; sourceTree = "<group>"; };
 		3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionAirportController.m; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 		3E90D384145C391F0054265F /* WBShareKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBShareKit.m; sourceTree = "<group>"; };
 		3E91CFE41403D428004E20F8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3E91CFE51403D428004E20F8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		3E91CFE91403D856004E20F8 /* SecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondLevelViewController.h; sourceTree = "<group>"; };
-		3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondLevelViewController.m; sourceTree = "<group>"; };
+		3E91CFE91403D856004E20F8 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		3E91CFEA1403D856004E20F8 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		3E925B17144E96E2008AB82E /* icon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon1.jpg; sourceTree = "<group>"; };
 		3E92DF8D14088A8B0094CFAA /* FlightDetailCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailCustomCell.h; sourceTree = "<group>"; };
 		3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailCustomCell.m; sourceTree = "<group>"; };
@@ -247,8 +247,12 @@
 				3EC3AD1A143C938A007F748B /* Reachability.m */,
 				1D3623240D0F684500981E51 /* MyNavAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MyNavAppDelegate.m */,
+				3E91CFE91403D856004E20F8 /* ListViewController.h */,
+				3E91CFEA1403D856004E20F8 /* ListViewController.m */,
 				3E91CFE41403D428004E20F8 /* RootViewController.h */,
 				3E91CFE51403D428004E20F8 /* RootViewController.m */,
+				3E8E4E661463D1C100CD4D4C /* QueryResultController.h */,
+				3E8E4E671463D1C200CD4D4C /* QueryResultController.m */,
 				3E9803101404697800A3C5BE /* DisclosureButtonController.h */,
 				3E9803111404697800A3C5BE /* DisclosureButtonController.m */,
 				3E98030C1404678A00A3C5BE /* DisclosureDetailController.h */,
@@ -257,8 +261,6 @@
 				3E95E2A014068E16004E250B /* CustomCell.m */,
 				3E92DF8D14088A8B0094CFAA /* FlightDetailCustomCell.h */,
 				3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */,
-				3E91CFE91403D856004E20F8 /* SecondLevelViewController.h */,
-				3E91CFEA1403D856004E20F8 /* SecondLevelViewController.m */,
 				3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */,
 				3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */,
 				3E96D91F1416EF2B007D29C0 /* SearchConditionCompanyController.h */,
@@ -267,8 +269,6 @@
 				3E96B86D14173E57000B2E96 /* SearchConditionDateController.m */,
 				3E8E78F014552C01003BAD50 /* SearchConditionAirportController.h */,
 				3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */,
-				3E8DDB1B141888EA00B57F5B /* SearchResultController.h */,
-				3E8DDB1C141888EA00B57F5B /* SearchResultController.m */,
 				3E5FB631144AAACB00A1AD06 /* DisplayMap.h */,
 				3E5FB632144AAACB00A1AD06 /* DisplayMap.m */,
 			);
@@ -582,7 +582,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* MyNavAppDelegate.m in Sources */,
 				3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */,
-				3E91CFEB1403D856004E20F8 /* SecondLevelViewController.m in Sources */,
+				3E91CFEB1403D856004E20F8 /* ListViewController.m in Sources */,
 				3E98030E1404678A00A3C5BE /* DisclosureDetailController.m in Sources */,
 				3E9803121404697800A3C5BE /* DisclosureButtonController.m in Sources */,
 				3E95E2A114068E16004E250B /* CustomCell.m in Sources */,
@@ -598,7 +598,6 @@
 				3E96B86514173D23000B2E96 /* TdCalendarView.m in Sources */,
 				3E96B86F14173E57000B2E96 /* SearchConditionDateController.m in Sources */,
 				3E9CBE44141835BE00B21EBC /* Company.m in Sources */,
-				3E8DDB1D141888EA00B57F5B /* SearchResultController.m in Sources */,
 				3EC3AD1B143C938A007F748B /* Reachability.m in Sources */,
 				3E5FB633144AAACB00A1AD06 /* DisplayMap.m in Sources */,
 				3EA84FA3144C698800985145 /* JSONKit.m in Sources */,
@@ -621,6 +620,7 @@
 				3E90D391145C391F0054265F /* OAToken.m in Sources */,
 				3E90D392145C391F0054265F /* WBRequest.m in Sources */,
 				3E90D393145C391F0054265F /* WBShareKit.m in Sources */,
+				3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import <MapKit/MapKit.h> 
 #import <MapKit/MKAnnotation.h>
 #import "WBShareKit.h"
+#import "MobClick.h"
 
 #define kFilename		@"flights.sqlite3"
 

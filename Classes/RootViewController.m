@@ -44,7 +44,7 @@
                                     action:@selector(umengFeedback)];
      */ 
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
+    [infoButton addTarget:self action:@selector(umengFeedback) forControlEvents:UIControlEventTouchDown];
     
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
 									  initWithCustomView:infoButton];
