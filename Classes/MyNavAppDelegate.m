@@ -12,6 +12,7 @@
 
 @synthesize window;
 @synthesize navController;
+@synthesize deviceToken;
 
 - (NSString *)appKey {
     return @"4ead70725270150996000001";
@@ -34,6 +35,44 @@
     return (MyNavAppDelegate *) [UIApplication sharedApplication].delegate;
 }
 
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken { 
+    
+    NSString *str = [NSString 
+                     stringWithFormat:@"%@",deviceToken];
+    NSLog(str);
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:str 
+                          message:@"" 
+                          delegate:self 
+                          cancelButtonTitle:@"确定" 
+                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    self.deviceToken = str;
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
+    
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(str);    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:str 
+                          message:@"" 
+                          delegate:self 
+                          cancelButtonTitle:@"确定" 
+                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    }    
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[MobClick setDelegate:self];
     [MobClick appLaunched];
@@ -50,6 +89,11 @@
 	
     [window makeKeyAndVisible];
     
+    NSLog(@"Registering for push notifications...");    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeAlert | 
+      UIRemoteNotificationTypeBadge | 
+      UIRemoteNotificationTypeSound)];
     return YES;
 }
 
