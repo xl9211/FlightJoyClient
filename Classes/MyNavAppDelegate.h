@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
-#import "WBShareKit.h"
 #import "MobClick.h"
 
 @class Reachability;
