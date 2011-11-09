@@ -21,6 +21,15 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+	NSLog(@"获得已授权的key:%@",url);
+    
+    [[WBShareKit mainShare] handleOpenURL:url];
+    
+    
+    return YES;
+}
 + (MyNavAppDelegate *)sharedAppDelegate
 {
     return (MyNavAppDelegate *) [UIApplication sharedApplication].delegate;

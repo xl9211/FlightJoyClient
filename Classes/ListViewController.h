@@ -10,6 +10,7 @@
 #import "SearchConditionController.h"
 #import "MyNavAppDelegate.h"
 #import "/usr/include/sqlite3.h"
+#import "WBShareKit.h"
 #import "MobClick.h"
 
 #define kFilename		@"flights.sqlite3"
