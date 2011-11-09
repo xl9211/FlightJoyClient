@@ -16,10 +16,12 @@
     UIWindow *window;
 	UINavigationController *navController;
 	Reachability  *hostReach;
+    NSString *deviceToken;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
+@property (nonatomic, retain) NSString *deviceToken;
 
 + (MyNavAppDelegate *)sharedAppDelegate;
 - (BOOL)isServerReachable;
