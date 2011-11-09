@@ -218,7 +218,7 @@
             break;
         case 1:
             NSLog(@"微博");
-            [self StartSinaPhotoWeibo];
+            //[self StartSinaPhotoWeibo];
             break;
         case 2:
             NSLog(@"人人");
@@ -239,6 +239,76 @@
 - (void)umengFeedback {
     [MobClick showFeedback:self];
 }
+//==================微博相关===================
+- (IBAction)signOut:(id)sender {
+    [_engine signOut];
+    //[self loadTimeline];
+}
+
+- (void)openAuthenticateView {
+	[self removeCachedOAuthDataForUsername:_engine.username];
+	[_engine signOut];
+	UIViewController *controller = [OAuthController controllerToEnterCredentialsWithEngine: _engine delegate: self];
+	
+	if (controller) 
+		[self presentModalViewController: controller animated: YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+	if (!_engine){
+		_engine = [[OAuthEngine alloc] initOAuthWithDelegate: self];
+		_engine.consumerKey = kOAuthConsumerKey;
+		_engine.consumerSecret = kOAuthConsumerSecret;
+	}
+    [self openAuthenticateView];
+    //[self performSelector:@selector(loadTimeline) withObject:nil afterDelay:0.5];
+}
+//=============================================================================================================================
+#pragma mark OAuthEngineDelegate
+- (void) storeCachedOAuthData: (NSString *) data forUsername: (NSString *) username {
+	NSUserDefaults			*defaults = [NSUserDefaults standardUserDefaults];
+	
+	[defaults setObject: data forKey: @"authData"];
+	[defaults synchronize];
+}
+
+- (NSString *) cachedOAuthDataForUsername: (NSString *) username {
+	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
+}
+
+- (void)removeCachedOAuthDataForUsername:(NSString *) username{
+	NSUserDefaults			*defaults = [NSUserDefaults standardUserDefaults];
+	
+	[defaults removeObjectForKey: @"authData"];
+	[defaults synchronize];
+}
+//=============================================================================================================================
+#pragma mark OAuthSinaWeiboControllerDelegate
+- (void) OAuthController: (OAuthController *) controller authenticatedWithUsername: (NSString *) username {
+	NSLog(@"Authenicated for %@", username);
+	[self loadTimeline];
+}
+
+- (void) OAuthControllerFailed: (OAuthController *) controller {
+	NSLog(@"Authentication Failed!");
+	//UIViewController *controller = [OAuthController controllerToEnterCredentialsWithEngine: _engine delegate: self];
+	
+	if (controller) 
+		[self presentModalViewController: controller animated: YES];
+	
+}
+
+- (void) OAuthControllerCanceled: (OAuthController *) controller {
+	NSLog(@"Authentication Canceled.");
+	//UIViewController *controller = [OAuthController controllerToEnterCredentialsWithEngine: _engine delegate: self];
+	
+	if (controller) 
+		[self presentModalViewController: controller animated: YES];
+	
+}
+
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -889,67 +959,5 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 
 #pragma mark -
 #pragma mark Weibo share
-- (void)StartSina {
-    NSLog(@"StartSina");
-    [[WBShareKit mainShare] setDelegate:self];
-    [[WBShareKit mainShare] startSinaOauthWithSelector:@selector(sinaSuccess:) withFailedSelector:@selector(sinaError:)];
-}
-
-- (void)StartSendSinaWeibo {
-    NSDate *curDate = [NSDate date];
-    int timestamp = [curDate timeIntervalSince1970];
-    NSString *weiboText = [[NSString alloc]initWithFormat:@"WBShareKit test %d",timestamp];
-    [[WBShareKit mainShare] sendSinaRecordWithStatus:weiboText lat:0 lng:0 delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
-}
-
-- (void)StartSinaPhotoWeibo {
-    NSDate *curDate = [NSDate date];
-    int timestamp = [curDate timeIntervalSince1970];
-    NSString *weiboText = [[NSString alloc]initWithFormat:@"发送图文微博测试 %d",timestamp];
-    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"]);
-    [[WBShareKit mainShare] sendSinaPhotoWithStatus:weiboText lat:0 lng:0 path:[[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"] delegate:self successSelector:@selector(sendRecordTicket:finishedWithData:) failSelector:@selector(sendRecordTicket:failedWithError:)];
-}
-
-#pragma mark sina delegate
-- (void)sinaSuccess:(NSData *)_data
-{
-    NSLog(@"sina ok:%@",_data);
-}
-
-- (void)sinaError:(NSError *)_error
-{
-    NSLog(@"sina error:%@",_error);
-}
-
-- (void)sendRecordTicket:(OAServiceTicket *)ticket finishedWithData:(NSMutableData *)data
-{
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSMutableDictionary *responseObject = [json objectWithString:string error:&error];
-    
-	if (responseObject != nil) {
-		NSString *errorCodeStr = [responseObject objectForKey:@"error_code"];
-        NSString *errorStr = [responseObject objectForKey:@"error"];
-        if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"400"]
-            && errorStr != nil && [errorStr rangeOfString:@"40072"].length > 0) 
-            [self StartSina];
-        else if (errorCodeStr != nil && [errorCodeStr isEqualToString:@"403"]
-                 && errorStr != nil && [errorStr rangeOfString:@"40302"].length > 0) 
-            [self StartSina];
-        else {
-            UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"发送新浪微博成功" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [al show];
-            [al release];
-        }
-	} else {	
-        NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
-    }
-}
-- (void)sendRecordTicket:(OAServiceTicket *)ticket failedWithError:(NSError *)error
-{
-    
-}
 
 @end

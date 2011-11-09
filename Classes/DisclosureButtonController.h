@@ -12,16 +12,23 @@
 #import "RootViewController.h"
 #import <MapKit/MapKit.h> 
 #import <MapKit/MKAnnotation.h>
-#import "WBShareKit.h"
 #import "MobClick.h"
+//微博分享
+#import "OAuthController.h"
+#import "WeiboClient.h"
+
+#define kOAuthConsumerKey				@"2401634440"
+#define kOAuthConsumerSecret			@"ae10251a673f3ba70a6289690dc8a828"
 
 #define kFilename		@"flights.sqlite3"
 
 @class DisclosureDetailController;
+@class OAuthEngine;
 
 @interface DisclosureButtonController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
-CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
+CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate,
+    OAuthControllerDelegate> {
     id <FlightAddDelegate> delegate;
 	NSMutableArray *list;
 	NSMutableArray *cityList;
@@ -46,6 +53,10 @@ CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
     
     //
     NSString *parentClassName;
+    
+    //微博分享
+    OAuthEngine	*_engine;
+    WeiboClient *weiboClient;
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *list;
@@ -68,5 +79,7 @@ CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
 @property (nonatomic,retain) NSString *parentClassName;
 
 - (IBAction)segmentControlDidChanged:(id)sender;
-
+//微博分享
+- (void)openAuthenticateView;
+- (IBAction)signOut:(id)sender;
 @end
