@@ -475,6 +475,20 @@
 	[dateFormatter release];
 	return shortDateString;
 }
+
+- (NSString *)getStandardDateStringFromShort:(NSString *)shortDateString {
+	if (shortDateString == nil || [shortDateString isEqual:@""]) {
+		return @"";
+	}
+	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yy-M-d"];
+	NSDate *date=[dateFormatter dateFromString:shortDateString];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+	NSString *standardDateString = [dateFormatter stringFromDate:date];
+	[dateFormatter release];
+	return standardDateString;
+}
+
 - (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
 	if (standardTimeString == nil || [standardTimeString isEqual:@""]) {
 		return @"";
@@ -960,6 +974,7 @@
 	}
 	
 	NSDictionary* one = [flightArray objectAtIndex:indexPath.row];
+    NSString *flightState = [one objectForKey:@"flight_state"];
 	
 	NSUInteger row = [indexPath row];
 	UITableViewController *controller = [controllers objectAtIndex:row];
@@ -973,11 +988,12 @@
     NSDate *curDate = [NSDate date];//获取当前日期
 	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
-	NSString *curDateString = [self getShortDateStringFromStandard:[dateFormatter stringFromDate:curDate]];
+    NSString *standardCurDateString = [dateFormatter stringFromDate:curDate];
+	NSString *curDateString = [self getShortDateStringFromStandard:standardCurDateString];
     
     NSLog(@"curDateString: %@, scheduleTakeoffDate: %@", curDateString, scheduleTakeoffDate);
     if ([curDateString isEqualToString:scheduleTakeoffDate]) {
-        cell.takeoffDateLabel.text = [one objectForKey:@"flight_state"];
+        cell.takeoffDateLabel.text = flightState;
     } else {
         NSString *weekdayStr = [self getWeekday:scheduleTakeoffDate];
         cell.takeoffDateLabel.text = weekdayStr;
@@ -987,6 +1003,18 @@
 	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
 	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ( flightState != nil 
+        && ([flightState isEqualToString:@"已经取消"] || [flightState isEqualToString:@"已经到达"]) ) {
+        NSString *standardScheduleTakeoffDateString = [self getStandardDateStringFromShort:scheduleTakeoffDate];
+        int compareResult = [standardScheduleTakeoffDateString compare:standardCurDateString];
+        if (compareResult < 0) {
+            cell.nameLabel.textColor = [UIColor grayColor];
+            cell.flightNOLabel.textColor = [UIColor grayColor];
+            cell.takeoffTimeLabel.textColor = [UIColor grayColor];
+            cell.landTimeLabel.textColor = [UIColor grayColor];
+        }
+    }
 	
     [dateFormatter release];
 	NSLog(@"...cellForRowAtIndexPath");
