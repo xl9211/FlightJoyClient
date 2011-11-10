@@ -38,6 +38,8 @@
     NSString *post;
     
     NSTimer *timer;
+    
+    NSMutableDictionary *dicAirportFullNameToShort;
 }
 @property (nonatomic, retain) UIImage *rowImage;
 
@@ -59,6 +61,7 @@
 @property (nonatomic,retain) NSString *post;
 
 @property (nonatomic,retain) NSTimer *timer;
+@property (nonatomic,retain) NSMutableDictionary *dicAirportFullNameToShort;
 
 - (void)changeListMode;
 - (IBAction)toggleEdit:(id)sender;

@@ -33,6 +33,7 @@
 @synthesize post;
 
 @synthesize timer;
+@synthesize dicAirportFullNameToShort;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -150,6 +151,39 @@
  return (interfaceOrientation == UIInterfaceOrientationPortrait);
  }
  */
+- (void)loadAirportDictionary {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+	NSString *query = [NSString stringWithString:@"select * from airport"];
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int recordPointer = 0;
+			int recordId = sqlite3_column_int(statement, recordPointer++);
+            
+			//读取char
+			char *shortnameChar = (char *)sqlite3_column_text(statement, recordPointer++);
+            char *fullnameChar = (char *)sqlite3_column_text(statement, recordPointer++);
+			char *cityChar = (char *)sqlite3_column_text(statement, recordPointer++);
+            
+			//生成String
+			NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d", recordId];
+			NSString *shortnameStr = [[NSString alloc] initWithUTF8String:shortnameChar];
+            NSString *fullnameStr = [[NSString alloc] initWithUTF8String:fullnameChar];
+			NSString *cityStr = [[NSString alloc] initWithUTF8String:cityChar];
+            
+            [dictionary setObject:shortnameStr forKey:fullnameStr];
+        }
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(database);
+    self.dicAirportFullNameToShort = dictionary;
+    [dictionary release];
+}
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {    
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
@@ -162,6 +196,9 @@
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
 	//[self.tableView setSeparatorColor:[UIColor clearColor]];
+    
+    //加载机场代码表进入数据字典
+    [self loadAirportDictionary];
     
     [self createFlightTable];
 	[self loadFlightInfoFromTable];
@@ -626,6 +663,7 @@
 }
 
 - (NSString *) generateQueryStringValue {
+    //拼凑request字符串
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     NSDate *curDate = [NSDate date];//获取当前日期
@@ -641,11 +679,11 @@
 		NSAssert(0, @"Failed to open database");
 	}
     
+    sqlite3_stmt *statement;
 	NSString *query = [NSString stringWithFormat:
-                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_city, arrival_city FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
+                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_airport, arrival_airport FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
                        cacheTableName, curDateString];
 	int recordCount = 0;
-	sqlite3_stmt *statement;
     
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
@@ -654,23 +692,24 @@
             int recordId = sqlite3_column_int(statement, fieldCounter++);
 			char *flightNoDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
 			char *scheduleTakeoffDateDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
-			char *takeoffCityDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
-			char *arrivalCityDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+			char *takeoffAirportDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+			char *arrivalAirportDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
 			
             NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d",recordId];
             NSString *flightNoStr = [[NSString alloc] initWithUTF8String:flightNoDataChar];
 			NSString *scheduleTakeoffDateStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffDateDataChar];
-			NSString *takeoffCityStr = [[NSString alloc] initWithUTF8String:takeoffCityDataChar];
-			NSString *arrivalCityStr = [[NSString alloc] initWithUTF8String:arrivalCityDataChar];
+			NSString *takeoffAirportStr = [[NSString alloc] initWithUTF8String:takeoffAirportDataChar];
+			NSString *arrivalAirportStr = [[NSString alloc] initWithUTF8String:arrivalAirportDataChar];
+
 			query_string_value = [query_string_value stringByAppendingFormat:
-								  @"{\"flight_no\":\"%@\",\"schedule_takeoff_date\":\"%@\", \"takeoff_city\":\"%@\",\"arrival_city\":\"%@\"},",
-								  flightNoStr, scheduleTakeoffDateStr, takeoffCityStr, arrivalCityStr];
+								  @"{\"flight_no\":\"%@\",\"schedule_takeoff_date\":\"%@\", \"takeoff_airport\":\"%@\",\"arrival_airport\":\"%@\"},",
+								  flightNoStr, scheduleTakeoffDateStr, [self.dicAirportFullNameToShort objectForKey:takeoffAirportStr], [self.dicAirportFullNameToShort objectForKey:arrivalAirportStr] ];
             [array addObject:recordIdStr];
             [recordIdStr release];
 			[flightNoStr release];
 			[scheduleTakeoffDateStr release];
-			[takeoffCityStr release];
-			[arrivalCityStr release];
+			[takeoffAirportStr release];
+			[arrivalAirportStr release];
 		}
 	}
     self.requestRecordIdArray = array;
