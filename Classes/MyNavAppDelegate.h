@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 #import "MobClick.h"
+#import "JSON/JSON.h"
+#import "/usr/include/sqlite3.h"
+#define kFilename		@"flights.sqlite3"
 
 @class Reachability;
 
@@ -17,6 +20,8 @@
 	UINavigationController *navController;
 	Reachability  *hostReach;
     NSString *deviceToken;
+    NSMutableData *responseData;
+    sqlite3	*database;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

@@ -87,8 +87,144 @@
       UIRemoteNotificationTypeBadge | 
       UIRemoteNotificationTypeSound)];
     
+    //更新到最新机场列表，并入库
+    //select count(*) from sqlite_master where type='table' and name = 'cityinfo';
+    if ( ![self airportTableExists] ) {
+        [self createAirportTable];
+        [self loadAirportsFromServer];
+    }
+    
     return YES;
 }
+
+- (BOOL)airportTableExists {
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+    
+	NSString *query = @"select count(*) from sqlite_master where type='table' and name = 'airport';";
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int tableNum = sqlite3_column_int(statement, 0);
+            if (tableNum == 1) {
+                sqlite3_finalize(statement);
+                sqlite3_close(database);	
+                return YES;
+            }
+		}
+	}
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
+    return NO;
+}
+
+//创建机场信息表
+- (void)createAirportTable {
+	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+	char *errorMsg;
+	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS airport (";
+	createSQL = [createSQL stringByAppendingString:@" ID INTEGER PRIMARY KEY AUTOINCREMENT,"];
+	
+	createSQL = [createSQL stringByAppendingString:@" shortname TEXT,"];
+	createSQL = [createSQL stringByAppendingString:@" fullname TEXT,"];
+    createSQL = [createSQL stringByAppendingString:@" city TEXT"];
+    
+	createSQL = [createSQL stringByAppendingString:@");"];
+	
+	if (sqlite3_exec (database, [createSQL  UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert1(0, @"Error creating table: %s", errorMsg);
+	}
+    sqlite3_close(database);	
+}
+
+- (void)loadAirportsFromServer
+{
+    responseData = [[NSMutableData data] retain];
+	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/getAirportList"];
+	
+	NSString *post = nil;  
+	post = [[NSString alloc] initWithString:@"lang=zh"];
+	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
+	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
+	[request setURL:[NSURL URLWithString:url]];  
+	[request setHTTPMethod:@"POST"]; 
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];  
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
+	[request setHTTPBody:postData];  
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+#pragma mark -
+#pragma mark HTTP Response Methods
+//HTTP Response - begin
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	[responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+}
+- (NSString *)dataFilePath
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	return [documentsDirectory stringByAppendingPathComponent:kFilename];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSLog(@"connectionDidFinishLoading...");
+	[connection release];
+	
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	NSError *error;
+	SBJSON *json = [[SBJSON new] autorelease];
+	NSArray *airportInfos = [json objectWithString:responseString error:&error];
+	
+	if (airportInfos == nil) {
+		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+	} else {		
+		for (int i = 0; i < [airportInfos count]; i++) {
+			NSMutableDictionary *airportInfo = [airportInfos objectAtIndex:i];
+			NSString *city = [airportInfo objectForKey:@"city"];
+			NSString *shortname = [airportInfo objectForKey:@"short"];	
+            NSString *fullname = [airportInfo objectForKey:@"full"];			
+            
+            //入库
+            if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+                sqlite3_close(database);
+                NSAssert(0, @"Failed to open database");
+            }
+            
+            NSString *insertSQL = @"INSERT OR REPLACE INTO airport (";
+            insertSQL = [insertSQL stringByAppendingString:@" city,"];
+            insertSQL = [insertSQL stringByAppendingString:@" shortname,"];
+            insertSQL = [insertSQL stringByAppendingString:@" fullname"];
+            insertSQL = [insertSQL stringByAppendingString:@") VALUES ('%@','%@','%@');"];
+            
+            NSString *update = [[NSString alloc] initWithFormat:insertSQL,
+                                city, shortname, fullname ];
+            char * errorMsg;
+            
+            if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+            {
+                NSAssert1(0, @"Error updating tables: %s", errorMsg);
+                sqlite3_close(database);
+            }
+            sqlite3_close(database);	
+		}
+	}
+}
+//HTTP Response - end
 
 -(BOOL) isServerReachable 
 {
