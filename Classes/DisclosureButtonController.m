@@ -673,7 +673,7 @@
 	NSString* labelText = @"    ";
     switch (section) {
         case 0:
-            headerLabel.text = [labelText stringByAppendingString:@"起飞 "];
+            headerLabel.text = [labelText stringByAppendingString:@"计划起飞 "];
 			headerLabel.text = [headerLabel.text stringByAppendingString:[flightInfo objectForKey:@"schedule_takeoff_date"]];
 			headerLabel.text = [headerLabel.text stringByAppendingString:@" "];
 			headerLabel.text = [headerLabel.text stringByAppendingString:[flightInfo objectForKey:@"schedule_takeoff_time"]];
@@ -681,7 +681,7 @@
 			headerLabel.text = [headerLabel.text stringByAppendingString:[flightInfo objectForKey:@"plane_model"]];
             break;
         case 1:
-            headerLabel.text = [labelText stringByAppendingString:@"到达 "];
+            headerLabel.text = [labelText stringByAppendingString:@"计划到达 "];
 			headerLabel.text = [headerLabel.text stringByAppendingString:[flightInfo objectForKey:@"schedule_arrival_date"]];
 			headerLabel.text = [headerLabel.text stringByAppendingString:@" "];
 			headerLabel.text = [headerLabel.text stringByAppendingString:[flightInfo objectForKey:@"schedule_arrival_time"]];
