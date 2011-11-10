@@ -153,22 +153,23 @@
 - (void)viewDidLoad {
 	[self createFlightTable];
 	[self loadFlightInfoFromTable];
-	[self requestFlightInfoFromServer];
+    [self selfRefreshAction];
+    /*5分钟执行1次主动刷新*/
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval: 5*60
+                                             target: self
+                                           selector: @selector(selfRefreshAction)
+                                           userInfo: nil
+                                            repeats: YES];
+    
+	//[self requestFlightInfoFromServer];
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
     
 	[self loadToolbarItems];
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
-	
-    /*
-     NSTimer *timer;
-     timer = [NSTimer scheduledTimerWithTimeInterval: 1
-     target: self
-     selector: @selector(handleTimer:)
-     userInfo: nil
-     repeats: YES];
-     */
+
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
 	//[self.tableView setSeparatorColor:[UIColor clearColor]];
@@ -929,12 +930,10 @@
 	[now release];
 	[dateFormatter release];
 }
-
+/*
 - (IBAction)updateDateTime
 {
-	/*
-	 per second
-	 */
+	
 	//update the detailed time label above
 	NSDate *now = [[NSDate alloc] init];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -947,6 +946,7 @@
 	}
 	[dateFormatter release];
 }
+ */
 - (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
     NSLog(@"searchConditionController didAddRecipe");
 	//此处不刷新，从关注航班表中读取
@@ -1173,10 +1173,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 //请求：[ {国航，数字航班号1,日期1},  {东航，数字航班号2,日期2},...,{南航,日期N}]  
 //响应：
-
+/*
 - (void) handleTimer: (NSTimer *) timer
 {
 	[self updateDateTime];
 }
-
+*/
 @end
