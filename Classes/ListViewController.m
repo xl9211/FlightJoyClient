@@ -150,19 +150,7 @@
  }
  */
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	[self createFlightTable];
-	[self loadFlightInfoFromTable];
-    [self selfRefreshAction];
-    /*5分钟执行1次主动刷新*/
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval: 5*60
-                                             target: self
-                                           selector: @selector(selfRefreshAction)
-                                           userInfo: nil
-                                            repeats: YES];
-    
-	//[self requestFlightInfoFromServer];
+- (void)viewDidLoad {    
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
@@ -173,6 +161,18 @@
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
 	//[self.tableView setSeparatorColor:[UIColor clearColor]];
+    
+    [self createFlightTable];
+	[self loadFlightInfoFromTable];
+    [self selfRefreshAction];
+    /*5分钟执行1次主动刷新*/
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval: 5*60
+                                             target: self
+                                           selector: @selector(selfRefreshAction)
+                                           userInfo: nil
+                                            repeats: YES];
+    
     [super viewDidLoad];
 }
 
@@ -899,12 +899,17 @@
  * 开始更新航班信息的过程
  */
 - (void) startUpdateProcess {
+    NSLog(@"startUpdateProcess...");
 	DisclosureButtonController *controller = (DisclosureButtonController *)currentNextController;
 	[controller startUpdateProcess];
 	
 	if (self.tableView.editing) {
 		return;
 	}
+    NSLog(@"updateProgressInd startAnimating");
+    if (updateProgressInd == nil) {
+        NSLog(@"updateProgressInd == nil");
+    }
     [updateProgressInd startAnimating];
 	statusLabelText = [[NSString alloc]initWithString:@"更新中..."];
 	[self refreshStatusLabelWithText:statusLabelText];
