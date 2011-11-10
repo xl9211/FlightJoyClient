@@ -25,5 +25,5 @@
 @property (nonatomic) int queryType;
 
 - (void)addOrUpdateTableWithServerResponse:(NSString *)responseString;
-
+- (void)destroyTimer;
 @end

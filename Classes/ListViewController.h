@@ -36,6 +36,8 @@
     NSString *cacheTableName;
     NSString *url;
     NSString *post;
+    
+    NSTimer *timer;
 }
 @property (nonatomic, retain) UIImage *rowImage;
 
@@ -55,6 +57,8 @@
 @property (nonatomic,retain) NSString *cacheTableName;
 @property (nonatomic,retain) NSString *url;
 @property (nonatomic,retain) NSString *post;
+
+@property (nonatomic,retain) NSTimer *timer;
 
 - (void)changeListMode;
 - (IBAction)toggleEdit:(id)sender;

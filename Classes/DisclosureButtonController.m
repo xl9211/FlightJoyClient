@@ -192,7 +192,12 @@
 		NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
 	}
     
-	sqlite3_close(database);	
+	sqlite3_close(database);
+    
+    UINavigationController *nav = (UINavigationController *)self.parentViewController;
+    QueryResultController *qrc = (QueryResultController *)[nav.viewControllers objectAtIndex:1];
+    [qrc destroyTimer];
+    
     [self.delegate searchConditionController:self didAddRecipe:nil];
 }
 

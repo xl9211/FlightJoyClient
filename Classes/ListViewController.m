@@ -32,6 +32,7 @@
 @synthesize url;
 @synthesize post;
 
+@synthesize timer;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -166,7 +167,6 @@
 	[self loadFlightInfoFromTable];
     [self selfRefreshAction];
     /*5分钟执行1次主动刷新*/
-    NSTimer *timer;
     timer = [NSTimer scheduledTimerWithTimeInterval: 5*60
                                              target: self
                                            selector: @selector(selfRefreshAction)

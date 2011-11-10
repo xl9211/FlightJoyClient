@@ -13,6 +13,7 @@
 #import <MapKit/MapKit.h> 
 #import <MapKit/MKAnnotation.h>
 #import "MobClick.h"
+#import "QueryResultController.h"
 
 #define kFilename		@"flights.sqlite3"
 
