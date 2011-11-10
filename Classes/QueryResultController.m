@@ -15,6 +15,80 @@
 @synthesize saveAllButtonItem;
 @synthesize queryType;
 
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return kQueryTableViewRowHeight;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"cellForRowAtIndexPath...");
+    
+	static NSString *QueryCustomCellIdentifier = @"QueryCustomCellIdentifier";
+	QueryCustomCell *cell = (QueryCustomCell *)[tableView dequeueReusableCellWithIdentifier:QueryCustomCellIdentifier];
+	if (cell == nil) {
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QueryCustomCell" owner:self options:nil];
+		cell = [nib objectAtIndex:0];
+	}
+	//Configue the cell
+	if (self.flightArray == nil || [self.flightArray count] == 0 ) {
+		self.flightArray = [[NSMutableArray alloc] init];
+		return cell;
+	}
+	
+	NSDictionary* one = [flightArray objectAtIndex:indexPath.row];
+    NSString *flightState = [one objectForKey:@"flight_state"];
+	
+	NSUInteger row = [indexPath row];
+	UITableViewController *controller = [controllers objectAtIndex:row];
+	NSString *titleLabelText = nil;    
+    if (queryType == 1) {
+        titleLabelText = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
+    } else {
+        titleLabelText = [NSString stringWithFormat:@"%@",[one objectForKey:@"takeoff_city"]];
+        titleLabelText = [titleLabelText stringByAppendingString:@" 飞往 "];
+        titleLabelText = [titleLabelText stringByAppendingString:[one objectForKey:@"arrival_city"]];
+    }
+    cell.nameLabel.text = titleLabelText;
+
+    
+    //计划起飞日期是今天，则计划起飞日期字段显示航班状态
+    NSString *scheduleTakeoffDate = [one objectForKey:@"schedule_takeoff_date"];
+    NSDate *curDate = [NSDate date];//获取当前日期
+	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
+    NSString *standardCurDateString = [dateFormatter stringFromDate:curDate];
+	NSString *curDateString = [self getShortDateStringFromStandard:standardCurDateString];
+    
+    NSLog(@"curDateString: %@, scheduleTakeoffDate: %@", curDateString, scheduleTakeoffDate);
+    if ([curDateString isEqualToString:scheduleTakeoffDate]) {
+        cell.takeoffDateLabel.text = flightState;
+    } else {
+        NSString *weekdayStr = [self getWeekday:scheduleTakeoffDate];
+        cell.takeoffDateLabel.text = weekdayStr;
+        [weekdayStr release];
+    }
+    //cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
+	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
+	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ( flightState != nil 
+        && ([flightState isEqualToString:@"已经取消"] || [flightState isEqualToString:@"已经到达"]) ) {
+        NSString *standardScheduleTakeoffDateString = [self getStandardDateStringFromShort:scheduleTakeoffDate];
+        int compareResult = [standardScheduleTakeoffDateString compare:standardCurDateString];
+        if (compareResult < 0) {
+            cell.nameLabel.textColor = [UIColor grayColor];
+            //cell.flightNOLabel.textColor = [UIColor grayColor];
+            cell.takeoffTimeLabel.textColor = [UIColor grayColor];
+            cell.landTimeLabel.textColor = [UIColor grayColor];
+        }
+    }
+	
+    [dateFormatter release];
+	NSLog(@"...cellForRowAtIndexPath");
+	return cell;
+}
+
 - (void)viewDidLoad {
     cacheTableName = @"searchedflights";
     [super viewDidLoad];

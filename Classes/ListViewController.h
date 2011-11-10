@@ -13,7 +13,7 @@
 #import "MobClick.h"
 
 #define kFilename		@"flights.sqlite3"
-#define kTableViewRowHeight 66;
+#define kTableViewRowHeight 65;
 
 @interface ListViewController : UITableViewController
 <UITableViewDelegate, UITableViewDataSource, FlightAddDelegate, UIAlertViewDelegate> {

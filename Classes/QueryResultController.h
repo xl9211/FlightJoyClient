@@ -9,6 +9,8 @@
 #import "ListViewController.h"
 #import "RootViewController.h"
 #import "JSON/JSON.h"
+#import "QueryCustomCell.h"
+#define kQueryTableViewRowHeight 47;
 
 @interface QueryResultController : ListViewController {
     id <FlightAddDelegate> delegate;
