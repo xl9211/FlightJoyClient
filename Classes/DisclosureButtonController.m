@@ -616,10 +616,9 @@
 	if (row == 0) {
 		cell.text = airportString;
 		cell.backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
-		//cell.backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.4f alpha:1]; 
 		cell.textColor = [UIColor whiteColor];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		cell.accessoryView = button;
+		//cell.accessoryView = button;
 		cell.image = nil;
 		if (section == 0) {
 			if ([takeoffDelayAdvanceTime rangeOfString:@"已"].length > 0) {
