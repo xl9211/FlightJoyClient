@@ -1064,7 +1064,9 @@
         cell.takeoffTimeLabel.textColor = [UIColor blackColor];
         cell.landTimeLabel.textColor = [UIColor blackColor];
     }
-	
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cellbackground.png"]];
+    //cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"duigou.png"]];
+    
     [dateFormatter release];
 	NSLog(@"...cellForRowAtIndexPath");
 	return cell;

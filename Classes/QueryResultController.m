@@ -72,18 +72,24 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    NSString *standardScheduleTakeoffDateString = [self getStandardDateStringFromShort:scheduleTakeoffDate];
+    int compareResult = [standardScheduleTakeoffDateString compare:standardCurDateString];
     if ( flightState != nil 
-        && ([flightState isEqualToString:@"已经取消"] || [flightState isEqualToString:@"已经到达"]) ) {
-        NSString *standardScheduleTakeoffDateString = [self getStandardDateStringFromShort:scheduleTakeoffDate];
-        int compareResult = [standardScheduleTakeoffDateString compare:standardCurDateString];
-        if (compareResult < 0) {
-            cell.nameLabel.textColor = [UIColor grayColor];
-            //cell.flightNOLabel.textColor = [UIColor grayColor];
-            cell.takeoffTimeLabel.textColor = [UIColor grayColor];
-            cell.landTimeLabel.textColor = [UIColor grayColor];
-        }
+        && ([flightState isEqualToString:@"已经取消"] || [flightState isEqualToString:@"已经到达"])
+        && compareResult < 0) {
+        cell.nameLabel.textColor = [UIColor grayColor];
+        cell.flightNOLabel.textColor = [UIColor grayColor];
+        cell.takeoffTimeLabel.textColor = [UIColor grayColor];
+        cell.landTimeLabel.textColor = [UIColor grayColor];
+    } else {
+        UIColor *aliveColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+        cell.nameLabel.textColor = aliveColor;
+        cell.flightNOLabel.textColor = aliveColor;
+        cell.takeoffTimeLabel.textColor = [UIColor blackColor];
+        cell.landTimeLabel.textColor = [UIColor blackColor];
     }
-	
+    
+	cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cellbackground.png"]];
     [dateFormatter release];
 	NSLog(@"...cellForRowAtIndexPath");
 	return cell;
