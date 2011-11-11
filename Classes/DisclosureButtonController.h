@@ -14,6 +14,7 @@
 #import <MapKit/MKAnnotation.h>
 #import "MobClick.h"
 #import "QueryResultController.h"
+#import <MessageUI/MessageUI.h>
 
 #define kFilename		@"flights.sqlite3"
 
@@ -21,7 +22,8 @@
 
 @interface DisclosureButtonController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
-CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
+CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate,
+MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     id <FlightAddDelegate> delegate;
 	NSMutableArray *list;
 	NSMutableArray *cityList;
@@ -68,5 +70,12 @@ CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate> {
 @property (nonatomic,retain) NSString *parentClassName;
 
 - (IBAction)segmentControlDidChanged:(id)sender;
+
+//点击按钮后，触发这个方法  
+- (void)sendSMS;
+-(void)sendEMail;
+//可以发送邮件的话  
+-(void)displayComposerSheet;
+-(void)launchMailAppOnDevice;
 
 @end

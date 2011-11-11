@@ -206,34 +206,194 @@
 	// open a dialog with two custom buttons
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"将航班信息分享于"
                                                              delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"邮件", @"新浪微博", @"人人网", @"短信息", nil];
+                                                    otherButtonTitles:@"邮件", @"短信息", nil];
 	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-	[actionSheet showInView:self.view]; // show from our table view (pops up in the middle of the table)
+	//[actionSheet showInView:self.view]; // show from our table view (pops up in the middle of the table)
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 	[actionSheet release];
 }
 
 #pragma mark -
 #pragma mark - UIActionSheetDelegate
-
+//1.发邮件
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
             NSLog(@"邮件");
+            [self sendEMail];
             break;
-        case 1:
+        /*case 1:
             NSLog(@"微博");
             //[self StartSinaPhotoWeibo];
             break;
         case 2:
             NSLog(@"人人");
-            break;
-        case 3:
+            break;*/
+        case 1:
             NSLog(@"短信");
+            [self sendSMS];
             break;
         default:
             break;
     }
+}
+
+//点击完send后  成功失败都弹框显示：
+- (void) alertWithTitle: (NSString *)_title_ msg: (NSString *)msg   
+{  
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_title_   
+                                                    message:msg   
+                                                   delegate:nil   
+                                          cancelButtonTitle:@"确定"   
+                                          otherButtonTitles:nil];  
+    [alert show];  
+    [alert release];  
+}
+//点击Mail按钮后，触发这个方法  
+-(void)sendEMail   
+{  
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));  
+    
+    if (mailClass != nil)  
+    {  
+        if ([mailClass canSendMail])  
+        {  
+            [self displayComposerSheet];  
+        }   
+        else   
+        {  
+            [self launchMailAppOnDevice];  
+        }  
+    }   
+    else   
+    {  
+        [self launchMailAppOnDevice];  
+    }      
+}  
+//可以发送邮件的话  
+-(void)displayComposerSheet   
+{  
+    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];  
+    mailPicker.navigationBar.tintColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+    mailPicker.mailComposeDelegate = self;  
+    //设置主题
+    NSString *subjectString = [[NSString alloc]initWithFormat:@"来自飞趣的航班动态：%@ － %@ 至 %@",
+                               [flightInfo objectForKey:@"flight_no"],
+                               [flightInfo objectForKey:@"takeoff_airport"],
+                               [flightInfo objectForKey:@"arrival_airport"] ];
+    [mailPicker setSubject: subjectString];  
+    
+    // 添加发送者  
+    [mailPicker setToRecipients: nil];      
+    /*NSArray *toRecipients = [NSArray arrayWithObject: @"first@example.com"];  
+    NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];  
+    NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com", nil];  
+    [mailPicker setCcRecipients:ccRecipients];      
+    [mailPicker setBccRecipients:bccRecipients]; */
+    
+    // 添加图片  
+    UIImage *addPic = [UIImage imageNamed: @"iconlittle.jpg"];  
+    //NSData *imageData = UIImagePNGRepresentation(addPic);            // png  
+    NSData *imageData = UIImageJPEGRepresentation(addPic, 1);    // jpeg  
+    [mailPicker addAttachmentData: imageData mimeType: @"" fileName: @"icon.jpg"];  
+    
+    NSString *emailBody = @"亲爱的乘客"; 
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    emailBody = [emailBody stringByAppendingFormat:@"您好，以下是通过“飞趣”获得的 %@ %@ 航班动态:", 
+                 [flightInfo objectForKey:@"company"],
+                 [flightInfo objectForKey:@"flight_no"]];
+    /*出发
+    2011-11-11, Hangzhou (HGH)
+    计划: 18:10 CST (China)
+    实际: 16:42 CST (China)
+    
+    emailBody = [emailBody stringByAppendingString:@"计划起飞 "];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    emailBody = [emailBody stringByAppendingString:@"计划起飞 "];
+     */
+    [mailPicker setMessageBody:emailBody isHTML:YES];  
+    
+    [self presentModalViewController: mailPicker animated:YES];  
+    [mailPicker release];  
+}  
+-(void)launchMailAppOnDevice  
+{  
+    NSString *recipients = @"mailto:first@example.com&subject=my email!";  
+    //@"mailto:first@example.com?cc=second@example.com,third@example.com&subject=my email!";  
+    NSString *body = @"&body=email body!";  
+    
+    NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];  
+    email = [email stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];  
+    
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:email]];  
+}  
+- (void)mailComposeController:(MFMailComposeViewController *)controller   
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error   
+{  
+    /*
+    NSString *msg;  
+    
+    switch (result)   
+    {  
+        case MFMailComposeResultCancelled:  
+            msg = @"邮件发送取消";  
+            break;  
+        case MFMailComposeResultSaved:  
+            msg = @"邮件保存成功";  
+            [self alertWithTitle:nil msg:msg];  
+            break;  
+        case MFMailComposeResultSent:  
+            msg = @"邮件发送成功";  
+            [self alertWithTitle:nil msg:msg];  
+            break;  
+        case MFMailComposeResultFailed:  
+            msg = @"邮件发送失败";  
+            [self alertWithTitle:nil msg:msg];  
+            break;  
+        default:  
+            break;  
+    }  
+    */
+    [self dismissModalViewControllerAnimated:YES];  
+}
+
+//2.发短信
+//iOS3.0请参考 http://archive.cnblogs.com/a/1956619/
+- (void)sendSMS {
+	BOOL canSendSMS = [MFMessageComposeViewController canSendText];
+	NSLog(@"can send SMS [%d]", canSendSMS);	
+	if (canSendSMS) {
+		MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+		picker.messageComposeDelegate = self;
+		picker.navigationBar.tintColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+		picker.body = @"起飞";
+        picker.recipients = nil;
+		//picker.recipients = [NSArray arrayWithObject:@"186-0123-0123"];
+		[self presentModalViewController:picker animated:YES];
+		[picker release];		
+	}	
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+	// Notifies users about errors associated with the interface
+	/*
+    switch (result) {
+		case MessageComposeResultCancelled:
+			if (DEBUG) NSLog(@"Result: canceled");
+			break;
+		case MessageComposeResultSent:
+			if (DEBUG) NSLog(@"Result: Sent");
+			break;
+		case MessageComposeResultFailed:
+			if (DEBUG) NSLog(@"Result: Failed");
+			break;
+		default:
+			break;
+	}
+     */
+	[self dismissModalViewControllerAnimated:YES];	
 }
 
 - (void)showInfo {
