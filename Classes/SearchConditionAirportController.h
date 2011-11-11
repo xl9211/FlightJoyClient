@@ -22,6 +22,9 @@
 	NSMutableArray		 *airportArray;
     NSMutableData *responseData;
     Airport *searchConditionAirport;
+    
+    double tableViewOriginHeight;
+    BOOL keyboardWasShown;
 }
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) UISearchBar *search;

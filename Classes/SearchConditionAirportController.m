@@ -25,6 +25,8 @@
 	self.keys = keyArray;
 	[keyArray release];
  */
+    airportArray = [[NSMutableArray alloc] init];
+    [tableView reloadData];
 }
 - (NSString *)dataFilePath
 {
@@ -80,6 +82,7 @@
     NSLog(@"searchBarSearchButtonClicked...");
 	NSString *searchTerm = [searchBar text];
 	[self handleSearchForTerm:searchTerm];
+    [search resignFirstResponder];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -87,7 +90,6 @@
     NSLog(@"searchBarCancelButtonClicked...");
 	search.text = @"";
 	[self resetSearch];
-	[tableView reloadData];
 	[searchBar resignFirstResponder];
 }
 //假设此时数据库中已经存储了全部机场数据
@@ -132,7 +134,10 @@
 - (void)viewDidLoad
 {
     NSLog(@"viewDidLoad...");
-    
+    CGRect tableViewFrame= [tableView frame];
+    tableViewOriginHeight = tableViewFrame.size.height;
+    [self registerForKeyboardNotifications];
+    [search becomeFirstResponder];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -202,5 +207,39 @@
     }
 
 	[parent.tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark 软键盘相关处理
+- (void) registerForKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+
+- (void) keyboardWasShown:(NSNotification *) notif{
+    NSDictionary *info = [notif userInfo];
+    
+    NSValue *value = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+    CGSize keyboardSize = [value CGRectValue].size;
+
+    CGRect tableViewFrame= [tableView frame];
+    tableViewFrame.size.height = tableViewOriginHeight - keyboardSize.height - 43;
+    tableView.frame = tableViewFrame;
+    //[scrollView scrollRectToVisible:inputElementFrame animated:YES];
+    keyboardWasShown = YES;
+}
+
+- (void) keyboardWasHidden:(NSNotification *) notif{
+    NSDictionary *info = [notif userInfo];
+    
+    NSValue *value = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+    CGSize keyboardSize = [value CGRectValue].size;
+    
+    CGRect tableViewFrame= [tableView frame];
+    tableViewFrame.size.height = tableViewOriginHeight - 86;
+    tableView.frame = tableViewFrame;
+    keyboardWasShown = NO;
 }
 @end
