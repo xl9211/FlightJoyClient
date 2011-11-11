@@ -195,7 +195,7 @@
 
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
-	//[self.tableView setSeparatorColor:[UIColor clearColor]];
+	[self.tableView setSeparatorColor:[UIColor clearColor]];
     
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];

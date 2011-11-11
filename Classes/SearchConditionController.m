@@ -45,6 +45,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"SearchCondition viewDidLoad!");
+    UINavigationController *nav = (UINavigationController *)self.parentViewController;
+    nav.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];
+
     
     NSDate *curDate = [NSDate date];//获取当前日期
     NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
@@ -264,14 +267,16 @@
 
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:SearchConditionFieldCellIdentifier] autorelease];
 
+    UIColor *aliveColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
     label.textAlignment = UITextAlignmentRight;
     label.tag = kLabelTag;
     label.font = [UIFont boldSystemFontOfSize:14];
-    label.textColor = [UIColor grayColor];
-    label.backgroundColor = [UIColor whiteColor];
+    //label.textColor = [UIColor grayColor];
+    label.textColor = aliveColor;
+    //[aliveColor release];
     [cell.contentView addSubview:label];
-    
 	    
     cell.backgroundColor = [UIColor whiteColor]; 
     cell.textColor = [UIColor blackColor];
@@ -279,10 +284,12 @@
     switch (row) {
         case 0:
             label.text = @"航空公司";
+            label.backgroundColor = [UIColor clearColor];
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.font = [UIFont boldSystemFontOfSize:16];
             textField.clearsOnBeginEditing = NO;
             if (m_selectedSegmentIndex == 0) {//按航班号查询
                 textField.placeholder = @"必填";
@@ -293,16 +300,19 @@
             
             textField.tag = kSearchConditionCompanyTag;
             textField.text = self.searchConditionCompany.abbrev;
+
             [cell.contentView addSubview:textField];
             
             break;
         case 1:
             textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.font = [UIFont boldSystemFontOfSize:16];
             textField.clearsOnBeginEditing = NO;
             textField.placeholder = @"必填";
             
             if (m_selectedSegmentIndex == 0) {//按航班号查询
                 label.text = @"航班号";
+                label.backgroundColor = [UIColor clearColor];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
@@ -317,6 +327,7 @@
 
             } else { //按航段查询
                 label.text = @"出发";
+                label.backgroundColor = [UIColor clearColor];
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 textField.userInteractionEnabled = NO;
@@ -330,16 +341,19 @@
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.font = [UIFont boldSystemFontOfSize:16];
             textField.clearsOnBeginEditing = NO;
             textField.placeholder = @"必填";
             textField.userInteractionEnabled = NO;
             
             if (m_selectedSegmentIndex == 0) {//按航班号查询
                 label.text = @"出发日期";
+                label.backgroundColor = [UIColor clearColor];
                 textField.tag = kSearchConditionDateTag;
                 [textField setText:self.searchConditionDate];
             } else { //按航段查询
                 label.text = @"目的";
+                label.backgroundColor = [UIColor clearColor];
                 textField.tag = kSearchConditionToRouteTag;   
                 [textField setText:self.searchConditionArrivalAirport.fullname];
             }
@@ -348,11 +362,13 @@
             break;
         case 3:
             label.text = @"出发日期";
-            
+            label.backgroundColor = [UIColor clearColor];
+
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+            textField.font = [UIFont boldSystemFontOfSize:16];
             textField.clearsOnBeginEditing = NO;
             textField.placeholder = @"必填";
             [textField setText:self.searchConditionDate];

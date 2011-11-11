@@ -76,7 +76,7 @@
     application.applicationSupportsShakeToEdit = YES;
 	
     // Override point for customization after application launch.
-	//navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];
+	navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];
     [window addSubview: navController.view];
 	
     [window makeKeyAndVisible];
