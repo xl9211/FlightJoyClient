@@ -672,7 +672,11 @@
 	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	headerLabel.backgroundColor = [UIColor clearColor];
 	headerLabel.opaque = NO;
-	headerLabel.textColor = [UIColor darkGrayColor];
+    UIColor *veryDarkGray = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:1];
+    UIColor *veryLightGray = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1];
+	headerLabel.textColor = veryDarkGray;
+    headerLabel.shadowColor = veryLightGray;     
+    headerLabel.shadowOffset = CGSizeMake(1.0,1.0); 
 	headerLabel.font = [UIFont systemFontOfSize:14];
 	
 	NSString* labelText = @"    ";

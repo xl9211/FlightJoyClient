@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
 	NSLog(@"SearchCondition viewDidLoad!");
     UINavigationController *nav = (UINavigationController *)self.parentViewController;
-    nav.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];
+    nav.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china5.png"] ];
 
     
     NSDate *curDate = [NSDate date];//获取当前日期

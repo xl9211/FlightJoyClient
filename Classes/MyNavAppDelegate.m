@@ -30,7 +30,7 @@
                           delegate:self 
                           cancelButtonTitle:@"确定" 
                           otherButtonTitles:nil];
-    [alert show];
+    //[alert show];
     [alert release];
     self.deviceToken = str;
 }
@@ -76,7 +76,7 @@
     application.applicationSupportsShakeToEdit = YES;
 	
     // Override point for customization after application launch.
-	navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china3.jpg"] ];
+	navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china5.png"] ];
     [window addSubview: navController.view];
 	
     [window makeKeyAndVisible];
