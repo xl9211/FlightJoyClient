@@ -13,6 +13,14 @@
     cacheTableName = @"followedflights";
 	[super viewDidLoad];
 }
+- (void)announceFollowedFlightsToServer {
+    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
+    self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
+                 [self generateAnnounceStringValue],
+                 [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
+    [super requestFlightInfoFromServer];
+}
+
 - (void)requestFlightInfoFromServer {
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@", [self generateQueryStringValue]];

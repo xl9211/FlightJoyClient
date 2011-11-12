@@ -111,6 +111,9 @@
             
             [self loadFlightInfoFromTable];
         }
+        NSLog(@"batch delete...");
+        //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
+        [self announceFollowedFlightsToServer];
     }
 }
 - (void)deleteLandedFlights {
@@ -661,8 +664,18 @@
 		NSAssert1(0, @"Error creating table: %s", errorMsg);
 	}
 }
-
 - (NSString *) generateQueryStringValue {
+    return [self generateQueryStringUtil:0];
+}
+//告知用户关注的所有未死航班的列表
+- (NSString *) generateAnnounceStringValue {
+    return [self generateQueryStringUtil:1];
+}
+/*
+ queryOrAnnounce = 0 -> query
+ queryOrAnnounce = 1 -> annouce
+ */
+- (NSString *) generateQueryStringUtil: (int)queryOrAnnounce {
     //拼凑request字符串
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
@@ -680,9 +693,16 @@
 	}
     
     sqlite3_stmt *statement;
-	NSString *query = [NSString stringWithFormat:
-                       @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_airport, arrival_airport FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
-                       cacheTableName, curDateString];
+    NSString *query = nil;
+    if (queryOrAnnounce == 0) {
+        query = [NSString stringWithFormat:
+                 @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_airport, arrival_airport FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消' AND schedule_takeoff_date <= '%@') ORDER BY ID",
+                 cacheTableName, curDateString];
+    } else {
+        query = [NSString stringWithFormat:
+                 @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_airport, arrival_airport FROM %@ WHERE (flight_state != '已经到达' AND flight_state != '已经取消') ORDER BY ID",
+                 cacheTableName, curDateString];
+    }
 	int recordCount = 0;
     
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
@@ -993,6 +1013,9 @@
  */
 - (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
     NSLog(@"searchConditionController didAddRecipe");
+    //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
+    [self announceFollowedFlightsToServer];
+    
 	//此处不刷新，从关注航班表中读取
 	[self loadFlightInfoFromTable];
     // Dismiss the modal add recipe view controller
@@ -1131,6 +1154,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
     
 	sqlite3_close(database);	
+    NSLog(@"delete...");
+    //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
+    [self announceFollowedFlightsToServer];
 }
 
 

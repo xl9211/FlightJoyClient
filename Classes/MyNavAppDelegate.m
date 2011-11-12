@@ -34,6 +34,9 @@
     [alert release];
     self.deviceToken = str;
 }
+- (NSString *)getDeviceToken {
+    return self.deviceToken;
+}
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
     

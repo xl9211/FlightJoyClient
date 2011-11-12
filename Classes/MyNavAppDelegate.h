@@ -30,6 +30,7 @@
 
 + (MyNavAppDelegate *)sharedAppDelegate;
 - (BOOL)isServerReachable;
+- (NSString *)getDeviceToken;
 
 @end
 

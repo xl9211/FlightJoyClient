@@ -71,6 +71,7 @@
 - (void)loadToolbarItems;
 - (void)requestFlightInfoFromServer;
 - (void)addOrUpdateTableWithServerResponse:(NSString*)responseString;
+- (NSString *) generateQueryStringUtil: (int)queryOrAnnounce;
 
 - (NSString *)dataFilePath;
 @end
