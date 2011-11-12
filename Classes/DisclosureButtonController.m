@@ -280,8 +280,8 @@
     //设置主题
     NSString *subjectString = [[NSString alloc]initWithFormat:@"来自飞趣的航班动态：%@ － %@ 至 %@",
                                [flightInfo objectForKey:@"flight_no"],
-                               [flightInfo objectForKey:@"takeoff_airport"],
-                               [flightInfo objectForKey:@"arrival_airport"] ];
+                               [flightInfo objectForKey:@"takeoff_city"],
+                               [flightInfo objectForKey:@"arrival_city"] ];
     [mailPicker setSubject: subjectString];  
     
     // 添加发送者  
@@ -301,18 +301,99 @@
     NSString *emailBody = @"亲爱的乘客"; 
     emailBody = [emailBody stringByAppendingString:@"<br/>"];
     emailBody = [emailBody stringByAppendingString:@"<br/>"];
-    emailBody = [emailBody stringByAppendingFormat:@"您好，以下是通过“飞趣”获得的 %@ %@ 航班动态:", 
+    emailBody = [emailBody stringByAppendingFormat:@"您好，%@%@ 的航班动态信息如下:", 
                  [flightInfo objectForKey:@"company"],
                  [flightInfo objectForKey:@"flight_no"]];
-    /*出发
-    2011-11-11, Hangzhou (HGH)
-    计划: 18:10 CST (China)
-    实际: 16:42 CST (China)
-    
-    emailBody = [emailBody stringByAppendingString:@"计划起飞 "];
     emailBody = [emailBody stringByAppendingString:@"<br/>"];
-    emailBody = [emailBody stringByAppendingString:@"计划起飞 "];
+    
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    
+    /*出发
+     2011-11-11, Hangzhou (HGH)
+     计划: 18:10 CST (China)
+     实际: 16:42 CST (China)
+     航站楼: 2
+     登机口: 203
      */
+    emailBody = [emailBody stringByAppendingString:@"出发"];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    
+    emailBody = [emailBody stringByAppendingFormat:@"%@, %@ (%@)",
+                 [flightInfo objectForKey:@"schedule_takeoff_date"], 
+                 [flightInfo objectForKey:@"takeoff_city"],
+                 [flightInfo objectForKey:@"takeoff_airport"]];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+
+    emailBody = [emailBody stringByAppendingFormat:@"计划: %@", [flightInfo objectForKey:@"schedule_takeoff_time"]];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    if (![[flightInfo objectForKey:@"actual_takeoff_time"] isEqualToString:@"--:--"]) {
+        emailBody = [emailBody stringByAppendingFormat:@"实际: %@", 
+                     [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"actual_takeoff_time"]]
+                     ];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    } else if (![[flightInfo objectForKey:@"estimate_takeoff_time"] isEqualToString:@"--:--"]) {
+        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_takeoff_time"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    if (![[flightInfo objectForKey:@"takeoff_airport_building"] isEqualToString:@""]) {
+        emailBody = [emailBody stringByAppendingFormat:@"航站楼: %@", [flightInfo objectForKey:@"takeoff_airport_building"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    if (![[flightInfo objectForKey:@"takeoff_airport_entrance_exit"] isEqualToString:@""]) {
+        emailBody = [emailBody stringByAppendingFormat:@"登机口: %@", [flightInfo objectForKey:@"takeoff_airport_entrance_exit"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+
+    /*
+     到达
+     2011-11-11, Xiamen (XMN)
+     计划: 19:30 CST (China)
+     实际: 17:50 CST (China)
+     航站楼: B
+     登机口: B2-54
+     */
+    emailBody = [emailBody stringByAppendingString:@"到达"];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    
+    emailBody = [emailBody stringByAppendingFormat:@"%@, %@ (%@)",
+                 [flightInfo objectForKey:@"schedule_takeoff_date"], //此处有bug
+                 [flightInfo objectForKey:@"arrival_city"],
+                 [flightInfo objectForKey:@"arrival_airport"]];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    
+    emailBody = [emailBody stringByAppendingFormat:@"计划: %@", [flightInfo objectForKey:@"schedule_arrival_time"]];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    if (![[flightInfo objectForKey:@"actual_arrival_time"] isEqualToString:@"--:--"]) {
+        emailBody = [emailBody stringByAppendingFormat:@"实际: %@", 
+                     [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"actual_arrival_time"]]
+                     ];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    } else if (![[flightInfo objectForKey:@"estimate_arrival_time"] isEqualToString:@"--:--"]) {
+        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_arrival_time"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    if (![[flightInfo objectForKey:@"arrival_airport_building"] isEqualToString:@""]) {
+        emailBody = [emailBody stringByAppendingFormat:@"航站楼: %@", [flightInfo objectForKey:@"arrival_airport_building"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    if (![[flightInfo objectForKey:@"arrival_airport_entrance_exit"] isEqualToString:@""]) {
+        emailBody = [emailBody stringByAppendingFormat:@"登机口: %@", [flightInfo objectForKey:@"arrival_airport_entrance_exit"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    }
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+    /*
+     此班機目前狀態: 着陆
+     
+     FlightTrack Pro - 在iPhone及iPad上追蹤您的班機.
+     */
+    emailBody = [emailBody stringByAppendingFormat:@"此架航班当前状态: %@",[flightInfo objectForKey:@"flight_state"]];
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+
+    emailBody = [emailBody stringByAppendingString:@"<br/>"];
+
+    emailBody = [emailBody stringByAppendingString:@"飞趣 - 追踪您的航班动态，让飞行乐趣无穷"];
+    
     [mailPicker setMessageBody:emailBody isHTML:YES];  
     
     [self presentModalViewController: mailPicker animated:YES];  
@@ -358,6 +439,18 @@
     */
     [self dismissModalViewControllerAnimated:YES];  
 }
+- (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
+	if (standardTimeString == nil || [standardTimeString isEqual:@""]) {
+		return @"";
+	}
+	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"HH:mm"];
+	NSDate *date=[dateFormatter dateFromString:standardTimeString];
+	[dateFormatter setDateFormat:@"H:mm"];
+	NSString *shortDateString = [dateFormatter stringFromDate:date];
+	[dateFormatter release];
+	return shortDateString;
+}
 
 //2.发短信
 //iOS3.0请参考 http://archive.cnblogs.com/a/1956619/
@@ -368,7 +461,54 @@
 		MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
 		picker.messageComposeDelegate = self;
 		picker.navigationBar.tintColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
-		picker.body = @"起飞";
+        
+        //构造短信正文
+        NSString *emailBody = [[NSString alloc] initWithFormat:@"%@ %@", 
+                     [flightInfo objectForKey:@"company"],
+                     [flightInfo objectForKey:@"flight_no"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        
+        emailBody = [emailBody stringByAppendingFormat:@"出发: %@, %@ (%@)",
+                     [flightInfo objectForKey:@"schedule_takeoff_date"], 
+                     [flightInfo objectForKey:@"takeoff_city"],
+                     [flightInfo objectForKey:@"takeoff_airport"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        
+        emailBody = [emailBody stringByAppendingFormat:@"计划: %@", [flightInfo objectForKey:@"schedule_takeoff_time"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        if (![[flightInfo objectForKey:@"actual_takeoff_time"] isEqualToString:@"--:--"]) {
+            emailBody = [emailBody stringByAppendingFormat:@"实际: %@", 
+                         [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"actual_takeoff_time"]]
+                         ];
+            emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        } else if (![[flightInfo objectForKey:@"estimate_takeoff_time"] isEqualToString:@"--:--"]) {
+            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_takeoff_time"]];
+            emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        }
+        
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        
+        emailBody = [emailBody stringByAppendingFormat:@"到达: %@, %@ (%@)",
+                     [flightInfo objectForKey:@"schedule_takeoff_date"], //此处有bug
+                     [flightInfo objectForKey:@"arrival_city"],
+                     [flightInfo objectForKey:@"arrival_airport"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        
+        emailBody = [emailBody stringByAppendingFormat:@"计划: %@", [flightInfo objectForKey:@"schedule_arrival_time"]];
+        emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        if (![[flightInfo objectForKey:@"actual_arrival_time"] isEqualToString:@"--:--"]) {
+            emailBody = [emailBody stringByAppendingFormat:@"实际: %@", 
+                         [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"actual_arrival_time"]]
+                         ];
+            emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        } else if (![[flightInfo objectForKey:@"estimate_arrival_time"] isEqualToString:@"--:--"]) {
+            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_arrival_time"]];
+            emailBody = [emailBody stringByAppendingString:@"<br/>"];
+        }
+        
+        
+        picker.body = emailBody;
+        [emailBody release];
         picker.recipients = nil;
 		//picker.recipients = [NSArray arrayWithObject:@"186-0123-0123"];
 		[self presentModalViewController:picker animated:YES];
