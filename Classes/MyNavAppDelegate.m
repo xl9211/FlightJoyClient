@@ -16,7 +16,7 @@
 
 
 - (NSString *)appKey {
-    return @"4ead70725270150996000001";
+    return @"4ebf9547527015401e00006f";
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken { 
