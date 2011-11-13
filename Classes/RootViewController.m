@@ -14,6 +14,8 @@
 	[super viewDidLoad];
 }
 - (void)announceFollowedFlightsToServer {
+    //加载机场代码表进入数据字典
+    [self loadAirportDictionary];
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
                  [self generateAnnounceStringValue],
@@ -22,6 +24,8 @@
 }
 
 - (void)requestFlightInfoFromServer {
+    //加载机场代码表进入数据字典
+    [self loadAirportDictionary];
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@", [self generateQueryStringValue]];
     [super requestFlightInfoFromServer];

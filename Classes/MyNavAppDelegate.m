@@ -185,7 +185,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"connectionDidFinishLoading...");
+	NSLog(@"MyNavAppDelegate.connectionDidFinishLoading...");
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
@@ -217,7 +217,8 @@
             NSString *update = [[NSString alloc] initWithFormat:insertSQL,
                                 city, shortname, fullname ];
             char * errorMsg;
-            
+            //NSLog(@"update...");
+
             if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
             {
                 NSAssert1(0, @"Error updating tables: %s", errorMsg);

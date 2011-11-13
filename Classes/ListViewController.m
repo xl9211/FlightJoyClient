@@ -185,10 +185,10 @@
     sqlite3_finalize(statement);
     sqlite3_close(database);
     self.dicAirportFullNameToShort = dictionary;
-    [dictionary release];
+    //[dictionary release];
 }
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {    
+- (void)viewDidLoad {
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
@@ -199,9 +199,6 @@
 	self.title = @"航班列表";
 	self.tableView.backgroundColor = [UIColor clearColor];
 	[self.tableView setSeparatorColor:[UIColor clearColor]];
-    
-    //加载机场代码表进入数据字典
-    [self loadAirportDictionary];
     
     [self createFlightTable];
 	[self loadFlightInfoFromTable];
@@ -704,6 +701,19 @@
                  cacheTableName, curDateString];
     }
 	int recordCount = 0;
+    /*
+    if (self.dicAirportFullNameToShort != nil) {
+        NSLog(@"self.dicAirportFullNameToShort != nil");
+        NSArray *keys = [self.dicAirportFullNameToShort allKeys];
+        
+        // values in foreach loop
+        for (NSString *key in keys) {
+            NSLog(@"%@ is %@",key, [self.dicAirportFullNameToShort objectForKey:key]);
+        }
+    } else {
+        NSLog(@"self.dicAirportFullNameToShort == nil");
+
+    }*/
     
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {
