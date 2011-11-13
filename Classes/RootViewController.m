@@ -16,26 +16,38 @@
 - (void)announceAddFollowedFlightsToServer {
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];
+    NSString *announceAddStringValue = [self generateAnnounceAddStringValue];
+    if ([announceAddStringValue isEqualToString:@"[]"]) {
+        return;
+    }
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/addFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
-                 [self generateAnnounceAddStringValue],
+                 announceAddStringValue,
                  [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
     [super requestFlightInfoFromServer];
 }
 -(void)announceDeleteFollowedFlightsToServer:(NSArray *)idArrayToDelete {
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];
+    NSString *announceDeleteStringValue = [self generateAnnounceDeleteStringValue:idArrayToDelete];
+    if ([announceDeleteStringValue isEqualToString:@"[]"]) {
+        return;
+    }
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/deleteFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
-                 [self generateAnnounceDeleteStringValue:idArrayToDelete],
+                 announceDeleteStringValue,
                  [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
     [super requestFlightInfoFromServer];
 }
 - (void)requestFlightInfoFromServer {
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];
+    NSString *queryStringValue = [self generateQueryStringValue];
+    if ([queryStringValue isEqualToString:@"[]"]) {
+        return;
+    }
     self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
-    self.post = [[NSString alloc] initWithFormat:@"query_string=%@", [self generateQueryStringValue]];
+    self.post = [[NSString alloc] initWithFormat:@"query_string=%@", queryStringValue];
     [super requestFlightInfoFromServer];
 }
 - (void) stopUpdateProcess {
