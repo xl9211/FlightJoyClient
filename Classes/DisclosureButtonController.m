@@ -332,7 +332,9 @@
                      ];
         emailBody = [emailBody stringByAppendingString:@"<br/>"];
     } else if (![[flightInfo objectForKey:@"estimate_takeoff_time"] isEqualToString:@"--:--"]) {
-        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_takeoff_time"]];
+        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", 
+                     [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"estimate_takeoff_time"]]
+                     ];
         emailBody = [emailBody stringByAppendingString:@"<br/>"];
     }
     if (![[flightInfo objectForKey:@"takeoff_airport_building"] isEqualToString:@""]) {
@@ -370,7 +372,9 @@
                      ];
         emailBody = [emailBody stringByAppendingString:@"<br/>"];
     } else if (![[flightInfo objectForKey:@"estimate_arrival_time"] isEqualToString:@"--:--"]) {
-        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_arrival_time"]];
+        emailBody = [emailBody stringByAppendingFormat:@"预计: %@", 
+                     [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"estimate_arrival_time"]]
+                     ];
         emailBody = [emailBody stringByAppendingString:@"<br/>"];
     }
     if (![[flightInfo objectForKey:@"arrival_airport_building"] isEqualToString:@""]) {
@@ -482,7 +486,9 @@
                          ];
             emailBody = [emailBody stringByAppendingString:@"<br/>"];
         } else if (![[flightInfo objectForKey:@"estimate_takeoff_time"] isEqualToString:@"--:--"]) {
-            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_takeoff_time"]];
+            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", 
+                         [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"estimate_takeoff_time"]]
+                         ];
             emailBody = [emailBody stringByAppendingString:@"<br/>"];
         }
         
@@ -502,7 +508,9 @@
                          ];
             emailBody = [emailBody stringByAppendingString:@"<br/>"];
         } else if (![[flightInfo objectForKey:@"estimate_arrival_time"] isEqualToString:@"--:--"]) {
-            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", [flightInfo objectForKey:@"estimate_arrival_time"]];
+            emailBody = [emailBody stringByAppendingFormat:@"预计: %@", 
+                         [self getShortTimeStringFromStandard:[flightInfo objectForKey:@"estimate_arrival_time"]]
+                         ];
             emailBody = [emailBody stringByAppendingString:@"<br/>"];
         }
         
