@@ -79,7 +79,29 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        //delete 1
+        //1. 查找需要删除的航班的id，组成数组
+        NSMutableArray *idArrayToDelete = [[NSMutableArray alloc] init];
+        NSString *query = nil;
+        if ([[alertView title] isEqualToString:@"删除全部航班"]) {
+            query = [[NSString alloc] initWithString:@"SELECT id FROM followedflights;"];
+        } else {
+            query = [[NSString alloc] 
+                                initWithString:@"SELECT id FROM followedflights WHERE flight_state = '已经到达' OR flight_state = '已经取消';"];
+        }
+        sqlite3_stmt *statement;
+        if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                int recordPointer = 0;
+                int recordId = sqlite3_column_int(statement, recordPointer++);                    
+                NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d", recordId];
+                [idArrayToDelete addObject:recordIdStr];
+            }
+        }
+        
+        //2. 是时候 调用告知服务器当前用户关注删除了哪些关注航班 啦！
+        [self announceDeleteFollowedFlightsToServer:idArrayToDelete];
+
+        //3. delete
         if ([[alertView title] isEqualToString:@"删除全部航班"]) {
             NSString *delete = [[NSString alloc] initWithString:@"DELETE FROM followedflights;"];
             char * errorMsg;
@@ -112,8 +134,6 @@
             [self loadFlightInfoFromTable];
         }
         NSLog(@"batch delete...");
-        //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
-        [self announceFollowedFlightsToServer];
     }
 }
 - (void)deleteLandedFlights {
@@ -665,8 +685,64 @@
     return [self generateQueryStringUtil:0];
 }
 //告知用户关注的所有未死航班的列表
-- (NSString *) generateAnnounceStringValue {
+- (NSString *) generateAnnounceAddStringValue {
     return [self generateQueryStringUtil:1];
+}
+//告知用户删除了哪些航班
+- (NSString *)generateAnnounceDeleteStringValue:(NSArray *)idArrayToDelete {
+    NSString *id_string_value = [[NSString alloc] initWithString:@"("];
+    for (NSString *idStr in idArrayToDelete) {
+        id_string_value = [id_string_value stringByAppendingFormat:@"%@,", idStr];
+    }
+    id_string_value = [id_string_value substringToIndex:[id_string_value length]-1];
+    id_string_value = [id_string_value stringByAppendingString:@")"];
+    
+    
+    NSString *query_string_value = [[NSString alloc] initWithString:@"["];
+    
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+        sqlite3_close(database);
+        NSAssert(0, @"Failed to open database");
+    }
+    
+    sqlite3_stmt *statement;
+    NSString *query = [NSString stringWithFormat:
+                 @"SELECT ID, flight_no, schedule_takeoff_date, takeoff_airport, arrival_airport FROM %@ WHERE id in %@ ORDER BY ID",cacheTableName, id_string_value];
+    int recordCount = 0;
+    
+    if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            recordCount ++;
+            int fieldCounter = 0;
+            int recordId = sqlite3_column_int(statement, fieldCounter++);
+            char *flightNoDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+            char *scheduleTakeoffDateDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+            char *takeoffAirportDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+            char *arrivalAirportDataChar = (char *)sqlite3_column_text(statement, fieldCounter++);
+            
+            NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d",recordId];
+            NSString *flightNoStr = [[NSString alloc] initWithUTF8String:flightNoDataChar];
+            NSString *scheduleTakeoffDateStr = [[NSString alloc] initWithUTF8String:scheduleTakeoffDateDataChar];
+            NSString *takeoffAirportStr = [[NSString alloc] initWithUTF8String:takeoffAirportDataChar];
+            NSString *arrivalAirportStr = [[NSString alloc] initWithUTF8String:arrivalAirportDataChar];
+            
+            query_string_value = [query_string_value stringByAppendingFormat:
+                                  @"{\"flight_no\":\"%@\",\"schedule_takeoff_date\":\"%@\", \"takeoff_airport\":\"%@\",\"arrival_airport\":\"%@\"},",
+                                  flightNoStr, scheduleTakeoffDateStr, [self.dicAirportFullNameToShort objectForKey:takeoffAirportStr], [self.dicAirportFullNameToShort objectForKey:arrivalAirportStr] ];
+            [recordIdStr release];
+            [flightNoStr release];
+            [scheduleTakeoffDateStr release];
+            [takeoffAirportStr release];
+            [arrivalAirportStr release];
+        }
+    }
+    
+    if (recordCount > 0) {
+		query_string_value = [query_string_value substringToIndex:[query_string_value length]-1];
+	}    
+    query_string_value = [query_string_value stringByAppendingString:@"]"];
+
+    return query_string_value;
 }
 /*
  queryOrAnnounce = 0 -> query
@@ -1024,7 +1100,7 @@
 - (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
     NSLog(@"searchConditionController didAddRecipe");
     //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
-    [self announceFollowedFlightsToServer];
+    [self announceAddFollowedFlightsToServer];
     
 	//此处不刷新，从关注航班表中读取
 	[self loadFlightInfoFromTable];
@@ -1150,6 +1226,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSUInteger row = [indexPath row];
 	NSDictionary *flightInfo = [self.flightArray objectAtIndex:row];
 	NSString *recordId = [flightInfo objectForKey:@"recordId"];
+    
+    //是时候 调用告知服务器当前用户删除了哪些航班 啦！
+    NSArray *idArrayToDelete = [[NSArray alloc] initWithObjects: recordId, nil]; 
+    [self announceDeleteFollowedFlightsToServer:idArrayToDelete];
+    
 	NSLog(@"recordId:%@", recordId);
     NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
 	char * errorMsg;
@@ -1165,8 +1246,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	sqlite3_close(database);	
     NSLog(@"delete...");
-    //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
-    [self announceFollowedFlightsToServer];
 }
 
 

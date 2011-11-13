@@ -13,16 +13,24 @@
     cacheTableName = @"followedflights";
 	[super viewDidLoad];
 }
-- (void)announceFollowedFlightsToServer {
+- (void)announceAddFollowedFlightsToServer {
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];
-    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
+    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/addFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
-                 [self generateAnnounceStringValue],
+                 [self generateAnnounceAddStringValue],
                  [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
     [super requestFlightInfoFromServer];
 }
-
+-(void)announceDeleteFollowedFlightsToServer:(NSArray *)idArrayToDelete {
+    //加载机场代码表进入数据字典
+    [self loadAirportDictionary];
+    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/deleteFollowedFlightInfo"];
+    self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
+                 [self generateAnnounceDeleteStringValue:idArrayToDelete],
+                 [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
+    [super requestFlightInfoFromServer];
+}
 - (void)requestFlightInfoFromServer {
     //加载机场代码表进入数据字典
     [self loadAirportDictionary];
