@@ -37,7 +37,7 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     //mapview
     IBOutlet MKMapView *mapView; 
 	NSMutableArray *cityLocationList;
-    int m_selectedSegmentIndex;
+    int m_currentSegmentIndex;
     
     //detail statebar
     IBOutlet UILabel *stateLabelLeft;
@@ -68,8 +68,6 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 
 //
 @property (nonatomic,retain) NSString *parentClassName;
-
-- (IBAction)segmentControlDidChanged:(id)sender;
 
 //点击按钮后，触发这个方法  
 - (void)sendSMS;

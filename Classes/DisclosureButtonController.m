@@ -553,6 +553,22 @@
     [MobClick showFeedback:self];
 }
 
+-(void)segmentChange {
+    NSLog(@"segmentChange...");
+    m_currentSegmentIndex = 1 - m_currentSegmentIndex;
+    switch (m_currentSegmentIndex) {
+		case 0:
+            [self.tableView setHidden:NO];
+            [self.mapView setHidden:YES];
+			break;
+		case 1:
+            [self.tableView setHidden:YES];
+            [self.mapView setHidden:NO];
+            [self loadMapviewData];
+			break;
+	}
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"DisclosureButtonController.viewDidLoad...");
@@ -591,15 +607,34 @@
 	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
 												[self getStatusLabel:@""]];
 	
+    
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
+    [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"planetab.png"] atIndex:0 animated:YES];
+    [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"earthtab.png"] atIndex:1 animated:YES];
+    /*[segmentedControl setBackgroundImage:[UIImage imageNamed:@"xiangqing.png"]
+                                forState:UIControlStateHighlighted 
+                              barMetrics:nil];
+    */
+    [segmentedControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [segmentedControl setSelectedSegmentIndex:0];
+    //[segment setFrame:CGRectMake(0, 0, 320, 40)];
+    [segmentedControl addTarget:self action:@selector(segmentChange) forControlEvents:UIControlEventValueChanged];
+    
+    UIBarButtonItem *segmentBarButton = [[UIBarButtonItem alloc] 
+                                         initWithCustomView:segmentedControl];
+    [segmentBarButton setStyle:UISegmentedControlStyleBar];
+    
     NSMutableArray *refreshToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
-                                                                 flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-                                                                 flexibleSpace, nil]; ;
+                                                                 flexibleSpace, 
+                                           updateProgressIndicatorButton, 
+                                           updateStatusLabelButton,
+                                           segmentBarButton,
+                                           flexibleSpace, nil]; ;
     [self setToolbarItems: refreshToolbarItems animated:YES];
 
     if (self.parentClassName != nil 
         && [self.parentClassName isEqualToString:@"RootViewController"]) {
         [refreshToolbarItems addObject:infoBarButton];
-        
         UIBarButtonItem *sendButtonItem = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                        target:self action:@selector(showSendActionSheet)];
@@ -642,8 +677,9 @@
      [mapView setRegion:theRegion animated:YES];*/
 	[mapView setZoomEnabled:YES];
 	[mapView setScrollEnabled:YES];	
-    [self switchToSegment:0];
-    
+    m_currentSegmentIndex = 1;
+    [self segmentChange];
+
     m_statebarIndex = 0;
     [self rotateStatebar];
     NSTimer *timer;
@@ -1064,28 +1100,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 }
 #pragma mark -
 #pragma mark Map View Methods
-- (IBAction)segmentControlDidChanged:(id)sender
-{
-    NSLog(@"segmentControlDidChanged...");
-	UISegmentedControl *segmentControl = (UISegmentedControl *)sender;
-	[self switchToSegment:segmentControl.selectedSegmentIndex];
-}
 
-- (void) switchToSegment:(int)segmentIndex {
-    switch (segmentIndex) {
-		case 0:
-            m_selectedSegmentIndex = 0;
-            [self.tableView setHidden:NO];
-            [self.mapView setHidden:YES];
-			break;
-		case 1:
-            m_selectedSegmentIndex = 1;
-            [self.tableView setHidden:YES];
-            [self.mapView setHidden:NO];
-            [self loadMapviewData];
-			break;
-	}
-}
 
 - (void) loadMapviewData {
     //1. prepare data
