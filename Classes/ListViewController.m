@@ -64,10 +64,14 @@
 	if (!self.tableView.editing) {
 		self.navigationItem.leftBarButtonItem.title = @"完成";
 		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleDone;
+        UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
+        self.navigationItem.leftBarButtonItem.tintColor = hightlightButtonBackground;
 		[self setToolbarItems: self.deleteToolbarItems animated:YES]; 
 	} else {
 		self.navigationItem.leftBarButtonItem.title = @"编辑";
 		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleBordered;
+        UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+        self.navigationItem.leftBarButtonItem.tintColor = backgroundColor;
 		[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 	}
 	
