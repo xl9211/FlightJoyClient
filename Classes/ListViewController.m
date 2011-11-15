@@ -323,7 +323,7 @@
 	NSLog(@"connectionDidFinishLoading...");
 	[connection release];
     
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];  
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]; 
     //1.使用“服务器数据”更新“数据库数据”
     [self addOrUpdateTableWithServerResponse:responseString];
     //2.读取“数据库数据”，转化为“表格展示数据”并显示
@@ -331,7 +331,13 @@
     //3.找到当前航班的详情页，并更新数据
     [self refreshOpenedDetailInfo];
     
-	[self stopUpdateProcess];
+    //判断是否为addFollowedFlightInfo、deleteFollowedFlightInfo调用导致
+    if (responseString != nil && [responseString isEqualToString:@"0"]) {   
+        NSLog(@"addFollowedFlightInfo or deleteFollowedFlightInfo");
+        [self stopUpdateProcessDisplay];
+    } else {
+        [self stopUpdateProcess];
+    }
 }
 //HTTP Response - end
 
@@ -639,7 +645,7 @@
 #pragma mark -
 #pragma mark 业务核心方法
 - (void)addOrUpdateTableWithServerResponse:(NSString*)responseString{
-    NSLog(responseString);
+    NSLog(@"addOrUpdateTableWithServerResponse:%@",responseString);
 }
 
 //创建关注航班表
@@ -1066,8 +1072,8 @@
 /*
  * 停止更新航班信息的过程
  */
-- (void) stopUpdateProcess {
-	NSLog(@"stopUpdateProcess...");
+- (void) stopUpdateProcessDisplay {
+	NSLog(@"stopUpdateProcessDisplay...");
 	
 	if (self.tableView.editing) {
 		return;
@@ -1289,6 +1295,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)switchToSearchCondition:(id)sender
 {   
+    NSLog(@"switchToSearchCondition...");
 	SearchConditionController *searchConditionController = [[SearchConditionController alloc]initWithNibName:@"SearchConditionController" bundle:nil];
 	// Configure the RecipeAddViewController. In this case, it reports any
 	// changes to a custom delegate object.

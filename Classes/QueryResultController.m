@@ -150,7 +150,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) stopUpdateProcess {
-    [super stopUpdateProcess]; 
+    [super stopUpdateProcessDisplay]; 
     
 	int flightCount = [self.flightArray count];
 	if (flightCount != 0) {

@@ -51,7 +51,7 @@
     [super requestFlightInfoFromServer];
 }
 - (void) stopUpdateProcess {
-    [super stopUpdateProcess]; 
+    [super stopUpdateProcessDisplay]; 
     
     //设置编辑模式
 	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
