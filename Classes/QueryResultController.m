@@ -103,6 +103,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.delegate = root;
     saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
 	saveAllButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注全部" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
+    UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
+    saveButtonItem.tintColor = hightlightButtonBackground;
+    saveAllButtonItem.tintColor = hightlightButtonBackground;
     self.title = @"航班";
 }
 

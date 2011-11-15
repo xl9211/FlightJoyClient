@@ -51,7 +51,7 @@
     [alert show];
     [alert release];
 }
-
+//查询推送的网址http://118.194.161.243:28888/getPushInfo
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     for (id key in userInfo) {

@@ -66,6 +66,8 @@
     [cancelButtonItem release];
     
     UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStyleDone target:self action:@selector(search)];
+    UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
+    searchButtonItem.tintColor = hightlightButtonBackground;
     self.navigationItem.rightBarButtonItem = searchButtonItem;
     [searchButtonItem release];
 	
