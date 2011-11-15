@@ -100,8 +100,8 @@
 	BOOL valid = YES;
     
     if (m_selectedSegmentIndex == 0) {//按航班号查询
-        if (self.searchConditionCompany.abbrev == nil 
-            || [self.searchConditionCompany.abbrev isEqualToString:@""] ) {
+        if (self.searchConditionCompany.shortname == nil 
+            || [self.searchConditionCompany.shortname isEqualToString:@""] ) {
             valid = NO;
             msg = [[NSString alloc] initWithString:@"请选择航空公司。"];
         } else if (self.searchConditionFlightNo == nil 
@@ -301,7 +301,7 @@
             textField.userInteractionEnabled = NO;
             
             textField.tag = kSearchConditionCompanyTag;
-            textField.text = self.searchConditionCompany.abbrev;
+            textField.text = self.searchConditionCompany.shortname;
 
             [cell.contentView addSubview:textField];
             
@@ -422,7 +422,7 @@
 	UILabel *label = [[cell.contentView subviews] objectAtIndex:0];
     
 	if (row == 0) {
-		SearchConditionCompanyController *searchCCC = [[SearchConditionCompanyController alloc]initWithStyle:UITableViewStyleGrouped];
+		SearchConditionCompanyController *searchCCC = [[SearchConditionCompanyController alloc]initWithNibName:@"SearchConditionCompanyController" bundle:nil];
 		searchCCC.title = label.text;
 		searchCCC.searchConditionCompany = self.searchConditionCompany;
 		[root.searchNavController pushViewController:searchCCC animated:YES];

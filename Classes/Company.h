@@ -10,10 +10,10 @@
 
 
 @interface Company : NSObject {
-	NSString *chname;
-	NSString *abbrev;
+	NSString *shortname;
+	NSString *fullname;
 }
-@property (nonatomic, retain) NSString* chname;
-@property (nonatomic, retain) NSString* abbrev;
+@property (nonatomic, retain) NSString* shortname;
+@property (nonatomic, retain) NSString* fullname;
 
 @end

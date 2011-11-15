@@ -44,7 +44,7 @@
 		NSAssert(0, @"Failed to open database");
 	}
 	
-	NSString *query = [NSString stringWithFormat:@"select * from airport where city like '%@%%' or fullname like '%@%%' or shortname like '%@%%';", searchTerm, searchTerm, searchTerm];
+	NSString *query = [NSString stringWithFormat:@"select * from airport where city like '%%%@%%' or fullname like '%%%@%%' or shortname like '%%%@%%';", searchTerm, searchTerm, searchTerm];
 	sqlite3_stmt *statement;
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {

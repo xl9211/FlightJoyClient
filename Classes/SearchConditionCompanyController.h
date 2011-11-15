@@ -8,13 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "Company.h"
+#import "/usr/include/sqlite3.h"
+#define kFilename		@"flights.sqlite3"
 
-@interface SearchConditionCompanyController : UITableViewController {
-	NSArray *companyListData;
+@interface SearchConditionCompanyController : UIViewController
+<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
+    IBOutlet	UITableView *tableView;
+	IBOutlet	UISearchBar *search;
+    
+	NSMutableArray *companyListData;
 	Company *searchConditionCompany;
 	NSMutableData *responseData;
+    
+    double tableViewOriginHeight;
+    BOOL keyboardWasShown;
+    
+    sqlite3	*database;
 }
-@property (nonatomic, retain) NSArray *companyListData;
+@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) UISearchBar *search;
+
+@property (nonatomic, retain) NSMutableArray *companyListData;
 @property (nonatomic, retain) Company *searchConditionCompany;
 
 @end

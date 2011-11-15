@@ -10,6 +10,6 @@
 
 
 @implementation Company
-@synthesize abbrev;
-@synthesize chname;
+@synthesize shortname;
+@synthesize fullname;
 @end

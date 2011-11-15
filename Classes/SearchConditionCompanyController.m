@@ -12,33 +12,182 @@
 #import "JSON/JSON.h"
 
 @implementation SearchConditionCompanyController
+@synthesize tableView;
+@synthesize search;
 @synthesize companyListData;
 @synthesize searchConditionCompany;
 
 #pragma mark -
 #pragma mark Initialization
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
+- (void)resetSearch
+{
+    companyListData = [[NSMutableArray alloc] init];
+    [tableView reloadData];
 }
-*/
+- (NSString *)dataFilePath
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	return [documentsDirectory stringByAppendingPathComponent:kFilename];
+}
 
+- (void)handleSearchForTerm:(NSString *)searchTerm
+{
+    companyListData = [[NSMutableArray alloc] init];
+    //查询数据库中的匹配记录
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+	NSString *query = [NSString stringWithFormat:@"select * from company where fullname like '%%%@%%' or shortname like '%%%@%%';", searchTerm, searchTerm];
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int recordPointer = 0;
+			int recordId = sqlite3_column_int(statement, recordPointer++);
+            
+			//读取char
+			char *shortnameChar = (char *)sqlite3_column_text(statement, recordPointer++);
+            char *fullnameChar = (char *)sqlite3_column_text(statement, recordPointer++);
+            
+			//生成String
+			NSString *recordIdStr = [[NSString alloc] initWithFormat:@"%d", recordId];
+			NSString *shortnameStr = [[NSString alloc] initWithUTF8String:shortnameChar];
+            NSString *fullnameStr = [[NSString alloc] initWithUTF8String:fullnameChar];
+            
+			Company *company = [[Company alloc] init];
+            company.shortname = shortnameStr;
+            company.fullname = fullnameStr;
+			[companyListData addObject:company];
+        }
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
+    NSLog(@"%d", [companyListData count]);
+	[tableView reloadData];
+}
 
 #pragma mark -
-#pragma mark View lifecycle
+#pragma mark Search Bar Delegate Methods
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarSearchButtonClicked...");
+	NSString *searchTerm = [searchBar text];
+	[self handleSearchForTerm:searchTerm];
+    [search resignFirstResponder];
+}
 
-- (void)viewDidLoad {	
-	//get json
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarCancelButtonClicked...");
+	search.text = @"";
+	[self resetSearch];
+	[searchBar resignFirstResponder];
+}
+//假设此时数据库中已经存储了全部航空公司数据
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
+{
+    //NSLog(@"searchBar:textDidChange...");
+    
+	int length = [[searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
+    
+	if (length == 0 || searchTerm == nil)
+	{	
+		[self resetSearch];
+		[tableView reloadData];
+		return;
+	}
+	[self handleSearchForTerm:searchTerm];
+    
+}
+#pragma mark -
+#pragma mark 软键盘相关处理
+- (void) registerForKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+
+- (void) keyboardWasShown:(NSNotification *) notif{
+    NSDictionary *info = [notif userInfo];
+    
+    NSValue *value = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+    CGSize keyboardSize = [value CGRectValue].size;
+    
+    CGRect tableViewFrame= [tableView frame];
+    tableViewFrame.size.height = tableViewOriginHeight - keyboardSize.height - 43;
+    tableView.frame = tableViewFrame;
+    keyboardWasShown = YES;
+}
+
+- (void) keyboardWasHidden:(NSNotification *) notif{
+    NSDictionary *info = [notif userInfo];
+    
+    NSValue *value = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+    CGSize keyboardSize = [value CGRectValue].size;
+    
+    CGRect tableViewFrame= [tableView frame];
+    tableViewFrame.size.height = tableViewOriginHeight - 86;
+    tableView.frame = tableViewFrame;
+    keyboardWasShown = NO;
+}
+
+#pragma mark -
+#pragma mark 数据源获取相关操作
+- (BOOL)companyTableExists {
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+    
+	NSString *query = @"select count(*) from sqlite_master where type='table' and name = 'company';";
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+		while (sqlite3_step(statement) == SQLITE_ROW) {
+			int tableNum = sqlite3_column_int(statement, 0);
+            if (tableNum == 1) {
+                sqlite3_finalize(statement);
+                sqlite3_close(database);	
+                return YES;
+            }
+		}
+	}
+    sqlite3_finalize(statement);
+    sqlite3_close(database);	
+    return NO;
+}
+
+//创建机场信息表
+- (void)createCompanyTable {
+	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert(0, @"Failed to open database");
+	}
+	
+	char *errorMsg;
+	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS company (";
+	createSQL = [createSQL stringByAppendingString:@" ID INTEGER PRIMARY KEY AUTOINCREMENT,"];
+	
+	createSQL = [createSQL stringByAppendingString:@" shortname TEXT,"];
+	createSQL = [createSQL stringByAppendingString:@" fullname TEXT"];
+    
+	createSQL = [createSQL stringByAppendingString:@");"];
+	
+	if (sqlite3_exec (database, [createSQL  UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+		sqlite3_close(database);
+		NSAssert1(0, @"Error creating table: %s", errorMsg);
+	}
+    sqlite3_close(database);	
+}
+
+- (void)loadCompaniesFromServer
+{
+    //get json
 	responseData = [[NSMutableData data] retain];
 	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/getCompanyList"];
-	//NSString *url = [[NSString alloc] initWithString:@"http://specialbrian.gicp.net:10001/getCompanyList"];
-	//NSString *url = [[NSString alloc] initWithString:@"http://192.168.1.100:10001/getCompanyList"];
 	
 	NSString *post = nil;  
 	post = [[NSString alloc] initWithString:@"lang=zh"];
@@ -51,7 +200,18 @@
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
 	[request setHTTPBody:postData];  
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	
+}
+
+#pragma mark -
+#pragma mark View lifecycle
+
+- (void)viewDidLoad {	
+    //更新到最新机场列表，并入库
+    if ( ![self companyTableExists] ) {
+        [self createCompanyTable];
+        [self loadCompaniesFromServer];
+    }
+    
 	//toolbar text
 	UILabel *updateTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, self.view.frame.size.width, 21.0f)];
 	[updateTimeLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
@@ -63,6 +223,10 @@
 	NSArray *items = [[NSArray alloc] initWithObjects: updateTimeLabelButton, nil]; 
 	[self setToolbarItems:items animated:YES];
 	
+    CGRect tableViewFrame= [tableView frame];
+    tableViewOriginHeight = tableViewFrame.size.height;
+    [self registerForKeyboardNotifications];
+    [search becomeFirstResponder];
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -86,32 +250,45 @@
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	//responseString = @"[{\"takeoff_delay_advance_time\": \"+00:24\", \"takeoff_airport_entrance_exit\": \"\", \"takeoff_city\": \"\u5317\u4eac\", \"arrival_airport_building\": \"\", \"actual_takeoff_time\": \"08:19\", \"takeoff_airport\": \"\u9996\u90fd\u56fd\u9645\u673a\u573a\", \"flight_state\": \"\u5df2\u7ecf\u5230\u8fbe\", \"flight_no\": \"CA1509\", \"company\": \"\u4e2d\u56fd\u56fd\u9645\u822a\u7a7a\u516c\u53f8\", \"schedule_takeoff_time\": \"07:55\", \"arrival_delay_advance_time\": \"+00:15\", \"estimate_takeoff_time\": \"07:55\", \"arrival_airport\": \"\u8427\u5c71\u56fd\u9645\u673a\u573a\", \"estimate_arrival_time\": \"10:02\", \"actual_arrival_time\": \"10:00\", \"plane_model\": \"A321-213\", \"arrival_airport_entrance_exit\": \"\", \"schedule_arrival_time\": \"09:45\", \"arrival_city\": \"\u676d\u5dde\", \"takeoff_airport_building\": \"T3\"} , {\"takeoff_delay_advance_time\": \"+00:00\", \"takeoff_airport_entrance_exit\": \"\", \"takeoff_city\": \"\u5317\u4eac\", \"arrival_airport_building\": \"T3\", \"actual_takeoff_time\": \"--:--\", \"takeoff_airport\": \"\u9996\u90fd\u56fd\u9645\u673a\u573a\", \"flight_state\": \"\u8ba1\u5212\u822a\u73ed\", \"flight_no\": \"MU7188\", \"company\": \"\u4e2d\u56fd\u4e1c\u65b9\u822a\u7a7a\u516c\u53f8\", \"schedule_takeoff_time\": \"09:05\", \"arrival_delay_advance_time\": \"+00:00\", \"estimate_takeoff_time\": \"--:--\", \"arrival_airport\": \"\u5730\u7a9d\u5821\u56fd\u9645\u673a\u573a\", \"estimate_arrival_time\": \"--:--\", \"actual_arrival_time\": \"--:--\", \"plane_model\": \"333\", \"arrival_airport_entrance_exit\": \"\", \"schedule_arrival_time\": \"13:15\", \"arrival_city\": \"\u4e4c\u9c81\u6728\u9f50\", \"takeoff_airport_building\": \"T2\"} , {\"takeoff_delay_advance_time\": \"+00:00\", \"takeoff_airport_entrance_exit\": \"\", \"takeoff_city\": \"\u676d\u5dde\", \"arrival_airport_building\": \"T3\", \"actual_takeoff_time\": \"--:--\", \"takeoff_airport\": \"\u8427\u5c71\u56fd\u9645\u673a\u573a\", \"flight_state\": \"\u8ba1\u5212\u822a\u73ed\", \"flight_no\": \"CA1703\", \"company\": \"\u4e2d\u56fd\u56fd\u9645\u822a\u7a7a\u516c\u53f8\", \"schedule_takeoff_time\": \"09:00\", \"arrival_delay_advance_time\": \"+00:00\", \"estimate_takeoff_time\": \"--:--\", \"arrival_airport\": \"\u9996\u90fd\u56fd\u9645\u673a\u573a\", \"estimate_arrival_time\": \"--:--\", \"actual_arrival_time\": \"--:--\", \"plane_model\": \"A320-214\", \"arrival_airport_entrance_exit\": \"\", \"schedule_arrival_time\": \"10:55\", \"arrival_city\": \"\u5317\u4eac\", \"takeoff_airport_building\": \"\"} ]";
-	
 	NSLog(responseString);
 	
 	NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *companyInfos = [json objectWithString:responseString error:&error];
-	//[responseString release];	
+    
+    NSArray *companyInfos = [json objectWithString:responseString error:&error];
 	
 	if (companyInfos == nil) {
 		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
 	} else {		
-		NSMutableArray *companyArray = [[NSMutableArray alloc] init];
 		for (int i = 0; i < [companyInfos count]; i++) {
 			NSMutableDictionary *companyInfo = [companyInfos objectAtIndex:i];
-			NSString *abbrev = [companyInfo objectForKey:@"short"];
-			NSString *chname = [companyInfo objectForKey:@"full"];			
-			Company *company = [[Company alloc]init];
-			company.chname = chname;
-			company.abbrev = abbrev;
-			[companyArray addObject:company];
+			NSString *shortname = [companyInfo objectForKey:@"short"];	
+            NSString *fullname = [companyInfo objectForKey:@"full"];			
+            
+            //入库
+            if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+                sqlite3_close(database);
+                NSAssert(0, @"Failed to open database");
+            }
+            
+            NSString *insertSQL = @"INSERT OR REPLACE INTO company (";
+            insertSQL = [insertSQL stringByAppendingString:@" shortname,"];
+            insertSQL = [insertSQL stringByAppendingString:@" fullname"];
+            insertSQL = [insertSQL stringByAppendingString:@") VALUES ('%@','%@');"];
+            
+            NSString *update = [[NSString alloc] initWithFormat:insertSQL,
+                                shortname, fullname ];
+            char * errorMsg;
+            //NSLog(@"update...");
+            
+            if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+            {
+                NSAssert1(0, @"Error updating tables: %s", errorMsg);
+                sqlite3_close(database);
+            }
+            sqlite3_close(database);	
 		}
-		self.companyListData = companyArray;
-		[companyArray release];
 	}
-	[self.tableView reloadData];
 }
 //HTTP Response - end
 
@@ -172,7 +349,7 @@
     // Configure the cell...
     NSUInteger row = [indexPath row];
 	Company *company = [companyListData objectAtIndex:row];
-	cell.text = [company.abbrev stringByAppendingFormat:@" - %@", company.chname];
+	cell.text = [company.shortname stringByAppendingFormat:@" - %@", company.fullname];
     return cell;
 }
 
@@ -226,8 +403,8 @@
 	NSUInteger row = [indexPath row];
 	Company *company = [companyListData objectAtIndex:row];
 
-	self.searchConditionCompany.abbrev = company.abbrev;
-	self.searchConditionCompany.chname = company.chname;
+	self.searchConditionCompany.shortname = company.shortname;
+	self.searchConditionCompany.fullname = company.fullname;
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	[root.searchNavController popViewControllerAnimated:YES];

@@ -117,14 +117,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"QueryResultController.requestFlightInfoFromServer...");
 
     if (queryType == 0) {//航班号查询
-        NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.abbrev;
+        NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
         self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
         self.post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
                 comanyAbbrev,
                 self.searchConditionController.searchConditionFlightNo,
                 self.searchConditionController.searchConditionDate];
     } else if (queryType == 1) {//航段查询
-        NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.abbrev;
+        NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
         self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRoute"];
         if (comanyAbbrev == nil || [comanyAbbrev isEqualToString:@""]) {
             comanyAbbrev = @"all";
