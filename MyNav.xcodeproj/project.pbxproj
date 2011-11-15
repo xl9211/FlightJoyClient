@@ -27,6 +27,7 @@
 		3E8E90CF1471F8E000B36223 /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90CE1471F8E000B36223 /* plane.png */; };
 		3E8E90D11471F95B00B36223 /* china5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90D01471F95B00B36223 /* china5.png */; };
 		3E8E90D31471FA6600B36223 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8E90D21471FA6600B36223 /* MessageUI.framework */; };
+		3E8E90D7147209A400B36223 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90D6147209A400B36223 /* Default.png */; };
 		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
 		3E900F38145DA96500710661 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F36145DA96500710661 /* libMobClickLibrary.a */; };
 		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; };
@@ -64,7 +65,6 @@
 		3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA84FCA144C69C300985145 /* AddressBook.framework */; };
 		3EC3AD1B143C938A007F748B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3AD1A143C938A007F748B /* Reachability.m */; };
 		3EC3AD25143C9474007F748B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC3AD24143C9474007F748B /* SystemConfiguration.framework */; };
-		3ECEB646145B9CCC00F49697 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3ECEB645145B9CCC00F49697 /* Default.png */; };
 		3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */; };
 		3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5F42914530021003F2988 /* SearchConditionController.xib */; };
 /* End PBXBuildFile section */
@@ -98,6 +98,7 @@
 		3E8E90CE1471F8E000B36223 /* plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane.png; sourceTree = "<group>"; };
 		3E8E90D01471F95B00B36223 /* china5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = china5.png; sourceTree = "<group>"; };
 		3E8E90D21471FA6600B36223 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3E8E90D6147209A400B36223 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3E900F31145D897200710661 /* SearchConditionAirportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionAirportController.xib; sourceTree = "<group>"; };
 		3E900F36145DA96500710661 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		3E900F37145DA96500710661 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -158,7 +159,6 @@
 		3EC3AD19143C938A007F748B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3EC3AD1A143C938A007F748B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3EC3AD24143C9474007F748B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3ECEB645145B9CCC00F49697 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureButtonController.xib; sourceTree = "<group>"; };
 		3ED5F42914530021003F2988 /* SearchConditionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MyNav-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyNav-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3ECEB645145B9CCC00F49697 /* Default.png */,
+				3E8E90D6147209A400B36223 /* Default.png */,
 				3E940A681405D8A700B43D5E /* Images */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */,
@@ -448,10 +448,10 @@
 				3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */,
 				3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */,
 				3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */,
-				3ECEB646145B9CCC00F49697 /* Default.png in Resources */,
 				3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */,
 				3E8E90CF1471F8E000B36223 /* plane.png in Resources */,
 				3E8E90D11471F95B00B36223 /* china5.png in Resources */,
+				3E8E90D7147209A400B36223 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +500,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "~/Documents/MyNav/Entitlements.plist";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: WEI HONG (3B29CN6N4M)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -515,6 +516,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = MyNav;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C8901E-5C10-4A55-AB39-4EAAAFB48D5B";
 			};
 			name = Debug;
 		};
@@ -544,13 +546,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WEI HONG";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0796588F-7E5C-49C3-B239-2B592F9E4616";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -574,7 +577,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = MyNav;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3BA1F9C1-7931-451C-80F2-8B0F1AE4BBF6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0796588F-7E5C-49C3-B239-2B592F9E4616";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -583,11 +586,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: WEI HONG (3B29CN6N4M)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C8901E-5C10-4A55-AB39-4EAAAFB48D5B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
