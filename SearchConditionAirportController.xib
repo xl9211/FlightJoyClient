@@ -68,7 +68,7 @@
 						<string key="NSReuseIdentifierKey">_NS:597</string>
 						<int key="IBUIContentMode">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBPlaceholder">机场名称，机场代号，城市名</string>
+						<string key="IBPlaceholder">机场名或城市名（如首都机场 北京）</string>
 						<object class="IBUITextInputTraits" key="IBTextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
