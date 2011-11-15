@@ -33,6 +33,7 @@
 
 //
 @synthesize parentClassName;
+@synthesize detailTitleView;
 
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style
@@ -597,16 +598,7 @@
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(umengFeedback) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
-									  initWithCustomView:infoButton];    
-	
-	updateProgressInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	[updateProgressInd setHidesWhenStopped:YES];
-	//[updateProgressInd startAnimating];
-	
-	UIBarButtonItem *updateProgressIndicatorButton = [[UIBarButtonItem alloc] initWithCustomView:updateProgressInd];
-	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
-												[self getStatusLabel:@""]];
-	
+									  initWithCustomView:infoButton];    	
     
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"planetab.png"] atIndex:0 animated:YES];
@@ -617,7 +609,7 @@
     */
     [segmentedControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     [segmentedControl setSelectedSegmentIndex:0];
-    //[segment setFrame:CGRectMake(0, 0, 320, 40)];
+    [segmentedControl setFrame:CGRectMake(0, 0, 120, 35)];
     [segmentedControl addTarget:self action:@selector(segmentChange) forControlEvents:UIControlEventValueChanged];
     
     UIBarButtonItem *segmentBarButton = [[UIBarButtonItem alloc] 
@@ -626,12 +618,24 @@
     
     NSMutableArray *refreshToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
                                                                  flexibleSpace, 
-                                           updateProgressIndicatorButton, 
-                                           updateStatusLabelButton,
+                                           //updateProgressIndicatorButton, 
+                                           //updateStatusLabelButton,
                                            segmentBarButton,
                                            flexibleSpace, nil]; ;
     [self setToolbarItems: refreshToolbarItems animated:YES];
 
+    //生成标题栏
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DisclosureButtonTitleView" owner:self options:nil];
+    self.detailTitleView = [nib objectAtIndex:0];
+    [self.detailTitleView retain];
+    
+    UILabel *ltitle = [self.detailTitleView titleLabel];
+    [ltitle setText:self.title];
+    UILabel *updateStatusLabel = [self.detailTitleView updateStatusLabel];
+    [updateStatusLabel setText:@""];
+    
+    self.navigationItem.titleView = detailTitleView;
+    
     if (self.parentClassName != nil 
         && [self.parentClassName isEqualToString:@"RootViewController"]) {
         [refreshToolbarItems addObject:infoBarButton];
@@ -639,7 +643,7 @@
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                        target:self action:@selector(showSendActionSheet)];
         
-        self.navigationItem.rightBarButtonItem = sendButtonItem;
+        self.navigationItem.rightBarButtonItem = sendButtonItem;        
 	} else {
         //navigationbar
         UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
@@ -652,8 +656,6 @@
 	[refreshToolbarItems release];
 	[refreshButton release];
 	[flexibleSpace release];
-	[updateProgressIndicatorButton release];
-	[updateStatusLabelButton release];
 	[infoBarButton release];
 	
 	//mapview

@@ -35,6 +35,8 @@
 		3E8E90E11472478800B36223 /* SearchConditionCompanyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90E01472478800B36223 /* SearchConditionCompanyController.xib */; };
 		3E8E90E7147292B000B36223 /* earthtab.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90E6147292AF00B36223 /* earthtab.png */; };
 		3E8E90E91472936000B36223 /* planetab.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90E81472936000B36223 /* planetab.png */; };
+		3E8E90EB1472A53500B36223 /* DisclosureButtonTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90EA1472A53400B36223 /* DisclosureButtonTitleView.xib */; };
+		3E8E90EE1472A76200B36223 /* DisclosureButtonTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E90ED1472A76100B36223 /* DisclosureButtonTitleView.m */; };
 		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
 		3E900F38145DA96500710661 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F36145DA96500710661 /* libMobClickLibrary.a */; };
 		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; };
@@ -113,6 +115,9 @@
 		3E8E90E01472478800B36223 /* SearchConditionCompanyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionCompanyController.xib; sourceTree = "<group>"; };
 		3E8E90E6147292AF00B36223 /* earthtab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earthtab.png; sourceTree = "<group>"; };
 		3E8E90E81472936000B36223 /* planetab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planetab.png; sourceTree = "<group>"; };
+		3E8E90EA1472A53400B36223 /* DisclosureButtonTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureButtonTitleView.xib; sourceTree = "<group>"; };
+		3E8E90EC1472A76100B36223 /* DisclosureButtonTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclosureButtonTitleView.h; sourceTree = "<group>"; };
+		3E8E90ED1472A76100B36223 /* DisclosureButtonTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclosureButtonTitleView.m; sourceTree = "<group>"; };
 		3E900F31145D897200710661 /* SearchConditionAirportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionAirportController.xib; sourceTree = "<group>"; };
 		3E900F36145DA96500710661 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		3E900F37145DA96500710661 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -238,6 +243,8 @@
 				3E96B86D14173E57000B2E96 /* SearchConditionDateController.m */,
 				3E5FB631144AAACB00A1AD06 /* DisplayMap.h */,
 				3E5FB632144AAACB00A1AD06 /* DisplayMap.m */,
+				3E8E90EC1472A76100B36223 /* DisclosureButtonTitleView.h */,
+				3E8E90ED1472A76100B36223 /* DisclosureButtonTitleView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -288,6 +295,7 @@
 				8D1107310486CEB800E47090 /* MyNav-Info.plist */,
 				3E98031314046A4200A3C5BE /* DisclosureDetail.xib */,
 				3E95E2A214068F1E004E250B /* CustomCell.xib */,
+				3E8E90EA1472A53400B36223 /* DisclosureButtonTitleView.xib */,
 				3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */,
 				3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */,
 				3ED5F42914530021003F2988 /* SearchConditionController.xib */,
@@ -480,6 +488,7 @@
 				3E8E90E11472478800B36223 /* SearchConditionCompanyController.xib in Resources */,
 				3E8E90E7147292B000B36223 /* earthtab.png in Resources */,
 				3E8E90E91472936000B36223 /* planetab.png in Resources */,
+				3E8E90EB1472A53500B36223 /* DisclosureButtonTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +526,7 @@
 				3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */,
 				3E893CD01455B24600639A07 /* Airport.m in Sources */,
 				3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */,
+				3E8E90EE1472A76200B36223 /* DisclosureButtonTitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
