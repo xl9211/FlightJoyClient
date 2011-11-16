@@ -662,6 +662,10 @@
 	[flexibleSpace release];
 	[infoBarButton release];
 	
+    //fix black corner of the tableview
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.opaque = NO;
+    
 	//mapview
     self.mapView.delegate=self;
 	/*

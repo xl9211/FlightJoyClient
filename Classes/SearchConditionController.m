@@ -45,6 +45,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"SearchCondition viewDidLoad!");
+    //fix black corner of the tableview
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.opaque = NO;
+    
     UINavigationController *nav = (UINavigationController *)self.parentViewController;
     nav.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china5.png"] ];
 
