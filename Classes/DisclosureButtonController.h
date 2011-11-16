@@ -33,7 +33,7 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 	DisclosureDetailController *childController;
     IBOutlet UITableView *tableView;
 
-	UIActivityIndicatorView *updateProgressInd;
+	//UIActivityIndicatorView *updateProgressInd;
     
     //mapview
     IBOutlet MKMapView *mapView; 

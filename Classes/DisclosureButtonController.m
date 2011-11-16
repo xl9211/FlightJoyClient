@@ -816,6 +816,7 @@
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	
+    UIActivityIndicatorView *updateProgressInd = [self.detailTitleView updateProgressInd];
 	if ([root.updateProgressInd isAnimating]) {
 		[updateProgressInd startAnimating];
 	} else {
@@ -832,6 +833,7 @@
  */
 - (void) startUpdateProcess {
 	NSLog(@"DisclosureButtonController.startUpdateProcess...");
+    UIActivityIndicatorView *updateProgressInd = [self.detailTitleView updateProgressInd];
     [updateProgressInd startAnimating];
 	NSString *content = @"更新中...";
 	[self refreshStatusLabelWithText:content];
@@ -843,6 +845,7 @@
 	NSLog(@"DisclosureButtonController.stopUpdateProcess...");
 	[self.tableView reloadData];
 	
+    UIActivityIndicatorView *updateProgressInd = [self.detailTitleView updateProgressInd];
     [updateProgressInd stopAnimating];
 	NSDate *now = [[NSDate alloc] init];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -857,12 +860,13 @@
 }
 
 -(void) refreshStatusLabelWithText : (NSString *)textParam{
-	UILabel *updateStatusLabel = [self getStatusLabel:textParam];
+	/*UILabel *updateStatusLabel = [self getStatusLabel:textParam];
 	
 	UIBarButtonItem *updateStatusLabelItem = (UIBarButtonItem *)[self.toolbarItems objectAtIndex:3];
 	[updateStatusLabelItem initWithCustomView:updateStatusLabel];
-	
-	//[updateStatusLabel release];
+    */
+    UILabel *updateStatusLabel = [self.detailTitleView updateStatusLabel];
+    [updateStatusLabel setText:textParam];
 }
 
 -(UILabel *) getStatusLabel :(NSString *)textParam{
