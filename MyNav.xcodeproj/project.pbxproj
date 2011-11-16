@@ -26,9 +26,7 @@
 		3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E73CE143B4940003FEC46 /* china2.jpg */; };
 		3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */; };
 		3E8E90CF1471F8E000B36223 /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90CE1471F8E000B36223 /* plane.png */; };
-		3E8E90D11471F95B00B36223 /* china5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90D01471F95B00B36223 /* china5.png */; };
 		3E8E90D31471FA6600B36223 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8E90D21471FA6600B36223 /* MessageUI.framework */; };
-		3E8E90D7147209A400B36223 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90D6147209A400B36223 /* Default.png */; };
 		3E8E90D914721EE100B36223 /* QueryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90D814721EE100B36223 /* QueryCustomCell.xib */; };
 		3E8E90DB14721EEE00B36223 /* cellbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90DA14721EEE00B36223 /* cellbackground.png */; };
 		3E8E90DD14721EFA00B36223 /* iconlittle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90DC14721EFA00B36223 /* iconlittle.jpg */; };
@@ -73,6 +71,10 @@
 		3EA84FA5144C698800985145 /* SVGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA84F9F144C698800985145 /* SVGeocoder.m */; };
 		3EA84FA6144C698800985145 /* SVPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA84FA1144C698800985145 /* SVPlacemark.m */; };
 		3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA84FCA144C69C300985145 /* AddressBook.framework */; };
+		3EBBC7111473F4A400F3F2DE /* china5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBBC7101473F4A400F3F2DE /* china5.png */; };
+		3EBBC7131473F7DB00F3F2DE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBBC7121473F7DB00F3F2DE /* Default.png */; };
+		3EBBC71D1473FEF600F3F2DE /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBBC71C1473FEF600F3F2DE /* map.png */; };
+		3EBBC71F1473FF8D00F3F2DE /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBBC71E1473FF8D00F3F2DE /* time.png */; };
 		3EC3AD1B143C938A007F748B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3AD1A143C938A007F748B /* Reachability.m */; };
 		3EC3AD25143C9474007F748B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC3AD24143C9474007F748B /* SystemConfiguration.framework */; };
 		3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5F4271452CA97003F2988 /* DisclosureButtonController.xib */; };
@@ -107,9 +109,7 @@
 		3E8E78F014552C01003BAD50 /* SearchConditionAirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionAirportController.h; sourceTree = "<group>"; };
 		3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionAirportController.m; sourceTree = "<group>"; };
 		3E8E90CE1471F8E000B36223 /* plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane.png; sourceTree = "<group>"; };
-		3E8E90D01471F95B00B36223 /* china5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = china5.png; sourceTree = "<group>"; };
 		3E8E90D21471FA6600B36223 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		3E8E90D6147209A400B36223 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3E8E90D814721EE100B36223 /* QueryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryCustomCell.xib; sourceTree = "<group>"; };
 		3E8E90DA14721EEE00B36223 /* cellbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellbackground.png; sourceTree = "<group>"; };
 		3E8E90DC14721EFA00B36223 /* iconlittle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iconlittle.jpg; sourceTree = "<group>"; };
@@ -177,6 +177,10 @@
 		3EA84FA1144C698800985145 /* SVPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPlacemark.m; sourceTree = "<group>"; };
 		3EA84FCA144C69C300985145 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		3EB57F30142183B800DE88ED /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		3EBBC7101473F4A400F3F2DE /* china5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = china5.png; sourceTree = "<group>"; };
+		3EBBC7121473F7DB00F3F2DE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3EBBC71C1473FEF600F3F2DE /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		3EBBC71E1473FF8D00F3F2DE /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		3EC3AD19143C938A007F748B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3EC3AD1A143C938A007F748B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3EC3AD24143C9474007F748B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -284,11 +288,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EBBC7121473F7DB00F3F2DE /* Default.png */,
 				3E8E90DE14721F0400B36223 /* pushmusic.wav */,
 				3E8E90DC14721EFA00B36223 /* iconlittle.jpg */,
 				3E8E90DA14721EEE00B36223 /* cellbackground.png */,
 				3E8E90D814721EE100B36223 /* QueryCustomCell.xib */,
-				3E8E90D6147209A400B36223 /* Default.png */,
 				3E940A681405D8A700B43D5E /* Images */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				3E96B86E14173E57000B2E96 /* SearchConditionDateController.xib */,
@@ -356,10 +360,12 @@
 		3E940A681405D8A700B43D5E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3EBBC71E1473FF8D00F3F2DE /* time.png */,
+				3EBBC71C1473FEF600F3F2DE /* map.png */,
 				3E88861F147358F000E1E2B2 /* highlightBack.png */,
 				3E8E90E81472936000B36223 /* planetab.png */,
 				3E8E90E6147292AF00B36223 /* earthtab.png */,
-				3E8E90D01471F95B00B36223 /* china5.png */,
+				3EBBC7101473F4A400F3F2DE /* china5.png */,
 				3E8E90CE1471F8E000B36223 /* plane.png */,
 				3E7A02DF144F0CD3008503A5 /* icon.jpg */,
 				3E925B17144E96E2008AB82E /* icon1.jpg */,
@@ -482,8 +488,6 @@
 				3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */,
 				3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */,
 				3E8E90CF1471F8E000B36223 /* plane.png in Resources */,
-				3E8E90D11471F95B00B36223 /* china5.png in Resources */,
-				3E8E90D7147209A400B36223 /* Default.png in Resources */,
 				3E8E90D914721EE100B36223 /* QueryCustomCell.xib in Resources */,
 				3E8E90DB14721EEE00B36223 /* cellbackground.png in Resources */,
 				3E8E90DD14721EFA00B36223 /* iconlittle.jpg in Resources */,
@@ -493,6 +497,10 @@
 				3E8E90E91472936000B36223 /* planetab.png in Resources */,
 				3E8E90EB1472A53500B36223 /* DisclosureButtonTitleView.xib in Resources */,
 				3E888620147358F000E1E2B2 /* highlightBack.png in Resources */,
+				3EBBC7111473F4A400F3F2DE /* china5.png in Resources */,
+				3EBBC7131473F7DB00F3F2DE /* Default.png in Resources */,
+				3EBBC71D1473FEF600F3F2DE /* map.png in Resources */,
+				3EBBC71F1473FF8D00F3F2DE /* time.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

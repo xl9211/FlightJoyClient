@@ -602,7 +602,7 @@
     
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"planetab.png"] atIndex:0 animated:YES];
-    [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"earthtab.png"] atIndex:1 animated:YES];
+    [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"map.png"] atIndex:1 animated:YES];
     /*[segmentedControl setBackgroundImage:[UIImage imageNamed:@"xiangqing.png"]
                                 forState:UIControlStateHighlighted 
                               barMetrics:nil];
