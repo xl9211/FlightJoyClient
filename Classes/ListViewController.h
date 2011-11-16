@@ -40,6 +40,9 @@
     NSTimer *timer;
     
     NSMutableDictionary *dicAirportFullNameToShort;
+    
+    UIBarButtonItem *enterEditItem;
+	UIBarButtonItem *doneEditItem;
 }
 @property (nonatomic, retain) UIImage *rowImage;
 
@@ -62,6 +65,9 @@
 
 @property (nonatomic,retain) NSTimer *timer;
 @property (nonatomic,retain) NSMutableDictionary *dicAirportFullNameToShort;
+
+@property (nonatomic,retain) UIBarButtonItem *enterEditItem;
+@property (nonatomic,retain) UIBarButtonItem *doneEditItem;
 
 - (void)changeListMode;
 - (IBAction)toggleEdit:(id)sender;

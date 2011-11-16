@@ -101,11 +101,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	self.delegate = root;
-    saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-	saveAllButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注全部" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-    UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
-    saveButtonItem.tintColor = hightlightButtonBackground;
-    saveAllButtonItem.tintColor = hightlightButtonBackground;
+    
+    UIButton *saveButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 100.0, 50.0, 30.0)];
+    [saveButton setBackgroundImage:[UIImage imageNamed:@"highlightBack.png"] forState:UIControlStateNormal];
+    [saveButton setTitle:@"关注" forState:UIControlStateNormal];
+    [saveButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+    [saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    saveButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    
+    UIButton *saveAllButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 100.0, 65.0, 30.0)];
+    [saveAllButton setBackgroundImage:[UIImage imageNamed:@"highlightBack.png"] forState:UIControlStateNormal];
+    [saveAllButton setTitle:@"关注全部" forState:UIControlStateNormal];
+    [saveAllButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+    [saveAllButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    saveAllButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveAllButton];
+    
     self.title = @"航班";
 }
 

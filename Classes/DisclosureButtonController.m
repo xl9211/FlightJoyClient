@@ -646,9 +646,13 @@
         self.navigationItem.rightBarButtonItem = sendButtonItem;        
 	} else {
         //navigationbar
-        UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-        UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
-        saveButtonItem.tintColor = hightlightButtonBackground;
+        UIButton *saveButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 100.0, 50.0, 30.0)];
+        [saveButton setBackgroundImage:[UIImage imageNamed:@"highlightBack.png"] forState:UIControlStateNormal];
+        [saveButton setTitle:@"关注" forState:UIControlStateNormal];
+        [saveButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+        [saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+        
         self.navigationItem.rightBarButtonItem = saveButtonItem;
     }    
 	

@@ -18,6 +18,7 @@
 		3E5FB633144AAACB00A1AD06 /* DisplayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FB632144AAACB00A1AD06 /* DisplayMap.m */; };
 		3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */; };
 		3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E7A02DF144F0CD3008503A5 /* icon.jpg */; };
+		3E888620147358F000E1E2B2 /* highlightBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E88861F147358F000E1E2B2 /* highlightBack.png */; };
 		3E893CD01455B24600639A07 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E893CCF1455B24600639A07 /* Airport.m */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
@@ -94,6 +95,7 @@
 		3E5FB632144AAACB00A1AD06 /* DisplayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayMap.m; sourceTree = "<group>"; };
 		3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E7A02DF144F0CD3008503A5 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
+		3E88861F147358F000E1E2B2 /* highlightBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightBack.png; sourceTree = "<group>"; };
 		3E893CCE1455B24600639A07 /* Airport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Airport.h; path = SVGeocoder/Airport.h; sourceTree = "<group>"; };
 		3E893CCF1455B24600639A07 /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airport.m; path = SVGeocoder/Airport.m; sourceTree = "<group>"; };
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 		3E940A681405D8A700B43D5E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3E88861F147358F000E1E2B2 /* highlightBack.png */,
 				3E8E90E81472936000B36223 /* planetab.png */,
 				3E8E90E6147292AF00B36223 /* earthtab.png */,
 				3E8E90D01471F95B00B36223 /* china5.png */,
@@ -489,6 +492,7 @@
 				3E8E90E7147292B000B36223 /* earthtab.png in Resources */,
 				3E8E90E91472936000B36223 /* planetab.png in Resources */,
 				3E8E90EB1472A53500B36223 /* DisclosureButtonTitleView.xib in Resources */,
+				3E888620147358F000E1E2B2 /* highlightBack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

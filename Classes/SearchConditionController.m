@@ -65,10 +65,16 @@
     self.navigationItem.leftBarButtonItem = cancelButtonItem;
     [cancelButtonItem release];
     
-    UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStyleDone target:self action:@selector(search)];
-    UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
-    searchButtonItem.tintColor = hightlightButtonBackground;
+    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 100.0, 50.0, 30.0)];
+    [searchButton setBackgroundImage:[UIImage imageNamed:@"highlightBack.png"] forState:UIControlStateNormal];
+    [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+    [searchButton addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+    
     self.navigationItem.rightBarButtonItem = searchButtonItem;
+    
+    //[searchButton release];
     [searchButtonItem release];
 	
 	UILabel *updateTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, self.view.frame.size.width, 21.0f)];

@@ -34,6 +34,9 @@
 
 @synthesize timer;
 @synthesize dicAirportFullNameToShort;
+
+@synthesize enterEditItem;
+@synthesize doneEditItem;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -62,17 +65,23 @@
 	self.navigationController.toolbar.barStyle = UIBarStyleBlack;
 	
 	if (!self.tableView.editing) {
+        self.navigationItem.leftBarButtonItem = doneEditItem;
+/*
 		self.navigationItem.leftBarButtonItem.title = @"完成";
 		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleDone;
         UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
         self.navigationItem.leftBarButtonItem.tintColor = hightlightButtonBackground;
+*/        
 		[self setToolbarItems: self.deleteToolbarItems animated:YES]; 
 	} else {
+        /*
 		self.navigationItem.leftBarButtonItem.title = @"编辑";
 		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleBordered;
         UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
         self.navigationItem.leftBarButtonItem.tintColor = backgroundColor;
-		[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
+		*/
+        self.navigationItem.leftBarButtonItem = enterEditItem;
+        [self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 	}
 	
 	[self.tableView setEditing:!self.tableView.editing animated:YES];	
@@ -211,12 +220,15 @@
     self.dicAirportFullNameToShort = dictionary;
     //[dictionary release];
 }
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
     
+    [self loadNavigationItems];
 	[self loadToolbarItems];
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 
@@ -1261,6 +1273,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark -
 #pragma mark Toolbar Actions
+-(void) loadNavigationItems {    
+    UIButton *doneEditButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 100.0, 50.0, 30.0)];
+    [doneEditButton setBackgroundImage:[UIImage imageNamed:@"highlightBack.png"] forState:UIControlStateNormal];
+    [doneEditButton setTitle:@"完成" forState:UIControlStateNormal];
+    [doneEditButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+    [doneEditButton addTarget:self action:@selector(changeListMode) forControlEvents:UIControlEventTouchUpInside];
+    doneEditItem = [[UIBarButtonItem alloc] initWithCustomView:doneEditButton];
+    
+    enterEditItem = [[UIBarButtonItem alloc]
+                     initWithTitle:@"编辑" 
+                     style:UIBarButtonItemStyleBordered 
+                     target:self 
+                     action:@selector(changeListMode)];
+}
+
 - (void)loadToolbarItems {
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	//1.edit mode toolbar items

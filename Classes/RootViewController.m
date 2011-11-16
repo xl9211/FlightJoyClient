@@ -54,13 +54,7 @@
     [super stopUpdateProcessDisplay]; 
     
     //设置编辑模式
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
-								   initWithTitle:@"编辑" 
-								   style:UIBarButtonItemStyleBordered 
-								   target:self 
-								   action:@selector(toggleEdit:)];
-	self.navigationItem.leftBarButtonItem = editButton;
-	[editButton release];
+	self.navigationItem.leftBarButtonItem = enterEditItem;
 }
 
 - (void)showInfo {
