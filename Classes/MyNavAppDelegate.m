@@ -53,11 +53,24 @@
 }
 //查询推送的网址http://118.194.161.243:28888/getPushInfo
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //if ( application.applicationState == UIApplicationStateActive ) {
+        // app was already in the foreground
+    //} else {
+        // app was just brought from background to foreground, that is, an application is launched as a result of the user tapping the action button.
+    //}
     
-    for (id key in userInfo) {
-        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
-    }    
-    
+    NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
+    NSString *alertMessage = [apsInfo objectForKey:@"alert"];
+    NSLog(@"Received Push Alert: %@", alertMessage);
+     
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"飞趣" 
+                          message:alertMessage 
+                          delegate:self 
+                          cancelButtonTitle:@"确定" 
+                          otherButtonTitles:nil];
+    [alert show];
+    [alert release]; 
 }
 
 #pragma mark -
