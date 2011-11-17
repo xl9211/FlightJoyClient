@@ -1178,17 +1178,18 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
     NSLog(@"todo: %d, done: %d...",self.todo, self.done);
     BOOL latPossitive = YES;
     BOOL longPossitive = YES;
-    if (pointsToUse[1].latitude - pointsToUse[0].latitude < 0) {
+    double deltaLatitude = pointsToUse[1].latitude - pointsToUse[0].latitude;
+    double deltaLongitude = pointsToUse[1].longitude - pointsToUse[0].longitude;
+
+    if (deltaLatitude < 0) {
         latPossitive = NO;
     }
-    if (pointsToUse[1].longitude - pointsToUse[0].longitude < 0) {
+    if (deltaLongitude < 0) {
         longPossitive = NO;
     }
     
-    //planeAnnotation.latitude = pointsToUse[0].latitude; 
-    planeAnnotation.latitude = pointsToUse[0].latitude + done * (pointsToUse[1].latitude - pointsToUse[0].latitude) / (done + todo);
-    //planeAnnotation.longitude = pointsToUse[0].longitude;
-    planeAnnotation.longitude = pointsToUse[0].longitude + done * (pointsToUse[1].longitude - pointsToUse[0].longitude) / (done + todo);    
+    planeAnnotation.latitude = pointsToUse[0].latitude + done * deltaLatitude / (done + todo);
+    planeAnnotation.longitude = pointsToUse[0].longitude + done * deltaLongitude / (done + todo);    
     
     //纬度阈值约束
     if (latPossitive) {
@@ -1222,9 +1223,15 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
             planeAnnotation.longitude = pointsToUse[0].longitude;
         }
     }
-    
-    double tagit = (pointsToUse[1].longitude - pointsToUse[0].longitude) / (pointsToUse[1].latitude - pointsToUse[0].latitude);
+    //修正偏移角度
+    double tagit = deltaLongitude / deltaLatitude;
     deltaAngel = atan(tagit);
+    if (!longPossitive && !latPossitive) {
+        deltaAngel = M_PI + deltaAngel;
+    }
+    if (longPossitive && !latPossitive) {
+        deltaAngel = deltaAngel - M_PI;
+    }
 
     [mapView addAnnotation:planeAnnotation];
 }
