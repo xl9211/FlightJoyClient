@@ -27,6 +27,8 @@
 @synthesize searchConditionFlightNo;
 @synthesize tableView;
 
+@synthesize numberTextField;
+
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -110,11 +112,7 @@
 	BOOL valid = YES;
     
     if (m_selectedSegmentIndex == 0) {//按航班号查询
-        if (self.searchConditionCompany.shortname == nil 
-            || [self.searchConditionCompany.shortname isEqualToString:@""] ) {
-            valid = NO;
-            msg = [[NSString alloc] initWithString:@"请选择航空公司。"];
-        } else if (self.searchConditionFlightNo == nil 
+        if (self.searchConditionFlightNo == nil 
                    || [self.searchConditionFlightNo isEqualToString:@""] ) {
             valid = NO;
             msg = [[NSString alloc] initWithString:@"请输入航班号。"];
@@ -222,28 +220,9 @@
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
 }
 
-/*在搜索结果页返回上一级查询条件页面*/
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"viewWillDisappear...");
-    
-    if ([self searchedFlightsTableExists]) {
-        char * errorMsg;
-        if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-            sqlite3_close(database);
-            NSAssert(0, @"Failed to open database");
-        }
-        //delete from searchedflights;
-        NSString *delete = [[NSString alloc] initWithString:@"delete from searchedflights;"];
-        if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
-        {
-            NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
-        }
-        sqlite3_close(database);
-    }    
-    
-}
 
 - (void)dealloc {
+    [numberTextField release];
     [super dealloc];
 }
 
@@ -303,11 +282,7 @@
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
             textField.font = [UIFont boldSystemFontOfSize:16];
             textField.clearsOnBeginEditing = NO;
-            if (m_selectedSegmentIndex == 0) {//按航班号查询
-                textField.placeholder = @"必填";
-            } else { //按航段查询
-                textField.placeholder = @"选填";
-            }
+            textField.placeholder = @"选填";
             textField.userInteractionEnabled = NO;
             
             textField.tag = kSearchConditionCompanyTag;
@@ -327,7 +302,10 @@
                 label.backgroundColor = [UIColor clearColor];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
-                textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                //textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
+                textField.returnKeyType = UIReturnKeyDone;
+                
                 [textField setDelegate:self];
 
                 //textField.returnKeyType = UIReturnKeyDone;
@@ -336,7 +314,7 @@
                     forControlEvents:UIControlEventEditingDidEndOnExit];
                 textField.tag = kSearchConditionFlightNoTag;
                 [textField setText:self.searchConditionFlightNo];
-
+                numberTextField = textField;
             } else { //按航段查询
                 label.text = @"出发";
                 label.backgroundColor = [UIColor clearColor];
@@ -397,6 +375,31 @@
     [label release];
 	
 	return cell;
+}
+
+- (void)keyboardWillShow:(NSNotification *)note {  
+    // create custom button
+    UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    doneButton.frame = CGRectMake(0, 163, 106, 53);
+    doneButton.adjustsImageWhenHighlighted = NO;
+    [doneButton setImage:[UIImage imageNamed:@"DoneUp.png"] forState:UIControlStateNormal];
+    [doneButton setImage:[UIImage imageNamed:@"DoneDown.png"] forState:UIControlStateHighlighted];
+    [doneButton addTarget:self action:@selector(doneButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // locate keyboard view
+    UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
+    UIView* keyboard;
+    for(int i=0; i<[tempWindow.subviews count]; i++) {
+        keyboard = [tempWindow.subviews objectAtIndex:i];
+        // keyboard view found; add the custom button to it
+        if([[keyboard description] hasPrefix:@"<UIPeripheralHostView"] == YES)
+            [keyboard addSubview:doneButton];
+    }
+}
+
+- (void)doneButton:(id)sender {
+    NSLog(@"Input: %@", numberTextField.text);
+    [numberTextField resignFirstResponder];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -493,8 +496,35 @@
     [self becomeFirstResponder];
 }
 
+/*在搜索结果页返回上一级查询条件页面*/
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"SearchConditionController.viewWillAppear...");
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillShow:) 
+                                                 name:UIKeyboardDidShowNotification 
+                                               object:nil];
+    
+    if ([self searchedFlightsTableExists]) {
+        char * errorMsg;
+        if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+            sqlite3_close(database);
+            NSAssert(0, @"Failed to open database");
+        }
+        //delete from searchedflights;
+        NSString *delete = [[NSString alloc] initWithString:@"delete from searchedflights;"];
+        if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+        {
+            NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
+        }
+        sqlite3_close(database);
+    }    
+    
+}
 - (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"SearchConditionController.viewWillDisappear...");
     [self resignFirstResponder];
+    [numberTextField resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewWillDisappear:animated];
 }
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event

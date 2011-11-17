@@ -128,6 +128,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (queryType == 0) {//航班号查询
         NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
+        if (comanyAbbrev == nil) {
+            comanyAbbrev = @"";
+        }
         self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
         self.post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
                 comanyAbbrev,
