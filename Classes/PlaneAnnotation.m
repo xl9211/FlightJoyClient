@@ -10,6 +10,7 @@
 
 @implementation PlaneAnnotation
 @synthesize image;
+@synthesize title;
 @synthesize latitude;
 @synthesize longitude;
 
@@ -30,13 +31,13 @@
 
 - (NSString *)title
 {
-    return @"San Francisco";
+    return title;
 }
 
 // optional
 - (NSString *)subtitle
 {
-    return @"Founded: June 29, 1776";
+    return @"估算地点";
 }
 
 @end

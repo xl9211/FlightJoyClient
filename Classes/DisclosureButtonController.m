@@ -1188,6 +1188,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
         longPossitive = NO;
     }
     
+    planeAnnotation.title = [flightInfo objectForKey:@"flight_no"];
     planeAnnotation.latitude = pointsToUse[0].latitude + done * deltaLatitude / (done + todo);
     planeAnnotation.longitude = pointsToUse[0].longitude + done * deltaLongitude / (done + todo);    
     
@@ -1226,11 +1227,8 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
     //修正偏移角度
     double tagit = deltaLongitude / deltaLatitude;
     deltaAngel = atan(tagit);
-    if (!longPossitive && !latPossitive) {
-        deltaAngel = M_PI + deltaAngel;
-    }
-    if (longPossitive && !latPossitive) {
-        deltaAngel = deltaAngel - M_PI;
+    if (!latPossitive) {
+        deltaAngel = deltaAngel + M_PI;
     }
 
     [mapView addAnnotation:planeAnnotation];
@@ -1261,7 +1259,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
                                                                              reuseIdentifier:PlaneAnnotationIdentifier] autorelease];
             annotationView.canShowCallout = YES;
             
-            UIImage *flagImage = [UIImage imageNamed:@"plane.png"];
+            UIImage *flagImage = [UIImage imageNamed:@"mapplane.png"];
             flagImage =[flagImage imageRotatedByRadians:deltaAngel];
             CGRect resizeRect;
             
@@ -1284,10 +1282,6 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
             annotationView.image = resizedImage;
             annotationView.opaque = NO;
             
-            /*UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"highlightBack.png"]];
-            annotationView.leftCalloutAccessoryView = sfIconView;
-            [sfIconView release];
-            */
             return annotationView;
         }
         else
@@ -1301,18 +1295,16 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
         pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
         if ( pinView == nil ) pinView = [[[MKPinAnnotationView alloc]
                                           initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
-        if ([[annotation title] isEqualToString:@"北京"]) {
-            pinView.pinColor = MKPinAnnotationColorGreen;
-        } else {
+        if ([[annotation title] isEqualToString:[self.cityList objectAtIndex:0]]) {
             pinView.pinColor = MKPinAnnotationColorRed;
+        } else {
+            pinView.pinColor = MKPinAnnotationColorGreen;
         }
         
         pinView.canShowCallout = YES;
         pinView.animatesDrop = NO;
         return pinView;
-    }
-    
-    
+    }    
 	
 }
 

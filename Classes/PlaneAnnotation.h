@@ -12,11 +12,13 @@
 @interface PlaneAnnotation : NSObject <MKAnnotation>
 {
     UIImage *image;
+    NSString *title;
     double latitude;
     double longitude;
 }
 
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 
