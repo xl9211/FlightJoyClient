@@ -22,6 +22,8 @@
 		3E893CD01455B24600639A07 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E893CCF1455B24600639A07 /* Airport.m */; };
 		3E8BD7AB1474BDD900444D18 /* DoneDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7A91474BDD900444D18 /* DoneDown.png */; };
 		3E8BD7AC1474BDD900444D18 /* DoneUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7AA1474BDD900444D18 /* DoneUp.png */; };
+		3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */; };
+		3E8BD7B71474F7B700444D18 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
 		3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E4E671463D1C200CD4D4C /* QueryResultController.m */; };
@@ -104,6 +106,10 @@
 		3E893CCF1455B24600639A07 /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airport.m; path = SVGeocoder/Airport.m; sourceTree = "<group>"; };
 		3E8BD7A91474BDD900444D18 /* DoneDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneDown.png; sourceTree = "<group>"; };
 		3E8BD7AA1474BDD900444D18 /* DoneUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneUp.png; sourceTree = "<group>"; };
+		3E8BD7B21474E40E00444D18 /* PlaneAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneAnnotation.h; sourceTree = "<group>"; };
+		3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaneAnnotation.m; sourceTree = "<group>"; };
+		3E8BD7B51474F7B700444D18 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
+		3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
 		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
 		3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -396,6 +402,10 @@
 		3E9CBE411418359900B21EBC /* model */ = {
 			isa = PBXGroup;
 			children = (
+				3E8BD7B51474F7B700444D18 /* UIImage-Extensions.h */,
+				3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */,
+				3E8BD7B21474E40E00444D18 /* PlaneAnnotation.h */,
+				3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */,
 				3E9CBE42141835BE00B21EBC /* Company.h */,
 				3E9CBE43141835BE00B21EBC /* Company.m */,
 				3E893CCE1455B24600639A07 /* Airport.h */,
@@ -547,6 +557,8 @@
 				3E893CD01455B24600639A07 /* Airport.m in Sources */,
 				3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */,
 				3E8E90EE1472A76200B36223 /* DisclosureButtonTitleView.m in Sources */,
+				3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */,
+				3E8BD7B71474F7B700444D18 /* UIImage-Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

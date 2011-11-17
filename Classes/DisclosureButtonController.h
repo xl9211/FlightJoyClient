@@ -16,6 +16,8 @@
 #import "QueryResultController.h"
 #import "DisclosureButtonTitleView.h"
 #import <MessageUI/MessageUI.h>
+#import "PlaneAnnotation.h"
+#import "UIImage-Extensions.h"
 
 #define kFilename		@"flights.sqlite3"
 
@@ -50,6 +52,11 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     //
     NSString *parentClassName;
     DisclosureButtonTitleView *detailTitleView;
+    
+    //
+    int todo;
+    int done;
+    double deltaAngel;
 }
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *list;
@@ -71,6 +78,13 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 //
 @property (nonatomic,retain) NSString *parentClassName;
 @property (nonatomic,retain) DisclosureButtonTitleView *detailTitleView;
+@property (nonatomic) int todo;
+@property (nonatomic) int done;
+@property (nonatomic) double deltaAngel;
+
++ (CGFloat)annotationPadding;
++ (CGFloat)calloutHeight;
+
 //点击按钮后，触发这个方法  
 - (void)sendSMS;
 -(void)sendEMail;

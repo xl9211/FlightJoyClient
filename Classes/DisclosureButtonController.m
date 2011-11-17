@@ -34,7 +34,10 @@
 //
 @synthesize parentClassName;
 @synthesize detailTitleView;
-
+//
+@synthesize todo;
+@synthesize done;
+@synthesize deltaAngel;
 #pragma mark -
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -732,8 +735,8 @@
     NSDate *displayArrivalTimeD = [dateTimeFormatter dateFromString:
                                    [scheduleTakeoffDateStandard stringByAppendingFormat:@" %@",displayArrivalTime]];
     
-    int done = ([curDate timeIntervalSince1970]*1 - [displayTakeoffTimeD timeIntervalSince1970]*1)/60;
-    int todo = ([displayArrivalTimeD timeIntervalSince1970]*1 - [curDate timeIntervalSince1970]*1)/60;
+    done = ([curDate timeIntervalSince1970]*1 - [displayTakeoffTimeD timeIntervalSince1970]*1)/60;
+    todo = ([displayArrivalTimeD timeIntervalSince1970]*1 - [curDate timeIntervalSince1970]*1)/60;
     
     switch (m_statebarIndex) {
         case 0:
@@ -1168,6 +1171,62 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
     [overlays addObject:lineOne];
     [mapView addOverlays:overlays];
     [lineOne release];
+    
+    //计算飞机位置，增加飞行图标
+    PlaneAnnotation *planeAnnotation = [[PlaneAnnotation alloc] init];
+    
+    NSLog(@"todo: %d, done: %d...",self.todo, self.done);
+    BOOL latPossitive = YES;
+    BOOL longPossitive = YES;
+    if (pointsToUse[1].latitude - pointsToUse[0].latitude < 0) {
+        latPossitive = NO;
+    }
+    if (pointsToUse[1].longitude - pointsToUse[0].longitude < 0) {
+        longPossitive = NO;
+    }
+    
+    //planeAnnotation.latitude = pointsToUse[0].latitude; 
+    planeAnnotation.latitude = pointsToUse[0].latitude + done * (pointsToUse[1].latitude - pointsToUse[0].latitude) / (done + todo);
+    //planeAnnotation.longitude = pointsToUse[0].longitude;
+    planeAnnotation.longitude = pointsToUse[0].longitude + done * (pointsToUse[1].longitude - pointsToUse[0].longitude) / (done + todo);    
+    
+    //纬度阈值约束
+    if (latPossitive) {
+        if (planeAnnotation.latitude > pointsToUse[1].latitude) {
+            planeAnnotation.latitude = pointsToUse[1].latitude;
+        }
+        if (planeAnnotation.latitude < pointsToUse[0].latitude) {
+            planeAnnotation.latitude = pointsToUse[0].latitude;
+        }
+    } else {
+        if (planeAnnotation.latitude < pointsToUse[1].latitude) {
+            planeAnnotation.latitude = pointsToUse[1].latitude;
+        }
+        if (planeAnnotation.latitude > pointsToUse[0].latitude) {
+            planeAnnotation.latitude = pointsToUse[0].latitude;
+        }
+    }
+    //经度阈值约束
+    if (longPossitive) {
+        if (planeAnnotation.longitude > pointsToUse[1].longitude) {
+            planeAnnotation.longitude = pointsToUse[1].longitude;
+        }
+        if (planeAnnotation.longitude < pointsToUse[0].longitude) {
+            planeAnnotation.longitude = pointsToUse[0].longitude;
+        }
+    } else {
+        if (planeAnnotation.longitude < pointsToUse[1].longitude) {
+            planeAnnotation.longitude = pointsToUse[1].longitude;
+        }
+        if (planeAnnotation.longitude > pointsToUse[0].longitude) {
+            planeAnnotation.longitude = pointsToUse[0].longitude;
+        }
+    }
+    
+    double tagit = (pointsToUse[1].longitude - pointsToUse[0].longitude) / (pointsToUse[1].latitude - pointsToUse[0].latitude);
+    deltaAngel = atan(tagit);
+
+    [mapView addAnnotation:planeAnnotation];
 }
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
@@ -1184,20 +1243,70 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
 	MKPinAnnotationView *pinView = nil;
 	
-	static NSString *defaultPinID = @"com.invasivecode.pin";
-	pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-	if ( pinView == nil ) pinView = [[[MKPinAnnotationView alloc]
-									  initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
-	if ([[annotation title] isEqualToString:@"北京"]) {
-		pinView.pinColor = MKPinAnnotationColorGreen;
-	} else {
-		pinView.pinColor = MKPinAnnotationColorRed;
-	}
+    if ([annotation isKindOfClass:[PlaneAnnotation class]])   // for City of San Francisco
+    {
+        static NSString* PlaneAnnotationIdentifier = @"PlaneAnnotationIdentifier";
+        MKPinAnnotationView* pinView =
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:PlaneAnnotationIdentifier];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                             reuseIdentifier:PlaneAnnotationIdentifier] autorelease];
+            annotationView.canShowCallout = YES;
+            
+            UIImage *flagImage = [UIImage imageNamed:@"plane.png"];
+            flagImage =[flagImage imageRotatedByRadians:deltaAngel];
+            CGRect resizeRect;
+            
+            resizeRect.size = flagImage.size;
+            CGSize maxSize = CGRectInset(self.view.bounds,
+                                         [DisclosureButtonController annotationPadding],
+                                         [DisclosureButtonController annotationPadding]).size;
+            maxSize.height -= self.navigationController.navigationBar.frame.size.height + [DisclosureButtonController calloutHeight];
+            if (resizeRect.size.width > maxSize.width)
+                resizeRect.size = CGSizeMake(maxSize.width, resizeRect.size.height / resizeRect.size.width * maxSize.width);
+            if (resizeRect.size.height > maxSize.height)
+                resizeRect.size = CGSizeMake(resizeRect.size.width / resizeRect.size.height * maxSize.height, maxSize.height);
+            
+            resizeRect.origin = (CGPoint){0.0f, 0.0f};
+            UIGraphicsBeginImageContext(resizeRect.size);
+            [flagImage drawInRect:resizeRect];
+            UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            annotationView.image = resizedImage;
+            annotationView.opaque = NO;
+            
+            /*UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"highlightBack.png"]];
+            annotationView.leftCalloutAccessoryView = sfIconView;
+            [sfIconView release];
+            */
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    } 
+    else {
+        static NSString *defaultPinID = @"com.invasivecode.pin";
+        pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+        if ( pinView == nil ) pinView = [[[MKPinAnnotationView alloc]
+                                          initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
+        if ([[annotation title] isEqualToString:@"北京"]) {
+            pinView.pinColor = MKPinAnnotationColorGreen;
+        } else {
+            pinView.pinColor = MKPinAnnotationColorRed;
+        }
+        
+        pinView.canShowCallout = YES;
+        pinView.animatesDrop = NO;
+        return pinView;
+    }
+    
+    
 	
-	pinView.canShowCallout = YES;
-	pinView.animatesDrop = NO;
-	
-	return pinView;
 }
 
 -(void)zoomToFitMapAnnotations:(MKMapView*)mapView
@@ -1234,4 +1343,12 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
     [mapView setRegion:region animated:YES];
 }
 
++ (CGFloat)annotationPadding;
+{
+    return 10.0f;
+}
++ (CGFloat)calloutHeight;
+{
+    return 40.0f;
+}
 @end
