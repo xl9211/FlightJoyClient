@@ -65,6 +65,7 @@
 	self.navigationController.toolbar.barStyle = UIBarStyleBlack;
 	
 	if (!self.tableView.editing) {
+        [MobClick event:@"edit_click"];
         self.navigationItem.leftBarButtonItem = doneEditItem;
 /*
 		self.navigationItem.leftBarButtonItem.title = @"完成";
@@ -74,6 +75,7 @@
 */        
 		[self setToolbarItems: self.deleteToolbarItems animated:YES]; 
 	} else {
+        [MobClick event:@"done_edit_click"];
         /*
 		self.navigationItem.leftBarButtonItem.title = @"编辑";
 		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleBordered;
@@ -116,6 +118,7 @@
 
         //3. delete
         if ([[alertView title] isEqualToString:@"删除全部航班"]) {
+            [MobClick event:@"delete" label:@"全部"];
             NSString *delete = [[NSString alloc] initWithString:@"DELETE FROM followedflights;"];
             char * errorMsg;
             
@@ -132,6 +135,7 @@
             [self.tableView reloadData];
 
         } else {
+            [MobClick event:@"delete" label:@"已到达"];
             NSString *delete = [[NSString alloc] 
                                 initWithString:@"DELETE FROM followedflights where flight_state = '已经到达' or flight_state = '已经取消';"];
             char * errorMsg;
@@ -276,6 +280,7 @@
 #pragma mark -
 #pragma mark 工具类方法
 - (void)umengFeedback {
+    [MobClick event:@"feedback_click" label:@"列表页"];
     [MobClick showFeedback:self];
 }
 
@@ -1245,6 +1250,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [MobClick event:@"delete" label:@"单条"];
 	NSUInteger row = [indexPath row];
 	NSDictionary *flightInfo = [self.flightArray objectAtIndex:row];
 	NSString *recordId = [flightInfo objectForKey:@"recordId"];
@@ -1323,7 +1329,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)switchToSearchCondition:(id)sender
 {   
     NSLog(@"switchToSearchCondition...");
-    
+    [MobClick event:@"add_click"];
+
     NSArray *subviewArray = [self.navigationController.view subviews];
     UIView *maskView = [subviewArray objectAtIndex:3];
     [maskView setHidden:YES];
@@ -1351,6 +1358,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 //用户点击更新按钮的被动更新过程
 - (void)refreshAction { 
 	NSLog(@"refreshAction"); 
+    [MobClick event:@"refresh_click" label:@"列表页"];
 	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
 	if (serverReachable) {
 		[self requestFlightInfoFromServer];	

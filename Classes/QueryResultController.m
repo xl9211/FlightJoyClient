@@ -47,6 +47,7 @@
     NSLog(@"QueryResultController.requestFlightInfoFromServer...");
 
     if (queryType == 0) {//航班号查询
+        [MobClick event:@"search_click" label:@"航班号"];
         NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
         if (comanyAbbrev == nil) {
             comanyAbbrev = @"";
@@ -57,6 +58,7 @@
                 self.searchConditionController.searchConditionFlightNo,
                 self.searchConditionController.searchConditionDate];
     } else if (queryType == 1) {//航段查询
+        [MobClick event:@"search_click" label:@"航段"];
         NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
         self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRoute"];
         if (comanyAbbrev == nil || [comanyAbbrev isEqualToString:@""]) {
@@ -68,6 +70,7 @@
                 self.searchConditionController.searchConditionDate,
                 comanyAbbrev];
     } else if (queryType == 2) {//随机查询
+        [MobClick event:@"search_click" label:@"随机"];
         self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRandom"];
         self.post = [[NSString alloc] initWithString:@"lang=zh"];
     }
@@ -103,6 +106,7 @@
 #pragma mark -
 #pragma mark View lifecycle
 - (void)save {
+    [MobClick event:@"follow_click" label:@"列表页"];
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
 		NSAssert(0, @"Failed to open database");

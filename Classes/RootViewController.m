@@ -132,6 +132,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    [MobClick event:@"view_route" label:@"进入详情页"];
     
     MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	NSLog(@"...didSelectRowAtIndexPath");

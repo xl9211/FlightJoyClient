@@ -174,6 +174,7 @@
 }
 
 - (void)save {
+    [MobClick event:@"follow_click" label:@"详情页"];
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
 		NSAssert(0, @"Failed to open database");
@@ -207,6 +208,7 @@
 
 - (void)showSendActionSheet
 {
+    [MobClick event:@"share_click"];
 	// open a dialog with two custom buttons
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"将航班信息分享于"
                                                              delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil
@@ -225,6 +227,7 @@
     switch (buttonIndex) {
         case 0:
             NSLog(@"邮件");
+            [MobClick event:@"share_channel" label:@"邮件"];
             [self sendEMail];
             break;
         /*case 1:
@@ -236,6 +239,7 @@
             break;*/
         case 1:
             NSLog(@"短信");
+            [MobClick event:@"share_channel" label:@"短信"];
             [self sendSMS];
             break;
         default:
@@ -445,6 +449,7 @@
             break;  
     }  
     */
+    [MobClick event:@"share_done" label:@"邮件"];
     [self dismissModalViewControllerAnimated:YES];  
 }
 - (NSString *)getShortTimeStringFromStandard:(NSString *)standardTimeString {
@@ -545,6 +550,7 @@
 			break;
 	}
      */
+    [MobClick event:@"share_done" label:@"短信"];
 	[self dismissModalViewControllerAnimated:YES];	
 }
 
@@ -554,6 +560,7 @@
 #pragma mark -
 #pragma mark 工具类方法
 - (void)umengFeedback {
+    [MobClick event:@"feedback_click" label:@"详情页"];
     [MobClick showFeedback:self];
 }
 
@@ -562,10 +569,12 @@
     m_currentSegmentIndex = 1 - m_currentSegmentIndex;
     switch (m_currentSegmentIndex) {
 		case 0:
+            [MobClick event:@"mode_switch" label:@"至时刻视图"];
             [self.tableView setHidden:NO];
             [self.mapView setHidden:YES];
 			break;
 		case 1:
+            [MobClick event:@"mode_switch" label:@"至地图视图"];
             [self.tableView setHidden:YES];
             [self.mapView setHidden:NO];
             [self loadMapviewData];
@@ -893,6 +902,7 @@
 //用户点击更新按钮的被动更新过程
 - (void)refreshAction { 
 	NSLog(@"DisclosureButtonController.refreshAction");
+    [MobClick event:@"refresh_click" label:@"详情页"];
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	[root refreshAction];
