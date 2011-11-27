@@ -14,7 +14,12 @@
 @synthesize navController;
 @synthesize deviceToken;
 
-
+- (NSString *)channelId{
+    return @"other";
+    //return @"macidea";
+    //return @"weiphone";
+    //App Store 的版本没有channelId方法，切代表的时cocoachina
+}
 - (NSString *)appKey {
     return @"4ebf9547527015401e00006f";
 }
@@ -93,7 +98,14 @@
 	
     // Override point for customization after application launch.
 	navController.view.backgroundColor = [ UIColor colorWithPatternImage:[UIImage imageNamed:@"china5.png"] ];
+    UIImageView *maskImageView = [[UIImageView alloc]initWithImage: [UIImage imageNamed:@"add.png"]];
+    [maskImageView setFrame:navController.view.frame];
+    [maskImageView setContentMode:UIViewContentModeScaleToFill];
+    [maskImageView setHidden:YES];
+    
+    [navController.view addSubview:maskImageView];
     [window addSubview: navController.view];
+    //[window addSubview: ];
 	
     [window makeKeyAndVisible];
     
@@ -106,6 +118,7 @@
     //更新到最新机场列表，并入库
     //select count(*) from sqlite_master where type='table' and name = 'cityinfo';
     if ( ![self airportTableExists] ) {
+        [maskImageView setHidden:NO];//首次进入应用需要显示向导图层
         [self createAirportTable];
         [self loadAirportsFromServer];
     }

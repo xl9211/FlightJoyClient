@@ -27,6 +27,7 @@
 		3E8BD7BF1475207600444D18 /* mapplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7BE1475207600444D18 /* mapplane.png */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
+		3E8DE50014826EB100E5EA35 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8DE4FF14826EB100E5EA35 /* add.png */; };
 		3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E4E671463D1C200CD4D4C /* QueryResultController.m */; };
 		3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E73CE143B4940003FEC46 /* china2.jpg */; };
 		3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */; };
@@ -115,6 +116,7 @@
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
 		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
 		3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3E8DE4FF14826EB100E5EA35 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		3E8E4E661463D1C100CD4D4C /* QueryResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryResultController.h; sourceTree = "<group>"; };
 		3E8E4E671463D1C200CD4D4C /* QueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryResultController.m; sourceTree = "<group>"; };
 		3E8E73CE143B4940003FEC46 /* china2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china2.jpg; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 		3E940A681405D8A700B43D5E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3E8DE4FF14826EB100E5EA35 /* add.png */,
 				3E8BD7BE1475207600444D18 /* mapplane.png */,
 				3E8BD7A91474BDD900444D18 /* DoneDown.png */,
 				3E8BD7AA1474BDD900444D18 /* DoneUp.png */,
@@ -523,6 +526,7 @@
 				3E8BD7AB1474BDD900444D18 /* DoneDown.png in Resources */,
 				3E8BD7AC1474BDD900444D18 /* DoneUp.png in Resources */,
 				3E8BD7BF1475207600444D18 /* mapplane.png in Resources */,
+				3E8DE50014826EB100E5EA35 /* add.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

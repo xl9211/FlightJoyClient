@@ -1323,6 +1323,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)switchToSearchCondition:(id)sender
 {   
     NSLog(@"switchToSearchCondition...");
+    
+    NSArray *subviewArray = [self.navigationController.view subviews];
+    UIView *maskView = [subviewArray objectAtIndex:3];
+    [maskView setHidden:YES];
+    //NSLog(@"%d", [subviewArray count]);
+    
 	SearchConditionController *searchConditionController = [[SearchConditionController alloc]initWithNibName:@"SearchConditionController" bundle:nil];
 	// Configure the RecipeAddViewController. In this case, it reports any
 	// changes to a custom delegate object.
