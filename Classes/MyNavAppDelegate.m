@@ -87,7 +87,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[MobClick setDelegate:self];
+	//[MobClick setDelegate:self];
+    [MobClick setDelegate:self reportPolicy:REALTIME];
     [MobClick appLaunched];
     
     //Change the host name here to change the server your monitoring
