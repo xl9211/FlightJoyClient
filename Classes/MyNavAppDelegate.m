@@ -74,9 +74,9 @@
 }
 
 - (NSString *)channelId{
-    return @"other";
+    //return @"other";
     //return @"macidea";
-    //return @"weiphone";
+    return @"weiphone";
     //App Store 的版本没有channelId方法，切代表的时cocoachina
 }
 - (NSString *)appKey {
@@ -87,7 +87,7 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
-    [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
+    //[MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
     //[MobClick setCrashReportEnabled:NO];
     [MobClick setDelegate:self reportPolicy:REALTIME];
     
