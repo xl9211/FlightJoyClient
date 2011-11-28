@@ -51,10 +51,14 @@
     [super requestFlightInfoFromServer];
 }
 - (void) stopUpdateProcess {
-    [super stopUpdateProcessDisplay]; 
-    
-    //设置编辑模式
-	self.navigationItem.leftBarButtonItem = enterEditItem;
+    [super stopUpdateProcessDisplay];     
+}
+- (void)loadFlightInfoFromTable{
+    [super loadFlightInfoFromTable];
+    if (self.flightArray != nil && [self.flightArray count] > 0) {
+        //设置编辑模式
+        self.navigationItem.leftBarButtonItem = enterEditItem;
+    }
 }
 
 - (void)showInfo {
