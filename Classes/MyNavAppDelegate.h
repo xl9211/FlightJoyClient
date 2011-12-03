@@ -15,18 +15,20 @@
 
 @class Reachability;
 
-@interface MyNavAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate> {
+@interface MyNavAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate, UIAlertViewDelegate> {
     UIWindow *window;
 	UINavigationController *navController;
 	Reachability  *hostReach;
     NSString *deviceToken;
     NSMutableData *responseData;
     sqlite3	*database;
+    NSString *serverIpaUrl;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) NSString *deviceToken;
+@property (nonatomic, retain) NSString *serverIpaUrl;
 
 + (MyNavAppDelegate *)sharedAppDelegate;
 - (BOOL)isServerReachable;
