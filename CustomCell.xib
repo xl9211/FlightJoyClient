@@ -54,7 +54,7 @@
 									<object class="IBUIImageView" id="898756521">
 										<reference key="NSNextResponder" ref="985275772"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{7, 5}, {21, 21}}</string>
+										<string key="NSFrame">{{4, 5}, {33, 21}}</string>
 										<reference key="NSSuperview" ref="985275772"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="587170580"/>
@@ -62,7 +62,7 @@
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<object class="NSCustomResource" key="IBUIImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">plane.png</string>
+											<string key="NSResourceName">empty@2x.png</string>
 										</object>
 									</object>
 									<object class="IBUILabel" id="587170580">
@@ -242,6 +242,7 @@
 										<string key="NSFrame">{{137, 49}, {42, 21}}</string>
 										<reference key="NSSuperview" ref="985275772"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -555,8 +556,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">plane.png</string>
-			<string key="NS.object.0">{48, 48}</string>
+			<string key="NS.key.0">empty@2x.png</string>
+			<string key="NS.object.0">{88, 50}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
