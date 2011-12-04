@@ -10,12 +10,14 @@
 
 
 @interface CustomCell : UITableViewCell {
+    IBOutlet UIImageView *companyFlagView;
 	IBOutlet UILabel *nameLabel;
 	IBOutlet UILabel *takeoffDateLabel;
 	IBOutlet UILabel *flightNOLabel;
 	IBOutlet UILabel *takeoffTimeLabel;
 	IBOutlet UILabel *landTimeLabel;
 }
+@property (nonatomic, retain) UIImageView *companyFlagView;
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *takeoffDateLabel;
 @property (nonatomic, retain) UILabel *flightNOLabel;

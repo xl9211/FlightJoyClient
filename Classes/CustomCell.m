@@ -10,6 +10,7 @@
 
 
 @implementation CustomCell
+@synthesize companyFlagView;
 @synthesize nameLabel;
 @synthesize	takeoffDateLabel;
 @synthesize flightNOLabel;

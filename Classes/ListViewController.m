@@ -1157,6 +1157,12 @@
 	NSDictionary* one = [flightArray objectAtIndex:indexPath.row];
     NSString *flightState = [one objectForKey:@"flight_state"];
 	
+    NSString *flightNo = [one objectForKey:@"flight_no"];
+    NSString *companyFlagFileName = [[NSString alloc]initWithFormat:@"%@@2x.png",
+                                     [[flightNo substringToIndex:2] uppercaseString]
+                                     ];
+    cell.companyFlagView.image = [UIImage imageNamed:companyFlagFileName]; 
+                                  
 	NSUInteger row = [indexPath row];
 	UITableViewController *controller = [controllers objectAtIndex:row];
 	NSString *nameLabelText = [NSString stringWithFormat:@"%@",[one objectForKey:@"takeoff_city"]];
@@ -1180,7 +1186,7 @@
         cell.takeoffDateLabel.text = weekdayStr;
         [weekdayStr release];
     }
-    cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",[one objectForKey:@"flight_no"]];
+    cell.flightNOLabel.text = [[one objectForKey:@"company"] stringByAppendingFormat:@" %@",flightNo];
 	cell.takeoffTimeLabel.text = [one objectForKey:@"display_takeoff_time"];
 	cell.landTimeLabel.text = [one objectForKey:@"display_arrival_time"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -54,7 +54,7 @@
 									<object class="IBUIImageView" id="898756521">
 										<reference key="NSNextResponder" ref="985275772"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{4, 5}, {33, 21}}</string>
+										<string key="NSFrame">{{3, 5}, {33, 21}}</string>
 										<reference key="NSSuperview" ref="985275772"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="587170580"/>
@@ -336,6 +336,14 @@
 					</object>
 					<int key="connectionID">10</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">companyFlagView</string>
+						<reference key="source" ref="532390209"/>
+						<reference key="destination" ref="898756521"/>
+					</object>
+					<int key="connectionID">24</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -475,7 +483,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">23</int>
+			<int key="maxID">24</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -487,6 +495,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>companyFlagView</string>
 							<string>flightNOLabel</string>
 							<string>landTimeLabel</string>
 							<string>nameLabel</string>
@@ -495,6 +504,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -506,6 +516,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>companyFlagView</string>
 							<string>flightNOLabel</string>
 							<string>landTimeLabel</string>
 							<string>nameLabel</string>
@@ -514,6 +525,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">companyFlagView</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">flightNOLabel</string>
 								<string key="candidateClassName">UILabel</string>
