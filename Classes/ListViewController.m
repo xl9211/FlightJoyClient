@@ -237,7 +237,7 @@
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 
     NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-	self.title = [[NSString alloc]initWithFormat:@"航班列表 v%@",currentVersionStr];
+	self.title = [[NSString alloc]initWithFormat:@"飞趣v%@",currentVersionStr];
 	self.tableView.backgroundColor = [UIColor clearColor];
 	[self.tableView setSeparatorColor:[UIColor clearColor]];
     

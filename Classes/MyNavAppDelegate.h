@@ -23,6 +23,8 @@
     NSMutableData *responseData;
     sqlite3	*database;
     NSString *serverIpaUrl;
+    NSURLConnection *versionConnection;
+    NSURLConnection *airportConnection;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

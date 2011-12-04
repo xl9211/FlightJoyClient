@@ -192,7 +192,7 @@
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];  
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
 	[request setHTTPBody:postData];  
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	airportConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -229,13 +229,13 @@
      更新检查响应 http:// 118.194.161.243:28888/getVersionInfo
      机场列表响应 http:// 118.194.161.243:28888/getAirportList
      */
-    NSString *urlString = [[[connection originalRequest] URL] description];
-    [connection release];	
+    //[connection currentRequest]
+    //NSString *urlString = [[[connection originalRequest] URL] description];
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
     
-    if ([urlString rangeOfString:@"getVersionInfo"].length > 0) {
+    if (connection == versionConnection) {
         NSLog(@"getVersionInfo...");
         NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
         NSLog(@"%@", currentVersionStr);
@@ -258,7 +258,7 @@
             [alert release];
         }
         
-    } else if ([urlString rangeOfString:@"getAirportList"].length > 0) {
+    } else if (connection == airportConnection) {
         NSArray *airportInfos = [json objectWithString:responseString error:&error];
         if (airportInfos == nil) {
             NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
@@ -295,6 +295,8 @@
             }
         }
     }
+    [connection release];	
+
 }
 //HTTP Response - end
 
@@ -354,7 +356,7 @@
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];  
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
 	[request setHTTPBody:postData];  
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	versionConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 
