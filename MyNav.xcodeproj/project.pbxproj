@@ -47,9 +47,9 @@
 		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
 		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E900F3C145DAA4000710661 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F3B145DAA4000710661 /* QuartzCore.framework */; };
+		3E901361148DDEAC005B133F /* newIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E901360148DDEAC005B133F /* newIcon1.png */; };
 		3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFE51403D428004E20F8 /* RootViewController.m */; };
 		3E91CFEB1403D856004E20F8 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFEA1403D856004E20F8 /* ListViewController.m */; };
-		3E925B18144E96E2008AB82E /* icon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E925B17144E96E2008AB82E /* icon1.jpg */; };
 		3E92DF8F14088A8B0094CFAA /* FlightDetailCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */; };
 		3E92DF9114088ACC0094CFAA /* FlightDetailCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */; };
 		3E92E0441408D1500094CFAA /* xiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E92E0421408D1500094CFAA /* xiangqing.png */; };
@@ -223,11 +223,11 @@
 		3E900F31145D897200710661 /* SearchConditionAirportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionAirportController.xib; sourceTree = "<group>"; };
 		3E900F39145DAA3100710661 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E900F3B145DAA4000710661 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3E901360148DDEAC005B133F /* newIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIcon1.png; sourceTree = "<group>"; };
 		3E91CFE41403D428004E20F8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3E91CFE51403D428004E20F8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3E91CFE91403D856004E20F8 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		3E91CFEA1403D856004E20F8 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		3E925B17144E96E2008AB82E /* icon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon1.jpg; sourceTree = "<group>"; };
 		3E92DF8D14088A8B0094CFAA /* FlightDetailCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailCustomCell.h; sourceTree = "<group>"; };
 		3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailCustomCell.m; sourceTree = "<group>"; };
 		3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightDetailCustomCell.xib; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 				3EBBC7101473F4A400F3F2DE /* china5.png */,
 				3E8E90CE1471F8E000B36223 /* plane.png */,
 				3E7A02DF144F0CD3008503A5 /* icon.jpg */,
-				3E925B17144E96E2008AB82E /* icon1.jpg */,
+				3E901360148DDEAC005B133F /* newIcon1.png */,
 				3E8E73CE143B4940003FEC46 /* china2.jpg */,
 				3E361521143B420900D0063D /* china.jpg */,
 				3E92E04B1408D2100094CFAA /* duigou.png */,
@@ -761,7 +761,6 @@
 				3E8E73CF143B4940003FEC46 /* china2.jpg in Resources */,
 				3EA84FA2144C698800985145 /* CHANGELOG.md in Resources */,
 				3EA84FA4144C698800985145 /* README.md in Resources */,
-				3E925B18144E96E2008AB82E /* icon1.jpg in Resources */,
 				3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */,
 				3ED5F4281452CA97003F2988 /* DisclosureButtonController.xib in Resources */,
 				3ED5F42A14530021003F2988 /* SearchConditionController.xib in Resources */,
@@ -867,6 +866,7 @@
 				3E971A95148BA1D0009AD722 /* VS@2x.png in Resources */,
 				3E971A96148BA1D0009AD722 /* Y8@2x.png in Resources */,
 				3E971A97148BA1D0009AD722 /* ZH@2x.png in Resources */,
+				3E901361148DDEAC005B133F /* newIcon1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

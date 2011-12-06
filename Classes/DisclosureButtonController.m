@@ -301,11 +301,10 @@
     [mailPicker setBccRecipients:bccRecipients]; */
     
     // 添加图片  
-    UIImage *addPic = [UIImage imageNamed: @"iconlittle.jpg"];  
-    //NSData *imageData = UIImagePNGRepresentation(addPic);            // png  
+    /*UIImage *addPic = [UIImage imageNamed: @"iconlittle.jpg"];  
     NSData *imageData = UIImageJPEGRepresentation(addPic, 1);    // jpeg  
     [mailPicker addAttachmentData: imageData mimeType: @"" fileName: @"icon.jpg"];  
-    
+    */
     NSString *emailBody = @"亲爱的乘客"; 
     emailBody = [emailBody stringByAppendingString:@"<br/>"];
     emailBody = [emailBody stringByAppendingString:@"<br/>"];
@@ -530,7 +529,9 @@
 		//picker.recipients = [NSArray arrayWithObject:@"186-0123-0123"];
 		[self presentModalViewController:picker animated:YES];
 		[picker release];		
-	}	
+	} else {
+        NSLog(@"can't");
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
