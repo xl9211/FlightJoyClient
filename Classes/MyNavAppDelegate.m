@@ -87,8 +87,49 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+-(BOOL)initializeDb{ 
+    NSLog (@"initializeDB...");  
+    // look to see if DB is in known location (~/Documents/$DATABASE_FILE_NAME)  
+    //START:code.DatabaseShoppingList.findDocumentsDirectory  
+    
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);  
+    
+    NSString *documentFolderPath = [searchPaths objectAtIndex: 0];  
+    //查看文件目录  
+    NSString *dbFilePath = [documentFolderPath stringByAppendingPathComponent:kFilename]; 
+    //NSLog(@"dbFilePath: %@",dbFilePath);
+
+    [dbFilePath retain];  
+
+    if (! [[NSFileManager defaultManager] fileExistsAtPath: dbFilePath]) {  
+        // didn't find db, need to copy  
+        NSString *backupDbPath = [[NSBundle mainBundle] pathForResource:@"flights" ofType:@"sqlite3"];  
+        //NSLog(@"backupDbPath: %@",backupDbPath);
+
+        if (backupDbPath == nil) {  
+            // couldn't find backup db to copy, bail  
+            return NO;  
+        } else {  
+            BOOL copiedBackupDb = [[NSFileManager defaultManager] copyItemAtPath:backupDbPath toPath:dbFilePath error:nil];  
+            if (! copiedBackupDb) {  
+                // copying backup db failed, bail  
+                return NO;  
+            }  
+        }  
+    }  
+    NSLog (@"bottom of initializeDb");  
+    return YES;  
+} 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
     NSLog(@"didFinishLaunchingWithOptions...");
+    // copy the database from the bundle if necessary  
+    if (! [self initializeDb]) {  
+        // TODO: alert the user!  
+        NSLog (@"couldn't init db");  
+        return;  
+    } 
     
     //[MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
     [MobClick setCrashReportEnabled:NO];
@@ -119,24 +160,21 @@
       UIRemoteNotificationTypeBadge | 
       UIRemoteNotificationTypeSound)];
     
-    //更新到最新机场列表，并入库
-    //select count(*) from sqlite_master where type='table' and name = 'cityinfo';
-    if ( ![self airportTableExists] ) {
-        [maskImageView setHidden:NO];//首次进入应用需要显示向导图层
-        [self createAirportTable];
-        [self loadAirportsFromServer];
+    //首次进入应用需要显示向导图层
+    if ( ![self followedFlightsTableExists] ) {
+        [maskImageView setHidden:NO];
     }
     
     return YES;
 }
 
-- (BOOL)airportTableExists {
+- (BOOL)followedFlightsTableExists {
     if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
 		NSAssert(0, @"Failed to open database");
 	}
     
-	NSString *query = @"select count(*) from sqlite_master where type='table' and name = 'airport';";
+	NSString *query = @"select count(*) from sqlite_master where type='table' and name = 'followedflights';";
 	sqlite3_stmt *statement;
 	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 		while (sqlite3_step(statement) == SQLITE_ROW) {

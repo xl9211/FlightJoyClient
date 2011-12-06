@@ -236,8 +236,17 @@
 	[self loadToolbarItems];
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 
-    NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-	self.title = [[NSString alloc]initWithFormat:@"飞趣v%@",currentVersionStr];
+    //NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
+	self.title = @"航班列表";
+    UILabel *ltitle = [[UILabel alloc]initWithFrame:CGRectMake(0.0 , 11.0f, 160.0f, 21.0f)];
+    [ltitle setText:@"飞趣航班助理"];    
+    [ltitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:22]];
+	[ltitle setBackgroundColor:[UIColor clearColor]];
+	[ltitle setTextColor:[UIColor whiteColor]];
+	[ltitle setTextAlignment:UITextAlignmentCenter];
+    
+    self.navigationItem.titleView = ltitle;
+    
 	self.tableView.backgroundColor = [UIColor clearColor];
 	[self.tableView setSeparatorColor:[UIColor clearColor]];
     
