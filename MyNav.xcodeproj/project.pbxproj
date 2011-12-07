@@ -20,8 +20,6 @@
 		3E7A02E0144F0CD3008503A5 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E7A02DF144F0CD3008503A5 /* icon.jpg */; };
 		3E888620147358F000E1E2B2 /* highlightBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E88861F147358F000E1E2B2 /* highlightBack.png */; };
 		3E893CD01455B24600639A07 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E893CCF1455B24600639A07 /* Airport.m */; };
-		3E8BD7AB1474BDD900444D18 /* DoneDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7A91474BDD900444D18 /* DoneDown.png */; };
-		3E8BD7AC1474BDD900444D18 /* DoneUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7AA1474BDD900444D18 /* DoneUp.png */; };
 		3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */; };
 		3E8BD7B71474F7B700444D18 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */; };
 		3E8BD7BF1475207600444D18 /* mapplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7BE1475207600444D18 /* mapplane.png */; };
@@ -48,6 +46,8 @@
 		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E900F3C145DAA4000710661 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F3B145DAA4000710661 /* QuartzCore.framework */; };
 		3E901361148DDEAC005B133F /* newIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E901360148DDEAC005B133F /* newIcon1.png */; };
+		3E903D2B148F31F70033FAB5 /* DoneDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E903D29148F31F60033FAB5 /* DoneDown.png */; };
+		3E903D2C148F31F70033FAB5 /* DoneUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E903D2A148F31F60033FAB5 /* DoneUp.png */; };
 		3E91CFE61403D428004E20F8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFE51403D428004E20F8 /* RootViewController.m */; };
 		3E91CFEB1403D856004E20F8 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CFEA1403D856004E20F8 /* ListViewController.m */; };
 		3E92DF8F14088A8B0094CFAA /* FlightDetailCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92DF8E14088A8B0094CFAA /* FlightDetailCustomCell.m */; };
@@ -189,8 +189,6 @@
 		3E88861F147358F000E1E2B2 /* highlightBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightBack.png; sourceTree = "<group>"; };
 		3E893CCE1455B24600639A07 /* Airport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Airport.h; path = SVGeocoder/Airport.h; sourceTree = "<group>"; };
 		3E893CCF1455B24600639A07 /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airport.m; path = SVGeocoder/Airport.m; sourceTree = "<group>"; };
-		3E8BD7A91474BDD900444D18 /* DoneDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneDown.png; sourceTree = "<group>"; };
-		3E8BD7AA1474BDD900444D18 /* DoneUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneUp.png; sourceTree = "<group>"; };
 		3E8BD7B21474E40E00444D18 /* PlaneAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneAnnotation.h; sourceTree = "<group>"; };
 		3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaneAnnotation.m; sourceTree = "<group>"; };
 		3E8BD7B51474F7B700444D18 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
@@ -224,6 +222,8 @@
 		3E900F39145DAA3100710661 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E900F3B145DAA4000710661 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3E901360148DDEAC005B133F /* newIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIcon1.png; sourceTree = "<group>"; };
+		3E903D29148F31F60033FAB5 /* DoneDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneDown.png; sourceTree = "<group>"; };
+		3E903D2A148F31F60033FAB5 /* DoneUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneUp.png; sourceTree = "<group>"; };
 		3E91CFE41403D428004E20F8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3E91CFE51403D428004E20F8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3E91CFE91403D856004E20F8 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -541,11 +541,11 @@
 		3E940A681405D8A700B43D5E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3E903D29148F31F60033FAB5 /* DoneDown.png */,
+				3E903D2A148F31F60033FAB5 /* DoneUp.png */,
 				3E9719F1148BA137009AD722 /* companyflag */,
 				3E8DE4FF14826EB100E5EA35 /* add.png */,
 				3E8BD7BE1475207600444D18 /* mapplane.png */,
-				3E8BD7A91474BDD900444D18 /* DoneDown.png */,
-				3E8BD7AA1474BDD900444D18 /* DoneUp.png */,
 				3EBBC71E1473FF8D00F3F2DE /* time.png */,
 				3EBBC71C1473FEF600F3F2DE /* map.png */,
 				3E88861F147358F000E1E2B2 /* highlightBack.png */,
@@ -778,8 +778,6 @@
 				3EBBC7131473F7DB00F3F2DE /* Default.png in Resources */,
 				3EBBC71D1473FEF600F3F2DE /* map.png in Resources */,
 				3EBBC71F1473FF8D00F3F2DE /* time.png in Resources */,
-				3E8BD7AB1474BDD900444D18 /* DoneDown.png in Resources */,
-				3E8BD7AC1474BDD900444D18 /* DoneUp.png in Resources */,
 				3E8BD7BF1475207600444D18 /* mapplane.png in Resources */,
 				3E8DE50014826EB100E5EA35 /* add.png in Resources */,
 				3E971A45148BA1D0009AD722 /* 3U@2x.png in Resources */,
@@ -867,6 +865,8 @@
 				3E971A97148BA1D0009AD722 /* ZH@2x.png in Resources */,
 				3E901361148DDEAC005B133F /* newIcon1.png in Resources */,
 				3E8D97A7148E5BA100A162B7 /* flights.sqlite3 in Resources */,
+				3E903D2B148F31F70033FAB5 /* DoneDown.png in Resources */,
+				3E903D2C148F31F70033FAB5 /* DoneUp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
