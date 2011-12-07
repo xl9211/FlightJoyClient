@@ -71,7 +71,7 @@
     }
     sqlite3_finalize(statement);
     sqlite3_close(database);	
-    NSLog(@"%d", [airportArray count]);
+    DLog(@"%d", [airportArray count]);
 	[tableView reloadData];
 }
 
@@ -79,7 +79,7 @@
 #pragma mark Search Bar Delegate Methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarSearchButtonClicked...");
+    DLog(@"searchBarSearchButtonClicked...");
 	NSString *searchTerm = [searchBar text];
 	[self handleSearchForTerm:searchTerm];
     [search resignFirstResponder];
@@ -87,7 +87,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked...");
+    DLog(@"searchBarCancelButtonClicked...");
 	search.text = @"";
 	[self resetSearch];
 	[searchBar resignFirstResponder];
@@ -95,7 +95,7 @@
 //假设此时数据库中已经存储了全部机场数据
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
 {
-    //NSLog(@"searchBar:textDidChange...");
+    //DLog(@"searchBar:textDidChange...");
 
 	int length = [[searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
     
@@ -133,7 +133,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"viewDidLoad...");
+    DLog(@"viewDidLoad...");
     CGRect tableViewFrame= [tableView frame];
     tableViewOriginHeight = tableViewFrame.size.height;
     [self registerForKeyboardNotifications];
@@ -189,7 +189,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-    NSLog(@"SearchConditionAirportController.didSelectRowAtIndexPath...");
+    DLog(@"SearchConditionAirportController.didSelectRowAtIndexPath...");
 	NSUInteger row = [indexPath row];
 
 	Airport *airport = [airportArray objectAtIndex:row];

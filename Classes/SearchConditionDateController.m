@@ -71,8 +71,8 @@
 #pragma mark CalendarViewDelegate delegate
 - (void) selectDateChanged:(CFGregorianDate) selectDate
 {
-	NSLog(@"selectDateChanged!!!");
-	NSLog(@"year: %d, month: %2d, day: %d", selectDate.year,
+	DLog(@"selectDateChanged!!!");
+	DLog(@"year: %d, month: %2d, day: %d", selectDate.year,
 		  selectDate.month,
 		  selectDate.day);
 	NSString *responseString = [[NSString alloc] initWithFormat:@"%d-",selectDate.year];
@@ -96,7 +96,7 @@
 	
 	int interval = [selectedDate timeIntervalSinceDate:today];
 	//responseString = [responseString stringByAppendingString:responseStringOrigin];
-	NSLog(@"interval : %d",interval);
+	DLog(@"interval : %d",interval);
 	if ( interval < 0 ) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
 														message:@"本软件暂不支持查询历史航班"
@@ -119,12 +119,12 @@
 }
 - (void) monthChanged:(CFGregorianDate) currentMonth viewLeftTop:(CGPoint)viewLeftTop height:(float)height
 {
-	NSLog(@"monthChanged!!!");
+	DLog(@"monthChanged!!!");
 	
 }
 - (void) beforeMonthChange:(TdCalendarView*) calendarView willto:(CFGregorianDate) currentMonth
 {
-	NSLog(@"beforeMonthChange!!!");
+	DLog(@"beforeMonthChange!!!");
 	
 }
 @end

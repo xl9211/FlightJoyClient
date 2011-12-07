@@ -65,7 +65,7 @@
     }
     sqlite3_finalize(statement);
     sqlite3_close(database);	
-    NSLog(@"%d", [companyListData count]);
+    DLog(@"%d", [companyListData count]);
 	[tableView reloadData];
 }
 
@@ -73,7 +73,7 @@
 #pragma mark Search Bar Delegate Methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarSearchButtonClicked...");
+    DLog(@"searchBarSearchButtonClicked...");
 	NSString *searchTerm = [searchBar text];
 	[self handleSearchForTerm:searchTerm];
     [search resignFirstResponder];
@@ -81,7 +81,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked...");
+    DLog(@"searchBarCancelButtonClicked...");
 	search.text = @"";
 	[self resetSearch];
 	[searchBar resignFirstResponder];
@@ -89,7 +89,7 @@
 //假设此时数据库中已经存储了全部航空公司数据
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
 {
-    //NSLog(@"searchBar:textDidChange...");
+    //DLog(@"searchBar:textDidChange...");
     
 	int length = [[searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length];
     
@@ -246,11 +246,11 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"connectionDidFinishLoading...");
+	DLog(@"connectionDidFinishLoading...");
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(responseString);
+	DLog(responseString);
 	
 	NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
@@ -258,7 +258,7 @@
     NSArray *companyInfos = [json objectWithString:responseString error:&error];
 	
 	if (companyInfos == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+		DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
 	} else {		
 		for (int i = 0; i < [companyInfos count]; i++) {
 			NSMutableDictionary *companyInfo = [companyInfos objectAtIndex:i];
@@ -279,7 +279,7 @@
             NSString *update = [[NSString alloc] initWithFormat:insertSQL,
                                 shortname, fullname ];
             char * errorMsg;
-            //NSLog(@"update...");
+            //DLog(@"update...");
             
             if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
             {

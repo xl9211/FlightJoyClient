@@ -90,7 +90,7 @@
     [parameters setValue:[[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode] forKey:@"language"];
     [self addParametersToRequest:parameters];
     
-    NSLog(@"SVGeocoder -> %@", request.URL.absoluteString);
+    DLog(@"SVGeocoder -> %@", request.URL.absoluteString);
     
     return self;
 }
@@ -212,7 +212,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	
-	NSLog(@"SVGeocoder -> Failed with error: %@, (%@)", [error localizedDescription], [[request URL] absoluteString]);
+	DLog(@"SVGeocoder -> Failed with error: %@, (%@)", [error localizedDescription], [[request URL] absoluteString]);
 	
 	[self.delegate geocoder:self didFailWithError:error];
 }

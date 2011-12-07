@@ -65,7 +65,7 @@
 {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSLog(documentsDirectory);
+	DLog(documentsDirectory);
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
 }
 
@@ -129,7 +129,7 @@
 }
 
 - (void)geocoder:(SVGeocoder *)geocoder didFindPlacemark:(SVPlacemark *)placemark {
-	//NSLog(@"---%@",placemark.formattedAddress);
+	//DLog(@"---%@",placemark.formattedAddress);
 	//反向地址解析 http://maps.google.com/maps/api/geocode/json?latlng=32.794919,119.906321&sensor=true
 	//正向地址解析 http://maps.google.com/maps/api/geocode/json?address=jiangdu,+yangzhou,+jiangsu&sensor=false
 	//正向地址解析类库：https://github.com/samvermette/SVGeocoder
@@ -163,7 +163,7 @@
 	insertSQL = [insertSQL stringByAppendingString:@") VALUES ('%@', %f, %f);"];
 	
 	NSString *update = [[NSString alloc] initWithFormat:insertSQL, city, latitude, longtitude];
-	NSLog(update);
+	DLog(update);
 	char * errorMsg;
 	
 	if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
@@ -226,19 +226,19 @@
 {
     switch (buttonIndex) {
         case 0:
-            NSLog(@"邮件");
+            DLog(@"邮件");
             [MobClick event:@"share_channel" label:@"邮件"];
             [self sendEMail];
             break;
         /*case 1:
-            NSLog(@"微博");
+            DLog(@"微博");
             //[self StartSinaPhotoWeibo];
             break;
         case 2:
-            NSLog(@"人人");
+            DLog(@"人人");
             break;*/
         case 1:
-            NSLog(@"短信");
+            DLog(@"短信");
             [MobClick event:@"share_channel" label:@"短信"];
             [self sendSMS];
             break;
@@ -468,7 +468,7 @@
 //iOS3.0请参考 http://archive.cnblogs.com/a/1956619/
 - (void)sendSMS {
 	BOOL canSendSMS = [MFMessageComposeViewController canSendText];
-	NSLog(@"can send SMS [%d]", canSendSMS);	
+	DLog(@"can send SMS [%d]", canSendSMS);	
 	if (canSendSMS) {
 		MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
 		picker.messageComposeDelegate = self;
@@ -530,7 +530,7 @@
 		[self presentModalViewController:picker animated:YES];
 		[picker release];		
 	} else {
-        NSLog(@"can't");
+        DLog(@"can't");
     }
 }
 
@@ -539,13 +539,13 @@
 	/*
     switch (result) {
 		case MessageComposeResultCancelled:
-			if (DEBUG) NSLog(@"Result: canceled");
+			if (DEBUG) DLog(@"Result: canceled");
 			break;
 		case MessageComposeResultSent:
-			if (DEBUG) NSLog(@"Result: Sent");
+			if (DEBUG) DLog(@"Result: Sent");
 			break;
 		case MessageComposeResultFailed:
-			if (DEBUG) NSLog(@"Result: Failed");
+			if (DEBUG) DLog(@"Result: Failed");
 			break;
 		default:
 			break;
@@ -556,7 +556,7 @@
 }
 
 - (void)showInfo {
-    NSLog(@"showInfo...");
+    DLog(@"showInfo...");
 }
 #pragma mark -
 #pragma mark 工具类方法
@@ -566,7 +566,7 @@
 }
 
 -(void)segmentChange {
-    NSLog(@"segmentChange...");
+    DLog(@"segmentChange...");
     m_currentSegmentIndex = 1 - m_currentSegmentIndex;
     switch (m_currentSegmentIndex) {
 		case 0:
@@ -585,7 +585,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"DisclosureButtonController.viewDidLoad...");
+	DLog(@"DisclosureButtonController.viewDidLoad...");
     MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	self.delegate = root;
@@ -689,8 +689,8 @@
      [locationManager startUpdatingLocation];//启动位置管理器
      
      CLLocationCoordinate2D currentLocation = [[locationManager location] coordinate];
-     NSLog(@"longitude:%f",currentLocation.longitude);
-     NSLog(@"latitude:%f",currentLocation.latitude);
+     DLog(@"longitude:%f",currentLocation.longitude);
+     DLog(@"latitude:%f",currentLocation.latitude);
      
      MKCoordinateRegion theRegion = { {0.0, 0.0 }, { 0.0, 0.0 } };
      theRegion.center=currentLocation;
@@ -823,7 +823,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	NSLog(@"DisclosureButtonController.viewWillAppear...");
+	DLog(@"DisclosureButtonController.viewWillAppear...");
         
 	//copy the root view status
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -845,7 +845,7 @@
  * 开始更新航班信息的过程
  */
 - (void) startUpdateProcess {
-	NSLog(@"DisclosureButtonController.startUpdateProcess...");
+	DLog(@"DisclosureButtonController.startUpdateProcess...");
     UIActivityIndicatorView *updateProgressInd = [self.detailTitleView updateProgressInd];
     [updateProgressInd startAnimating];
 	NSString *content = @"更新中...";
@@ -855,7 +855,7 @@
  * 停止更新航班信息的过程
  */
 - (void) stopUpdateProcess {
-	NSLog(@"DisclosureButtonController.stopUpdateProcess...");
+	DLog(@"DisclosureButtonController.stopUpdateProcess...");
 	[self.tableView reloadData];
 	
     UIActivityIndicatorView *updateProgressInd = [self.detailTitleView updateProgressInd];
@@ -902,7 +902,7 @@
 
 //用户点击更新按钮的被动更新过程
 - (void)refreshAction { 
-	NSLog(@"DisclosureButtonController.refreshAction");
+	DLog(@"DisclosureButtonController.refreshAction");
     [MobClick event:@"refresh_click" label:@"详情页"];
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
@@ -942,12 +942,12 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	NSLog(@"DisclosureButtonController.numberOfSectionsInTableView...");
+	DLog(@"DisclosureButtonController.numberOfSectionsInTableView...");
 	if (list == nil) {
-		NSLog(@"list == nil");
+		DLog(@"list == nil");
 		return 0;
 	} else {
-		NSLog(@"[list count]:%d",[list count]);
+		DLog(@"[list count]:%d",[list count]);
 
 		return [list count];
 	}
@@ -956,19 +956,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
 	numberOfRowsInSection:(NSInteger)section {
-	NSLog(@"DisclosureButtonController.numberOfRowsInSection...");
+	DLog(@"DisclosureButtonController.numberOfRowsInSection...");
 
 	return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"DisclosureButtonController.cellForRowAtIndexPath...");
+	DLog(@"DisclosureButtonController.cellForRowAtIndexPath...");
 
 	NSUInteger row = [indexPath row];
 	NSUInteger section = [indexPath section];
 	NSString *airportString = [list objectAtIndex:section];
-	NSLog(@"section:%d, row:%d...", section, row);
+	DLog(@"section:%d, row:%d...", section, row);
 	
 	static NSString * DisclosureButtonCellIdentifier = @"DisclosureButtonCellIdentifier";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DisclosureButtonCellIdentifier];
@@ -1030,7 +1030,7 @@
 		}
 	}
 
-	NSLog(@"...DisclosureButtonController.cellForRowAtIndexPath");
+	DLog(@"...DisclosureButtonController.cellForRowAtIndexPath");
 
 	if (row == 0) {
 		return cell;
@@ -1109,7 +1109,7 @@
 -(void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"haha");
+	DLog(@"haha");
 	if (childController == nil) {
 		childController = [[DisclosureDetailController alloc]
 						   initWithNibName:@"DisclosureDetail" bundle:nil];
@@ -1186,7 +1186,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
     //计算飞机位置，增加飞行图标
     PlaneAnnotation *planeAnnotation = [[PlaneAnnotation alloc] init];
     
-    NSLog(@"todo: %d, done: %d...",self.todo, self.done);
+    DLog(@"todo: %d, done: %d...",self.todo, self.done);
     BOOL latPossitive = YES;
     BOOL longPossitive = YES;
     double deltaLatitude = pointsToUse[1].latitude - pointsToUse[0].latitude;

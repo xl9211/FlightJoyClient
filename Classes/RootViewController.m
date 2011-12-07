@@ -62,7 +62,7 @@
 }
 
 - (void)showInfo {
-    NSLog(@"showInfo...");
+    DLog(@"showInfo...");
 }
 
 - (void)loadToolbarItems {
@@ -89,11 +89,11 @@
 	//[responseString release];	
 	
 	if (luckyNumbers == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+		DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
 	} else {	
 		for (int i = 0; i < [luckyNumbers count]; i++) {
             NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];
-            NSLog(@"recordId: %@", recordId);
+            DLog(@"recordId: %@", recordId);
 
 			NSMutableDictionary *flightInfo = [luckyNumbers objectAtIndex:i];
             [self printFlightInfo:flightInfo];
@@ -139,7 +139,7 @@
     [MobClick event:@"view_route" label:@"进入详情页"];
     
     MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-	NSLog(@"...didSelectRowAtIndexPath");
+	DLog(@"...didSelectRowAtIndexPath");
 	[delegate.navController pushViewController:currentNextController animated:YES];
 }
 @end

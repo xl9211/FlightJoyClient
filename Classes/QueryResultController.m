@@ -44,7 +44,7 @@
 }
 
 - (void)requestFlightInfoFromServer {
-    NSLog(@"QueryResultController.requestFlightInfoFromServer...");
+    DLog(@"QueryResultController.requestFlightInfoFromServer...");
 
     if (queryType == 0) {//航班号查询
         [MobClick event:@"search_click" label:@"航班号"];
@@ -106,6 +106,7 @@
 #pragma mark -
 #pragma mark View lifecycle
 - (void)save {
+    ALog(@"save...");
     [MobClick event:@"follow_click" label:@"列表页"];
 	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
 		sqlite3_close(database);
@@ -132,7 +133,7 @@
 }
 
 -(void)destroyTimer {
-    NSLog(@"destroyTimer...");
+    DLog(@"destroyTimer...");
     [self.timer invalidate];
 }
 
@@ -147,7 +148,7 @@
     //"on_time"、"half_hour_late" 、"one_hour_late"、"more_than_one_hour_late" 、"cancel"
 	
 	if (flightInfos == nil) {
-		NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+		DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
 	} else {		
         if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
             sqlite3_close(database);
@@ -212,7 +213,7 @@
                                 [flightInfo objectForKey:@"schedule_takeoff_date"]
                                 ];
             char * errorMsg;
-            NSLog(@"update:%@", update);
+            DLog(@"update:%@", update);
             if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
             {
                 NSAssert1(0, @"Error updating tables: %s", errorMsg);	

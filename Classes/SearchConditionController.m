@@ -46,7 +46,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"SearchCondition viewDidLoad!");
+	DLog(@"SearchCondition viewDidLoad!");
     //fix black corner of the tableview
     tableView.backgroundColor = [UIColor clearColor];
     tableView.opaque = NO;
@@ -235,7 +235,7 @@
 
 - (IBAction)segmentControlDidChanged:(id)sender
 {
-    NSLog(@"segmentControlDidChanged...");
+    DLog(@"segmentControlDidChanged...");
 	UISegmentedControl *segmentControl = (UISegmentedControl *)sender;
 	switch (segmentControl.selectedSegmentIndex) {
 		case 0:
@@ -251,7 +251,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"SearchConditionController.cellForRowAtIndexPath...");
+	DLog(@"SearchConditionController.cellForRowAtIndexPath...");
     
 	NSUInteger row = [indexPath row];
 	static NSString * SearchConditionFieldCellIdentifier = @"SearchConditionFieldCellIdentifier";
@@ -398,7 +398,7 @@
 }
 
 - (void)doneButton:(id)sender {
-    NSLog(@"Input: %@", numberTextField.text);
+    DLog(@"Input: %@", numberTextField.text);
     [numberTextField resignFirstResponder];
 }
 
@@ -426,7 +426,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"didSelectRowAtIndexPath...");
+	DLog(@"didSelectRowAtIndexPath...");
 	MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 	RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -466,19 +466,19 @@
 		[root.searchNavController pushViewController:searchCDC animated:YES];
 	}
 	
-	NSLog(@"...didSelectRowAtIndexPath");
+	DLog(@"...didSelectRowAtIndexPath");
 
 }
 
 #pragma mark Text Field Delegate Methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	NSLog(@"textFieldDidBeginEditing");
+	DLog(@"textFieldDidBeginEditing");
 	self.textFieldBeingEdited = textField;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-	NSLog(@"textFieldDidEndEditing");
+	DLog(@"textFieldDidEndEditing");
 	
 	self.searchConditionFlightNo = textField.text;
 	//NSNumber *tagAsNum = [[NSNumber alloc] initWithInt:textField.tag];
@@ -498,7 +498,7 @@
 
 /*在搜索结果页返回上一级查询条件页面*/
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"SearchConditionController.viewWillAppear...");
+    DLog(@"SearchConditionController.viewWillAppear...");
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardDidShowNotification 
@@ -521,7 +521,7 @@
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"SearchConditionController.viewWillDisappear...");
+    DLog(@"SearchConditionController.viewWillDisappear...");
     [self resignFirstResponder];
     [numberTextField resignFirstResponder];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -532,7 +532,7 @@
     if (motion == UIEventSubtypeMotionShake)
     {
         // 随机查询
-        NSLog(@"shake!");
+        DLog(@"shake!");
         /*
         SearchResultController *searchResultController = 
         [[SearchResultController alloc] initWithStyle:UITableViewStylePlain];

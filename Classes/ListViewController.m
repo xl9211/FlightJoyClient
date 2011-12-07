@@ -150,11 +150,11 @@
             
             [self loadFlightInfoFromTable];
         }
-        NSLog(@"batch delete...");
+        DLog(@"batch delete...");
     }
 }
 - (void)deleteLandedFlights {
-	NSLog(@"deleteLandedFlights");
+	DLog(@"deleteLandedFlights");
     UIAlertView *alert = nil;
 	alert = [UIAlertView alloc];
 	[alert initWithTitle:@"删除已到达航班"
@@ -167,7 +167,7 @@
 }
 
 - (void)deleteAllFlights {
-    NSLog(@"deleteAllFlights");	
+    DLog(@"deleteAllFlights");	
 	UIAlertView *alert = nil;
 	alert = [UIAlertView alloc];
 	[alert initWithTitle:@"删除全部航班"
@@ -298,38 +298,38 @@
 {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSLog(documentsDirectory);
+	DLog(documentsDirectory);
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
 }
 - (void)printFlightInfo:(NSMutableDictionary *)flightInfo {
 	//flightInfo set
-	NSLog(@"printFlightInfo...");
-	NSLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
-	NSLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
-	NSLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
-	NSLog(@"\"flight_location\" : \"%@\"", [flightInfo objectForKey:@"flight_location"]);
-	NSLog(@"\"mileage\" : \"%@\"", [flightInfo objectForKey:@"mileage"]);
-	NSLog(@"\"plane_model\" : \"%@\"", [flightInfo objectForKey:@"plane_model"]);
-	NSLog(@"\"schedule_takeoff_date\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_date"]);
+	DLog(@"printFlightInfo...");
+	DLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
+	DLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
+	DLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
+	DLog(@"\"flight_location\" : \"%@\"", [flightInfo objectForKey:@"flight_location"]);
+	DLog(@"\"mileage\" : \"%@\"", [flightInfo objectForKey:@"mileage"]);
+	DLog(@"\"plane_model\" : \"%@\"", [flightInfo objectForKey:@"plane_model"]);
+	DLog(@"\"schedule_takeoff_date\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_date"]);
 	
-	NSLog(@"\"takeoff_city\" : \"%@\"", [flightInfo objectForKey:@"takeoff_city"]);
-	NSLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
-	NSLog(@"\"takeoff_airport_building\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_building"]);
-	NSLog(@"\"takeoff_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_entrance_exit"]);
-	NSLog(@"\"schedule_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_time"]);
-	NSLog(@"\"estimate_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_takeoff_time"]);
-	NSLog(@"\"actual_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"actual_takeoff_time"]);
-	//NSLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
+	DLog(@"\"takeoff_city\" : \"%@\"", [flightInfo objectForKey:@"takeoff_city"]);
+	DLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
+	DLog(@"\"takeoff_airport_building\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_building"]);
+	DLog(@"\"takeoff_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport_entrance_exit"]);
+	DLog(@"\"schedule_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_takeoff_time"]);
+	DLog(@"\"estimate_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_takeoff_time"]);
+	DLog(@"\"actual_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"actual_takeoff_time"]);
+	//DLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
 	
-	NSLog(@"\"arrival_city\" : \"%@\"", [flightInfo objectForKey:@"arrival_city"]);
-	NSLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
-	NSLog(@"\"arrival_airport_building\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_building"]);
-	NSLog(@"\"arrival_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_entrance_exit"]);
-	NSLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
-	NSLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
-	NSLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
-	//NSLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
-	NSLog(@"...printFlightInfo");
+	DLog(@"\"arrival_city\" : \"%@\"", [flightInfo objectForKey:@"arrival_city"]);
+	DLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
+	DLog(@"\"arrival_airport_building\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_building"]);
+	DLog(@"\"arrival_airport_entrance_exit\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport_entrance_exit"]);
+	DLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
+	DLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
+	DLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
+	//DLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
+	DLog(@"...printFlightInfo");
 }
 
 
@@ -347,7 +347,7 @@
 	//label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"connectionDidFinishLoading...");
+	DLog(@"connectionDidFinishLoading...");
 	[connection release];
     
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]; 
@@ -360,7 +360,7 @@
     
     //判断是否为addFollowedFlightInfo、deleteFollowedFlightInfo调用导致
     if (responseString != nil && [responseString isEqualToString:@"0"]) {   
-        NSLog(@"addFollowedFlightInfo or deleteFollowedFlightInfo");
+        DLog(@"addFollowedFlightInfo or deleteFollowedFlightInfo");
         [self stopUpdateProcessDisplay];
     } else {
         [self stopUpdateProcess];
@@ -381,7 +381,7 @@
 	NSDateFormatter *dateFormatter = [[ NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];//这里去掉 具体时间 保留日期
 	NSString * curDateString = [dateFormatter stringFromDate:curDate];
-	NSLog(@"%@",curDateString);
+	DLog(@"%@",curDateString);
 	
 	NSString *scheduleTakeoffDate = [flightInfo objectForKey:@"schedule_takeoff_date"];
 	//[self insertFollowedFlightIntoTable:flightInfo];
@@ -439,7 +439,7 @@
 	//1. calculate takeoffDelayAdvanceTime
 	NSString *takeoffDelayAdvanceTime = [[NSString alloc] initWithString:@""];
 	if (![actualTakeoffTime isEqualToString:@"--:--"]) {
-		//NSLog(@"状态：已经起飞");
+		//DLog(@"状态：已经起飞");
 		[flightInfo setObject:actualTakeoffTime forKey:@"display_takeoff_time"];
 		
 		takeoffDelayAdvanceTime = [takeoffDelayAdvanceTime stringByAppendingString:@"已离开登机口 "];
@@ -454,7 +454,7 @@
 			takeoffDelayAdvanceTime = [takeoffDelayAdvanceTime stringByAppendingFormat:@"提前%d分",-a];
 		}
 	} else {
-		//NSLog(@"状态：计划航班");
+		//DLog(@"状态：计划航班");
 		if (![estimateTakeoffTime isEqualToString:@"--:--"]) {
 			[flightInfo setObject:estimateTakeoffTime forKey:@"display_takeoff_time"];
 			takeoffDelayAdvanceTime = [takeoffDelayAdvanceTime stringByAppendingString:@"预计离开登机口 "];
@@ -474,12 +474,12 @@
 			takeoffDelayAdvanceTime = [takeoffDelayAdvanceTime stringByAppendingString:@"计划离开登机口 "];
 		}
 	}
-	NSLog(takeoffDelayAdvanceTime);
+	DLog(takeoffDelayAdvanceTime);
 	
 	//2. calculate arrivalDelayAdvanceTime
 	NSString *arrivalDelayAdvanceTime = [[NSString alloc] initWithString:@""];
 	if (![actualArrivalTime isEqualToString:@"--:--"]) {
-		//NSLog(@"状态：已经起飞");
+		//DLog(@"状态：已经起飞");
 		[flightInfo setObject:actualArrivalTime forKey:@"display_arrival_time"];
 		
 		arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingString:@"已到达 "];
@@ -494,7 +494,7 @@
 			arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingFormat:@"提前%d分",-a];
 		}
 	} else {
-		//NSLog(@"状态：计划航班");
+		//DLog(@"状态：计划航班");
 		if (![estimateArrivalTime isEqualToString:@"--:--"]) {
 			[flightInfo setObject:estimateArrivalTime forKey:@"display_arrival_time"];
 			
@@ -516,25 +516,25 @@
 			arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingString:@"计划到达 "];
 		}
 	}
-	NSLog(arrivalDelayAdvanceTime);
+	DLog(arrivalDelayAdvanceTime);
 	
 	//flightInfo set
-	NSLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
-	NSLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
-	NSLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
-	NSLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
-	NSLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
+	DLog(@"\"takeoff_airport\" : \"%@\"", [flightInfo objectForKey:@"takeoff_airport"]);
+	DLog(@"\"arrival_airport\" : \"%@\"", [flightInfo objectForKey:@"arrival_airport"]);
+	DLog(@"\"flight_state\" : \"%@\"", [flightInfo objectForKey:@"flight_state"]);
+	DLog(@"\"company\" : \"%@\"", [flightInfo objectForKey:@"company"]);
+	DLog(@"\"flight_no\" : \"%@\"", [flightInfo objectForKey:@"flight_no"]);
 	
-	NSLog(@"\"schedule_takeoff_time\" : \"%@\"", scheduleTakeoffTime);
-	NSLog(@"\"estimate_takeoff_time\" : \"%@\"", estimateTakeoffTime);
-	NSLog(@"\"actual_takeoff_time\" : \"%@\"", actualTakeoffTime);
-	NSLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
+	DLog(@"\"schedule_takeoff_time\" : \"%@\"", scheduleTakeoffTime);
+	DLog(@"\"estimate_takeoff_time\" : \"%@\"", estimateTakeoffTime);
+	DLog(@"\"actual_takeoff_time\" : \"%@\"", actualTakeoffTime);
+	DLog(@"\"display_takeoff_time\" : \"%@\"", [flightInfo objectForKey:@"display_takeoff_time"]);
 	
-	NSLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
-	NSLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
-	NSLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
-	NSLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
-	NSLog(@"\n");
+	DLog(@"\"schedule_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"schedule_arrival_time"]);
+	DLog(@"\"estimate_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"estimate_arrival_time"]);
+	DLog(@"\"actual_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"actual_arrival_time"]);
+	DLog(@"\"display_arrival_time\" : \"%@\"", [flightInfo objectForKey:@"display_arrival_time"]);
+	DLog(@"\n");
 	
 	[flightInfo setObject:takeoffDelayAdvanceTime forKey:@"takeoff_delay_advance_time"];
 	[flightInfo setObject:arrivalDelayAdvanceTime forKey:@"arrival_delay_advance_time"];
@@ -672,7 +672,7 @@
 #pragma mark -
 #pragma mark 业务核心方法
 - (void)addOrUpdateTableWithServerResponse:(NSString*)responseString{
-    NSLog(@"addOrUpdateTableWithServerResponse:%@",responseString);
+    DLog(@"addOrUpdateTableWithServerResponse:%@",responseString);
 }
 
 //创建关注航班表
@@ -816,15 +816,15 @@
 	int recordCount = 0;
     /*
     if (self.dicAirportFullNameToShort != nil) {
-        NSLog(@"self.dicAirportFullNameToShort != nil");
+        DLog(@"self.dicAirportFullNameToShort != nil");
         NSArray *keys = [self.dicAirportFullNameToShort allKeys];
         
         // values in foreach loop
         for (NSString *key in keys) {
-            NSLog(@"%@ is %@",key, [self.dicAirportFullNameToShort objectForKey:key]);
+            DLog(@"%@ is %@",key, [self.dicAirportFullNameToShort objectForKey:key]);
         }
     } else {
-        NSLog(@"self.dicAirportFullNameToShort == nil");
+        DLog(@"self.dicAirportFullNameToShort == nil");
 
     }*/
     
@@ -869,8 +869,8 @@
     
 	//抽取方法
 	responseData = [[NSMutableData data] retain];
-    NSLog(@"url: %@", self.url);
-    NSLog(@"post: %@", self.post);
+    DLog(@"url: %@", self.url);
+    DLog(@"post: %@", self.post);
     
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
 	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
@@ -925,7 +925,7 @@
 		while (sqlite3_step(statement) == SQLITE_ROW) {
 			int recordPointer = 0;
 			int recordId = sqlite3_column_int(statement, recordPointer++);
-			NSLog(@"recordId:%d",recordId);
+			DLog(@"recordId:%d",recordId);
             
 			//读取char
 			char *companyChar = (char *)sqlite3_column_text(statement, recordPointer++);
@@ -1081,16 +1081,16 @@
  * 开始更新航班信息的过程
  */
 - (void) startUpdateProcess {
-    NSLog(@"startUpdateProcess...");
+    DLog(@"startUpdateProcess...");
 	DisclosureButtonController *controller = (DisclosureButtonController *)currentNextController;
 	[controller startUpdateProcess];
 	
 	if (self.tableView.editing) {
 		return;
 	}
-    NSLog(@"updateProgressInd startAnimating");
+    DLog(@"updateProgressInd startAnimating");
     if (updateProgressInd == nil) {
-        NSLog(@"updateProgressInd == nil");
+        DLog(@"updateProgressInd == nil");
     }
     [updateProgressInd startAnimating];
 	statusLabelText = [[NSString alloc]initWithString:@"更新中..."];
@@ -1100,7 +1100,7 @@
  * 停止更新航班信息的过程
  */
 - (void) stopUpdateProcessDisplay {
-	NSLog(@"stopUpdateProcessDisplay...");
+	DLog(@"stopUpdateProcessDisplay...");
 	
 	if (self.tableView.editing) {
 		return;
@@ -1128,14 +1128,14 @@
 	NSString* hhmmss = [dateFormatter stringFromDate:now];
 	NSString* secondPart = [hhmmss substringWithRange:NSMakeRange(4,2)];
 	if ([secondPart isEqualToString:@"00"]) {
-		NSLog(hhmmss);
+		DLog(hhmmss);
 		[self selfRefreshAction];
 	}
 	[dateFormatter release];
 }
  */
 - (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
-    NSLog(@"searchConditionController didAddRecipe");
+    DLog(@"searchConditionController didAddRecipe");
     //是时候 调用告知服务器当前用户关注的所有未死航班的列表 啦！
     [self announceAddFollowedFlightsToServer];
     
@@ -1149,7 +1149,7 @@
 #pragma mark Table Data Source Methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"cellForRowAtIndexPath...");
+	DLog(@"cellForRowAtIndexPath...");
     
 	static NSString *CustomCellIdentifier = @"CustomCellIdentifier";
 	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
@@ -1187,7 +1187,7 @@
     NSString *standardCurDateString = [dateFormatter stringFromDate:curDate];
 	NSString *curDateString = [self getShortDateStringFromStandard:standardCurDateString];
     
-    NSLog(@"curDateString: %@, scheduleTakeoffDate: %@", curDateString, scheduleTakeoffDate);
+    DLog(@"curDateString: %@, scheduleTakeoffDate: %@", curDateString, scheduleTakeoffDate);
     if ([curDateString isEqualToString:scheduleTakeoffDate]) {
         cell.takeoffDateLabel.text = flightState;
     } else {
@@ -1220,20 +1220,20 @@
     //cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"duigou.png"]];
     
     [dateFormatter release];
-	NSLog(@"...cellForRowAtIndexPath");
+	DLog(@"...cellForRowAtIndexPath");
 	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSLog(@"numberOfRowsInSection...");
+	DLog(@"numberOfRowsInSection...");
 	if (self.flightArray != nil) {
-		NSLog(@"self.flightArray != nil");
-		NSLog(@"%d",[self.flightArray count]);
+		DLog(@"self.flightArray != nil");
+		DLog(@"%d",[self.flightArray count]);
         
 		return [self.flightArray count];
 	} else {
-		NSLog(@"self.flightArray == nil");
-		NSLog(@"0");
+		DLog(@"self.flightArray == nil");
+		DLog(@"0");
         
 		return 0;
 	}
@@ -1257,9 +1257,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"didSelectRowAtIndexPath...");
+	DLog(@"didSelectRowAtIndexPath...");
 	NSUInteger row = [indexPath row];
-    NSLog(@"row: %d", row);
+    DLog(@"row: %d", row);
 	currentNextController = [self.controllers objectAtIndex:row];
 }
 
@@ -1275,7 +1275,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *idArrayToDelete = [[NSArray alloc] initWithObjects: recordId, nil]; 
     [self announceDeleteFollowedFlightsToServer:idArrayToDelete];
     
-	NSLog(@"recordId:%@", recordId);
+	DLog(@"recordId:%@", recordId);
     NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
 	char * errorMsg;
 	
@@ -1289,7 +1289,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
     
 	sqlite3_close(database);	
-    NSLog(@"delete...");
+    DLog(@"delete...");
 }
 
 
@@ -1344,13 +1344,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)switchToSearchCondition:(id)sender
 {   
-    NSLog(@"switchToSearchCondition...");
+    DLog(@"switchToSearchCondition...");
     [MobClick event:@"add_click"];
 
     NSArray *subviewArray = [self.navigationController.view subviews];
     UIView *maskView = [subviewArray objectAtIndex:3];
     [maskView setHidden:YES];
-    //NSLog(@"%d", [subviewArray count]);
+    //DLog(@"%d", [subviewArray count]);
     
 	SearchConditionController *searchConditionController = [[SearchConditionController alloc]initWithNibName:@"SearchConditionController" bundle:nil];
 	// Configure the RecipeAddViewController. In this case, it reports any
@@ -1373,7 +1373,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 //用户点击更新按钮的被动更新过程
 - (void)refreshAction { 
-	NSLog(@"refreshAction"); 
+	DLog(@"refreshAction"); 
     [MobClick event:@"refresh_click" label:@"列表页"];
 	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
 	if (serverReachable) {
@@ -1394,7 +1394,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 //每分钟的主动更新过程
 - (void)selfRefreshAction { 
-	NSLog(@"selfRefreshAction"); 
+	DLog(@"selfRefreshAction"); 
 	BOOL serverReachable = [[MyNavAppDelegate sharedAppDelegate] isServerReachable];
 	if (serverReachable) {
 		[self requestFlightInfoFromServer];	

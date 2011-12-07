@@ -19,7 +19,7 @@
     
     NSString *str = [NSString 
                      stringWithFormat:@"%@",deviceToken];
-    NSLog(str);
+    DLog(str);
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:str 
                           message:@"" 
@@ -37,7 +37,7 @@
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
     
     NSString *str = [NSString stringWithFormat: @"Error: %@", err];
-    NSLog(str);    
+    DLog(str);    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:str 
                           message:@"" 
@@ -57,7 +57,7 @@
     
     NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
     NSString *alertMessage = [apsInfo objectForKey:@"alert"];
-    NSLog(@"Received Push Alert: %@", alertMessage);
+    DLog(@"Received Push Alert: %@", alertMessage);
      
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"飞趣" 
@@ -88,7 +88,7 @@
 #pragma mark Application lifecycle
 
 -(BOOL)initializeDb{ 
-    NSLog (@"initializeDB...");  
+    DLog (@"initializeDB...");  
     // look to see if DB is in known location (~/Documents/$DATABASE_FILE_NAME)  
     //START:code.DatabaseShoppingList.findDocumentsDirectory  
     
@@ -97,14 +97,14 @@
     NSString *documentFolderPath = [searchPaths objectAtIndex: 0];  
     //查看文件目录  
     NSString *dbFilePath = [documentFolderPath stringByAppendingPathComponent:kFilename]; 
-    //NSLog(@"dbFilePath: %@",dbFilePath);
+    //DLog(@"dbFilePath: %@",dbFilePath);
 
     [dbFilePath retain];  
 
     if (! [[NSFileManager defaultManager] fileExistsAtPath: dbFilePath]) {  
         // didn't find db, need to copy  
         NSString *backupDbPath = [[NSBundle mainBundle] pathForResource:@"flights" ofType:@"sqlite3"];  
-        //NSLog(@"backupDbPath: %@",backupDbPath);
+        //DLog(@"backupDbPath: %@",backupDbPath);
 
         if (backupDbPath == nil) {  
             // couldn't find backup db to copy, bail  
@@ -117,17 +117,17 @@
             }  
         }  
     }  
-    NSLog (@"bottom of initializeDb");  
+    DLog (@"bottom of initializeDb");  
     return YES;  
 } 
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
-    NSLog(@"didFinishLaunchingWithOptions...");
+    DLog(@"didFinishLaunchingWithOptions...");
     // copy the database from the bundle if necessary  
     if (! [self initializeDb]) {  
         // TODO: alert the user!  
-        NSLog (@"couldn't init db");  
+        DLog (@"couldn't init db");  
         return;  
     } 
     
@@ -154,7 +154,7 @@
 	
     [window makeKeyAndVisible];
     
-    NSLog(@"Registering for push notifications...");    
+    DLog(@"Registering for push notifications...");    
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeAlert | 
       UIRemoteNotificationTypeBadge | 
@@ -262,7 +262,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"MyNavAppDelegate.connectionDidFinishLoading...");
+	DLog(@"MyNavAppDelegate.connectionDidFinishLoading...");
     /*
      更新检查响应 http:// fd.tourbox.me/getVersionInfo
      机场列表响应 http:// fd.tourbox.me/getAirportList
@@ -274,9 +274,9 @@
 	SBJSON *json = [[SBJSON new] autorelease];
     
     if (connection == versionConnection) {
-        NSLog(@"getVersionInfo...");
+        DLog(@"getVersionInfo...");
         NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-        NSLog(@"%@", currentVersionStr);
+        DLog(@"%@", currentVersionStr);
         
         NSMutableDictionary *versionInfo = [json objectWithString:responseString error:&error];
         NSString *serverVersionStr = [versionInfo objectForKey:@"version"];
@@ -299,7 +299,7 @@
     } else if (connection == airportConnection) {
         NSArray *airportInfos = [json objectWithString:responseString error:&error];
         if (airportInfos == nil) {
-            NSLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+            DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
         } else {		
             for (int i = 0; i < [airportInfos count]; i++) {
                 NSMutableDictionary *airportInfo = [airportInfos objectAtIndex:i];
@@ -322,7 +322,7 @@
                 NSString *update = [[NSString alloc] initWithFormat:insertSQL,
                                     city, shortname, fullname ];
                 char * errorMsg;
-                //NSLog(@"update...");
+                //DLog(@"update...");
 
                 if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
                 {
@@ -341,13 +341,13 @@
 -(BOOL) isServerReachable 
 {
 	if (hostReach == nil) {
-		NSLog(@"%@",@"isServerReachable--hostReach == nil");
+		DLog(@"%@",@"isServerReachable--hostReach == nil");
 		return NO;
 	}
 	
 	NetworkStatus netStatus = [hostReach currentReachabilityStatus];
     if (netStatus == NotReachable) {
-		NSLog(@"%@",@"isServerReachable--netStatus == NotReachable");
+		DLog(@"%@",@"isServerReachable--netStatus == NotReachable");
 		
 		return NO;
 	}  
@@ -381,7 +381,7 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    NSLog(@"applicationDidBecomeActive...");    
+    DLog(@"applicationDidBecomeActive...");    
     responseData = [[NSMutableData data] retain];
 	NSString *url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/getVersionInfo"];
 	NSString *post = nil;  
