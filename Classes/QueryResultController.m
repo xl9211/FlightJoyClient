@@ -52,7 +52,7 @@
         if (comanyAbbrev == nil) {
             comanyAbbrev = @"";
         }
-        self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByFlightNO"];
+        self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/queryFlightInfoByFlightNO"];
         self.post = [[NSString alloc] initWithFormat:@"flight_no=%@%@&schedule_takeoff_date=%@",
                 comanyAbbrev,
                 self.searchConditionController.searchConditionFlightNo,
@@ -60,7 +60,7 @@
     } else if (queryType == 1) {//航段查询
         [MobClick event:@"search_click" label:@"航段"];
         NSString *comanyAbbrev = self.searchConditionController.searchConditionCompany.shortname;
-        self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRoute"];
+        self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/queryFlightInfoByRoute"];
         if (comanyAbbrev == nil || [comanyAbbrev isEqualToString:@""]) {
             comanyAbbrev = @"all";
         }
@@ -71,7 +71,7 @@
                 comanyAbbrev];
     } else if (queryType == 2) {//随机查询
         [MobClick event:@"search_click" label:@"随机"];
-        self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/queryFlightInfoByRandom"];
+        self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/queryFlightInfoByRandom"];
         self.post = [[NSString alloc] initWithString:@"lang=zh"];
     }
     

@@ -187,7 +187,7 @@
 {
     //get json
 	responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/getCompanyList"];
+	NSString *url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/getCompanyList"];
 	
 	NSString *post = nil;  
 	post = [[NSString alloc] initWithString:@"lang=zh"];

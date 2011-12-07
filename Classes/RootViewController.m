@@ -20,7 +20,7 @@
     if ([announceAddStringValue isEqualToString:@"[]"]) {
         return;
     }
-    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/addFollowedFlightInfo"];
+    self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/addFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
                  announceAddStringValue,
                  [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
@@ -33,7 +33,7 @@
     if ([announceDeleteStringValue isEqualToString:@"[]"]) {
         return;
     }
-    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/deleteFollowedFlightInfo"];
+    self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/deleteFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@&device_token=%@", 
                  announceDeleteStringValue,
                  [[MyNavAppDelegate sharedAppDelegate] getDeviceToken]];
@@ -46,7 +46,7 @@
     if ([queryStringValue isEqualToString:@"[]"]) {
         return;
     }
-    self.url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/updateFollowedFlightInfo"];
+    self.url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/updateFollowedFlightInfo"];
     self.post = [[NSString alloc] initWithFormat:@"query_string=%@", queryStringValue];
     [super requestFlightInfoFromServer];
 }

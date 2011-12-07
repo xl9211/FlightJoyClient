@@ -47,7 +47,7 @@
     [alert show];
     [alert release];
 }
-//查询推送的网址http://118.194.161.243:28888/getPushInfo
+//查询推送的网址http://fd.tourbox.me/getPushInfo
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     //if ( application.applicationState == UIApplicationStateActive ) {
         // app was already in the foreground
@@ -218,7 +218,7 @@
 - (void)loadAirportsFromServer
 {
     responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/getAirportList"];
+	NSString *url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/getAirportList"];
 	
 	NSString *post = nil;  
 	post = [[NSString alloc] initWithString:@"lang=zh"];
@@ -264,8 +264,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSLog(@"MyNavAppDelegate.connectionDidFinishLoading...");
     /*
-     更新检查响应 http:// 118.194.161.243:28888/getVersionInfo
-     机场列表响应 http:// 118.194.161.243:28888/getAirportList
+     更新检查响应 http:// fd.tourbox.me/getVersionInfo
+     机场列表响应 http:// fd.tourbox.me/getAirportList
      */
     //[connection currentRequest]
     //NSString *urlString = [[[connection originalRequest] URL] description];
@@ -383,7 +383,7 @@
      */
     NSLog(@"applicationDidBecomeActive...");    
     responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://118.194.161.243:28888/getVersionInfo"];
+	NSString *url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/getVersionInfo"];
 	NSString *post = nil;  
 	post = [[NSString alloc] initWithString:@""];
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
