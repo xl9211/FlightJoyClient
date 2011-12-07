@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol FlightAddDelegate;
+@protocol InfoSetDelegate;
 
 @interface InfoViewController : UIViewController {
-    id <FlightAddDelegate> delegate;
+    id <InfoSetDelegate> delegate;
 
 }
-@property(nonatomic, assign) id <FlightAddDelegate> delegate;
+@property(nonatomic, assign) id <InfoSetDelegate> delegate;
+@end
 
+@protocol InfoSetDelegate <NSObject>
+// recipe == nil on cancel
+- (void)rootViewController:(InfoViewController *)infoViewController doneSetInfo:(int)recipe;
 @end

@@ -61,7 +61,7 @@
     }
 }
 
-- (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
+- (void)rootViewController:(InfoViewController *)infoViewController doneSetInfo:(int)recipe{
     DLog(@"searchConditionController didAddRecipe");
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -69,7 +69,7 @@
 - (void)showInfo {
     DLog(@"showInfo...");
     InfoViewController *infoViewController = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
-    	
+    infoViewController.title = @"飞趣航班助理";	
     infoViewController.delegate = self;
 
 	// Create the navigation controller and present it modally.
@@ -79,6 +79,7 @@
     navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
 	[self presentModalViewController:navigationController animated:YES];
+    
     [navigationController release];
 	[infoViewController release];
 }

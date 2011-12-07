@@ -17,7 +17,7 @@
 #define kTableViewRowHeight 74;
 
 @interface ListViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, FlightAddDelegate, UIAlertViewDelegate> {
+<UITableViewDelegate, UITableViewDataSource, FlightAddDelegate, InfoSetDelegate, UIAlertViewDelegate> {
 	UIImage *rowImage;
     
     NSArray *controllers;

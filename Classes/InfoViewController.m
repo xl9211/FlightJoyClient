@@ -31,7 +31,7 @@
 #pragma mark - View lifecycle
 
 - (void)cancel {
-    [self.delegate searchConditionController:self didAddRecipe:nil];
+    [self.delegate rootViewController:self doneSetInfo:nil];
 }
 
 - (void)viewDidLoad
@@ -43,7 +43,8 @@
     [saveButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
     [saveButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];  
-    
+    //UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
+	//[self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -2,4 +2,46 @@
 <Bucket
    type = "1"
    version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/InfoViewController.m"
+         timestampString = "344961400.339303"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "11"
+         endingLineNumber = "11"
+         landmarkName = "@implementation InfoViewController"
+         landmarkType = "3">
+         <Locations>
+            <Location
+               shouldBeEnabled = "No"
+               ignoreCount = "0"
+               continueAfterRunningActions = "No"
+               symbolName = "-[InfoViewController delegate]"
+               urlString = "file://localhost/Users/specialbrian/Documents/MyNav/Classes/InfoViewController.m"
+               timestampString = "344961400.523023"
+               startingColumnNumber = "9223372036854775807"
+               endingColumnNumber = "9223372036854775807"
+               startingLineNumber = "12"
+               endingLineNumber = "12">
+            </Location>
+            <Location
+               shouldBeEnabled = "No"
+               ignoreCount = "0"
+               continueAfterRunningActions = "No"
+               symbolName = "-[InfoViewController setDelegate:]"
+               urlString = "file://localhost/Users/specialbrian/Documents/MyNav/Classes/InfoViewController.m"
+               timestampString = "344961400.524976"
+               startingColumnNumber = "9223372036854775807"
+               endingColumnNumber = "9223372036854775807"
+               startingLineNumber = "12"
+               endingLineNumber = "12">
+            </Location>
+         </Locations>
+      </FileBreakpoint>
+   </FileBreakpoints>
 </Bucket>
