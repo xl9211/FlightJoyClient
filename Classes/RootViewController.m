@@ -61,8 +61,26 @@
     }
 }
 
+- (void)searchConditionController:(SearchConditionController *)searchConditionController didAddRecipe:(int)recipe {
+    DLog(@"searchConditionController didAddRecipe");
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)showInfo {
     DLog(@"showInfo...");
+    InfoViewController *infoViewController = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    	
+    infoViewController.delegate = self;
+
+	// Create the navigation controller and present it modally.
+	UINavigationController *navigationController = [[UINavigationController alloc]
+													initWithRootViewController:infoViewController];
+	[navigationController setToolbarHidden:YES];    
+    navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+
+	[self presentModalViewController:navigationController animated:YES];
+    [navigationController release];
+	[infoViewController release];
 }
 
 - (void)loadToolbarItems {
@@ -74,7 +92,7 @@
                                     action:@selector(umengFeedback)];
      */ 
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(umengFeedback) forControlEvents:UIControlEventTouchDown];
+    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
     
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
 									  initWithCustomView:infoButton];

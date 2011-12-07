@@ -1362,7 +1362,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 													initWithRootViewController:searchConditionController];
 	[navigationController setToolbarHidden:NO];
 	self.searchNavController = navigationController;
-	
+	    
 	[self presentModalViewController:navigationController animated:YES];
 	
 	// The navigation controller is now owned by the current view controller

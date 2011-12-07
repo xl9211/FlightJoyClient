@@ -11,6 +11,7 @@
 #import "MyNavAppDelegate.h"
 #import "/usr/include/sqlite3.h"
 #import "MobClick.h"
+#import "InfoViewController.h"
 
 #define kFilename		@"flights.sqlite3"
 #define kTableViewRowHeight 74;

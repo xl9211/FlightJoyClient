@@ -137,7 +137,7 @@
     [MobClick setDelegate:self reportPolicy:REALTIME];
     
     //Change the host name here to change the server your monitoring
-	hostReach = [[Reachability reachabilityWithHostName: @"specialbrian.gicp.net"] retain];
+	hostReach = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];
 	[self updateInterfaceWithReachability];
     
     application.applicationSupportsShakeToEdit = YES;
