@@ -264,9 +264,7 @@
     label.textAlignment = UITextAlignmentRight;
     label.tag = kLabelTag;
     label.font = [UIFont boldSystemFontOfSize:14];
-    //label.textColor = [UIColor grayColor];
     label.textColor = aliveColor;
-    //[aliveColor release];
     [cell.contentView addSubview:label];
 	    
     cell.backgroundColor = [UIColor whiteColor]; 
@@ -465,7 +463,8 @@
 		searchCDC.title = label.text;
 		[root.searchNavController pushViewController:searchCDC animated:YES];
 	}
-	
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 	DLog(@"...didSelectRowAtIndexPath");
 
 }

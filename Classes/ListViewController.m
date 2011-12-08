@@ -236,7 +236,6 @@
 	[self loadToolbarItems];
 	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 
-    //NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
 	self.title = @"航班列表";
     UILabel *ltitle = [[UILabel alloc]initWithFrame:CGRectMake(0.0 , 11.0f, 160.0f, 21.0f)];
     [ltitle setText:@"飞趣航班助理"];    
@@ -289,10 +288,6 @@
 
 #pragma mark -
 #pragma mark 工具类方法
-- (void)umengFeedback {
-    [MobClick event:@"feedback_click" label:@"列表页"];
-    [MobClick showFeedback:self];
-}
 
 - (NSString *)dataFilePath
 {

@@ -137,7 +137,9 @@
     [MobClick setDelegate:self reportPolicy:REALTIME];
     
     //Change the host name here to change the server your monitoring
-	hostReach = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];
+	//hostReach = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];
+    hostReach = [[Reachability reachabilityWithHostName: @"specialbrian.gicp.net"] retain];
+
 	[self updateInterfaceWithReachability];
     
     application.applicationSupportsShakeToEdit = YES;
@@ -267,7 +269,6 @@
      更新检查响应 http:// fd.tourbox.me/getVersionInfo
      机场列表响应 http:// fd.tourbox.me/getAirportList
      */
-    //[connection currentRequest]
     //NSString *urlString = [[[connection originalRequest] URL] description];
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSError *error;

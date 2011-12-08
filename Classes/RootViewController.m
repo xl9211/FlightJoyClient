@@ -69,13 +69,16 @@
 - (void)showInfo {
     DLog(@"showInfo...");
     InfoViewController *infoViewController = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
-    infoViewController.title = @"飞趣航班助理";	
+    infoViewController.title = @"软件信息";	
     infoViewController.delegate = self;
 
 	// Create the navigation controller and present it modally.
 	UINavigationController *navigationController = [[UINavigationController alloc]
 													initWithRootViewController:infoViewController];
 	[navigationController setToolbarHidden:YES];    
+    UIColor *backgroundColor = [UIColor blackColor];
+	[navigationController.navigationBar setTintColor:backgroundColor];
+    
     navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
 	[self presentModalViewController:navigationController animated:YES];
@@ -86,12 +89,7 @@
 
 - (void)loadToolbarItems {
     [super loadToolbarItems];
-    /*UIBarButtonItem *feedbackImageButton = 
-    [[UIBarButtonItem alloc] initWithTitle:@"反馈"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(umengFeedback)];
-     */ 
+    
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
     

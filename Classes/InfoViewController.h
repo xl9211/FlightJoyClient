@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MobClick.h"
 @protocol InfoSetDelegate;
 
-@interface InfoViewController : UIViewController {
+@interface InfoViewController : UIViewController
+<UITableViewDataSource, UITableViewDelegate>{
     id <InfoSetDelegate> delegate;
 
 }
