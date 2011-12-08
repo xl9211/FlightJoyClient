@@ -12,6 +12,16 @@
 - (void)viewDidLoad {
     cacheTableName = @"followedflights";
 	[super viewDidLoad];
+    
+    UILabel *ltitle = [[UILabel alloc]initWithFrame:CGRectMake(0.0 , 11.0f, 160.0f, 21.0f)];
+    [ltitle setText:@"飞趣航班助理"];    
+    [ltitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:22]];
+	[ltitle setBackgroundColor:[UIColor clearColor]];
+	[ltitle setTextColor:[UIColor whiteColor]];
+	[ltitle setTextAlignment:UITextAlignmentCenter];
+    
+    self.navigationItem.titleView = ltitle;
+    
 }
 - (void)announceAddFollowedFlightsToServer {
     //加载机场代码表进入数据字典

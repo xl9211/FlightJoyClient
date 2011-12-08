@@ -36,7 +36,7 @@
     [saveAllButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     saveAllButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveAllButton];
     
-    self.title = @"航班";
+    self.title = @"搜索结果";
 }
 
 - (void)getSearchConditionController:(SearchConditionController *)lsearchConditionController{
