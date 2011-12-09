@@ -65,7 +65,10 @@
     
 	if (row == 0) {
         [self umengFeedback];
-	} else if (row == 3) {
+	} else if (row == 2) {
+        versionCheck = [[VersionCheckUtil alloc] init];
+        [versionCheck checkVersion];
+        
 		/*
         SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
 		searchCDC.title = label.text;
@@ -164,4 +167,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [versionCheck release];
+    [super dealloc];
+}
 @end

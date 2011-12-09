@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MobClick.h"
+#import "VersionCheckUtil.h"
 @protocol InfoSetDelegate;
 
 @interface InfoViewController : UIViewController
 <UITableViewDataSource, UITableViewDelegate>{
     id <InfoSetDelegate> delegate;
+    VersionCheckUtil *versionCheck;
 
 }
 @property(nonatomic, assign) id <InfoSetDelegate> delegate;
