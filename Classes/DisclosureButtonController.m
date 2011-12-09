@@ -554,16 +554,34 @@
     [MobClick event:@"share_done" label:@"短信"];
 	[self dismissModalViewControllerAnimated:YES];	
 }
+- (void)rootViewController:(InfoViewController *)infoViewController doneSetInfo:(int)recipe{
+    DLog(@"searchConditionController didAddRecipe");
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)showInfo {
     DLog(@"showInfo...");
+    InfoViewController *infoViewController = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    infoViewController.title = @"软件信息";	
+    infoViewController.delegate = self;
+    
+	// Create the navigation controller and present it modally.
+	UINavigationController *navigationController = [[UINavigationController alloc]
+													initWithRootViewController:infoViewController];
+	[navigationController setToolbarHidden:YES];    
+    UIColor *backgroundColor = [UIColor blackColor];
+	[navigationController.navigationBar setTintColor:backgroundColor];
+    
+    navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+	[self presentModalViewController:navigationController animated:YES];
+    
+    [navigationController release];
+	[infoViewController release];
 }
+
 #pragma mark -
 #pragma mark 工具类方法
-- (void)umengFeedback {
-    [MobClick event:@"feedback_click" label:@"详情页"];
-    [MobClick showFeedback:self];
-}
 
 -(void)segmentChange {
     DLog(@"segmentChange...");
@@ -609,7 +627,7 @@
                                        target:self action:@selector(refreshAction)];
     
     UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(umengFeedback) forControlEvents:UIControlEventTouchDown];
+    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
 									  initWithCustomView:infoButton];    	
     

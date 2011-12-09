@@ -24,7 +24,7 @@
 @class DisclosureDetailController;
 
 @interface DisclosureButtonController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate,
+<UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate, InfoSetDelegate,
 CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate,
 MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     id <FlightAddDelegate> delegate;
