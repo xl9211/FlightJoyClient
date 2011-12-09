@@ -125,6 +125,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
     DLog(@"didFinishLaunchingWithOptions...");
     versionCheck = [[VersionCheckUtil alloc] init];
+    [versionCheck setNeedLatestAlert:NO];
     [versionCheck checkVersion];
     
     // copy the database from the bundle if necessary  

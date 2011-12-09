@@ -10,6 +10,7 @@
 
 @implementation VersionCheckUtil
 @synthesize serverIpaUrl;
+@synthesize needLatestAlert;
 
 - (void)checkVersion {
     DLog(@"VersionCheckUtil.checkVersion...");  
@@ -72,6 +73,16 @@
         //alertView.bgImage = [UIImage imageNamed:@"highlightBack.png"];
         [alertView show];
         [alertView release];
+    } else {
+        if (needLatestAlert) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"您的客户端已经是最新版本啦！"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
     }
     
     [connection release];	

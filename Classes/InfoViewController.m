@@ -57,24 +57,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	DLog(@"didSelectRowAtIndexPath...");
-	//MyNavAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-	//RootViewController *root = [delegate.navController.viewControllers objectAtIndex:0];
+	//RootViewController *root = [self.navigationController.viewControllers objectAtIndex:0];
 	//UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
 	NSUInteger row = [indexPath row];
     
 	if (row == 0) {
         [self umengFeedback];
-	} else if (row == 2) {
+	} else if(row == 1) {
+        AboutViewController *aboutViewController = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
+        [self.navigationController pushViewController:aboutViewController animated:YES];
+    }else if (row == 2) {
         versionCheck = [[VersionCheckUtil alloc] init];
+        [versionCheck setNeedLatestAlert:YES];
         [versionCheck checkVersion];
-        
-		/*
-        SearchConditionDateController *searchCDC = [[SearchConditionDateController alloc] initWithNibName:@"SearchConditionDateController" bundle:nil];
-		searchCDC.title = label.text;
-		[root.searchNavController pushViewController:searchCDC animated:YES];
-         */
-        
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	DLog(@"...didSelectRowAtIndexPath");

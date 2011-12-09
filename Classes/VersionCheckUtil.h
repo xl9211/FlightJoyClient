@@ -13,8 +13,11 @@
 @interface VersionCheckUtil : NSObject <UIAlertViewDelegate> {
     NSMutableData *responseData;
     NSString *serverIpaUrl;
+    BOOL needLatestAlert;
 }
 
 @property (nonatomic, retain) NSString *serverIpaUrl;
+@property (nonatomic) BOOL needLatestAlert;
+
 - (void)checkVersion;
 @end
