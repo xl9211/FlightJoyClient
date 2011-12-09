@@ -115,7 +115,7 @@
 }
 
 - (void)geocoder:(SVGeocoder *)geocoder didFailWithError:(NSError *)error {
-	
+	/*
 	UIAlertView *alertView = [[UIAlertView alloc] 
 							  initWithTitle:@"地址解析失败" 
 							  message:[error description] 
@@ -126,6 +126,7 @@
 	[alertView release];
     
     [geocoder release];
+     */
 }
 
 - (void)geocoder:(SVGeocoder *)geocoder didFindPlacemark:(SVPlacemark *)placemark {
