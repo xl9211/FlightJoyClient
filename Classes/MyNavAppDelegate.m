@@ -235,14 +235,6 @@
 	airportConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        //NSString *url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=314022946";
-        
-        NSString *url = self.serverIpaUrl;
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-    }
-}
 #pragma mark -
 #pragma mark HTTP Response Methods
 //HTTP Response - begin
@@ -266,7 +258,6 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	DLog(@"MyNavAppDelegate.connectionDidFinishLoading...");
     /*
-     更新检查响应 http:// fd.tourbox.me/getVersionInfo
      机场列表响应 http:// fd.tourbox.me/getAirportList
      */
     //NSString *urlString = [[[connection originalRequest] URL] description];
@@ -274,30 +265,7 @@
 	NSError *error;
 	SBJSON *json = [[SBJSON new] autorelease];
     
-    if (connection == versionConnection) {
-        DLog(@"getVersionInfo...");
-        NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-        DLog(@"%@", currentVersionStr);
-        
-        NSMutableDictionary *versionInfo = [json objectWithString:responseString error:&error];
-        NSString *serverVersionStr = [versionInfo objectForKey:@"version"];
-        NSString *serverIpaStr = [versionInfo objectForKey:@"ipa"];
-        self.serverIpaUrl = serverIpaStr;
-        NSString *serverChangelogStr = [versionInfo objectForKey:@"changelog"];
-        
-        if ([serverVersionStr doubleValue] > [currentVersionStr doubleValue]) {
-            UIAlertView *alert = nil;
-            alert = [UIAlertView alloc];
-            [alert initWithTitle:[[NSString alloc]initWithFormat:@"飞趣v%@上线了，更新内容：",serverVersionStr]
-                         message:serverChangelogStr
-                        delegate:self
-               cancelButtonTitle:@"取消"
-               otherButtonTitles:@"确定", nil];
-            [alert show];
-            [alert release];
-        }
-        
-    } else if (connection == airportConnection) {
+    if (connection ==  airportConnection) {
         NSArray *airportInfos = [json objectWithString:responseString error:&error];
         if (airportInfos == nil) {
             DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
@@ -382,20 +350,9 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    DLog(@"applicationDidBecomeActive...");    
-    responseData = [[NSMutableData data] retain];
-	NSString *url = [[NSString alloc] initWithString:@"http://fd.tourbox.me/getVersionInfo"];
-	NSString *post = nil;  
-	post = [[NSString alloc] initWithString:@""];
-	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];  
-	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];  
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
-	[request setURL:[NSURL URLWithString:url]];  
-	[request setHTTPMethod:@"POST"]; 
-	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];  
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];  
-	[request setHTTPBody:postData];  
-	versionConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    DLog(@"applicationDidBecomeActive...");  
+    versionCheck = [[VersionCheckUtil alloc] init];
+    [versionCheck checkVersion];
 }
 
 
@@ -412,6 +369,7 @@
 - (void)dealloc {
 	[navController release];
     [window release];
+    [versionCheck release];
     [super dealloc];
 }
 

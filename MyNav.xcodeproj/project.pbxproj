@@ -18,6 +18,8 @@
 		3E5FB5EA144AA64100A1AD06 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5FB5E9144AA64100A1AD06 /* MapKit.framework */; };
 		3E5FB633144AAACB00A1AD06 /* DisplayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FB632144AAACB00A1AD06 /* DisplayMap.m */; };
 		3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */; };
+		3E87147D14919624008B8B80 /* VersionCheckUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E87147C14919624008B8B80 /* VersionCheckUtil.m */; };
+		3E8714841491A655008B8B80 /* CLMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8714831491A655008B8B80 /* CLMAlertView.m */; };
 		3E888620147358F000E1E2B2 /* highlightBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E88861F147358F000E1E2B2 /* highlightBack.png */; };
 		3E893CD01455B24600639A07 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E893CCF1455B24600639A07 /* Airport.m */; };
 		3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */; };
@@ -184,6 +186,10 @@
 		3E5FB631144AAACB00A1AD06 /* DisplayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayMap.h; sourceTree = "<group>"; };
 		3E5FB632144AAACB00A1AD06 /* DisplayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayMap.m; sourceTree = "<group>"; };
 		3E5FB640144AAC3100A1AD06 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3E87147B14919624008B8B80 /* VersionCheckUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheckUtil.h; sourceTree = "<group>"; };
+		3E87147C14919624008B8B80 /* VersionCheckUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheckUtil.m; sourceTree = "<group>"; };
+		3E8714821491A655008B8B80 /* CLMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMAlertView.h; sourceTree = "<group>"; };
+		3E8714831491A655008B8B80 /* CLMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMAlertView.m; sourceTree = "<group>"; };
 		3E88861F147358F000E1E2B2 /* highlightBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightBack.png; sourceTree = "<group>"; };
 		3E893CCE1455B24600639A07 /* Airport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Airport.h; path = SVGeocoder/Airport.h; sourceTree = "<group>"; };
 		3E893CCF1455B24600639A07 /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airport.m; path = SVGeocoder/Airport.m; sourceTree = "<group>"; };
@@ -398,6 +404,8 @@
 				3E92E09F140900440094CFAA /* JSON */,
 				3EC3AD19143C938A007F748B /* Reachability.h */,
 				3EC3AD1A143C938A007F748B /* Reachability.m */,
+				3E87147B14919624008B8B80 /* VersionCheckUtil.h */,
+				3E87147C14919624008B8B80 /* VersionCheckUtil.m */,
 				1D3623240D0F684500981E51 /* MyNavAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MyNavAppDelegate.m */,
 				3E91CFE91403D856004E20F8 /* ListViewController.h */,
@@ -559,6 +567,8 @@
 		3E96B86214173D0C000B2E96 /* component */ = {
 			isa = PBXGroup;
 			children = (
+				3E8714821491A655008B8B80 /* CLMAlertView.h */,
+				3E8714831491A655008B8B80 /* CLMAlertView.m */,
 				3E96B86414173D23000B2E96 /* TdCalendarView.h */,
 				3E96B86314173D23000B2E96 /* TdCalendarView.m */,
 			);
@@ -897,6 +907,8 @@
 				3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */,
 				3E8BD7B71474F7B700444D18 /* UIImage-Extensions.m in Sources */,
 				3E43DC4A148FA77400419377 /* InfoViewController.m in Sources */,
+				3E87147D14919624008B8B80 /* VersionCheckUtil.m in Sources */,
+				3E8714841491A655008B8B80 /* CLMAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

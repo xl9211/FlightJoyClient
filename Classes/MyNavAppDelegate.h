@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "MobClick.h"
 #import "JSON/JSON.h"
+#import "VersionCheckUtil.h"
 #import "/usr/include/sqlite3.h"
 #define kFilename		@"flights.sqlite3"
 
@@ -25,6 +26,8 @@
     NSString *serverIpaUrl;
     NSURLConnection *versionConnection;
     NSURLConnection *airportConnection;
+    
+    VersionCheckUtil *versionCheck;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
