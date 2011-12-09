@@ -63,6 +63,7 @@
 - (void) stopUpdateProcess {
     [super stopUpdateProcessDisplay];     
 }
+
 - (void)loadFlightInfoFromTable{
     [super loadFlightInfoFromTable];
     if (self.flightArray != nil && [self.flightArray count] > 0) {
@@ -159,6 +160,34 @@
             sqlite3_close(database);
 		}
 	}
+}
+-(void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [MobClick event:@"delete" label:@"单条"];
+	NSUInteger row = [indexPath row];
+	NSDictionary *flightInfo = [self.flightArray objectAtIndex:row];
+	NSString *recordId = [flightInfo objectForKey:@"recordId"];
+    
+    //是时候 调用告知服务器当前用户删除了哪些航班 啦！
+    NSArray *idArrayToDelete = [[NSArray alloc] initWithObjects: recordId, nil]; 
+    [self announceDeleteFollowedFlightsToServer:idArrayToDelete];
+    
+	DLog(@"recordId:%@", recordId);
+    NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
+	char * errorMsg;
+	
+	if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
+	{
+		NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
+	} else {
+		[self.flightArray removeObjectAtIndex:row];
+		[self.controllers removeObjectAtIndex:row];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	}
+    
+	sqlite3_close(database);	
+    DLog(@"delete...");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

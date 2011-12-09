@@ -61,27 +61,16 @@
 }
 
 - (void)changeListMode {
+    DLog(@"changeListMode...");
 	[self.navigationController setToolbarHidden:NO animated:NO];  
 	self.navigationController.toolbar.barStyle = UIBarStyleBlack;
 	
 	if (!self.tableView.editing) {
         [MobClick event:@"edit_click"];
-        self.navigationItem.leftBarButtonItem = doneEditItem;
-/*
-		self.navigationItem.leftBarButtonItem.title = @"完成";
-		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleDone;
-        UIColor *hightlightButtonBackground = [UIColor colorWithRed:0.0f green:0.7f blue:0.1f alpha:1.0f];
-        self.navigationItem.leftBarButtonItem.tintColor = hightlightButtonBackground;
-*/        
+        self.navigationItem.leftBarButtonItem = doneEditItem;      
 		[self setToolbarItems: self.deleteToolbarItems animated:YES]; 
 	} else {
         [MobClick event:@"done_edit_click"];
-        /*
-		self.navigationItem.leftBarButtonItem.title = @"编辑";
-		self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleBordered;
-        UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
-        self.navigationItem.leftBarButtonItem.tintColor = backgroundColor;
-		*/
         self.navigationItem.leftBarButtonItem = enterEditItem;
         [self setToolbarItems: self.refreshToolbarItems animated:YES]; 
 	}
@@ -338,18 +327,19 @@
 	[connection release];
     
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]; 
-    //1.使用“服务器数据”更新“数据库数据”
-    [self addOrUpdateTableWithServerResponse:responseString];
-    //2.读取“数据库数据”，转化为“表格展示数据”并显示
-    [self loadFlightInfoFromTable];
-    //3.找到当前航班的详情页，并更新数据
-    [self refreshOpenedDetailInfo];
     
     //判断是否为addFollowedFlightInfo、deleteFollowedFlightInfo调用导致
     if (responseString != nil && [responseString isEqualToString:@"0"]) {   
         DLog(@"addFollowedFlightInfo or deleteFollowedFlightInfo");
         [self stopUpdateProcessDisplay];
     } else {
+        //1.使用“服务器数据”更新“数据库数据”
+        [self addOrUpdateTableWithServerResponse:responseString];
+        //2.读取“数据库数据”，转化为“表格展示数据”并显示
+        [self loadFlightInfoFromTable];
+        //3.找到当前航班的详情页，并更新数据
+        [self refreshOpenedDetailInfo];
+        
         [self stopUpdateProcess];
     }
 }
@@ -1248,35 +1238,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSUInteger row = [indexPath row];
     DLog(@"row: %d", row);
 	currentNextController = [self.controllers objectAtIndex:row];
-}
-
--(void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [MobClick event:@"delete" label:@"单条"];
-	NSUInteger row = [indexPath row];
-	NSDictionary *flightInfo = [self.flightArray objectAtIndex:row];
-	NSString *recordId = [flightInfo objectForKey:@"recordId"];
-    
-    //是时候 调用告知服务器当前用户删除了哪些航班 啦！
-    NSArray *idArrayToDelete = [[NSArray alloc] initWithObjects: recordId, nil]; 
-    [self announceDeleteFollowedFlightsToServer:idArrayToDelete];
-    
-	DLog(@"recordId:%@", recordId);
-    NSString *delete = [[NSString alloc] initWithFormat:@"DELETE FROM followedflights where id = %@;", recordId];
-	char * errorMsg;
-	
-	if (sqlite3_exec (database, [delete UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
-	{
-		NSAssert1(0, @"Error deleting tables: %s", errorMsg);	
-	} else {
-		[self.flightArray removeObjectAtIndex:row];
-		[self.controllers removeObjectAtIndex:row];
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-	}
-    
-	sqlite3_close(database);	
-    DLog(@"delete...");
 }
 
 
