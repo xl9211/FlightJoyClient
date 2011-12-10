@@ -16,6 +16,7 @@
 @implementation DisclosureButtonController
 @synthesize list;
 @synthesize cityList;
+@synthesize airportShortList;
 @synthesize flightInfo;
 @synthesize updateProgressInd;
 @synthesize tableView;
@@ -23,7 +24,7 @@
 
 //mapview
 @synthesize mapView;
-@synthesize cityLocationList;
+@synthesize airportLocationList;
 
 //detail statebar
 @synthesize stateLabelLeft;
@@ -67,111 +68,6 @@
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	DLog(documentsDirectory);
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
-}
-
-//创建城市信息表（纬经度）
-- (void)createCityInfoTable {
-	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	char *errorMsg;
-	NSString *createSQL = @"CREATE TABLE IF NOT EXISTS cityinfo (";
-	createSQL = [createSQL stringByAppendingString:@" ID INTEGER PRIMARY KEY AUTOINCREMENT,"];
-	
-	createSQL = [createSQL stringByAppendingString:@" name TEXT,"];
-	createSQL = [createSQL stringByAppendingString:@" latitude REAL,"];
-	createSQL = [createSQL stringByAppendingString:@" longitude REAL"];
-	
-	createSQL = [createSQL stringByAppendingString:@");"];
-	
-	if (sqlite3_exec (database, [createSQL  UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert1(0, @"Error creating table: %s", errorMsg);
-	}
-}
-
-- (void)cityInfoCheckExist:(NSString *)city {
-	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	NSString *query = [[NSString alloc]initWithFormat:@"SELECT * FROM cityinfo where name='%@'",city];
-	int recordCount = 0;
-	sqlite3_stmt *statement;
-	if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-		while (sqlite3_step(statement) == SQLITE_ROW) {
-			recordCount ++;
-		}
-	}
-	if (recordCount == 0) {
-		
-		SVGeocoder *geocodeRequest = [[SVGeocoder alloc] initWithAddress:city];
-		[geocodeRequest setDelegate:self];
-		[geocodeRequest startAsynchronous];
-	}
-}
-
-- (void)geocoder:(SVGeocoder *)geocoder didFailWithError:(NSError *)error {
-	/*
-	UIAlertView *alertView = [[UIAlertView alloc] 
-							  initWithTitle:@"地址解析失败" 
-							  message:[error description] 
-							  delegate:nil 
-							  cancelButtonTitle:@"知道了" 
-							  otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
-    
-    [geocoder release];
-     */
-}
-
-- (void)geocoder:(SVGeocoder *)geocoder didFindPlacemark:(SVPlacemark *)placemark {
-	//DLog(@"---%@",placemark.formattedAddress);
-	//反向地址解析 http://maps.google.com/maps/api/geocode/json?latlng=32.794919,119.906321&sensor=true
-	//正向地址解析 http://maps.google.com/maps/api/geocode/json?address=jiangdu,+yangzhou,+jiangsu&sensor=false
-	//正向地址解析类库：https://github.com/samvermette/SVGeocoder
-	
-	if (self.cityList != nil) {				
-		for (int i = 0; i < [self.cityList count]; i++) {
-			NSString *city = [self.cityList objectAtIndex:i];
-			if ([placemark.formattedAddress rangeOfString:city].length > 0) {
-				[self insertCityInfoIntoTable:city withLat:placemark.coordinate.latitude 
-									  withLng:placemark.coordinate.longitude]; 
-				break;
-			}
-		}
-	}
-	
-	
-	[geocoder release];
-}
-
-
-- (void)insertCityInfoIntoTable:(NSString *)city withLat:(double)latitude withLng:(double)longtitude {
-	if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-		sqlite3_close(database);
-		NSAssert(0, @"Failed to open database");
-	}
-	
-	NSString *insertSQL = @"INSERT INTO cityinfo (";
-	insertSQL = [insertSQL stringByAppendingString:@" name,"];
-	insertSQL = [insertSQL stringByAppendingString:@" latitude,"];
-	insertSQL = [insertSQL stringByAppendingString:@" longitude"];
-	insertSQL = [insertSQL stringByAppendingString:@") VALUES ('%@', %f, %f);"];
-	
-	NSString *update = [[NSString alloc] initWithFormat:insertSQL, city, latitude, longtitude];
-	DLog(update);
-	char * errorMsg;
-	
-	if (sqlite3_exec (database, [update UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK)
-	{
-		NSAssert1(0, @"Error updating tables: %s", errorMsg);
-		sqlite3_close(database);
-	}
 }
 
 - (void)save {
@@ -612,14 +508,6 @@
     NSArray *allControllers = self.navigationController.viewControllers;
 	ListViewController *parent = [allControllers objectAtIndex:[allControllers count]-2];
     self.parentClassName = [NSString stringWithUTF8String:object_getClassName(parent)];
-    
-	[self createCityInfoTable];
-	if (self.cityList != nil) {				
-		for (int i = 0; i < [self.cityList count]; i++) {
-			NSString *city = [self.cityList objectAtIndex:i];
-			[self cityInfoCheckExist:city];
-		}
-	}
 	
     //toolbar
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -1158,8 +1046,8 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 			NSAssert(0, @"Failed to open database");
 		}
 		for (int i = 0; i < [self.cityList count]; i++) {
-			NSString *city = [self.cityList objectAtIndex:i];
-			NSString *query = [[NSString alloc]initWithFormat:@"SELECT latitude, longitude FROM cityinfo where name='%@'",city];
+			NSString *airportShort = [self.airportShortList objectAtIndex:i];
+			NSString *query = [[NSString alloc]initWithFormat:@"SELECT latitude, longitude FROM airportloc where shortname='%@'",airportShort];
 			sqlite3_stmt *statement;
 			if (sqlite3_prepare_v2( database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
 				while (sqlite3_step(statement) == SQLITE_ROW) {					
@@ -1172,12 +1060,8 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 		}
 		sqlite3_close(database);	
 	}
-	self.cityLocationList = array;
+	self.airportLocationList = array;
 	[array release];
-	
-	if ([self.cityLocationList count] != [self.cityList count]) {
-		return;
-	}
     
     //2. show annotation
     NSMutableArray *overlays = [[NSMutableArray alloc] init];
@@ -1188,7 +1072,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 		for (int i = 0; i < [self.cityList count]; i++) {			
 			ann = [[DisplayMap alloc] init];
 			ann.title = [self.cityList objectAtIndex:i];
-			ann.coordinate = [[self.cityLocationList objectAtIndex:i] coordinate];
+			ann.coordinate = [[self.airportLocationList objectAtIndex:i] coordinate];
 			pointsToUse[i] = ann.coordinate;
 			[mapView addAnnotation:ann];
 		}

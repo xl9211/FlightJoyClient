@@ -31,8 +31,8 @@
 		3E8C10F1148334C600FEA9DC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C10F0148334C600FEA9DC /* libz.1.dylib */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
-		3E8D97A7148E5BA100A162B7 /* flights.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E8D97A6148E5BA000A162B7 /* flights.sqlite3 */; };
 		3E8DE50014826EB100E5EA35 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8DE4FF14826EB100E5EA35 /* add.png */; };
+		3E8DFFD6149355940075ED90 /* flights.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E8DFFD5149355940075ED90 /* flights.sqlite3 */; };
 		3E8E4E681463D1C200CD4D4C /* QueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E4E671463D1C200CD4D4C /* QueryResultController.m */; };
 		3E8E78F314552C01003BAD50 /* SearchConditionAirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E78F114552C01003BAD50 /* SearchConditionAirportController.m */; };
 		3E8E90CF1471F8E000B36223 /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90CE1471F8E000B36223 /* plane.png */; };
@@ -209,8 +209,8 @@
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
 		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
 		3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		3E8D97A6148E5BA000A162B7 /* flights.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = flights.sqlite3; sourceTree = "<group>"; };
 		3E8DE4FF14826EB100E5EA35 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		3E8DFFD5149355940075ED90 /* flights.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = flights.sqlite3; sourceTree = "<group>"; };
 		3E8E4E661463D1C100CD4D4C /* QueryResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryResultController.h; sourceTree = "<group>"; };
 		3E8E4E671463D1C200CD4D4C /* QueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryResultController.m; sourceTree = "<group>"; };
 		3E8E78F014552C01003BAD50 /* SearchConditionAirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionAirportController.h; sourceTree = "<group>"; };
@@ -481,7 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* MyNav-Info.plist */,
-				3E8D97A6148E5BA000A162B7 /* flights.sqlite3 */,
+				3E8DFFD5149355940075ED90 /* flights.sqlite3 */,
 				3EBBC7121473F7DB00F3F2DE /* Default.png */,
 				3E8E90DE14721F0400B36223 /* pushmusic.wav */,
 				3E940A681405D8A700B43D5E /* Images */,
@@ -870,11 +870,11 @@
 				3E971A96148BA1D0009AD722 /* Y8@2x.png in Resources */,
 				3E971A97148BA1D0009AD722 /* ZH@2x.png in Resources */,
 				3E901361148DDEAC005B133F /* newIcon1.png in Resources */,
-				3E8D97A7148E5BA100A162B7 /* flights.sqlite3 in Resources */,
 				3E903D2B148F31F70033FAB5 /* DoneDown.png in Resources */,
 				3E903D2C148F31F70033FAB5 /* DoneUp.png in Resources */,
 				3E43DC4B148FA77400419377 /* InfoViewController.xib in Resources */,
 				3E87148F1491BF07008B8B80 /* AboutViewController.xib in Resources */,
+				3E8DFFD6149355940075ED90 /* flights.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,8 +24,6 @@
     
 }
 - (void)announceAddFollowedFlightsToServer {
-    //加载机场代码表进入数据字典
-    [self loadAirportDictionary];
     NSString *announceAddStringValue = [self generateAnnounceAddStringValue];
     if ([announceAddStringValue isEqualToString:@"[]"]) {
         return;
@@ -37,8 +35,6 @@
     [super requestFlightInfoFromServer];
 }
 -(void)announceDeleteFollowedFlightsToServer:(NSArray *)idArrayToDelete {
-    //加载机场代码表进入数据字典
-    [self loadAirportDictionary];
     NSString *announceDeleteStringValue = [self generateAnnounceDeleteStringValue:idArrayToDelete];
     if ([announceDeleteStringValue isEqualToString:@"[]"]) {
         return;

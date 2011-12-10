@@ -49,11 +49,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/RootViewController.m"
-         timestampString = "345102801.239904"
+         timestampString = "345202250.529792"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "-showInfo"
          landmarkType = "5">
       </FileBreakpoint>

@@ -24,12 +24,13 @@
 @class DisclosureDetailController;
 
 @interface DisclosureButtonController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, SVGeocoderDelegate, InfoSetDelegate,
+<UITableViewDelegate, UITableViewDataSource, InfoSetDelegate,
 CLLocationManagerDelegate, MKMapViewDelegate, UIActionSheetDelegate,
 MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     id <FlightAddDelegate> delegate;
 	NSMutableArray *list;
 	NSMutableArray *cityList;
+    NSMutableArray *airportShortList;
 	sqlite3	*database;
 	NSDictionary *flightInfo;
 	DisclosureDetailController *childController;
@@ -39,7 +40,7 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     
     //mapview
     IBOutlet MKMapView *mapView; 
-	NSMutableArray *cityLocationList;
+	NSMutableArray *airportLocationList;
     int m_currentSegmentIndex;
     
     //detail statebar
@@ -61,13 +62,14 @@ MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 @property(nonatomic, assign) id <FlightAddDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *cityList;
+@property (nonatomic, retain) NSMutableArray *airportShortList;
 @property (nonatomic, retain) NSDictionary *flightInfo;
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
 @property (nonatomic,retain) UITableView *tableView;
 
 //mapview
 @property(nonatomic, retain) IBOutlet MKMapView *mapView; 
-@property (nonatomic, retain) NSMutableArray *cityLocationList;
+@property (nonatomic, retain) NSMutableArray *airportLocationList;
 
 //detail statebar
 @property (nonatomic, retain) UILabel *stateLabelLeft;

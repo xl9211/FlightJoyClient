@@ -217,6 +217,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    //加载机场代码表进入数据字典
+    [self loadAirportDictionary];
+    
 	UIColor *backgroundColor = [UIColor colorWithRed:0 green:0.2f blue:0.55f alpha:1];
 	[self.navigationController.navigationBar setTintColor:backgroundColor];
 	[self.navigationController.toolbar setTintColor:backgroundColor]; 
@@ -1003,6 +1006,13 @@
 			NSMutableArray *takeoffArrivalAirportArray = [[NSMutableArray alloc] initWithObjects:
                                                           [flightInfo objectForKey:@"takeoff_airport"],
                                                           [flightInfo objectForKey:@"arrival_airport"], nil];
+
+            NSMutableArray *takeoffArrivalAirportShortArray = [[NSMutableArray alloc] initWithObjects:
+                                                               [self.dicAirportFullNameToShort objectForKey:
+                                                                [flightInfo objectForKey:@"takeoff_airport"] ],
+                                                               [self.dicAirportFullNameToShort objectForKey:
+                                                                [flightInfo objectForKey:@"arrival_airport"] ],
+                                                               nil];
 			
 			NSMutableArray *takeoffArrivalCityArray = [[NSMutableArray alloc] initWithObjects:
                                                        [flightInfo objectForKey:@"takeoff_city"],
@@ -1011,6 +1021,7 @@
             [[DisclosureButtonController alloc] initWithNibName:@"DisclosureButtonController" bundle:nil];
             
 			disclosureButtonController.list = takeoffArrivalAirportArray;
+            disclosureButtonController.airportShortList = takeoffArrivalAirportShortArray;
 			disclosureButtonController.cityList = takeoffArrivalCityArray;
             
 			disclosureButtonController.flightInfo = flightInfo;
