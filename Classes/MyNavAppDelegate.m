@@ -266,13 +266,14 @@
      */
     //NSString *urlString = [[[connection originalRequest] URL] description];
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
+	//NSError *error;
+	//Sbjson *json = [[SBJSON new] autorelease];
     
     if (connection ==  airportConnection) {
-        NSArray *airportInfos = [json objectWithString:responseString error:&error];
+        NSArray *airportInfos = [responseString JSONValue]; 
+        //NSArray *airportInfos = [json objectWithString:responseString error:&error];
         if (airportInfos == nil) {
-            DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+            //DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
         } else {		
             for (int i = 0; i < [airportInfos count]; i++) {
                 NSMutableDictionary *airportInfo = [airportInfos objectAtIndex:i];

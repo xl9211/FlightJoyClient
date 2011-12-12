@@ -8,7 +8,7 @@
 
 #import "ListViewController.h"
 #import "RootViewController.h"
-#import "JSON/JSON.h"
+#import "JSON.h"
 #import "QueryCustomCell.h"
 #define kQueryTableViewRowHeight 53;
 

@@ -107,13 +107,15 @@
 
 - (void)addOrUpdateTableWithServerResponse:(NSString *)responseString {
     [super addOrUpdateTableWithServerResponse:responseString];
-    NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
+    //NSError *error;
+	//SBJSON *json = [[SBJSON new] autorelease];
+	//NSArray *luckyNumbers = [json objectWithString:responseString error:&error];
+    NSArray *luckyNumbers = [responseString JSONValue]; 
+
 	//[responseString release];	
 	
 	if (luckyNumbers == nil) {
-		DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
+		//DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
 	} else {	
 		for (int i = 0; i < [luckyNumbers count]; i++) {
             NSString *recordId = [self.requestRecordIdArray objectAtIndex:i];

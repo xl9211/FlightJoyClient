@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 #import "MobClick.h"
-#import "JSON/JSON.h"
+#import "JSON.h"
 #import "VersionCheckUtil.h"
 #import "/usr/include/sqlite3.h"
 #define kFilename		@"flights.sqlite3"

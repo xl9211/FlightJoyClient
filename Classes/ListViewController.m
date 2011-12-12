@@ -11,7 +11,7 @@
 #import "MyNavAppDelegate.h"
 #import "DisclosureButtonController.h"
 #import "CustomCell.h"
-#import "JSON/JSON.h"
+#import "JSON.h"
 
 @implementation ListViewController
 @synthesize rowImage;
@@ -23,6 +23,7 @@
 @synthesize searchNavController;
 @synthesize deleteToolbarItems;
 @synthesize refreshToolbarItems;
+
 @synthesize updateProgressInd;
 @synthesize currentNextController;
 @synthesize statusLabelText;
@@ -1102,6 +1103,7 @@
 	
 	statusLabelText = [[NSString alloc]initWithFormat:@"已更新 %@",dateString];
 	[self refreshStatusLabelWithText:statusLabelText];
+
 	[now release];
 	[dateFormatter release];
 }

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSON/JSON.h"
+#import "JSON.h"
 #import "CLMAlertView.h"
 
 @interface VersionCheckUtil : NSObject <UIAlertViewDelegate> {

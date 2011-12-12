@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JSON/JSON.h"
+#import "JSON.h"
 #import "Airport.h"
 #import "RootViewController.h"
 #import "/usr/include/sqlite3.h"

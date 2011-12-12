@@ -49,13 +49,16 @@
      */
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
+	
+    //SBJSON *json = [[SBJSON new] autorelease];
     
     DLog(@"getVersionInfo...");
     NSString *currentVersionStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
     DLog(@"%@", currentVersionStr);
     
-    NSMutableDictionary *versionInfo = [json objectWithString:responseString error:&error];
+    //NSMutableDictionary *versionInfo = [json objectWithString:responseString error:&error];
+    NSMutableDictionary *versionInfo = [responseString JSONValue]; 
+
     NSString *serverVersionStr = [versionInfo objectForKey:@"version"];
     NSString *serverIpaStr = [versionInfo objectForKey:@"ipa"];
     self.serverIpaUrl = serverIpaStr;

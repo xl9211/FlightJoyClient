@@ -7,7 +7,8 @@
 //
 
 #import "ListViewController.h"
-#import "JSON/JSON.h"
+#import "JSON.h"
+#import "SBJSON.h"
 
 @interface RootViewController : ListViewController{
 	

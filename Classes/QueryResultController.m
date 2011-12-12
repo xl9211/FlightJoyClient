@@ -141,9 +141,11 @@
     [super addOrUpdateTableWithServerResponse:responseString];
     //NSMutableArray *array = [[NSMutableArray alloc] init];
     NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-	NSArray *flightInfos = [json objectWithString:responseString error:&error];
-    
+
+	//SBJSON *json = [[SBJSON new] autorelease];
+	//NSArray *flightInfos = [json objectWithString:responseString error:&error];
+    NSArray *flightInfos = [responseString JSONValue]; 
+
     //需要增加如下准点率数据
     //"on_time"、"half_hour_late" 、"one_hour_late"、"more_than_one_hour_late" 、"cancel"
 	

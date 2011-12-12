@@ -9,7 +9,7 @@
 #import "SearchConditionCompanyController.h"
 #import "RootViewController.h"
 #import "MyNavAppDelegate.h"
-#import "JSON/JSON.h"
+#import "JSON.h"
 
 @implementation SearchConditionCompanyController
 @synthesize tableView;
@@ -253,9 +253,10 @@
 	DLog(responseString);
 	
 	NSError *error;
-	SBJSON *json = [[SBJSON new] autorelease];
-    
-    NSArray *companyInfos = [json objectWithString:responseString error:&error];
+	//SBJSON *json = [[SBJSON new] autorelease];
+    NSArray *companyInfos = [responseString JSONValue]; 
+
+    //NSArray *companyInfos = [json objectWithString:responseString error:&error];
 	
 	if (companyInfos == nil) {
 		DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
