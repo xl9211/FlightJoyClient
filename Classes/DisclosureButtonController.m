@@ -109,7 +109,7 @@
 	// open a dialog with two custom buttons
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"将航班信息分享于"
                                                              delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"邮件", @"短信息", nil];
+                                                    otherButtonTitles:@"邮件", @"新浪微博", @"腾讯微博", nil];
 	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
 	//[actionSheet showInView:self.view]; // show from our table view (pops up in the middle of the table)
     [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
@@ -117,10 +117,41 @@
 }
 
 #pragma mark -
+#pragma mark - UMSNSDataSendDelegate method
+
+- (void)dataSendDidFinish:(UIViewController *)viewController andReturnStatus:(UMReturnStatusType)returnStatus andPlatformType:(UMShareToType)platfrom{
+    
+    if (platfrom == UMShareToTypeSina || platfrom == UMShareToTypeTenc)
+    {
+        [viewController dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (NSString *)invitationContent:(UMShareToType)platfrom {
+    
+    switch (platfrom) {
+        case UMShareToTypeRenr:
+            return @"人人，私信邀请！";
+            
+        case UMShareToTypeSina:
+            return @"新浪微博，私信邀请！";
+            
+        default:
+            return @"腾讯微博，私信邀请！";
+    }
+}
+
+#pragma mark -
 #pragma mark - UIActionSheetDelegate
 //1.发邮件
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:@"天空之城" forKey:@"songName"];
+    [dic setValue:@"北京" forKey:@"place"];
+    
+    NSString *imagePath = [[[NSBundle mainBundle] resourcePath] 
+                           stringByAppendingPathComponent:@"newIcon1.png"];
     switch (buttonIndex) {
         case 0:
             DLog(@"邮件");
@@ -128,21 +159,29 @@
             [self sendEMail];
             break;
         /*case 1:
-            DLog(@"微博");
-            //[self StartSinaPhotoWeibo];
-            break;
-        case 2:
-            DLog(@"人人");
-            break;*/
-        case 1:
             DLog(@"短信");
             [MobClick event:@"share_channel" label:@"短信"];
             [self sendSMS];
             break;
+         */
+        case 1:
+            DLog(@"新浪微博");
+            [UMSNSService setDataSendDelegate:self];            
+            [UMSNSService shareToSina:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic];
+            break;
+        case 2:
+            DLog(@"腾讯微博");
+            [UMSNSService setDataSendDelegate:self];
+            [UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic];
+            //[UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic andImgPath:imagePath];
+            break;
         default:
             break;
     }
+    [dic release];
+
 }
+
 
 //点击完send后  成功失败都弹框显示：
 - (void) alertWithTitle: (NSString *)_title_ msg: (NSString *)msg   

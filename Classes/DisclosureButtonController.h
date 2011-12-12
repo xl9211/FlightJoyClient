@@ -18,6 +18,7 @@
 #import <MessageUI/MessageUI.h>
 #import "PlaneAnnotation.h"
 #import "UIImage-Extensions.h"
+#import "UMSNSService.h"
 
 #define kFilename		@"flights.sqlite3"
 
