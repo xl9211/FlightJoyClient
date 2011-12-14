@@ -146,13 +146,7 @@
 //1.发邮件
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"天空之城" forKey:@"songName"];
-    [dic setValue:@"北京" forKey:@"place"];
-    
-    NSString *imagePath = [[[NSBundle mainBundle] resourcePath] 
-                           stringByAppendingPathComponent:@"newIcon1.png"];
-    switch (buttonIndex) {
+     switch (buttonIndex) {
         case 0:
             DLog(@"邮件");
             [MobClick event:@"share_channel" label:@"邮件"];
@@ -167,19 +161,16 @@
         case 1:
             DLog(@"新浪微博");
             [UMSNSService setDataSendDelegate:self];            
-            [UMSNSService shareToSina:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic];
+            [UMSNSService shareToSina:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription]];
             break;
         case 2:
             DLog(@"腾讯微博");
             [UMSNSService setDataSendDelegate:self];
-            [UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic];
-            //[UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andShareMap:dic andImgPath:imagePath];
+            [UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription]];
             break;
         default:
             break;
     }
-    [dic release];
-
 }
 
 
@@ -215,6 +206,60 @@
         [self launchMailAppOnDevice];  
     }      
 }  
+-(NSString *)composeVividDescription {
+    NSString *emailBody = @"我"; 
+    NSString *scheduleTakeoffDate = [flightInfo objectForKey:@"schedule_takeoff_date"];
+    
+    NSDate *now = [[NSDate alloc] init];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yy-M-d"];
+	NSString* dateString = [dateFormatter stringFromDate:now];
+    if ([dateString isEqualToString:scheduleTakeoffDate]) {
+        scheduleTakeoffDate = @"今儿";
+    }
+    emailBody = [emailBody stringByAppendingString:scheduleTakeoffDate];
+    NSString *flightState = [flightInfo objectForKey:@"flight_state"];
+    if ([flightState isEqualToString:@"计划航班"]) {
+        emailBody = [emailBody stringByAppendingFormat:@"的航班%@还没起飞呢！",
+                     [flightInfo objectForKey:@"flight_no"]];
+    } else {
+        emailBody = [emailBody stringByAppendingFormat:@"的航班%@%@啦！",
+                     [flightInfo objectForKey:@"flight_no"],
+                     flightState];
+    }
+    
+    NSString *actualOrEstimateTakeoffTxt = [[NSString alloc]initWithString:@""];
+    NSString *actualTakeoffTime = [flightInfo objectForKey:@"actual_takeoff_time"];
+    NSString *estimateTakeoffTime = [flightInfo objectForKey:@"estimate_takeoff_time"];
+    if (![actualTakeoffTime isEqualToString:@"--:--"]) {
+        actualOrEstimateTakeoffTxt = [actualOrEstimateTakeoffTxt stringByAppendingFormat:@"，不过是%@飞的",actualTakeoffTime];
+    } else if (![estimateTakeoffTime isEqualToString:@"--:--"]) {
+        actualOrEstimateTakeoffTxt = [actualOrEstimateTakeoffTxt stringByAppendingFormat:@"，不过估计%@起飞",estimateTakeoffTime];
+    }
+    
+    NSString *actualOrEstimateArrivalTxt = [[NSString alloc]initWithString:@""];
+    NSString *actualArrivalTime = [flightInfo objectForKey:@"actual_arrival_time"];
+    NSString *estimateArrivalTime = [flightInfo objectForKey:@"estimate_arrival_time"];
+    if (![actualArrivalTime isEqualToString:@"--:--"]) {
+        actualOrEstimateArrivalTxt = [actualOrEstimateArrivalTxt stringByAppendingFormat:@"，实际上%@",
+                                      [flightInfo objectForKey:@"arrival_delay_advance_time_in_minu"]];
+    } else if (![estimateArrivalTime isEqualToString:@"--:--"]) {
+        actualOrEstimateArrivalTxt = [actualOrEstimateArrivalTxt stringByAppendingFormat:@"，估计要%@",
+                                      [flightInfo objectForKey:@"arrival_delay_advance_time_in_minu"]];
+    }
+    
+    emailBody = [emailBody stringByAppendingFormat:@"飞机计划%@从%@起飞%@；原定%@到%@%@。",
+                 [flightInfo objectForKey:@"schedule_takeoff_time"],
+                 [flightInfo objectForKey:@"takeoff_city"],
+                 actualOrEstimateTakeoffTxt,
+                 [flightInfo objectForKey:@"schedule_arrival_time"],
+                 [flightInfo objectForKey:@"arrival_city"],
+                 actualOrEstimateArrivalTxt
+                 ];
+    
+    emailBody = [emailBody stringByAppendingString:@"航班的实时状态和延误情况都能在这儿提前查到耶！来自@飞趣"];
+    return emailBody;
+}
 //可以发送邮件的话  
 -(void)displayComposerSheet   
 {  

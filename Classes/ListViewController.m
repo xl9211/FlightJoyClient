@@ -419,6 +419,7 @@
 	
 	//1. calculate takeoffDelayAdvanceTime
 	NSString *takeoffDelayAdvanceTime = [[NSString alloc] initWithString:@""];
+
 	if (![actualTakeoffTime isEqualToString:@"--:--"]) {
 		//DLog(@"状态：已经起飞");
 		[flightInfo setObject:actualTakeoffTime forKey:@"display_takeoff_time"];
@@ -459,6 +460,8 @@
 	
 	//2. calculate arrivalDelayAdvanceTime
 	NSString *arrivalDelayAdvanceTime = [[NSString alloc] initWithString:@""];
+	NSString *arrivalDelayAdvanceTimeInMinu = [[NSString alloc] initWithString:@""];
+
 	if (![actualArrivalTime isEqualToString:@"--:--"]) {
 		//DLog(@"状态：已经起飞");
 		[flightInfo setObject:actualArrivalTime forKey:@"display_arrival_time"];
@@ -471,8 +474,10 @@
 		int a = ([actualArrivalD timeIntervalSince1970]*1 - [scheduleArrivalD timeIntervalSince1970]*1)/60;
 		if (a > 0) {
 			arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingFormat:@"延误%d分",a];
+            arrivalDelayAdvanceTimeInMinu = [NSString stringWithFormat:@"延误%d分",a];
 		} else {
 			arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingFormat:@"提前%d分",-a];
+            arrivalDelayAdvanceTimeInMinu = [NSString stringWithFormat:@"提前%d分",-a];
 		}
 	} else {
 		//DLog(@"状态：计划航班");
@@ -488,8 +493,10 @@
 			int a = ([estimateArrivalD timeIntervalSince1970]*1 - [scheduleArrivalD timeIntervalSince1970]*1)/60;
 			if (a > 0) {
 				arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingFormat:@"延误%d分",a];
+                arrivalDelayAdvanceTimeInMinu = [NSString stringWithFormat:@"延误%d分",a];
 			} else {
 				arrivalDelayAdvanceTime = [arrivalDelayAdvanceTime stringByAppendingFormat:@"提前%d分",-a];
+                arrivalDelayAdvanceTimeInMinu = [NSString stringWithFormat:@"提前%d分",-a];
 			}
 		} else {
 			[flightInfo setObject:scheduleArrivalTime forKey:@"display_arrival_time"];
@@ -519,6 +526,8 @@
 	
 	[flightInfo setObject:takeoffDelayAdvanceTime forKey:@"takeoff_delay_advance_time"];
 	[flightInfo setObject:arrivalDelayAdvanceTime forKey:@"arrival_delay_advance_time"];
+    [flightInfo setObject:arrivalDelayAdvanceTimeInMinu forKey:@"arrival_delay_advance_time_in_minu"];
+
 	[flightInfo setObject:scheduleTakeoffDate forKey:@"schedule_takeoff_date_standard"];
 	[flightInfo setObject:[self getShortDateStringFromStandard:scheduleTakeoffDate] 
 				   forKey:@"schedule_takeoff_date"];//需要从“标准格式”转换为“短格式”

@@ -135,8 +135,8 @@
         return;  
     } 
     
-    //[MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
-    [MobClick setCrashReportEnabled:NO];
+    [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
+    //[MobClick setCrashReportEnabled:NO];
     
     [MobClick setDelegate:self reportPolicy:REALTIME];
     
