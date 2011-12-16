@@ -235,8 +235,6 @@
 	[self.tableView setSeparatorColor:[UIColor clearColor]];
     
     [self createFlightTable];
-	[self loadFlightInfoFromTable];
-    [self selfRefreshAction];
     /*5分钟执行1次主动刷新*/
     timer = [NSTimer scheduledTimerWithTimeInterval: 5*60
                                              target: self
@@ -244,7 +242,15 @@
                                            userInfo: nil
                                             repeats: YES];
     
+    
     [super viewDidLoad];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[self loadFlightInfoFromTable];
+    [self selfRefreshAction];
+    [super viewDidAppear:animated];
 }
 
 

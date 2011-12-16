@@ -19,7 +19,8 @@
 @interface MyNavAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate, UIAlertViewDelegate> {
     UIWindow *window;
 	UINavigationController *navController;
-	Reachability  *hostReach;
+    Reachability *internetReachable;
+	Reachability *hostReachable;
     NSString *deviceToken;
     NSMutableData *responseData;
     sqlite3	*database;
@@ -28,16 +29,20 @@
     NSURLConnection *airportConnection;
     
     VersionCheckUtil *versionCheck;
+    BOOL internetActive;
+    BOOL hostActive;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) NSString *deviceToken;
 @property (nonatomic, retain) NSString *serverIpaUrl;
+@property (nonatomic) BOOL internetActive;
+@property (nonatomic) BOOL hostActive;
 
 + (MyNavAppDelegate *)sharedAppDelegate;
 - (BOOL)isServerReachable;
 - (NSString *)getDeviceToken;
-
+- (void) checkNetworkStatus:(NSNotification *)notice;
 @end
 

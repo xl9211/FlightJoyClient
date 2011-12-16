@@ -14,6 +14,8 @@
 @synthesize navController;
 @synthesize deviceToken;
 @synthesize serverIpaUrl;
+@synthesize hostActive;
+@synthesize internetActive;
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken { 
     
@@ -121,9 +123,62 @@
     return YES;  
 } 
 
+- (void) checkNetworkStatus:(NSNotification *)notice
+{
+    // called after network status changes
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    switch (internetStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            self.internetActive = NO;
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            self.internetActive = YES;
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            self.internetActive = YES;
+            break;
+        }
+    }
+    
+    NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    switch (hostStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"A gateway to the host server is down.");
+            self.hostActive = NO;
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"A gateway to the host server is working via WIFI.");
+            self.hostActive = YES;
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"A gateway to the host server is working via WWAN.");
+            self.hostActive = YES;
+            break;
+        }
+    }
+    
+    [self updateInterfaceWithReachability];
+
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
     DLog(@"didFinishLaunchingWithOptions...");
+    internetActive = YES;
     versionCheck = [[VersionCheckUtil alloc] init];
     [versionCheck setNeedLatestAlert:NO];
     [versionCheck checkVersion];
@@ -135,16 +190,20 @@
         return;  
     } 
     
-    [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
+    //[MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行
     //[MobClick setCrashReportEnabled:NO];
     
     [MobClick setDelegate:self reportPolicy:REALTIME];
     
     //Change the host name here to change the server your monitoring
-	//hostReach = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];
-    hostReach = [[Reachability reachabilityWithHostName: @"specialbrian.gicp.net"] retain];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+    [internetReachable startNotifier];
+    
+    // check if a pathway to a random host exists
+	hostReachable = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];    
+    [hostReachable startNotifier];
 
-	[self updateInterfaceWithReachability];
     
     application.applicationSupportsShakeToEdit = YES;
 	
@@ -266,12 +325,9 @@
      */
     //NSString *urlString = [[[connection originalRequest] URL] description];
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	//NSError *error;
-	//Sbjson *json = [[SBJSON new] autorelease];
     
     if (connection ==  airportConnection) {
         NSArray *airportInfos = [responseString JSONValue]; 
-        //NSArray *airportInfos = [json objectWithString:responseString error:&error];
         if (airportInfos == nil) {
             //DLog([NSString stringWithFormat:@"JSON parsing failed: %@", [error localizedDescription]]);
         } else {		
@@ -314,24 +370,28 @@
 
 -(BOOL) isServerReachable 
 {
-	if (hostReach == nil) {
-		DLog(@"%@",@"isServerReachable--hostReach == nil");
+	/*if (hostReachable == nil) {
+		DLog(@"%@",@"isServerReachable--hostReachable == nil");
 		return NO;
 	}
 	
-	NetworkStatus netStatus = [hostReach currentReachabilityStatus];
+	NetworkStatus netStatus = [hostReachable currentReachabilityStatus];
     if (netStatus == NotReachable) {
 		DLog(@"%@",@"isServerReachable--netStatus == NotReachable");
 		
 		return NO;
 	}  
 	return YES;
+     */
+    //0 - NO, 1 - YES
+    NSLog(@"isServerReachable: %i",internetActive);
+    return internetActive;
 }
 
 - (void) updateInterfaceWithReachability
 {
-	NetworkStatus netStatus = [hostReach currentReachabilityStatus];
-    if (netStatus == NotReachable) {
+    NSLog(@"updateInterfaceWithReachability...");
+    if (![self isServerReachable]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"离线"
 														message:@"更新航班时出错，\n请检查您的网络连接"
 													   delegate:nil
