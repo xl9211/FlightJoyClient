@@ -66,15 +66,14 @@
     //webView.delegate =self;
     webView.scalesPageToFit = NO;
     activityIndicatorView = [[UIActivityIndicatorView alloc] 
-                             initWithFrame : CGRectMake(0.0f, 0.0f, 64.0f, 64.0f)] ;
+                             initWithFrame : CGRectMake(0.0f, 0.0f, 28.0f, 28.0f)] ;
     [activityIndicatorView setCenter: self.view.center];
     [activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleGray]; 
     [self.view addSubview : activityIndicatorView] ;
 
     //[self loadWebPageWithString:@"http://fq.tourbox.me/?page_id=8#content"];
-    //[self loadWebPageWithString:@"http://www.baidu.com/"];
     
-    [self loadWebPageWithString:@"http://brianwordpress.sinaapp.com/?page_id=2#content"];
+    [self loadWebPageWithString:@"http://vm-192-168-10-106.shengyun.grandcloud.cn/?page_id=2"];
 }
 - (void)dealloc
 {

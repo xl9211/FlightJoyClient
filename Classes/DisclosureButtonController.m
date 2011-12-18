@@ -161,12 +161,12 @@
         case 1:
             DLog(@"新浪微博");
             [UMSNSService setDataSendDelegate:self];            
-            [UMSNSService shareToSina:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription]];
+             [UMSNSService shareToSina:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription:0]];
             break;
         case 2:
             DLog(@"腾讯微博");
             [UMSNSService setDataSendDelegate:self];
-            [UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription]];
+             [UMSNSService shareToTenc:self andAppkey:@"4ebf9547527015401e00006f" andStatus:[self composeVividDescription:1]];
             break;
         default:
             break;
@@ -206,7 +206,7 @@
         [self launchMailAppOnDevice];  
     }      
 }  
--(NSString *)composeVividDescription {
+-(NSString *)composeVividDescription:(int)channelId {
     NSString *emailBody = @"我"; 
     NSString *scheduleTakeoffDate = [flightInfo objectForKey:@"schedule_takeoff_date"];
     
@@ -256,8 +256,11 @@
                  [flightInfo objectForKey:@"arrival_city"],
                  actualOrEstimateArrivalTxt
                  ];
-    
-    emailBody = [emailBody stringByAppendingString:@"航班的实时状态和延误情况都能在这儿提前查到耶！来自@飞趣"];
+    if (channelId == 0) {
+        emailBody = [emailBody stringByAppendingString:@"航班的实时状态和延误情况都能在这儿提前查到耶！来自@飞趣"];
+    } else if(channelId == 1) {
+        emailBody = [emailBody stringByAppendingString:@"航班的实时状态和延误情况都能在这儿提前查到耶！来自@flightfun"];
+    }
     return emailBody;
 }
 //可以发送邮件的话  
