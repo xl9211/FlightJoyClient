@@ -75,13 +75,14 @@
 {
     return (MyNavAppDelegate *) [UIApplication sharedApplication].delegate;
 }
-
+/*
 - (NSString *)channelId{
     //return @"other";
     //return @"macidea";
-    return @"weiphone";
+    //return @"weiphone";
     //App Store 的版本没有channelId方法，切代表的时cocoachina
-}
+}*/
+
 - (NSString *)appKey {
     return @"4ebf9547527015401e00006f";
 }
@@ -179,9 +180,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
     DLog(@"didFinishLaunchingWithOptions...");
     internetActive = YES;
+    /* 
+     已改用友盟统计中的自动更新[MobClick checkUpdate];
     versionCheck = [[VersionCheckUtil alloc] init];
     [versionCheck setNeedLatestAlert:NO];
     [versionCheck checkVersion];
+    */
     
     // copy the database from the bundle if necessary  
     if (! [self initializeDb]) {  
@@ -194,6 +198,9 @@
     //[MobClick setCrashReportEnabled:NO];
     
     [MobClick setDelegate:self reportPolicy:REALTIME];
+    [MobClick checkUpdate];
+    //自定义标题和按钮文字
+    //[MobClick checkUpdate:@"New version" cancelButtonTitle:@"Skip" otherButtonTitles:@"Goto Store"];
     
     //Change the host name here to change the server your monitoring
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];

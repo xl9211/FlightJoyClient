@@ -27,7 +27,6 @@
 		3E8BD7B41474E40E00444D18 /* PlaneAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B31474E40E00444D18 /* PlaneAnnotation.m */; };
 		3E8BD7B71474F7B700444D18 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */; };
 		3E8BD7BF1475207600444D18 /* mapplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BD7BE1475207600444D18 /* mapplane.png */; };
-		3E8C10EF1483347000FEA9DC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C10ED1483347000FEA9DC /* libMobClickLibrary.a */; };
 		3E8C10F1148334C600FEA9DC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C10F0148334C600FEA9DC /* libz.1.dylib */; };
 		3E8C3D5D140C5CB000B17765 /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */; };
 		3E8C8F7E141CFAFF002246C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C8F7D141CFAFF002246C0 /* libsqlite3.dylib */; };
@@ -44,6 +43,7 @@
 		3E8E90E91472936000B36223 /* planetab.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90E81472936000B36223 /* planetab.png */; };
 		3E8E90EB1472A53500B36223 /* DisclosureButtonTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E90EA1472A53400B36223 /* DisclosureButtonTitleView.xib */; };
 		3E8E90EE1472A76200B36223 /* DisclosureButtonTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E90ED1472A76100B36223 /* DisclosureButtonTitleView.m */; };
+		3E8E96B5149EDBFD00340D5F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8E96B3149EDBFD00340D5F /* libMobClickLibrary.a */; };
 		3E900F32145D897200710661 /* SearchConditionAirportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E900F31145D897200710661 /* SearchConditionAirportController.xib */; };
 		3E900F3A145DAA3100710661 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F39145DAA3100710661 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E900F3C145DAA4000710661 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E900F3B145DAA4000710661 /* QuartzCore.framework */; };
@@ -271,8 +271,6 @@
 		3E8BD7B51474F7B700444D18 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		3E8BD7B61474F7B700444D18 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		3E8BD7BE1475207600444D18 /* mapplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapplane.png; sourceTree = "<group>"; };
-		3E8C10ED1483347000FEA9DC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		3E8C10EE1483347000FEA9DC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		3E8C10F0148334C600FEA9DC /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		3E8C3D5B140C5CB000B17765 /* SearchConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionController.h; sourceTree = "<group>"; };
 		3E8C3D5C140C5CB000B17765 /* SearchConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionController.m; sourceTree = "<group>"; };
@@ -293,6 +291,8 @@
 		3E8E90EA1472A53400B36223 /* DisclosureButtonTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureButtonTitleView.xib; sourceTree = "<group>"; };
 		3E8E90EC1472A76100B36223 /* DisclosureButtonTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclosureButtonTitleView.h; sourceTree = "<group>"; };
 		3E8E90ED1472A76100B36223 /* DisclosureButtonTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclosureButtonTitleView.m; sourceTree = "<group>"; };
+		3E8E96B3149EDBFD00340D5F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		3E8E96B4149EDBFD00340D5F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		3E900F31145D897200710661 /* SearchConditionAirportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchConditionAirportController.xib; sourceTree = "<group>"; };
 		3E900F39145DAA3100710661 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E900F3B145DAA4000710661 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -536,8 +536,8 @@
 				3E5FB5EA144AA64100A1AD06 /* MapKit.framework in Frameworks */,
 				3E5FB641144AAC3100A1AD06 /* CoreLocation.framework in Frameworks */,
 				3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */,
-				3E8C10EF1483347000FEA9DC /* libMobClickLibrary.a in Frameworks */,
 				3E982848149645E300B84DDF /* libUMSNSLibrary.a in Frameworks */,
+				3E8E96B5149EDBFD00340D5F /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,8 +672,8 @@
 				3E982849149646EB00B84DDF /* image */,
 				3E982846149645E300B84DDF /* libUMSNSLibrary.a */,
 				3E982847149645E300B84DDF /* UMSNSService.h */,
-				3E8C10ED1483347000FEA9DC /* libMobClickLibrary.a */,
-				3E8C10EE1483347000FEA9DC /* MobClick.h */,
+				3E8E96B3149EDBFD00340D5F /* libMobClickLibrary.a */,
+				3E8E96B4149EDBFD00340D5F /* MobClick.h */,
 			);
 			name = umeng;
 			sourceTree = "<group>";

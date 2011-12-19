@@ -3,15 +3,17 @@
 //  MobClick
 //
 //  Created by Aladdin on 3/25/10.
-//  Copyright 2010-2011 Umeng.com . All rights reserved.
-//  Version 1.6.7.1 , updated_at 2011-11-23.
+//  Copyright 2010 Umeng.com . All rights reserved.
+//  Version 1.6.7 , updated_at 2011-11-10.
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    BATCH = 0,
-    REALTIME
+    REALTIME = 0,       //实时发送
+    BATCH = 1,          //启动发送
+    SENDDAILY = 4,      //每日发送
+    SENDWIFIONLY = 5    //仅在WIFI下启动时发送
 } ReportPolicy;
 
 @protocol MobClickDelegate;
@@ -55,9 +57,7 @@ typedef enum {
  *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
  */
 + (void)setDelegate:(id <MobClickDelegate>)delegate;
-
 + (void)setDelegate:(id <MobClickDelegate>)delegate reportPolicy:(ReportPolicy)rp;
-
 
 #pragma mark event logs
 /*方法名:
@@ -76,11 +76,8 @@ typedef enum {
  *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
  */
 + (void)event:(NSString *)eventId;
-
 + (void)event:(NSString *)eventId label:(NSString *)label;
-
 + (void)event:(NSString *)eventId acc:(NSInteger)accumulation;
-
 + (void)event:(NSString *)eventId label:(NSString *)label acc:(NSInteger)accumulation;
 
 
@@ -121,6 +118,78 @@ typedef enum {
  *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
  */
 + (void)feedbackWithDictionary:(NSDictionary *)feedbackDict;
+
+
+#pragma mark check app update
+/*方法名:
+ *		checkUpdate
+ *	    checkUpdateWithTitle:CancelButtonTitle:OtherButtonTitle:
+ *介绍:
+ *		类方法，检查当前app是否有更新，有更新弹出UIAlertView提示用户,当用户点击升级按钮时app会跳转到您预先设置的网址。
+ *		无更新不做任何操作。
+ *	    您需要先在服务器端设置app版本信息，默认渠道是App Store.
+ *	    checkUpdate 会发送和渠道相关的更新请求.
+ *
+ *参数说明:
+ *      checkUpdate 无参数。
+ *		checkUpdate:cancelButtonTitle:otherButtonTitles: 有三个参数:
+ *	    title 对应UIAlertView的title
+ *	    cancelTitle 对应UIAlertView的cancelTitle
+ *	    otherTitle 对应UIAlertView的otherTitle
+ *	    
+ *      请在[MobClick setDelegate:reportPolicy:]方法之后调用;
+ *      如果您想自己控制自动更新操作流程，请实现MobClickDelegate的appUpdate方法。
+ *
+ *返回值:
+ *      无
+ *
+ *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
+ */
++ (void)checkUpdate;
++ (void)checkUpdate:(NSString *)title cancelButtonTitle:(NSString *)cancelTitle otherButtonTitles:(NSString *)otherTitle;
+
+#pragma mark online config params
+/*方法名:
+ *		updateOnlineConfig
+ *介绍:
+ *		类方法，检查并更新服务器端配置的在线参数,缓存在[NSUserDefaults standardUserDefaults]里.
+ *	    调用此方法您将自动拥有在线更改SDK端发送策略的功能。
+ *	    您需要先在服务器端设置好在线参数.
+ *
+ *参数说明:
+ *      无参数。
+ *
+ *      请在[MobClick setDelegate:reportPolicy:]方法之后调用;
+ *      如果您要使用友盟的在线参数，此方法必不可少。
+ *
+ *返回值:
+ *      无
+ *
+ *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
+ */
++ (void)updateOnlineConfig;
+
+/*方法名:
+ *		getConfigParams
+ *		getConfigParams:
+ *介绍:
+ *		类方法，从[NSUserDefaults standardUserDefaults]获取缓存的在线参数的数值.
+ *	    带参数的方法获取某个key的值，不带参数的获取所有的在线参数.
+ *
+ *参数说明:
+ *      NSString * 类型或无参数
+ *
+ *      这两个方法都是从[NSUserDefaults standardUserDefaults]获取缓存的值,
+ *      所以上面的updateOnlineConfig方法要先在app启动时被调用。
+ *
+ *返回值:
+ *      (NSString *) 或 (NSDictionary *)
+ *
+ *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
+ */
++ (NSString *)getConfigParams:(NSString *)key;
++ (NSDictionary *)getConfigParams;
+
 #pragma mark helper
 /*方法名:
  *		isJailbroken
@@ -189,5 +258,18 @@ typedef enum {
  *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
  */
 - (NSString *)channelId;
+/*方法名:
+ *		- (void)appUpdate:(NSMutableDictionary *)updateInfo;
+ *介绍:
+ *
+ *参数说明:
+ *		 当您调用[MobClick checkUpdate]方法后，系统会自动调用此方法appUpdate，
+ *		 updateInfo是与此app版本信息相关的参数。
+ *		 
+ *
+ *
+ *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
+ */
+- (void)appUpdate:(NSDictionary *)appUpdateInfo;
 
 @end

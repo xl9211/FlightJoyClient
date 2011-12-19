@@ -67,11 +67,7 @@
 	} else if(row == 1) {
         AboutViewController *aboutViewController = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
         [self.navigationController pushViewController:aboutViewController animated:YES];
-    }else if (row == 2) {
-        versionCheck = [[VersionCheckUtil alloc] init];
-        [versionCheck setNeedLatestAlert:YES];
-        [versionCheck checkVersion];
-	}
+    }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	DLog(@"...didSelectRowAtIndexPath");
     
@@ -113,7 +109,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 3;
+    return 2;
     //return [self.companyListData count];
 }
 
@@ -137,9 +133,6 @@
             break;
         case 1:
             cell.text = @"关于飞趣";
-            break;
-        case 2:
-            cell.text = @"检查更新";
             break;
         default:
             break;
