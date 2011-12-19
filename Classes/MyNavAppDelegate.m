@@ -208,7 +208,7 @@
     [internetReachable startNotifier];
     
     // check if a pathway to a random host exists
-	hostReachable = [[Reachability reachabilityWithHostName: @"fq.tourbox.me"] retain];    
+	hostReachable = [[Reachability reachabilityWithHostName: @"fd.tourbox.me"] retain];    
     [hostReachable startNotifier];
 
     
