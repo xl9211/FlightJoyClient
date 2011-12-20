@@ -179,6 +179,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
     DLog(@"didFinishLaunchingWithOptions...");
+    [FlurryAnalytics startSession:@"Q8ACZZUNQ88M1QISD2IM"];
     internetActive = YES;
     /* 
      已改用友盟统计中的自动更新[MobClick checkUpdate];

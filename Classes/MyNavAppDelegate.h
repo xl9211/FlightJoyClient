@@ -12,6 +12,7 @@
 #import "JSON.h"
 #import "VersionCheckUtil.h"
 #import "/usr/include/sqlite3.h"
+#import "FlurryAnalytics.h"
 #define kFilename		@"flights.sqlite3"
 
 @class Reachability;

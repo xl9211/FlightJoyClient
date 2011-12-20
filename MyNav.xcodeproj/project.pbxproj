@@ -56,6 +56,7 @@
 		3E92DF9114088ACC0094CFAA /* FlightDetailCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */; };
 		3E92E0441408D1500094CFAA /* xiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E92E0421408D1500094CFAA /* xiangqing.png */; };
 		3E92E04C1408D2100094CFAA /* duigou.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E92E04B1408D2100094CFAA /* duigou.png */; };
+		3E947D1014A0C9E200A1AB1B /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E947D0F14A0C9E200A1AB1B /* libFlurryAnalytics.a */; };
 		3E95E2A114068E16004E250B /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E2A014068E16004E250B /* CustomCell.m */; };
 		3E95E2A314068F1E004E250B /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E2A214068F1E004E250B /* CustomCell.xib */; };
 		3E96B86514173D23000B2E96 /* TdCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96B86314173D23000B2E96 /* TdCalendarView.m */; };
@@ -308,6 +309,8 @@
 		3E92DF9014088ACC0094CFAA /* FlightDetailCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightDetailCustomCell.xib; sourceTree = "<group>"; };
 		3E92E0421408D1500094CFAA /* xiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangqing.png; sourceTree = "<group>"; };
 		3E92E04B1408D2100094CFAA /* duigou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duigou.png; sourceTree = "<group>"; };
+		3E947D0E14A0C9E200A1AB1B /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		3E947D0F14A0C9E200A1AB1B /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		3E95E29F14068E16004E250B /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		3E95E2A014068E16004E250B /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		3E95E2A214068F1E004E250B /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 				3EA84FCB144C69C300985145 /* AddressBook.framework in Frameworks */,
 				3E982848149645E300B84DDF /* libUMSNSLibrary.a in Frameworks */,
 				3E8E96B5149EDBFD00340D5F /* libMobClickLibrary.a in Frameworks */,
+				3E947D1014A0C9E200A1AB1B /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +551,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E947D0D14A0C9E200A1AB1B /* FlurryAnalytics */,
 				3E900F35145DA94A00710661 /* umeng */,
 				3EA84F98144C698800985145 /* SVGeocoder */,
 				3E9CBE411418359900B21EBC /* model */,
@@ -698,6 +703,15 @@
 				3E92E0421408D1500094CFAA /* xiangqing.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		3E947D0D14A0C9E200A1AB1B /* FlurryAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				3E947D0E14A0C9E200A1AB1B /* FlurryAnalytics.h */,
+				3E947D0F14A0C9E200A1AB1B /* libFlurryAnalytics.a */,
+			);
+			path = FlurryAnalytics;
 			sourceTree = "<group>";
 		};
 		3E96B86214173D0C000B2E96 /* component */ = {
@@ -1237,6 +1251,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = MyNav;
@@ -1257,6 +1272,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = MyNav;
@@ -1295,6 +1311,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = MyNav;
