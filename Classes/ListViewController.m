@@ -22,7 +22,8 @@
 @synthesize searchConditionController;
 @synthesize searchNavController;
 @synthesize deleteToolbarItems;
-@synthesize refreshToolbarItems;
+@synthesize refreshingToolbarItems;
+@synthesize refreshedToolbarItems;
 
 @synthesize updateProgressInd;
 @synthesize currentNextController;
@@ -73,7 +74,7 @@
 	} else {
         [MobClick event:@"done_edit_click"];
         self.navigationItem.leftBarButtonItem = enterEditItem;
-        [self setToolbarItems: self.refreshToolbarItems animated:YES]; 
+        [self setToolbarItems: self.refreshedToolbarItems animated:YES]; 
 	}
 	
 	[self.tableView setEditing:!self.tableView.editing animated:YES];	
@@ -227,7 +228,7 @@
     
     [self loadNavigationItems];
 	[self loadToolbarItems];
-	[self setToolbarItems: self.refreshToolbarItems animated:YES]; 
+	[self setToolbarItems: self.refreshingToolbarItems animated:YES]; 
 
 	self.title = @"航班列表";
     
@@ -1086,6 +1087,8 @@
  */
 - (void) startUpdateProcess {
     DLog(@"startUpdateProcess...");
+    [self setToolbarItems: self.refreshingToolbarItems animated:YES]; 
+
 	DisclosureButtonController *controller = (DisclosureButtonController *)currentNextController;
 	[controller startUpdateProcess];
 	
@@ -1099,6 +1102,7 @@
     [updateProgressInd startAnimating];
 	statusLabelText = [[NSString alloc]initWithString:@"更新中..."];
 	[self refreshStatusLabelWithText:statusLabelText];
+    
 }
 /*
  * 停止更新航班信息的过程
@@ -1118,7 +1122,7 @@
 	
 	statusLabelText = [[NSString alloc]initWithFormat:@"已更新 %@",dateString];
 	[self refreshStatusLabelWithText:statusLabelText];
-
+    
 	[now release];
 	[dateFormatter release];
 }
@@ -1300,8 +1304,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 										target:self 
 										action:@selector(deleteAllFlights)];
 	self.deleteToolbarItems = [[NSArray alloc] initWithObjects: deleteLandedButton, flexibleSpace, deleteAllButton, nil]; 
-	//2.normal mode toolbar items
 	
+    //2.normal mode toolbar items
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                       target:self action:@selector(refreshAction)];
@@ -1313,9 +1317,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UIBarButtonItem *updateStatusLabelButton = [[UIBarButtonItem alloc] initWithCustomView:
 												[self getStatusLabel:@""]];
 	
-	self.refreshToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
+    UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
+    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
+    
+    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
+									  initWithCustomView:infoButton];
+    
+	self.refreshingToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
 								flexibleSpace, updateProgressIndicatorButton, updateStatusLabelButton,
-								flexibleSpace, nil]; 
+								flexibleSpace, infoBarButton, nil]; 
+    self.refreshedToolbarItems = [[NSMutableArray alloc] initWithObjects: refreshButton, 
+                                  flexibleSpace, updateStatusLabelButton,
+                                  flexibleSpace, infoBarButton, nil]; 
 }
 
 - (IBAction)switchToSearchCondition:(id)sender

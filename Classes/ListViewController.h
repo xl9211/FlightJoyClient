@@ -28,8 +28,9 @@
 	UINavigationController *searchNavController; //test
 	sqlite3	*database;
 	NSArray *deleteToolbarItems;
-	NSMutableArray *refreshToolbarItems;
-	
+	NSMutableArray *refreshingToolbarItems;
+    NSMutableArray *refreshedToolbarItems;
+
 	UIActivityIndicatorView *updateProgressInd;
 	UITableViewController *currentNextController;
 	NSString *statusLabelText;
@@ -53,7 +54,8 @@
 @property (nonatomic, retain) SearchConditionController *searchConditionController;
 @property (nonatomic, retain) UINavigationController *searchNavController;
 @property (nonatomic,retain) NSArray *deleteToolbarItems;
-@property (nonatomic,retain) NSMutableArray *refreshToolbarItems;
+@property (nonatomic,retain) NSMutableArray *refreshingToolbarItems;
+@property (nonatomic,retain) NSMutableArray *refreshedToolbarItems;
 
 @property (nonatomic,retain) UIActivityIndicatorView *updateProgressInd;
 @property (nonatomic,retain) UITableViewController *currentNextController;

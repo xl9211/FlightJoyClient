@@ -57,7 +57,8 @@
     [super requestFlightInfoFromServer];
 }
 - (void) stopUpdateProcess {
-    [super stopUpdateProcessDisplay];     
+    [super stopUpdateProcessDisplay];    
+    [self setToolbarItems: self.refreshedToolbarItems animated:YES]; 
 }
 
 - (void)loadFlightInfoFromTable{
@@ -92,17 +93,6 @@
     
     [navigationController release];
 	[infoViewController release];
-}
-
-- (void)loadToolbarItems {
-    [super loadToolbarItems];
-    
-    UIButton* infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchDown];
-    
-    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] 
-									  initWithCustomView:infoButton];
-    [self.refreshToolbarItems addObject:infoBarButton];
 }
 
 - (void)addOrUpdateTableWithServerResponse:(NSString *)responseString {

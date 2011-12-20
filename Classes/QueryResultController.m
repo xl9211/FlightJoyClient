@@ -101,6 +101,7 @@
 	}
     
 	[self refreshStatusLabelWithText:statusLabelText];
+    [self setToolbarItems: self.refreshedToolbarItems animated:YES]; 
 }
 
 #pragma mark -
