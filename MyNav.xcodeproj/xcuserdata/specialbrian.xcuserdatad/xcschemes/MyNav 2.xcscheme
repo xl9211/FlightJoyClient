@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "MyNav.app"
+               BuildableName = "flightfun.app"
                BlueprintName = "MyNav"
                ReferencedContainer = "container:MyNav.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "MyNav.app"
+            BuildableName = "flightfun.app"
             BlueprintName = "MyNav"
             ReferencedContainer = "container:MyNav.xcodeproj">
          </BuildableReference>
@@ -43,14 +43,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Distribution"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "MyNav.app"
+            BuildableName = "flightfun.app"
             BlueprintName = "MyNav"
             ReferencedContainer = "container:MyNav.xcodeproj">
          </BuildableReference>
@@ -90,7 +90,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "MyNav.app"
+            BuildableName = "flightfun.app"
             BlueprintName = "MyNav"
             ReferencedContainer = "container:MyNav.xcodeproj">
          </BuildableReference>
@@ -100,7 +100,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Distribution"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
